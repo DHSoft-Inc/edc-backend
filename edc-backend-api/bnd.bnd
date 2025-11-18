@@ -1,0 +1,10 @@
+Bundle-Name: edc-backend-api
+Bundle-SymbolicName: com.dhsoft.edc.backend.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.dhsoft.edc.backend.exception,\
+	com.dhsoft.edc.backend.model,\
+	com.dhsoft.edc.backend.service,\
+	com.dhsoft.edc.backend.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../edc-backend-service/service.xml

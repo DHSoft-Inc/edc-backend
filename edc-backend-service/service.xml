@@ -1,0 +1,915 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_2_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="com.dhsoft.edc.backend">
+    <namespace>EDC</namespace>
+
+    <entity name="Project" local-service="true" remote-service="true" uuid="true" uuid-accessor="true" trash-enabled="true">
+		<!-- PK fields -->
+    	<column name="projectId" primary="true" type="long"/>
+
+    	<!-- Group instance -->
+    	<column name="groupId" type="long"/>
+
+    	<!-- Audit fields -->
+    	<column name="companyId" type="long"/>
+    	<column name="userId" type="long"/>
+    	<column name="userName" type="String"/>
+    	<column name="createDate" type="Date"/>
+    	<column name="modifiedDate" type="Date"/>
+    	
+    	<!-- Workflow fields -->
+    	<column name="status" type="int" />
+    	<column name="statusByUserId" type="long" />
+    	<column name="statusByUserName" type="String" />
+    	<column name="statusDate" type="Date" />
+    	
+    	<!-- Entity fields -->
+    	<column name="dataCollectionId" type="long" />
+    	<column name="projectCode" type="String" />
+    	<column name="title" type="String" />
+    	<column name="shortTitle" type="String" />
+    	<column name="purpose" type="String" />
+    	<column name="startDate" type="Date" />
+    	<column name="endDate" type="Date" />
+    	<column name="type" type="int" />
+		
+		<!-- Order -->
+		<order>
+			<order-column name="createDate" order-by="desc" />
+		</order>
+
+		<!-- Finder -->
+    	<finder name="CompanyId" return-type="Collection">
+    		<finder-column name="companyId" />
+    	</finder>
+    	<finder name="GroupId" return-type="Collection">
+    		<finder-column name="groupId" />
+    	</finder>
+    	
+    	<!-- Reference -->
+ 		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetLink" package-path="com.liferay.portlet.asset" />
+		<reference entity="RatingsStats" package-path="com.liferay.portlet.ratings" />
+		<reference entity="TrashEntry" package-path="com.liferay.portlet.trash" />
+		<reference entity="TrashVersion" package-path="com.liferay.portlet.trash" />
+		<reference entity="WorkflowInstanceLink" package-path="com.liferay.portal" />
+    </entity>
+
+    <!-- Project Scope Meta code -->
+    <entity name="MetaCode" local-service="true" remote-service="true" uuid="true" uuid-accessor="true" trash-enabled="true">
+
+
+		<!-- PK fields -->
+        <column name="metaCodeId" type="long" primary="true" />
+        
+       	<!-- Group instance -->     
+        <column name="groupId" type="long" />
+        
+    	<!-- Audit fields -->       
+        <column name="companyId" type="long" />
+        <column name="projectId" type="long" />
+        <column name="userId" type="long" />
+        <column name="userName" type="String" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+        
+    	<!-- Entity fields -->        
+        <column name="name" type="String" />
+        <column name="type" type="String" />
+        <column name="group" type="String" />
+        <column name="code" type="String" />
+        <column name="label" type="String" />
+        <column name="valueType" type="String" />
+        <column name="value" type="String" />
+        <column name="isActive" type="String" />
+        <column name="inactiveDate" type="Date" />
+        
+        <!-- Order -->
+		<order>
+			<order-column name="createDate" order-by="desc" />
+		</order>
+        
+        <!-- Finder -->
+        <finder name="G_P" return-type="Collection">
+        	<finder-column name="groupId"></finder-column>
+        	<finder-column name="projectId"></finder-column>
+        </finder>
+        
+        <finder name="CompanyId" return-type="Collection">
+    		<finder-column name="companyId" />
+    	</finder>
+    	
+    	<finder name="UserId" return-type="Collection">
+    		<finder-column name="userId" />
+    	</finder>
+        
+        
+        <!-- Reference -->
+ 		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetLink" package-path="com.liferay.portlet.asset" />
+		<reference entity="RatingsStats" package-path="com.liferay.portlet.ratings" />
+		<reference entity="TrashEntry" package-path="com.liferay.portlet.trash" />
+		<reference entity="TrashVersion" package-path="com.liferay.portlet.trash" />
+		<reference entity="WorkflowInstanceLink" package-path="com.liferay.portal" />
+		
+    </entity>
+
+    <!-- Intstitution -->
+    <entity name="Institution" local-service="true" remote-service="true" uuid="true" uuid-accessor="true" trash-enabled="true">
+       
+       	<!-- PK fields -->
+        <column name="institutionId" type="long" primary="true" />
+        
+       	<!-- Group instance -->         
+        <column name="groupId" type="long" />        
+        
+        <!-- Audit fields -->   
+        <column name="companyId" type="long" />
+        <column name="projectId" type="long" />
+        <column name="userId" type="long" />
+        <column name="userName" type="String" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+        
+        
+        <!-- Workflow fields -->
+        <column name="status" type="int" />
+        <column name="statusByUserId" type="long" />
+        <column name="statusByUserName" type="String" />
+        <column name="statusDate" type="Date" />
+        
+    	<!-- Entity fields -->         
+        <column name="code" type="String" />
+        <column name="name" type="String" />
+        <column name="enName" type="String" />
+        <column name="type" type="int" />
+        <column name="piName" type="String" />
+        <column name="contactNum" type="String" />
+        <column name="email" type="String" />
+        <column name="irbDate" type="Date" />
+        
+        
+        <!-- Finder -->        
+        <finder name="G_P" return-type="Collection">
+        	<finder-column name="groupId"></finder-column>
+        	<finder-column name="projectId"></finder-column>
+        </finder>
+        
+        <finder name="CompanyId" return-type="Collection">
+    		<finder-column name="companyId" />
+    	</finder>
+    	
+    	<finder name="UserId" return-type="Collection">
+    		<finder-column name="userId" />
+    	</finder>
+        
+        
+        <!-- Reference -->
+ 		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetLink" package-path="com.liferay.portlet.asset" />
+		<reference entity="RatingsStats" package-path="com.liferay.portlet.ratings" />
+		<reference entity="TrashEntry" package-path="com.liferay.portlet.trash" />
+		<reference entity="TrashVersion" package-path="com.liferay.portlet.trash" />
+		<reference entity="WorkflowInstanceLink" package-path="com.liferay.portal" />
+        
+    </entity>
+
+    <!-- initResearcher -->
+    <entity name="InstResearcher" local-service="true" remote-service="true" uuid="true" uuid-accessor="true" trash-enabled="true">
+
+       	<!-- PK fields -->   
+        <column name="institutionResearcherId" type="long" primary="true" />
+
+       	<!-- Group instance -->
+        <column name="groupId" type="long" />
+
+        <!-- Audit fields --> 
+        <column name="companyId" type="long" />
+        <column name="projectId" type="long" />
+        <column name="userId" type="long" />
+        <column name="userName" type="String" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+        
+    	<!-- Entity fields -->    
+        <column name="institutionId" type="long" />
+        <column name="researcherId" type="long" />
+        
+        <!-- Finder -->        
+        
+        <finder name="G_P" return-type="Collection">
+        	<finder-column name="groupId"></finder-column>
+        	<finder-column name="projectId"></finder-column>
+        </finder>
+        
+        <finder name="CompanyId" return-type="Collection">
+    		<finder-column name="companyId" />
+    	</finder>
+    	
+    	<finder name="UserId" return-type="Collection">
+    		<finder-column name="userId" />
+    	</finder>
+         
+        <finder name="InstitutionId" return-type="Collection">
+            <finder-column name="institutionId" />
+        </finder>
+        
+        <finder name="ResearcherId" return-type="Collection">
+            <finder-column name="researcherId" />
+        </finder>
+        
+        <!-- Reference -->
+ 		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetLink" package-path="com.liferay.portlet.asset" />
+		<reference entity="RatingsStats" package-path="com.liferay.portlet.ratings" />
+		<reference entity="TrashEntry" package-path="com.liferay.portlet.trash" />
+		<reference entity="TrashVersion" package-path="com.liferay.portlet.trash" />
+		<reference entity="WorkflowInstanceLink" package-path="com.liferay.portal" />
+        
+    </entity>
+
+    <!-- Researcher -->
+    <entity name="Researcher" local-service="true" remote-service="true" uuid="true" uuid-accessor="true" trash-enabled="true">
+
+       	<!-- PK fields -->   
+        <column name="researcherId" type="long" primary="true" />
+        
+        <!-- Audit fields --> 
+        <column name="companyId" type="long" />
+        <column name="userId" type="long" />
+        <column name="userName" type="String" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+        
+        <!-- Workflow fields -->       
+        <column name="status" type="int" />
+        <column name="statusByUserId" type="long" />
+        <column name="statusByUserName" type="String" />
+        <column name="statusDate" type="Date" />
+        
+        <!-- Entity fields --> 
+        <column name="email" type="String" />
+        <column name="name" type="String" />
+        <column name="isInstitutionManual" type="String" />
+        <column name="institution" type="String" />
+        <column name="officeContact" type="String" />
+        <column name="position" type="String" />
+        <column name="privacyAgree" type="String" />
+        <column name="termOfUseAgree" type="String" />
+        <column name="researcherUserId" type="long" />
+        
+        <!-- Finder -->          
+        <finder name="CompanyId" return-type="Collection">
+    		<finder-column name="companyId" />
+    	</finder>
+    	
+    	<finder name="U_R" return-type="Collection">
+        	<finder-column name="userId"></finder-column>
+        	<finder-column name="researcherUserId"></finder-column>
+        </finder>
+    	
+    	<finder name="UserId" return-type="Collection">
+    		<finder-column name="userId" />
+    	</finder>    	
+    	
+    	<finder name="ResearcherUserId" return-type="Collection">
+    		<finder-column name="researcherUserId" />
+    	</finder>
+
+        <!-- Reference -->
+ 		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetLink" package-path="com.liferay.portlet.asset" />
+		<reference entity="RatingsStats" package-path="com.liferay.portlet.ratings" />
+		<reference entity="TrashEntry" package-path="com.liferay.portlet.trash" />
+		<reference entity="TrashVersion" package-path="com.liferay.portlet.trash" />
+		<reference entity="WorkflowInstanceLink" package-path="com.liferay.portal" />   	
+    	
+    </entity>
+
+    <!-- subject -->
+    <entity name="Subject" local-service="true"  remote-service="true" uuid="true" uuid-accessor="true" trash-enabled="true">
+    
+    	<!-- PK fields -->  
+        <column name="subjectId" type="long" primary="true" />
+       	
+       	<!-- Group instance -->        
+       	<column name="groupId" type="long" />
+
+        <!-- Audit fields -->         
+        <column name="companyId" type="long" />
+        <column name="projectId" type="long" />
+        <column name="institutionId" type="long" />
+        <column name="userId" type="long" />
+        <column name="userName" type="String" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+ 
+        <!-- Workflow fields -->         
+        <column name="status" type="int" />
+        <column name="statusByUserId" type="long" />
+        <column name="statusByUserName" type="String" />
+        <column name="statusDate" type="Date" />
+
+        <!-- Entity fields -->         
+        <column name="serialId" type="String" />
+        <column name="randomNo" type="String" />
+        <column name="name" type="String" />
+        <column name="subjectStatus" type="int" />
+        <column name="subjectStatusApplyDate" type="Date" />
+        <column name="consentAgreeDate" type="Date" />
+        <column name="expGroupId" type="long" />
+        <column name="applyDate" type="Date" />
+
+
+        <!-- Finder -->         
+        <finder name="CompanyId" return-type="Collection">
+    		<finder-column name="companyId" />
+    	</finder>
+        
+    	
+       <finder name="G_P" return-type="Collection">
+        	<finder-column name="groupId"></finder-column>
+        	<finder-column name="projectId"></finder-column>
+        </finder>        
+        
+        <finder name="ProjectId" return-type="Collection">
+            <finder-column name="projectId" />
+        </finder>
+        
+        <finder name="InstitutionId" return-type="Collection">
+            <finder-column name="institutionId" />
+        </finder>
+        
+        <finder name="UserId" return-type="Collection">
+    		<finder-column name="userId" />
+    	</finder>  
+
+        <finder name="ExpGroupId" return-type="Collection">
+    		<finder-column name="expGroupId" />
+    	</finder>  
+
+        <!-- Reference -->
+ 		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetLink" package-path="com.liferay.portlet.asset" />
+		<reference entity="RatingsStats" package-path="com.liferay.portlet.ratings" />
+		<reference entity="TrashEntry" package-path="com.liferay.portlet.trash" />
+		<reference entity="TrashVersion" package-path="com.liferay.portlet.trash" />
+		<reference entity="WorkflowInstanceLink" package-path="com.liferay.portal" />   	
+
+    </entity>
+
+    <!-- VisitDefinition  -->
+    <entity name="VisitDefinition" local-service="true" remote-service="true" uuid="true" uuid-accessor="true" trash-enabled="true">
+    
+    	<!-- PK fields -->     
+        <column name="visitDefinitionId" type="long" primary="true" />
+        
+        <!-- Group instance -->
+        <column name="groupId" type="long" />
+        
+        <!-- Audit fields -->         
+        <column name="companyId" type="long" />
+        <column name="projectId" type="long" />
+        <column name="visitGroupId" type="long" />
+        <column name="userId" type="long" />
+        <column name="userName" type="String" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+
+        <!-- Workflow fields --> 
+        <column name="status" type="int" />
+        <column name="statusByUserId" type="long" />
+        <column name="statusByUserName" type="String" />
+        <column name="statusDate" type="Date" />
+        
+        <!-- Entity fields -->
+        <column name="visitDefinitionCode" type="String" />
+        <column name="name" type="String" />
+        <column name="order" type="int" />
+        <column name="anchorType" type="String" />
+        <column name="offset" type="int" />
+        <column name="windowMinus" type="int" />
+        <column name="windowPlus" type="int" />
+        <column name="type" type="int" />
+        <column name="repeatCount" type="int" />
+        <column name="visitCRFId" type="long" />
+        
+    	<!-- Finder -->         
+        <finder name="CompanyId" return-type="Collection">
+    		<finder-column name="companyId" />
+    	</finder>
+         	
+       <finder name="G_P" return-type="Collection">
+        	<finder-column name="groupId"></finder-column>
+        	<finder-column name="projectId"></finder-column>
+        </finder>        
+        
+        <finder name="ProjectId" return-type="Collection">
+            <finder-column name="projectId" />
+        </finder>
+        
+        <finder name="VisitGroupId" return-type="Collection">
+            <finder-column name="visitGroupId" />
+        </finder>
+        
+        <finder name="UserId" return-type="Collection">
+    		<finder-column name="userId" />
+    	</finder>  
+
+        <finder name="VisitCRFId" return-type="Collection">
+    		<finder-column name="visitCRFId" />
+    	</finder>  
+    	
+        <!-- Reference -->
+ 		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetLink" package-path="com.liferay.portlet.asset" />
+		<reference entity="RatingsStats" package-path="com.liferay.portlet.ratings" />
+		<reference entity="TrashEntry" package-path="com.liferay.portlet.trash" />
+		<reference entity="TrashVersion" package-path="com.liferay.portlet.trash" />
+		<reference entity="WorkflowInstanceLink" package-path="com.liferay.portal" />     	
+    </entity>
+
+    <!-- SubjectVisitDefinition -->
+    <entity name="SubjectVisitDefinition" local-service="true" remote-service="true" uuid="true" uuid-accessor="true" trash-enabled="true">
+
+    	<!-- PK fields -->  
+        <column name="subjectVisitDefinitionId" type="long" primary="true" />
+
+        <!-- Group instance -->
+        <column name="groupId" type="long" />
+
+        <!-- Audit fields -->          
+        <column name="companyId" type="long" />
+        <column name="projectId" type="long" />
+        <column name="visitGroupId" type="long" />
+        <column name="subjectId" type="long" />
+        <column name="userId" type="long" />
+        <column name="userName" type="String" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+        
+        <!-- Workflow fields --> 
+        <column name="status" type="int" />
+        <column name="statusByUserId" type="long" />
+        <column name="statusByUserName" type="String" />
+        <column name="statusDate" type="Date" />
+        
+        <!-- Entity fields -->       
+        <column name="parentCode" type="String" />
+        <column name="visitDefinitionCode" type="String" />
+        <column name="name" type="String" />
+        <column name="order" type="String" />
+        <column name="extCode" type="String" />
+        <column name="anchorType" type="String" />
+        <column name="offset" type="int" />
+        <column name="windowMinus" type="int" />
+        <column name="windowPlus" type="int" />
+        <column name="type" type="int" />
+        <column name="repeatCount" type="int" />
+        <column name="visitCRFId" type="long" />
+        
+        
+        <!-- Finder -->         
+        <finder name="CompanyId" return-type="Collection">
+    		<finder-column name="companyId" />
+    	</finder>
+         	
+       <finder name="G_P" return-type="Collection">
+        	<finder-column name="groupId"></finder-column>
+        	<finder-column name="projectId"></finder-column>
+        </finder>        
+        
+        <finder name="ProjectId" return-type="Collection">
+            <finder-column name="projectId" />
+        </finder>
+
+        
+        <finder name="VisitGroupId" return-type="Collection">
+            <finder-column name="visitGroupId" />
+        </finder>
+        
+        <finder name="SubjectId" return-type="Collection">
+	        <finder-column name="subjectId" />
+	    </finder>
+	    
+	    <finder name="UserId" return-type="Collection">
+    		<finder-column name="userId" />
+    	</finder>  
+	
+	    <finder name="VisitCRFId" return-type="Collection">
+	        <finder-column name="visitCRFId" />
+	    </finder>
+
+        <!-- Reference -->
+ 		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetLink" package-path="com.liferay.portlet.asset" />
+		<reference entity="RatingsStats" package-path="com.liferay.portlet.ratings" />
+		<reference entity="TrashEntry" package-path="com.liferay.portlet.trash" />
+		<reference entity="TrashVersion" package-path="com.liferay.portlet.trash" />
+		<reference entity="WorkflowInstanceLink" package-path="com.liferay.portal" />
+    </entity>
+
+    <!-- ExperimentalGroup -->
+    <entity name="ExperimentalGroup" local-service="true" remote-service="true" uuid="true" uuid-accessor="true" trash-enabled="true">
+
+    	<!-- PK fields -->  
+        <column name="experimentalGroupId" type="long" primary="true" />
+ 
+        <!-- Group instance -->       
+       	<column name="groupId" type="long" />
+
+        <!-- Audit fields -->                 
+        <column name="companyId" type="long" />
+        <column name="projectId" type="long" />
+        <column name="userId" type="long" />
+        <column name="userName" type="String" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+
+        <!-- Workflow fields -->        
+        <column name="status" type="int" />
+        <column name="statusByUserId" type="long" />
+        <column name="statusByUserName" type="String" />
+        <column name="statusDate" type="Date" />
+  
+        <!-- Entity fields -->       
+        <column name="expCode" type="String" />
+        <column name="name" type="String" />
+        <column name="description" type="String" />
+        <column name="type" type="int" />
+        
+        <!-- Finder --> 
+        <finder name="CompanyId" return-type="Collection">
+    		<finder-column name="companyId" />
+    	</finder>
+         	
+       	<finder name="G_P" return-type="Collection">
+        	<finder-column name="groupId"></finder-column>
+        	<finder-column name="projectId"></finder-column>
+        </finder>     
+        
+       	<finder name="UserId" return-type="Collection">
+    		<finder-column name="userId" />
+    	</finder> 
+        
+        
+        
+        <!-- Reference -->
+ 		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetLink" package-path="com.liferay.portlet.asset" />
+		<reference entity="RatingsStats" package-path="com.liferay.portlet.ratings" />
+		<reference entity="TrashEntry" package-path="com.liferay.portlet.trash" />
+		<reference entity="TrashVersion" package-path="com.liferay.portlet.trash" />
+		<reference entity="WorkflowInstanceLink" package-path="com.liferay.portal" />
+    </entity>
+
+    <!-- Randomization -->
+    <entity name="Randomization" local-service="true" remote-service="true" uuid="true" uuid-accessor="true" trash-enabled="true">
+		
+		<!-- PK fields -->
+        <column name="randomizationId" type="long" primary="true" />
+ 
+        <!-- Group instance -->  
+        <column name="groupId" type="long" />
+
+        <!-- Audit fields -->            
+        <column name="companyId" type="long" />
+        <column name="projectId" type="long" />
+        <column name="userId" type="long" />
+        <column name="userName" type="String" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+
+        <!-- Workflow fields -->        
+        <column name="status" type="int" />
+        <column name="statusByUserId" type="long" />
+        <column name="statusByUserName" type="String" />
+        <column name="statusDate" type="Date" />
+
+  
+        <!-- Entity fields -->         
+        <column name="randomNo" type="String" />
+        <column name="useStatus" type="int" />
+        <column name="sourceType" type="int" />
+        <column name="criteria" type="String" />
+        <column name="expGroupId" type="long" />
+        
+        <!-- Finder --> 
+        <finder name="CompanyId" return-type="Collection">
+    		<finder-column name="companyId" />
+    	</finder>
+         	
+       	<finder name="G_P" return-type="Collection">
+        	<finder-column name="groupId"></finder-column>
+        	<finder-column name="projectId"></finder-column>
+        </finder>     
+        
+       	<finder name="UserId" return-type="Collection">
+    		<finder-column name="userId" />
+    	</finder>        
+        
+        <finder name="ExpGroupId" return-type="Collection">
+    		<finder-column name="expGroupId" />
+    	</finder>       
+                        
+        <!-- Reference -->
+ 		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetLink" package-path="com.liferay.portlet.asset" />
+		<reference entity="RatingsStats" package-path="com.liferay.portlet.ratings" />
+		<reference entity="TrashEntry" package-path="com.liferay.portlet.trash" />
+		<reference entity="TrashVersion" package-path="com.liferay.portlet.trash" />
+		<reference entity="WorkflowInstanceLink" package-path="com.liferay.portal" />
+    </entity>
+
+    <!-- VisitGroup -->
+    <entity name="VisitGroup" local-service="true" remote-service="true" uuid="true" uuid-accessor="true" trash-enabled="true">
+
+		<!-- PK fields -->
+        <column name="visitGroupId" type="long" primary="true" />
+
+        <!-- Group instance -->         
+        <column name="groupId" type="long" />
+ 
+        <!-- Audit fields -->         
+        <column name="companyId" type="long" />
+        <column name="projectId" type="long" />
+        <column name="userId" type="long" />
+        <column name="userName" type="String" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+
+        <!-- Workflow fields -->        
+        <column name="status" type="int" />
+        <column name="statusByUserId" type="long" />
+        <column name="statusByUserName" type="String" />
+        <column name="statusDate" type="Date" />
+
+        <!-- Entity fields -->       
+        <column name="expGroupId" type="long" /><!-- groupId? -->
+        <column name="visitGroupCode" type="String" />
+        <column name="name" type="String" />
+        <column name="description" type="String" />
+        <column name="activeStatus" type="int" />
+        <column name="activeDate" type="Date" />
+        
+        <!-- Finder --> 
+        <finder name="CompanyId" return-type="Collection">
+    		<finder-column name="companyId" />
+    	</finder>
+         	
+       	<finder name="G_P" return-type="Collection">
+        	<finder-column name="groupId"></finder-column>
+        	<finder-column name="projectId"></finder-column>
+        </finder>     
+        
+       	<finder name="UserId" return-type="Collection">
+    		<finder-column name="userId" />
+    	</finder>                
+        
+         
+        <!-- Reference -->
+ 		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetLink" package-path="com.liferay.portlet.asset" />
+		<reference entity="RatingsStats" package-path="com.liferay.portlet.ratings" />
+		<reference entity="TrashEntry" package-path="com.liferay.portlet.trash" />
+		<reference entity="TrashVersion" package-path="com.liferay.portlet.trash" />
+		<reference entity="WorkflowInstanceLink" package-path="com.liferay.portal" />        
+        
+        
+    </entity>
+
+    <!-- VisitEvent -->
+    <entity name="VisitEvent" local-service="true" remote-service="true" uuid="true" uuid-accessor="true" trash-enabled="true">
+
+		<!-- PK fields -->
+        <column name="visitEventId" type="long" primary="true" />
+  
+        <!-- Group instance -->       
+        <column name="groupId" type="long" />
+
+        <!-- Audit fields -->                  
+        <column name="companyId" type="long" />
+        <column name="projectId" type="long" />
+        <column name="institutionId" type="long" />
+        <column name="subjectId" type="long" />
+        <column name="visitDefinitionId" type="long" />
+        <column name="userId" type="long" />
+        <column name="userName" type="String" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+
+        <!-- Workflow fields -->         
+        <column name="status" type="int" />
+        <column name="statusByUserId" type="long" />
+        <column name="statusByUserName" type="String" />
+        <column name="statusDate" type="Date" />
+
+        <!-- Entity fields -->        
+        <column name="anchorType" type="String" />
+        <column name="anchorDate" type="Date" />
+        <column name="offset" type="int" />
+        <column name="planDate" type="Date" />
+        <column name="eventDate" type="Date" />
+        <column name="deviationStatus" type="String" />
+        <column name="instanceLinkObj" type="String" />
+
+        <!-- Finder --> 
+        <finder name="CompanyId" return-type="Collection">
+    		<finder-column name="companyId" />
+    	</finder>
+         	
+       	<finder name="G_P" return-type="Collection">
+        	<finder-column name="groupId"></finder-column>
+        	<finder-column name="projectId"></finder-column>
+        </finder>     
+        
+         
+       	<finder name="I_S_V" return-type="Collection">
+        	<finder-column name="institutionId"></finder-column>
+        	<finder-column name="subjectId"></finder-column>
+        	<finder-column name="visitDefinitionId"></finder-column>
+        </finder> 
+        
+       	<finder name="UserId" return-type="Collection">
+    		<finder-column name="userId" />
+    	</finder>                  
+
+        <!-- Reference -->
+ 		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetLink" package-path="com.liferay.portlet.asset" />
+		<reference entity="RatingsStats" package-path="com.liferay.portlet.ratings" />
+		<reference entity="TrashEntry" package-path="com.liferay.portlet.trash" />
+		<reference entity="TrashVersion" package-path="com.liferay.portlet.trash" />
+		<reference entity="WorkflowInstanceLink" package-path="com.liferay.portal" />  
+    </entity>
+
+    <!-- InstanceLink -->
+    <entity name="InstanceLink" local-service="true" remote-service="true" uuid="true" uuid-accessor="true" trash-enabled="true">
+
+		<!-- PK fields -->
+        <column name="linkId" type="long" primary="true" />
+        
+        <!-- Group instance -->       
+        <column name="groupId" type="long" />
+ 
+        <!-- Audit fields -->                 
+        <column name="companyId" type="long" />
+        <column name="projectId" type="long" />
+        <column name="institutionId" type="long" />
+        <column name="userId" type="long" />
+        <column name="userName" type="String" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+ 
+        <!-- Entity fields -->        
+        <column name="subjectId" type="long" />
+        <column name="visitGroupId" type="long" />
+        <column name="visitDefinitionId" type="long" />
+        <column name="visitCRFId" type="long" />
+        <column name="subCRFId" type="long" />
+        <column name="instanceId" type="long" />
+        
+      	<!-- Finder --> 
+        <finder name="CompanyId" return-type="Collection">
+    		<finder-column name="companyId" />
+    	</finder>
+         	
+       	<finder name="G_P" return-type="Collection">
+        	<finder-column name="groupId"></finder-column>
+        	<finder-column name="projectId"></finder-column>
+        </finder>
+             
+        <finder name="InstitutionId" return-type="Collection">
+        	<finder-column name="institutionId"></finder-column>               
+        </finder>
+        
+        <finder name="UserId" return-type="Collection">
+    		<finder-column name="userId" />
+    	</finder>  
+    	
+    	<finder name="S_VG_VD_VC_S_I" return-type="Collection">
+        	<finder-column name="subjectId"></finder-column>
+        	<finder-column name="visitGroupId"></finder-column>
+        	<finder-column name="visitDefinitionId"></finder-column>
+        	<finder-column name="visitCRFId"></finder-column>
+        	<finder-column name="subCRFId"></finder-column>
+        	<finder-column name="instanceId"></finder-column>
+        </finder>
+                
+
+        <!-- Reference -->
+ 		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetLink" package-path="com.liferay.portlet.asset" />
+		<reference entity="RatingsStats" package-path="com.liferay.portlet.ratings" />
+		<reference entity="TrashEntry" package-path="com.liferay.portlet.trash" />
+		<reference entity="TrashVersion" package-path="com.liferay.portlet.trash" />
+		<reference entity="WorkflowInstanceLink" package-path="com.liferay.portal" />  
+
+    </entity>
+
+    <!-- Query -->
+    <entity name="Query" local-service="true" remote-service="true" uuid="true" uuid-accessor="true" trash-enabled="true">
+
+		<!-- PK fields -->
+        <column name="queryId" type="long" primary="true" />
+ 
+        <!-- Group instance -->       
+        <column name="groupId" type="long" />
+
+        <!-- Audit fields -->                
+        <column name="companyId" type="long" />
+        <column name="projectId" type="long" />
+        <column name="userId" type="long" />
+        <column name="userName" type="String" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+
+        <!-- Entity fields -->        
+        <column name="subjectId" type="long" />
+        <column name="visitGroupId" type="long" />
+        <column name="visitDefinitionId" type="long" />
+        <column name="visitCRFId" type="long" />
+        <column name="subCRFId" type="long" />
+        <column name="instanceId" type="long" />
+        <column name="itemCode" type="long" />
+        <column name="sourceType" type="String" />
+        <column name="scope" type="String" />
+        <column name="isTypeManual" type="String" />
+        <column name="type" type="String" />
+        <column name="openUserId" type="long" />
+        <column name="openUserName" type="String" />
+        <column name="openDate" type="Date" />
+        <column name="openComment" type="String" />
+        <column name="answerUserID" type="long" />
+        <column name="answerUserName" type="String" />
+        <column name="answerDate" type="Date" />
+        <column name="answerComment" type="String" />
+        <column name="closeUserID" type="long" />
+        <column name="closeUserName" type="String" />
+        <column name="closeDate" type="Date" />
+        <column name="closeComment" type="String" />
+        <column name="queryStatus" type="int" />
+        <column name="isReopen" type="String" />
+        <column name="reopenId" type="long" />
+        <column name="ruleId" type="long" />
+        <column name="ruleInfo" type="String" />
+        <column name="activeStatus" type="int" />
+        <column name="inactiveDate" type="Date" />
+
+      	<!-- Finder --> 
+        <finder name="CompanyId" return-type="Collection">
+    		<finder-column name="companyId" />
+    	</finder>
+         	
+       	<finder name="G_P" return-type="Collection">
+        	<finder-column name="groupId"></finder-column>
+        	<finder-column name="projectId"></finder-column>
+        </finder>        
+        
+        <finder name="UserId" return-type="Collection">
+    		<finder-column name="userId" />
+    	</finder> 
+
+    	<finder name="S_VG_VD_VC_S_I" return-type="Collection">
+        	<finder-column name="subjectId"></finder-column>
+        	<finder-column name="visitGroupId"></finder-column>
+        	<finder-column name="visitDefinitionId"></finder-column>
+        	<finder-column name="visitCRFId"></finder-column>
+        	<finder-column name="subCRFId"></finder-column>
+        	<finder-column name="instanceId"></finder-column>
+        </finder>    	
+    	
+        <finder name="ItemCode" return-type="Collection">
+    		<finder-column name="itemCode" />
+    	</finder>   	
+    	
+        <finder name="OpenUserId" return-type="Collection">
+    		<finder-column name="openUserId" />
+    	</finder>   
+
+        <finder name="AnswerUserID" return-type="Collection">
+    		<finder-column name="answerUserID" />
+    	</finder>    
+
+
+        <finder name="CloseUserID" return-type="Collection">
+    		<finder-column name="closeUserID" />
+    	</finder>     	       
+    	       
+    	       
+        <finder name="R_R" return-type="Collection">
+    		<finder-column name="reopenId"></finder-column>
+        	<finder-column name="ruleId"></finder-column>
+    	</finder>     	       
+
+        <!-- Reference -->
+ 		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetLink" package-path="com.liferay.portlet.asset" />
+		<reference entity="RatingsStats" package-path="com.liferay.portlet.ratings" />
+		<reference entity="TrashEntry" package-path="com.liferay.portlet.trash" />
+		<reference entity="TrashVersion" package-path="com.liferay.portlet.trash" />
+		<reference entity="WorkflowInstanceLink" package-path="com.liferay.portal" />  
+
+    </entity>
+</service-builder>
