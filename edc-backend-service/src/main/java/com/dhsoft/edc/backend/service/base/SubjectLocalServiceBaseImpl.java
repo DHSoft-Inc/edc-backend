@@ -23,7 +23,7 @@ import com.dhsoft.edc.backend.service.persistence.InstanceLinkPersistence;
 import com.dhsoft.edc.backend.service.persistence.InstitutionPersistence;
 import com.dhsoft.edc.backend.service.persistence.MetaCodePersistence;
 import com.dhsoft.edc.backend.service.persistence.ProjectPersistence;
-import com.dhsoft.edc.backend.service.persistence.QueryPersistence;
+import com.dhsoft.edc.backend.service.persistence.QueryLinkPersistence;
 import com.dhsoft.edc.backend.service.persistence.RandomizationPersistence;
 import com.dhsoft.edc.backend.service.persistence.ResearcherPersistence;
 import com.dhsoft.edc.backend.service.persistence.SubjectPersistence;
@@ -634,7 +634,7 @@ public abstract class SubjectLocalServiceBaseImpl
 	protected ProjectPersistence projectPersistence;
 
 	@Reference
-	protected QueryPersistence queryPersistence;
+	protected QueryLinkPersistence queryLinkPersistence;
 
 	@Reference
 	protected RandomizationPersistence randomizationPersistence;

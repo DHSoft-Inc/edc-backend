@@ -809,7 +809,7 @@
     </entity>
 
     <!-- Query -->
-    <entity name="Query" local-service="true" remote-service="true" uuid="true" uuid-accessor="true" trash-enabled="true">
+    <entity name="QueryLink" local-service="true" remote-service="true" uuid="true" uuid-accessor="true" trash-enabled="true">
 
 		<!-- PK fields -->
         <column name="queryId" type="long" primary="true" />
