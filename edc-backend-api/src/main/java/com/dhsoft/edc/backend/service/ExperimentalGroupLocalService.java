@@ -203,6 +203,9 @@ public interface ExperimentalGroupLocalService
 	public ExperimentalGroup fetchExperimentalGroupByUuidAndGroupId(
 		String uuid, long groupId);
 
+	public ExperimentalGroup findByExperimentalGroupId(
+		long experimentalGroupId);
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
 

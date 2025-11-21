@@ -14,8 +14,8 @@
 
 package com.dhsoft.edc.backend.service.impl;
 
+import com.dhsoft.edc.backend.model.Institution;
 import com.dhsoft.edc.backend.service.base.InstitutionLocalServiceBaseImpl;
-
 import com.liferay.portal.aop.AopService;
 
 import org.osgi.service.component.annotations.Component;
@@ -29,4 +29,13 @@ import org.osgi.service.component.annotations.Component;
 )
 public class InstitutionLocalServiceImpl
 	extends InstitutionLocalServiceBaseImpl {
+	
+	public Institution findByInstitutionId (long institutionId) {
+		try {
+			return institutionPersistence.findByPrimaryKey(institutionId);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
 }

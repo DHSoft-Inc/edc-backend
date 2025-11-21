@@ -204,6 +204,10 @@ public class InstitutionLocalServiceUtil {
 		return getService().fetchInstitutionByUuidAndGroupId(uuid, groupId);
 	}
 
+	public static Institution findByInstitutionId(long institutionId) {
+		return getService().findByInstitutionId(institutionId);
+	}
+
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 

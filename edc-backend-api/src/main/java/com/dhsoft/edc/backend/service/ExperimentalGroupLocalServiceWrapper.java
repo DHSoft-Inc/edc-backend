@@ -231,6 +231,14 @@ public class ExperimentalGroupLocalServiceWrapper
 	}
 
 	@Override
+	public com.dhsoft.edc.backend.model.ExperimentalGroup
+		findByExperimentalGroupId(long experimentalGroupId) {
+
+		return _experimentalGroupLocalService.findByExperimentalGroupId(
+			experimentalGroupId);
+	}
+
+	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 

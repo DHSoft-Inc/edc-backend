@@ -731,6 +731,10 @@
         	<finder-column name="visitDefinitionId"></finder-column>
         </finder> 
         
+        <finder name="subjectId" return-type="Collection">
+    		<finder-column name="subjectId" />
+    	</finder>
+        
        	<finder name="UserId" return-type="Collection">
     		<finder-column name="userId" />
     	</finder>                  

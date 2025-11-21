@@ -14,8 +14,8 @@
 
 package com.dhsoft.edc.backend.service.impl;
 
+import com.dhsoft.edc.backend.model.ExperimentalGroup;
 import com.dhsoft.edc.backend.service.base.ExperimentalGroupLocalServiceBaseImpl;
-
 import com.liferay.portal.aop.AopService;
 
 import org.osgi.service.component.annotations.Component;
@@ -29,4 +29,12 @@ import org.osgi.service.component.annotations.Component;
 )
 public class ExperimentalGroupLocalServiceImpl
 	extends ExperimentalGroupLocalServiceBaseImpl {
+	
+	public ExperimentalGroup findByExperimentalGroupId(long experimentalGroupId) {
+		try {
+			return experimentalGroupPersistence.findByPrimaryKey(experimentalGroupId);
+		} catch (Exception e) {
+			return null;
+		}
+	}
 }

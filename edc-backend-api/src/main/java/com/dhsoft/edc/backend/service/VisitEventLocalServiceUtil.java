@@ -204,6 +204,10 @@ public class VisitEventLocalServiceUtil {
 		return getService().fetchVisitEventByUuidAndGroupId(uuid, groupId);
 	}
 
+	public static List<VisitEvent> findBySubjectId(long subjectId) {
+		return getService().findBySubjectId(subjectId);
+	}
+
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
@@ -324,6 +328,16 @@ public class VisitEventLocalServiceUtil {
 	 */
 	public static int getVisitEventsCount() {
 		return getService().getVisitEventsCount();
+	}
+
+	public static void updateCRFData(long visitEventId, long structuredDataId) {
+		getService().updateCRFData(visitEventId, structuredDataId);
+	}
+
+	public static void updateEventDate(
+		long visitEventId, java.util.Date eventDate, String deviationStatus) {
+
+		getService().updateEventDate(visitEventId, eventDate, deviationStatus);
 	}
 
 	/**
