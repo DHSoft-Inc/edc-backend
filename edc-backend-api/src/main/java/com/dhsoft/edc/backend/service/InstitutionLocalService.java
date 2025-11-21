@@ -201,6 +201,8 @@ public interface InstitutionLocalService
 	public Institution fetchInstitutionByUuidAndGroupId(
 		String uuid, long groupId);
 
+	public Institution findByInstitutionId(long institutionId);
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
 

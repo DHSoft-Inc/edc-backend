@@ -3114,6 +3114,508 @@ public class VisitEventPersistenceImpl
 	private static final String _FINDER_COLUMN_I_S_V_VISITDEFINITIONID_2 =
 		"visitEvent.visitDefinitionId = ?";
 
+	private FinderPath _finderPathWithPaginationFindBysubjectId;
+	private FinderPath _finderPathWithoutPaginationFindBysubjectId;
+	private FinderPath _finderPathCountBysubjectId;
+
+	/**
+	 * Returns all the visit events where subjectId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @return the matching visit events
+	 */
+	@Override
+	public List<VisitEvent> findBysubjectId(long subjectId) {
+		return findBysubjectId(
+			subjectId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Returns a range of all the visit events where subjectId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>VisitEventModelImpl</code>.
+	 * </p>
+	 *
+	 * @param subjectId the subject ID
+	 * @param start the lower bound of the range of visit events
+	 * @param end the upper bound of the range of visit events (not inclusive)
+	 * @return the range of matching visit events
+	 */
+	@Override
+	public List<VisitEvent> findBysubjectId(
+		long subjectId, int start, int end) {
+
+		return findBysubjectId(subjectId, start, end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the visit events where subjectId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>VisitEventModelImpl</code>.
+	 * </p>
+	 *
+	 * @param subjectId the subject ID
+	 * @param start the lower bound of the range of visit events
+	 * @param end the upper bound of the range of visit events (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching visit events
+	 */
+	@Override
+	public List<VisitEvent> findBysubjectId(
+		long subjectId, int start, int end,
+		OrderByComparator<VisitEvent> orderByComparator) {
+
+		return findBysubjectId(subjectId, start, end, orderByComparator, true);
+	}
+
+	/**
+	 * Returns an ordered range of all the visit events where subjectId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>VisitEventModelImpl</code>.
+	 * </p>
+	 *
+	 * @param subjectId the subject ID
+	 * @param start the lower bound of the range of visit events
+	 * @param end the upper bound of the range of visit events (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching visit events
+	 */
+	@Override
+	public List<VisitEvent> findBysubjectId(
+		long subjectId, int start, int end,
+		OrderByComparator<VisitEvent> orderByComparator,
+		boolean useFinderCache) {
+
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+			(orderByComparator == null)) {
+
+			if (useFinderCache) {
+				finderPath = _finderPathWithoutPaginationFindBysubjectId;
+				finderArgs = new Object[] {subjectId};
+			}
+		}
+		else if (useFinderCache) {
+			finderPath = _finderPathWithPaginationFindBysubjectId;
+			finderArgs = new Object[] {
+				subjectId, start, end, orderByComparator
+			};
+		}
+
+		List<VisitEvent> list = null;
+
+		if (useFinderCache) {
+			list = (List<VisitEvent>)finderCache.getResult(
+				finderPath, finderArgs, this);
+
+			if ((list != null) && !list.isEmpty()) {
+				for (VisitEvent visitEvent : list) {
+					if (subjectId != visitEvent.getSubjectId()) {
+						list = null;
+
+						break;
+					}
+				}
+			}
+		}
+
+		if (list == null) {
+			StringBundler sb = null;
+
+			if (orderByComparator != null) {
+				sb = new StringBundler(
+					3 + (orderByComparator.getOrderByFields().length * 2));
+			}
+			else {
+				sb = new StringBundler(3);
+			}
+
+			sb.append(_SQL_SELECT_VISITEVENT_WHERE);
+
+			sb.append(_FINDER_COLUMN_SUBJECTID_SUBJECTID_2);
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(
+					sb, _ORDER_BY_ENTITY_ALIAS, orderByComparator);
+			}
+			else {
+				sb.append(VisitEventModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = sb.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query query = session.createQuery(sql);
+
+				QueryPos queryPos = QueryPos.getInstance(query);
+
+				queryPos.add(subjectId);
+
+				list = (List<VisitEvent>)QueryUtil.list(
+					query, getDialect(), start, end);
+
+				cacheResult(list);
+
+				if (useFinderCache) {
+					finderCache.putResult(finderPath, finderArgs, list);
+				}
+			}
+			catch (Exception exception) {
+				if (useFinderCache) {
+					finderCache.removeResult(finderPath, finderArgs);
+				}
+
+				throw processException(exception);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first visit event in the ordered set where subjectId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching visit event
+	 * @throws NoSuchVisitEventException if a matching visit event could not be found
+	 */
+	@Override
+	public VisitEvent findBysubjectId_First(
+			long subjectId, OrderByComparator<VisitEvent> orderByComparator)
+		throws NoSuchVisitEventException {
+
+		VisitEvent visitEvent = fetchBysubjectId_First(
+			subjectId, orderByComparator);
+
+		if (visitEvent != null) {
+			return visitEvent;
+		}
+
+		StringBundler sb = new StringBundler(4);
+
+		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		sb.append("subjectId=");
+		sb.append(subjectId);
+
+		sb.append("}");
+
+		throw new NoSuchVisitEventException(sb.toString());
+	}
+
+	/**
+	 * Returns the first visit event in the ordered set where subjectId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching visit event, or <code>null</code> if a matching visit event could not be found
+	 */
+	@Override
+	public VisitEvent fetchBysubjectId_First(
+		long subjectId, OrderByComparator<VisitEvent> orderByComparator) {
+
+		List<VisitEvent> list = findBysubjectId(
+			subjectId, 0, 1, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the last visit event in the ordered set where subjectId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching visit event
+	 * @throws NoSuchVisitEventException if a matching visit event could not be found
+	 */
+	@Override
+	public VisitEvent findBysubjectId_Last(
+			long subjectId, OrderByComparator<VisitEvent> orderByComparator)
+		throws NoSuchVisitEventException {
+
+		VisitEvent visitEvent = fetchBysubjectId_Last(
+			subjectId, orderByComparator);
+
+		if (visitEvent != null) {
+			return visitEvent;
+		}
+
+		StringBundler sb = new StringBundler(4);
+
+		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		sb.append("subjectId=");
+		sb.append(subjectId);
+
+		sb.append("}");
+
+		throw new NoSuchVisitEventException(sb.toString());
+	}
+
+	/**
+	 * Returns the last visit event in the ordered set where subjectId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching visit event, or <code>null</code> if a matching visit event could not be found
+	 */
+	@Override
+	public VisitEvent fetchBysubjectId_Last(
+		long subjectId, OrderByComparator<VisitEvent> orderByComparator) {
+
+		int count = countBysubjectId(subjectId);
+
+		if (count == 0) {
+			return null;
+		}
+
+		List<VisitEvent> list = findBysubjectId(
+			subjectId, count - 1, count, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the visit events before and after the current visit event in the ordered set where subjectId = &#63;.
+	 *
+	 * @param visitEventId the primary key of the current visit event
+	 * @param subjectId the subject ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next visit event
+	 * @throws NoSuchVisitEventException if a visit event with the primary key could not be found
+	 */
+	@Override
+	public VisitEvent[] findBysubjectId_PrevAndNext(
+			long visitEventId, long subjectId,
+			OrderByComparator<VisitEvent> orderByComparator)
+		throws NoSuchVisitEventException {
+
+		VisitEvent visitEvent = findByPrimaryKey(visitEventId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			VisitEvent[] array = new VisitEventImpl[3];
+
+			array[0] = getBysubjectId_PrevAndNext(
+				session, visitEvent, subjectId, orderByComparator, true);
+
+			array[1] = visitEvent;
+
+			array[2] = getBysubjectId_PrevAndNext(
+				session, visitEvent, subjectId, orderByComparator, false);
+
+			return array;
+		}
+		catch (Exception exception) {
+			throw processException(exception);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected VisitEvent getBysubjectId_PrevAndNext(
+		Session session, VisitEvent visitEvent, long subjectId,
+		OrderByComparator<VisitEvent> orderByComparator, boolean previous) {
+
+		StringBundler sb = null;
+
+		if (orderByComparator != null) {
+			sb = new StringBundler(
+				4 + (orderByComparator.getOrderByConditionFields().length * 3) +
+					(orderByComparator.getOrderByFields().length * 3));
+		}
+		else {
+			sb = new StringBundler(3);
+		}
+
+		sb.append(_SQL_SELECT_VISITEVENT_WHERE);
+
+		sb.append(_FINDER_COLUMN_SUBJECTID_SUBJECTID_2);
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields =
+				orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				sb.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				sb.append(_ORDER_BY_ENTITY_ALIAS);
+				sb.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						sb.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(WHERE_GREATER_THAN);
+					}
+					else {
+						sb.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			sb.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				sb.append(_ORDER_BY_ENTITY_ALIAS);
+				sb.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						sb.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(ORDER_BY_ASC);
+					}
+					else {
+						sb.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+		else {
+			sb.append(VisitEventModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = sb.toString();
+
+		Query query = session.createQuery(sql);
+
+		query.setFirstResult(0);
+		query.setMaxResults(2);
+
+		QueryPos queryPos = QueryPos.getInstance(query);
+
+		queryPos.add(subjectId);
+
+		if (orderByComparator != null) {
+			for (Object orderByConditionValue :
+					orderByComparator.getOrderByConditionValues(visitEvent)) {
+
+				queryPos.add(orderByConditionValue);
+			}
+		}
+
+		List<VisitEvent> list = query.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
+	 * Removes all the visit events where subjectId = &#63; from the database.
+	 *
+	 * @param subjectId the subject ID
+	 */
+	@Override
+	public void removeBysubjectId(long subjectId) {
+		for (VisitEvent visitEvent :
+				findBysubjectId(
+					subjectId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
+
+			remove(visitEvent);
+		}
+	}
+
+	/**
+	 * Returns the number of visit events where subjectId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @return the number of matching visit events
+	 */
+	@Override
+	public int countBysubjectId(long subjectId) {
+		FinderPath finderPath = _finderPathCountBysubjectId;
+
+		Object[] finderArgs = new Object[] {subjectId};
+
+		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
+
+		if (count == null) {
+			StringBundler sb = new StringBundler(2);
+
+			sb.append(_SQL_COUNT_VISITEVENT_WHERE);
+
+			sb.append(_FINDER_COLUMN_SUBJECTID_SUBJECTID_2);
+
+			String sql = sb.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query query = session.createQuery(sql);
+
+				QueryPos queryPos = QueryPos.getInstance(query);
+
+				queryPos.add(subjectId);
+
+				count = (Long)query.uniqueResult();
+
+				finderCache.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception exception) {
+				finderCache.removeResult(finderPath, finderArgs);
+
+				throw processException(exception);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String _FINDER_COLUMN_SUBJECTID_SUBJECTID_2 =
+		"visitEvent.subjectId = ?";
+
 	private FinderPath _finderPathWithPaginationFindByUserId;
 	private FinderPath _finderPathWithoutPaginationFindByUserId;
 	private FinderPath _finderPathCountByUserId;
@@ -3994,6 +4496,12 @@ public class VisitEventPersistenceImpl
 			finderCache.removeResult(
 				_finderPathWithoutPaginationFindByI_S_V, args);
 
+			args = new Object[] {visitEventModelImpl.getSubjectId()};
+
+			finderCache.removeResult(_finderPathCountBysubjectId, args);
+			finderCache.removeResult(
+				_finderPathWithoutPaginationFindBysubjectId, args);
+
 			args = new Object[] {visitEventModelImpl.getUserId()};
 
 			finderCache.removeResult(_finderPathCountByUserId, args);
@@ -4112,6 +4620,25 @@ public class VisitEventPersistenceImpl
 				finderCache.removeResult(_finderPathCountByI_S_V, args);
 				finderCache.removeResult(
 					_finderPathWithoutPaginationFindByI_S_V, args);
+			}
+
+			if ((visitEventModelImpl.getColumnBitmask() &
+				 _finderPathWithoutPaginationFindBysubjectId.
+					 getColumnBitmask()) != 0) {
+
+				Object[] args = new Object[] {
+					visitEventModelImpl.getOriginalSubjectId()
+				};
+
+				finderCache.removeResult(_finderPathCountBysubjectId, args);
+				finderCache.removeResult(
+					_finderPathWithoutPaginationFindBysubjectId, args);
+
+				args = new Object[] {visitEventModelImpl.getSubjectId()};
+
+				finderCache.removeResult(_finderPathCountBysubjectId, args);
+				finderCache.removeResult(
+					_finderPathWithoutPaginationFindBysubjectId, args);
 			}
 
 			if ((visitEventModelImpl.getColumnBitmask() &
@@ -4549,6 +5076,25 @@ public class VisitEventPersistenceImpl
 			new String[] {
 				Long.class.getName(), Long.class.getName(), Long.class.getName()
 			});
+
+		_finderPathWithPaginationFindBysubjectId = new FinderPath(
+			entityCacheEnabled, finderCacheEnabled, VisitEventImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findBysubjectId",
+			new String[] {
+				Long.class.getName(), Integer.class.getName(),
+				Integer.class.getName(), OrderByComparator.class.getName()
+			});
+
+		_finderPathWithoutPaginationFindBysubjectId = new FinderPath(
+			entityCacheEnabled, finderCacheEnabled, VisitEventImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findBysubjectId",
+			new String[] {Long.class.getName()},
+			VisitEventModelImpl.SUBJECTID_COLUMN_BITMASK);
+
+		_finderPathCountBysubjectId = new FinderPath(
+			entityCacheEnabled, finderCacheEnabled, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countBysubjectId",
+			new String[] {Long.class.getName()});
 
 		_finderPathWithPaginationFindByUserId = new FinderPath(
 			entityCacheEnabled, finderCacheEnabled, VisitEventImpl.class,

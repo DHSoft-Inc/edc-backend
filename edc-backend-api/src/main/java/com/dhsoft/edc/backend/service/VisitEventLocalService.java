@@ -36,6 +36,7 @@ import com.liferay.portal.kernel.util.OrderByComparator;
 
 import java.io.Serializable;
 
+import java.util.Date;
 import java.util.List;
 
 import org.osgi.annotation.versioning.ProviderType;
@@ -201,6 +202,8 @@ public interface VisitEventLocalService
 	public VisitEvent fetchVisitEventByUuidAndGroupId(
 		String uuid, long groupId);
 
+	public List<VisitEvent> findBySubjectId(long subjectId);
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
 
@@ -295,6 +298,11 @@ public interface VisitEventLocalService
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public int getVisitEventsCount();
+
+	public void updateCRFData(long visitEventId, long structuredDataId);
+
+	public void updateEventDate(
+		long visitEventId, Date eventDate, String deviationStatus);
 
 	/**
 	 * Updates the visit event in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.

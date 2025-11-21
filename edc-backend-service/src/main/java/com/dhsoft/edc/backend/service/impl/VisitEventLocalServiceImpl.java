@@ -22,6 +22,7 @@ import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
 
 import java.util.Date;
+import java.util.List;
 
 import org.osgi.service.component.annotations.Component;
 
@@ -84,4 +85,10 @@ public class VisitEventLocalServiceImpl extends VisitEventLocalServiceBaseImpl {
 			
 		}
 	}
+	
+	//Find By Subject Id
+	public List<VisitEvent> findBySubjectId(long subjectId) {
+		return visitEventPersistence.findBysubjectId(subjectId);
+	}
+	
 }

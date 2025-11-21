@@ -223,6 +223,13 @@ public class InstitutionLocalServiceWrapper
 	}
 
 	@Override
+	public com.dhsoft.edc.backend.model.Institution findByInstitutionId(
+		long institutionId) {
+
+		return _institutionLocalService.findByInstitutionId(institutionId);
+	}
+
+	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 

@@ -222,6 +222,13 @@ public class VisitEventLocalServiceWrapper
 	}
 
 	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.VisitEvent>
+		findBySubjectId(long subjectId) {
+
+		return _visitEventLocalService.findBySubjectId(subjectId);
+	}
+
+	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
@@ -360,6 +367,19 @@ public class VisitEventLocalServiceWrapper
 	@Override
 	public int getVisitEventsCount() {
 		return _visitEventLocalService.getVisitEventsCount();
+	}
+
+	@Override
+	public void updateCRFData(long visitEventId, long structuredDataId) {
+		_visitEventLocalService.updateCRFData(visitEventId, structuredDataId);
+	}
+
+	@Override
+	public void updateEventDate(
+		long visitEventId, java.util.Date eventDate, String deviationStatus) {
+
+		_visitEventLocalService.updateEventDate(
+			visitEventId, eventDate, deviationStatus);
 	}
 
 	/**

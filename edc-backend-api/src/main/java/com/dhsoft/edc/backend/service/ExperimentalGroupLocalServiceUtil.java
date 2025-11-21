@@ -214,6 +214,12 @@ public class ExperimentalGroupLocalServiceUtil {
 			uuid, groupId);
 	}
 
+	public static ExperimentalGroup findByExperimentalGroupId(
+		long experimentalGroupId) {
+
+		return getService().findByExperimentalGroupId(experimentalGroupId);
+	}
+
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
