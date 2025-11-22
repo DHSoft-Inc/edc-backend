@@ -36,6 +36,7 @@ import com.liferay.portal.kernel.util.OrderByComparator;
 
 import java.io.Serializable;
 
+import java.util.Date;
 import java.util.List;
 
 import org.osgi.annotation.versioning.ProviderType;
@@ -63,6 +64,12 @@ public interface VisitDefinitionLocalService
 	 *
 	 * Never modify this interface directly. Add custom service methods to <code>com.dhsoft.edc.backend.service.impl.VisitDefinitionLocalServiceImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface. Consume the visit definition local service via injection or a <code>org.osgi.util.tracker.ServiceTracker</code>. Use {@link VisitDefinitionLocalServiceUtil} if injection and service tracking are not available.
 	 */
+	public void addVisitDefinition(
+		long companyId, long groupId, long projectId, long visitGroupId,
+		long userId, String userName, int status, long statusByUserId,
+		String statusByUserName, Date statusDate, String anchorType, int offset,
+		int windowMinus, int windowPlus, int type, int repeatCount,
+		long visitCRFId);
 
 	/**
 	 * Adds the visit definition to the database. Also notifies the appropriate model listeners.
@@ -85,6 +92,8 @@ public interface VisitDefinitionLocalService
 	 */
 	@Transactional(enabled = false)
 	public VisitDefinition createVisitDefinition(long visitDefinitionId);
+
+	public void deleteDefinition(long visitDefinitionId);
 
 	/**
 	 * @throws PortalException

@@ -35,6 +35,30 @@ import org.osgi.service.component.annotations.Component;
 )
 public class VisitEventLocalServiceImpl extends VisitEventLocalServiceBaseImpl {
 	
+	public void addVisitEvent(long companyId, long groupId, long projectId, long institutionId, long subjectId, long visitDefinitionId, int status, long statusByUserId, String statusByUserName, Date statusDate, String anchorType, Date anchorDate, int offset, Date planDate)
+	{
+		Date createDate = new Date();
+		long visitEventId = counterLocalService.increment("visitEvent");
+		VisitEvent v = visitEventPersistence.create(visitEventId);
+		v.setCompanyId(companyId);
+		v.setGroupId(groupId);
+		v.setProjectId(projectId);
+		v.setInstitutionId(institutionId);
+		v.setSubjectId(subjectId);
+		v.setVisitDefinitionId(visitDefinitionId);
+		v.setStatus(status);
+		v.setStatusByUserId(statusByUserId);
+		v.setStatusByUserName(statusByUserName);
+		v.setStatusDate(statusDate);
+		v.setAnchorType(anchorType);
+		v.setAnchorDate(anchorDate);
+		v.setOffset(offset);
+		v.setPlanDate(planDate);
+		v.setCreateDate(createDate);
+		v.setModifiedDate(createDate);
+		visitEventPersistence.update(v);
+	}
+	
 	//When subject visit, update VisitEvent
 	public void updateEventDate(long visitEventId, Date eventDate, String deviationStatus) {
 		try {
@@ -83,6 +107,16 @@ public class VisitEventLocalServiceImpl extends VisitEventLocalServiceBaseImpl {
 			
 		} catch (Exception e) {
 			
+		}
+	}
+	
+	public VisitEvent deleteVisitEvent(long visitEventId) {
+		try {
+			VisitEvent v = visitEventPersistence.findByPrimaryKey(visitEventId);
+			visitEventPersistence.remove(v);
+			return null;
+		} catch (Exception e) {
+			return null;
 		}
 	}
 	

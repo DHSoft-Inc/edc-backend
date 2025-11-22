@@ -64,6 +64,11 @@ public interface VisitEventLocalService
 	 *
 	 * Never modify this interface directly. Add custom service methods to <code>com.dhsoft.edc.backend.service.impl.VisitEventLocalServiceImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface. Consume the visit event local service via injection or a <code>org.osgi.util.tracker.ServiceTracker</code>. Use {@link VisitEventLocalServiceUtil} if injection and service tracking are not available.
 	 */
+	public void addVisitEvent(
+		long companyId, long groupId, long projectId, long institutionId,
+		long subjectId, long visitDefinitionId, int status, long statusByUserId,
+		String statusByUserName, Date statusDate, String anchorType,
+		Date anchorDate, int offset, Date planDate);
 
 	/**
 	 * Adds the visit event to the database. Also notifies the appropriate model listeners.

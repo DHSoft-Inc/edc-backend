@@ -32,6 +32,19 @@ public class VisitEventLocalServiceWrapper
 		_visitEventLocalService = visitEventLocalService;
 	}
 
+	@Override
+	public void addVisitEvent(
+		long companyId, long groupId, long projectId, long institutionId,
+		long subjectId, long visitDefinitionId, int status, long statusByUserId,
+		String statusByUserName, java.util.Date statusDate, String anchorType,
+		java.util.Date anchorDate, int offset, java.util.Date planDate) {
+
+		_visitEventLocalService.addVisitEvent(
+			companyId, groupId, projectId, institutionId, subjectId,
+			visitDefinitionId, status, statusByUserId, statusByUserName,
+			statusDate, anchorType, anchorDate, offset, planDate);
+	}
+
 	/**
 	 * Adds the visit event to the database. Also notifies the appropriate model listeners.
 	 *

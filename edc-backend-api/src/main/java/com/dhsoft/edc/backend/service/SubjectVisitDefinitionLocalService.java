@@ -36,6 +36,7 @@ import com.liferay.portal.kernel.util.OrderByComparator;
 
 import java.io.Serializable;
 
+import java.util.Date;
 import java.util.List;
 
 import org.osgi.annotation.versioning.ProviderType;
@@ -63,6 +64,14 @@ public interface SubjectVisitDefinitionLocalService
 	 *
 	 * Never modify this interface directly. Add custom service methods to <code>com.dhsoft.edc.backend.service.impl.SubjectVisitDefinitionLocalServiceImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface. Consume the subject visit definition local service via injection or a <code>org.osgi.util.tracker.ServiceTracker</code>. Use {@link SubjectVisitDefinitionLocalServiceUtil} if injection and service tracking are not available.
 	 */
+	public void addSubjectVisitDefinition(
+		long companyId, long groupId, long projectId, long visitGroupId,
+		long subjectId, long userId, String userName, int status,
+		long statusByUserId, String statusByUserName, Date statusDate,
+		String parentCode, String visitDefinitionCode, String name,
+		String order, String extCode, String anchorType, int offset,
+		int windowMinus, int windowPlus, int type, int repeatCount,
+		long visitCRFId);
 
 	/**
 	 * Adds the subject visit definition to the database. Also notifies the appropriate model listeners.
@@ -205,6 +214,8 @@ public interface SubjectVisitDefinitionLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public SubjectVisitDefinition fetchSubjectVisitDefinitionByUuidAndGroupId(
 		String uuid, long groupId);
+
+	public List<SubjectVisitDefinition> findBySubjectId(long SubjectId);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();

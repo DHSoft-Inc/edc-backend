@@ -44,6 +44,17 @@ public class VisitEventLocalServiceUtil {
 	 *
 	 * Never modify this class directly. Add custom service methods to <code>com.dhsoft.edc.backend.service.impl.VisitEventLocalServiceImpl</code> and rerun ServiceBuilder to regenerate this class.
 	 */
+	public static void addVisitEvent(
+		long companyId, long groupId, long projectId, long institutionId,
+		long subjectId, long visitDefinitionId, int status, long statusByUserId,
+		String statusByUserName, java.util.Date statusDate, String anchorType,
+		java.util.Date anchorDate, int offset, java.util.Date planDate) {
+
+		getService().addVisitEvent(
+			companyId, groupId, projectId, institutionId, subjectId,
+			visitDefinitionId, status, statusByUserId, statusByUserName,
+			statusDate, anchorType, anchorDate, offset, planDate);
+	}
 
 	/**
 	 * Adds the visit event to the database. Also notifies the appropriate model listeners.

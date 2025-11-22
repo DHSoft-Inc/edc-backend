@@ -202,6 +202,10 @@ public class SubjectLocalServiceUtil {
 		return getService().fetchSubjectByUuidAndGroupId(uuid, groupId);
 	}
 
+	public static List<Subject> findByInstitution(long InstitutionId) {
+		return getService().findByInstitution(InstitutionId);
+	}
+
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
