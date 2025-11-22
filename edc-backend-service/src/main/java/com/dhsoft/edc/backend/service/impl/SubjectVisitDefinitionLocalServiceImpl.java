@@ -62,7 +62,7 @@ public class SubjectVisitDefinitionLocalServiceImpl
 		svd.setRepeatCount(repeatCount);
 		svd.setVisitCRFId(visitCRFId);
 		svd.setCreateDate(createDate);
-		svd.setModifiedDate(createDate);
+		svd.setModifiedDate(createDate); 
 		subjectVisitDefinitionPersistence.update(svd);
 	}
 	
