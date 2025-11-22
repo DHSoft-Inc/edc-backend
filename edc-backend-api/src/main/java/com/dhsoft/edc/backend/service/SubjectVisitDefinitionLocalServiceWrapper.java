@@ -34,6 +34,23 @@ public class SubjectVisitDefinitionLocalServiceWrapper
 			subjectVisitDefinitionLocalService;
 	}
 
+	@Override
+	public void addSubjectVisitDefinition(
+		long companyId, long groupId, long projectId, long visitGroupId,
+		long subjectId, long userId, String userName, int status,
+		long statusByUserId, String statusByUserName, java.util.Date statusDate,
+		String parentCode, String visitDefinitionCode, String name,
+		String order, String extCode, String anchorType, int offset,
+		int windowMinus, int windowPlus, int type, int repeatCount,
+		long visitCRFId) {
+
+		_subjectVisitDefinitionLocalService.addSubjectVisitDefinition(
+			companyId, groupId, projectId, visitGroupId, subjectId, userId,
+			userName, status, statusByUserId, statusByUserName, statusDate,
+			parentCode, visitDefinitionCode, name, order, extCode, anchorType,
+			offset, windowMinus, windowPlus, type, repeatCount, visitCRFId);
+	}
+
 	/**
 	 * Adds the subject visit definition to the database. Also notifies the appropriate model listeners.
 	 *
@@ -233,6 +250,13 @@ public class SubjectVisitDefinitionLocalServiceWrapper
 
 		return _subjectVisitDefinitionLocalService.
 			fetchSubjectVisitDefinitionByUuidAndGroupId(uuid, groupId);
+	}
+
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.SubjectVisitDefinition>
+		findBySubjectId(long SubjectId) {
+
+		return _subjectVisitDefinitionLocalService.findBySubjectId(SubjectId);
 	}
 
 	@Override

@@ -33,6 +33,20 @@ public class VisitDefinitionLocalServiceWrapper
 		_visitDefinitionLocalService = visitDefinitionLocalService;
 	}
 
+	@Override
+	public void addVisitDefinition(
+		long companyId, long groupId, long projectId, long visitGroupId,
+		long userId, String userName, int status, long statusByUserId,
+		String statusByUserName, java.util.Date statusDate, String anchorType,
+		int offset, int windowMinus, int windowPlus, int type, int repeatCount,
+		long visitCRFId) {
+
+		_visitDefinitionLocalService.addVisitDefinition(
+			companyId, groupId, projectId, visitGroupId, userId, userName,
+			status, statusByUserId, statusByUserName, statusDate, anchorType,
+			offset, windowMinus, windowPlus, type, repeatCount, visitCRFId);
+	}
+
 	/**
 	 * Adds the visit definition to the database. Also notifies the appropriate model listeners.
 	 *
@@ -62,6 +76,11 @@ public class VisitDefinitionLocalServiceWrapper
 
 		return _visitDefinitionLocalService.createVisitDefinition(
 			visitDefinitionId);
+	}
+
+	@Override
+	public void deleteDefinition(long visitDefinitionId) {
+		_visitDefinitionLocalService.deleteDefinition(visitDefinitionId);
 	}
 
 	/**

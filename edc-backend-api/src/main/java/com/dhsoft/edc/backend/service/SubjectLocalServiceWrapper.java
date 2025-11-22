@@ -213,6 +213,13 @@ public class SubjectLocalServiceWrapper
 	}
 
 	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.Subject>
+		findByInstitution(long InstitutionId) {
+
+		return _subjectLocalService.findByInstitution(InstitutionId);
+	}
+
+	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 

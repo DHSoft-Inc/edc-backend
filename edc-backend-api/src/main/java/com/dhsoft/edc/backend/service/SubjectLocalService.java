@@ -199,6 +199,8 @@ public interface SubjectLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Subject fetchSubjectByUuidAndGroupId(String uuid, long groupId);
 
+	public List<Subject> findByInstitution(long InstitutionId);
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
 

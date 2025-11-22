@@ -14,9 +14,11 @@
 
 package com.dhsoft.edc.backend.service.impl;
 
+import com.dhsoft.edc.backend.model.Subject;
 import com.dhsoft.edc.backend.service.base.SubjectLocalServiceBaseImpl;
-
 import com.liferay.portal.aop.AopService;
+
+import java.util.List;
 
 import org.osgi.service.component.annotations.Component;
 
@@ -28,4 +30,9 @@ import org.osgi.service.component.annotations.Component;
 	service = AopService.class
 )
 public class SubjectLocalServiceImpl extends SubjectLocalServiceBaseImpl {
+	public List<Subject> findByInstitution (long InstitutionId) {
+		
+		return subjectPersistence.findByInstitutionId(InstitutionId);
+		
+	}
 }

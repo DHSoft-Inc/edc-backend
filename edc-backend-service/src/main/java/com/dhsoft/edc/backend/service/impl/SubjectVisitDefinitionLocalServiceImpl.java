@@ -18,6 +18,7 @@ import com.dhsoft.edc.backend.model.SubjectVisitDefinition;
 import com.dhsoft.edc.backend.service.base.SubjectVisitDefinitionLocalServiceBaseImpl;
 import com.liferay.portal.aop.AopService;
 
+import java.util.Date;
 import java.util.List;
 
 import org.osgi.service.component.annotations.Component;
@@ -32,7 +33,50 @@ import org.osgi.service.component.annotations.Component;
 public class SubjectVisitDefinitionLocalServiceImpl
 	extends SubjectVisitDefinitionLocalServiceBaseImpl {
 	
-	List <SubjectVisitDefinition> findBySubjectId (long SubjectId) {
+	public void addSubjectVisitDefinition(long companyId, long groupId, long projectId, long visitGroupId, long subjectId, long userId, String userName, int status, long statusByUserId, String statusByUserName, Date statusDate, String parentCode, String visitDefinitionCode, String name, String order, String extCode, String anchorType, int offset, int windowMinus, int windowPlus, int type, int repeatCount, long visitCRFId)
+	{
+		Date createDate = new Date();
+		long subjectVisitDefinitionId = counterLocalService.increment("subjectVisitDefinition");
+		SubjectVisitDefinition svd = subjectVisitDefinitionPersistence.create(subjectVisitDefinitionId);
+		svd.setCompanyId(companyId);
+		svd.setGroupId(groupId);
+		svd.setProjectId(projectId);
+		svd.setVisitGroupId(visitGroupId);
+		svd.setSubjectId(subjectId);
+		svd.setUserId(userId);
+		svd.setUserName(userName);
+		svd.setStatus(status);
+		svd.setStatusByUserId(statusByUserId);
+		svd.setStatusByUserName(statusByUserName);
+		svd.setStatusDate(statusDate);
+		svd.setParentCode(parentCode);
+		svd.setVisitDefinitionCode(visitDefinitionCode);
+		svd.setName(name);
+		svd.setOrder(order);
+		svd.setExtCode(extCode);
+		svd.setAnchorType(anchorType);
+		svd.setOffset(offset);
+		svd.setWindowMinus(windowMinus);
+		svd.setWindowPlus(windowPlus);
+		svd.setType(type);
+		svd.setRepeatCount(repeatCount);
+		svd.setVisitCRFId(visitCRFId);
+		svd.setCreateDate(createDate);
+		svd.setModifiedDate(createDate); 
+		subjectVisitDefinitionPersistence.update(svd);
+	}
+	
+	public SubjectVisitDefinition deleteSubjectVisitDefinition(long subjectVisitDefinitionId) {
+		try {
+			SubjectVisitDefinition svd = subjectVisitDefinitionPersistence.findByPrimaryKey(subjectVisitDefinitionId);
+			subjectVisitDefinitionPersistence.remove(svd);
+			return null;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	public List <SubjectVisitDefinition> findBySubjectId (long SubjectId) {
 		return subjectVisitDefinitionPersistence.findBySubjectId(SubjectId);
 	}
 	

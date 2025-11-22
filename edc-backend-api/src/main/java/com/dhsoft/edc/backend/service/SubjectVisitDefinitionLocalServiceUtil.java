@@ -44,6 +44,21 @@ public class SubjectVisitDefinitionLocalServiceUtil {
 	 *
 	 * Never modify this class directly. Add custom service methods to <code>com.dhsoft.edc.backend.service.impl.SubjectVisitDefinitionLocalServiceImpl</code> and rerun ServiceBuilder to regenerate this class.
 	 */
+	public static void addSubjectVisitDefinition(
+		long companyId, long groupId, long projectId, long visitGroupId,
+		long subjectId, long userId, String userName, int status,
+		long statusByUserId, String statusByUserName, java.util.Date statusDate,
+		String parentCode, String visitDefinitionCode, String name,
+		String order, String extCode, String anchorType, int offset,
+		int windowMinus, int windowPlus, int type, int repeatCount,
+		long visitCRFId) {
+
+		getService().addSubjectVisitDefinition(
+			companyId, groupId, projectId, visitGroupId, subjectId, userId,
+			userName, status, statusByUserId, statusByUserName, statusDate,
+			parentCode, visitDefinitionCode, name, order, extCode, anchorType,
+			offset, windowMinus, windowPlus, type, repeatCount, visitCRFId);
+	}
 
 	/**
 	 * Adds the subject visit definition to the database. Also notifies the appropriate model listeners.
@@ -216,6 +231,10 @@ public class SubjectVisitDefinitionLocalServiceUtil {
 
 		return getService().fetchSubjectVisitDefinitionByUuidAndGroupId(
 			uuid, groupId);
+	}
+
+	public static List<SubjectVisitDefinition> findBySubjectId(long SubjectId) {
+		return getService().findBySubjectId(SubjectId);
 	}
 
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
