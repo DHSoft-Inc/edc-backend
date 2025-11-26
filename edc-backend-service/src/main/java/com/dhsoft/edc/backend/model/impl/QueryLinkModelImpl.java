@@ -89,18 +89,8 @@ public class QueryLinkModelImpl
 		{"visitGroupId", Types.BIGINT}, {"visitDefinitionId", Types.BIGINT},
 		{"visitCRFId", Types.BIGINT}, {"subCRFId", Types.BIGINT},
 		{"instanceId", Types.BIGINT}, {"itemCode", Types.BIGINT},
-		{"sourceType", Types.VARCHAR}, {"scope", Types.VARCHAR},
-		{"isTypeManual", Types.VARCHAR}, {"type_", Types.VARCHAR},
-		{"openUserId", Types.BIGINT}, {"openUserName", Types.VARCHAR},
-		{"openDate", Types.TIMESTAMP}, {"openComment", Types.VARCHAR},
-		{"answerUserID", Types.BIGINT}, {"answerUserName", Types.VARCHAR},
-		{"answerDate", Types.TIMESTAMP}, {"answerComment", Types.VARCHAR},
-		{"closeUserID", Types.BIGINT}, {"closeUserName", Types.VARCHAR},
-		{"closeDate", Types.TIMESTAMP}, {"closeComment", Types.VARCHAR},
-		{"queryStatus", Types.INTEGER}, {"isReopen", Types.VARCHAR},
-		{"reopenId", Types.BIGINT}, {"ruleId", Types.BIGINT},
-		{"ruleInfo", Types.VARCHAR}, {"activeStatus", Types.INTEGER},
-		{"inactiveDate", Types.TIMESTAMP}
+		{"sourceType", Types.VARCHAR}, {"ruleId", Types.BIGINT},
+		{"ruleInfo", Types.VARCHAR}
 	};
 
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP =
@@ -124,32 +114,12 @@ public class QueryLinkModelImpl
 		TABLE_COLUMNS_MAP.put("instanceId", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("itemCode", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("sourceType", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("scope", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("isTypeManual", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("type_", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("openUserId", Types.BIGINT);
-		TABLE_COLUMNS_MAP.put("openUserName", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("openDate", Types.TIMESTAMP);
-		TABLE_COLUMNS_MAP.put("openComment", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("answerUserID", Types.BIGINT);
-		TABLE_COLUMNS_MAP.put("answerUserName", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("answerDate", Types.TIMESTAMP);
-		TABLE_COLUMNS_MAP.put("answerComment", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("closeUserID", Types.BIGINT);
-		TABLE_COLUMNS_MAP.put("closeUserName", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("closeDate", Types.TIMESTAMP);
-		TABLE_COLUMNS_MAP.put("closeComment", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("queryStatus", Types.INTEGER);
-		TABLE_COLUMNS_MAP.put("isReopen", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("reopenId", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("ruleId", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("ruleInfo", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("activeStatus", Types.INTEGER);
-		TABLE_COLUMNS_MAP.put("inactiveDate", Types.TIMESTAMP);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table EDC_QueryLink (uuid_ VARCHAR(75) null,queryId LONG not null primary key,groupId LONG,companyId LONG,projectId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,subjectId LONG,visitGroupId LONG,visitDefinitionId LONG,visitCRFId LONG,subCRFId LONG,instanceId LONG,itemCode LONG,sourceType VARCHAR(75) null,scope VARCHAR(75) null,isTypeManual VARCHAR(75) null,type_ VARCHAR(75) null,openUserId LONG,openUserName VARCHAR(75) null,openDate DATE null,openComment VARCHAR(75) null,answerUserID LONG,answerUserName VARCHAR(75) null,answerDate DATE null,answerComment VARCHAR(75) null,closeUserID LONG,closeUserName VARCHAR(75) null,closeDate DATE null,closeComment VARCHAR(75) null,queryStatus INTEGER,isReopen VARCHAR(75) null,reopenId LONG,ruleId LONG,ruleInfo VARCHAR(75) null,activeStatus INTEGER,inactiveDate DATE null)";
+		"create table EDC_QueryLink (uuid_ VARCHAR(75) null,queryId LONG not null primary key,groupId LONG,companyId LONG,projectId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,subjectId LONG,visitGroupId LONG,visitDefinitionId LONG,visitCRFId LONG,subCRFId LONG,instanceId LONG,itemCode LONG,sourceType VARCHAR(75) null,ruleId LONG,ruleInfo VARCHAR(75) null)";
 
 	public static final String TABLE_SQL_DROP = "drop table EDC_QueryLink";
 
@@ -165,41 +135,25 @@ public class QueryLinkModelImpl
 
 	public static final String TX_MANAGER = "liferayTransactionManager";
 
-	public static final long ANSWERUSERID_COLUMN_BITMASK = 1L;
+	public static final long COMPANYID_COLUMN_BITMASK = 1L;
 
-	public static final long CLOSEUSERID_COLUMN_BITMASK = 2L;
+	public static final long GROUPID_COLUMN_BITMASK = 2L;
 
-	public static final long COMPANYID_COLUMN_BITMASK = 4L;
+	public static final long INSTANCEID_COLUMN_BITMASK = 4L;
 
-	public static final long GROUPID_COLUMN_BITMASK = 8L;
+	public static final long SUBCRFID_COLUMN_BITMASK = 8L;
 
-	public static final long INSTANCEID_COLUMN_BITMASK = 16L;
+	public static final long SUBJECTID_COLUMN_BITMASK = 16L;
 
-	public static final long ITEMCODE_COLUMN_BITMASK = 32L;
+	public static final long UUID_COLUMN_BITMASK = 32L;
 
-	public static final long OPENUSERID_COLUMN_BITMASK = 64L;
+	public static final long VISITCRFID_COLUMN_BITMASK = 64L;
 
-	public static final long PROJECTID_COLUMN_BITMASK = 128L;
+	public static final long VISITDEFINITIONID_COLUMN_BITMASK = 128L;
 
-	public static final long REOPENID_COLUMN_BITMASK = 256L;
+	public static final long VISITGROUPID_COLUMN_BITMASK = 256L;
 
-	public static final long RULEID_COLUMN_BITMASK = 512L;
-
-	public static final long SUBCRFID_COLUMN_BITMASK = 1024L;
-
-	public static final long SUBJECTID_COLUMN_BITMASK = 2048L;
-
-	public static final long USERID_COLUMN_BITMASK = 4096L;
-
-	public static final long UUID_COLUMN_BITMASK = 8192L;
-
-	public static final long VISITCRFID_COLUMN_BITMASK = 16384L;
-
-	public static final long VISITDEFINITIONID_COLUMN_BITMASK = 32768L;
-
-	public static final long VISITGROUPID_COLUMN_BITMASK = 65536L;
-
-	public static final long QUERYID_COLUMN_BITMASK = 131072L;
+	public static final long QUERYID_COLUMN_BITMASK = 512L;
 
 	public static void setEntityCacheEnabled(boolean entityCacheEnabled) {
 		_entityCacheEnabled = entityCacheEnabled;
@@ -239,28 +193,8 @@ public class QueryLinkModelImpl
 		model.setInstanceId(soapModel.getInstanceId());
 		model.setItemCode(soapModel.getItemCode());
 		model.setSourceType(soapModel.getSourceType());
-		model.setScope(soapModel.getScope());
-		model.setIsTypeManual(soapModel.getIsTypeManual());
-		model.setType(soapModel.getType());
-		model.setOpenUserId(soapModel.getOpenUserId());
-		model.setOpenUserName(soapModel.getOpenUserName());
-		model.setOpenDate(soapModel.getOpenDate());
-		model.setOpenComment(soapModel.getOpenComment());
-		model.setAnswerUserID(soapModel.getAnswerUserID());
-		model.setAnswerUserName(soapModel.getAnswerUserName());
-		model.setAnswerDate(soapModel.getAnswerDate());
-		model.setAnswerComment(soapModel.getAnswerComment());
-		model.setCloseUserID(soapModel.getCloseUserID());
-		model.setCloseUserName(soapModel.getCloseUserName());
-		model.setCloseDate(soapModel.getCloseDate());
-		model.setCloseComment(soapModel.getCloseComment());
-		model.setQueryStatus(soapModel.getQueryStatus());
-		model.setIsReopen(soapModel.getIsReopen());
-		model.setReopenId(soapModel.getReopenId());
 		model.setRuleId(soapModel.getRuleId());
 		model.setRuleInfo(soapModel.getRuleInfo());
-		model.setActiveStatus(soapModel.getActiveStatus());
-		model.setInactiveDate(soapModel.getInactiveDate());
 
 		return model;
 	}
@@ -444,95 +378,12 @@ public class QueryLinkModelImpl
 		attributeSetterBiConsumers.put(
 			"sourceType",
 			(BiConsumer<QueryLink, String>)QueryLink::setSourceType);
-		attributeGetterFunctions.put("scope", QueryLink::getScope);
-		attributeSetterBiConsumers.put(
-			"scope", (BiConsumer<QueryLink, String>)QueryLink::setScope);
-		attributeGetterFunctions.put(
-			"isTypeManual", QueryLink::getIsTypeManual);
-		attributeSetterBiConsumers.put(
-			"isTypeManual",
-			(BiConsumer<QueryLink, String>)QueryLink::setIsTypeManual);
-		attributeGetterFunctions.put("type", QueryLink::getType);
-		attributeSetterBiConsumers.put(
-			"type", (BiConsumer<QueryLink, String>)QueryLink::setType);
-		attributeGetterFunctions.put("openUserId", QueryLink::getOpenUserId);
-		attributeSetterBiConsumers.put(
-			"openUserId",
-			(BiConsumer<QueryLink, Long>)QueryLink::setOpenUserId);
-		attributeGetterFunctions.put(
-			"openUserName", QueryLink::getOpenUserName);
-		attributeSetterBiConsumers.put(
-			"openUserName",
-			(BiConsumer<QueryLink, String>)QueryLink::setOpenUserName);
-		attributeGetterFunctions.put("openDate", QueryLink::getOpenDate);
-		attributeSetterBiConsumers.put(
-			"openDate", (BiConsumer<QueryLink, Date>)QueryLink::setOpenDate);
-		attributeGetterFunctions.put("openComment", QueryLink::getOpenComment);
-		attributeSetterBiConsumers.put(
-			"openComment",
-			(BiConsumer<QueryLink, String>)QueryLink::setOpenComment);
-		attributeGetterFunctions.put(
-			"answerUserID", QueryLink::getAnswerUserID);
-		attributeSetterBiConsumers.put(
-			"answerUserID",
-			(BiConsumer<QueryLink, Long>)QueryLink::setAnswerUserID);
-		attributeGetterFunctions.put(
-			"answerUserName", QueryLink::getAnswerUserName);
-		attributeSetterBiConsumers.put(
-			"answerUserName",
-			(BiConsumer<QueryLink, String>)QueryLink::setAnswerUserName);
-		attributeGetterFunctions.put("answerDate", QueryLink::getAnswerDate);
-		attributeSetterBiConsumers.put(
-			"answerDate",
-			(BiConsumer<QueryLink, Date>)QueryLink::setAnswerDate);
-		attributeGetterFunctions.put(
-			"answerComment", QueryLink::getAnswerComment);
-		attributeSetterBiConsumers.put(
-			"answerComment",
-			(BiConsumer<QueryLink, String>)QueryLink::setAnswerComment);
-		attributeGetterFunctions.put("closeUserID", QueryLink::getCloseUserID);
-		attributeSetterBiConsumers.put(
-			"closeUserID",
-			(BiConsumer<QueryLink, Long>)QueryLink::setCloseUserID);
-		attributeGetterFunctions.put(
-			"closeUserName", QueryLink::getCloseUserName);
-		attributeSetterBiConsumers.put(
-			"closeUserName",
-			(BiConsumer<QueryLink, String>)QueryLink::setCloseUserName);
-		attributeGetterFunctions.put("closeDate", QueryLink::getCloseDate);
-		attributeSetterBiConsumers.put(
-			"closeDate", (BiConsumer<QueryLink, Date>)QueryLink::setCloseDate);
-		attributeGetterFunctions.put(
-			"closeComment", QueryLink::getCloseComment);
-		attributeSetterBiConsumers.put(
-			"closeComment",
-			(BiConsumer<QueryLink, String>)QueryLink::setCloseComment);
-		attributeGetterFunctions.put("queryStatus", QueryLink::getQueryStatus);
-		attributeSetterBiConsumers.put(
-			"queryStatus",
-			(BiConsumer<QueryLink, Integer>)QueryLink::setQueryStatus);
-		attributeGetterFunctions.put("isReopen", QueryLink::getIsReopen);
-		attributeSetterBiConsumers.put(
-			"isReopen", (BiConsumer<QueryLink, String>)QueryLink::setIsReopen);
-		attributeGetterFunctions.put("reopenId", QueryLink::getReopenId);
-		attributeSetterBiConsumers.put(
-			"reopenId", (BiConsumer<QueryLink, Long>)QueryLink::setReopenId);
 		attributeGetterFunctions.put("ruleId", QueryLink::getRuleId);
 		attributeSetterBiConsumers.put(
 			"ruleId", (BiConsumer<QueryLink, Long>)QueryLink::setRuleId);
 		attributeGetterFunctions.put("ruleInfo", QueryLink::getRuleInfo);
 		attributeSetterBiConsumers.put(
 			"ruleInfo", (BiConsumer<QueryLink, String>)QueryLink::setRuleInfo);
-		attributeGetterFunctions.put(
-			"activeStatus", QueryLink::getActiveStatus);
-		attributeSetterBiConsumers.put(
-			"activeStatus",
-			(BiConsumer<QueryLink, Integer>)QueryLink::setActiveStatus);
-		attributeGetterFunctions.put(
-			"inactiveDate", QueryLink::getInactiveDate);
-		attributeSetterBiConsumers.put(
-			"inactiveDate",
-			(BiConsumer<QueryLink, Date>)QueryLink::setInactiveDate);
 
 		_attributeGetterFunctions = Collections.unmodifiableMap(
 			attributeGetterFunctions);
@@ -631,19 +482,7 @@ public class QueryLinkModelImpl
 
 	@Override
 	public void setProjectId(long projectId) {
-		_columnBitmask |= PROJECTID_COLUMN_BITMASK;
-
-		if (!_setOriginalProjectId) {
-			_setOriginalProjectId = true;
-
-			_originalProjectId = _projectId;
-		}
-
 		_projectId = projectId;
-	}
-
-	public long getOriginalProjectId() {
-		return _originalProjectId;
 	}
 
 	@JSON
@@ -654,14 +493,6 @@ public class QueryLinkModelImpl
 
 	@Override
 	public void setUserId(long userId) {
-		_columnBitmask |= USERID_COLUMN_BITMASK;
-
-		if (!_setOriginalUserId) {
-			_setOriginalUserId = true;
-
-			_originalUserId = _userId;
-		}
-
 		_userId = userId;
 	}
 
@@ -679,10 +510,6 @@ public class QueryLinkModelImpl
 
 	@Override
 	public void setUserUuid(String userUuid) {
-	}
-
-	public long getOriginalUserId() {
-		return _originalUserId;
 	}
 
 	@JSON
@@ -875,19 +702,7 @@ public class QueryLinkModelImpl
 
 	@Override
 	public void setItemCode(long itemCode) {
-		_columnBitmask |= ITEMCODE_COLUMN_BITMASK;
-
-		if (!_setOriginalItemCode) {
-			_setOriginalItemCode = true;
-
-			_originalItemCode = _itemCode;
-		}
-
 		_itemCode = itemCode;
-	}
-
-	public long getOriginalItemCode() {
-		return _originalItemCode;
 	}
 
 	@JSON
@@ -908,337 +723,13 @@ public class QueryLinkModelImpl
 
 	@JSON
 	@Override
-	public String getScope() {
-		if (_scope == null) {
-			return "";
-		}
-		else {
-			return _scope;
-		}
-	}
-
-	@Override
-	public void setScope(String scope) {
-		_scope = scope;
-	}
-
-	@JSON
-	@Override
-	public String getIsTypeManual() {
-		if (_isTypeManual == null) {
-			return "";
-		}
-		else {
-			return _isTypeManual;
-		}
-	}
-
-	@Override
-	public void setIsTypeManual(String isTypeManual) {
-		_isTypeManual = isTypeManual;
-	}
-
-	@JSON
-	@Override
-	public String getType() {
-		if (_type == null) {
-			return "";
-		}
-		else {
-			return _type;
-		}
-	}
-
-	@Override
-	public void setType(String type) {
-		_type = type;
-	}
-
-	@JSON
-	@Override
-	public long getOpenUserId() {
-		return _openUserId;
-	}
-
-	@Override
-	public void setOpenUserId(long openUserId) {
-		_columnBitmask |= OPENUSERID_COLUMN_BITMASK;
-
-		if (!_setOriginalOpenUserId) {
-			_setOriginalOpenUserId = true;
-
-			_originalOpenUserId = _openUserId;
-		}
-
-		_openUserId = openUserId;
-	}
-
-	@Override
-	public String getOpenUserUuid() {
-		try {
-			User user = UserLocalServiceUtil.getUserById(getOpenUserId());
-
-			return user.getUuid();
-		}
-		catch (PortalException portalException) {
-			return "";
-		}
-	}
-
-	@Override
-	public void setOpenUserUuid(String openUserUuid) {
-	}
-
-	public long getOriginalOpenUserId() {
-		return _originalOpenUserId;
-	}
-
-	@JSON
-	@Override
-	public String getOpenUserName() {
-		if (_openUserName == null) {
-			return "";
-		}
-		else {
-			return _openUserName;
-		}
-	}
-
-	@Override
-	public void setOpenUserName(String openUserName) {
-		_openUserName = openUserName;
-	}
-
-	@JSON
-	@Override
-	public Date getOpenDate() {
-		return _openDate;
-	}
-
-	@Override
-	public void setOpenDate(Date openDate) {
-		_openDate = openDate;
-	}
-
-	@JSON
-	@Override
-	public String getOpenComment() {
-		if (_openComment == null) {
-			return "";
-		}
-		else {
-			return _openComment;
-		}
-	}
-
-	@Override
-	public void setOpenComment(String openComment) {
-		_openComment = openComment;
-	}
-
-	@JSON
-	@Override
-	public long getAnswerUserID() {
-		return _answerUserID;
-	}
-
-	@Override
-	public void setAnswerUserID(long answerUserID) {
-		_columnBitmask |= ANSWERUSERID_COLUMN_BITMASK;
-
-		if (!_setOriginalAnswerUserID) {
-			_setOriginalAnswerUserID = true;
-
-			_originalAnswerUserID = _answerUserID;
-		}
-
-		_answerUserID = answerUserID;
-	}
-
-	public long getOriginalAnswerUserID() {
-		return _originalAnswerUserID;
-	}
-
-	@JSON
-	@Override
-	public String getAnswerUserName() {
-		if (_answerUserName == null) {
-			return "";
-		}
-		else {
-			return _answerUserName;
-		}
-	}
-
-	@Override
-	public void setAnswerUserName(String answerUserName) {
-		_answerUserName = answerUserName;
-	}
-
-	@JSON
-	@Override
-	public Date getAnswerDate() {
-		return _answerDate;
-	}
-
-	@Override
-	public void setAnswerDate(Date answerDate) {
-		_answerDate = answerDate;
-	}
-
-	@JSON
-	@Override
-	public String getAnswerComment() {
-		if (_answerComment == null) {
-			return "";
-		}
-		else {
-			return _answerComment;
-		}
-	}
-
-	@Override
-	public void setAnswerComment(String answerComment) {
-		_answerComment = answerComment;
-	}
-
-	@JSON
-	@Override
-	public long getCloseUserID() {
-		return _closeUserID;
-	}
-
-	@Override
-	public void setCloseUserID(long closeUserID) {
-		_columnBitmask |= CLOSEUSERID_COLUMN_BITMASK;
-
-		if (!_setOriginalCloseUserID) {
-			_setOriginalCloseUserID = true;
-
-			_originalCloseUserID = _closeUserID;
-		}
-
-		_closeUserID = closeUserID;
-	}
-
-	public long getOriginalCloseUserID() {
-		return _originalCloseUserID;
-	}
-
-	@JSON
-	@Override
-	public String getCloseUserName() {
-		if (_closeUserName == null) {
-			return "";
-		}
-		else {
-			return _closeUserName;
-		}
-	}
-
-	@Override
-	public void setCloseUserName(String closeUserName) {
-		_closeUserName = closeUserName;
-	}
-
-	@JSON
-	@Override
-	public Date getCloseDate() {
-		return _closeDate;
-	}
-
-	@Override
-	public void setCloseDate(Date closeDate) {
-		_closeDate = closeDate;
-	}
-
-	@JSON
-	@Override
-	public String getCloseComment() {
-		if (_closeComment == null) {
-			return "";
-		}
-		else {
-			return _closeComment;
-		}
-	}
-
-	@Override
-	public void setCloseComment(String closeComment) {
-		_closeComment = closeComment;
-	}
-
-	@JSON
-	@Override
-	public int getQueryStatus() {
-		return _queryStatus;
-	}
-
-	@Override
-	public void setQueryStatus(int queryStatus) {
-		_queryStatus = queryStatus;
-	}
-
-	@JSON
-	@Override
-	public String getIsReopen() {
-		if (_isReopen == null) {
-			return "";
-		}
-		else {
-			return _isReopen;
-		}
-	}
-
-	@Override
-	public void setIsReopen(String isReopen) {
-		_isReopen = isReopen;
-	}
-
-	@JSON
-	@Override
-	public long getReopenId() {
-		return _reopenId;
-	}
-
-	@Override
-	public void setReopenId(long reopenId) {
-		_columnBitmask |= REOPENID_COLUMN_BITMASK;
-
-		if (!_setOriginalReopenId) {
-			_setOriginalReopenId = true;
-
-			_originalReopenId = _reopenId;
-		}
-
-		_reopenId = reopenId;
-	}
-
-	public long getOriginalReopenId() {
-		return _originalReopenId;
-	}
-
-	@JSON
-	@Override
 	public long getRuleId() {
 		return _ruleId;
 	}
 
 	@Override
 	public void setRuleId(long ruleId) {
-		_columnBitmask |= RULEID_COLUMN_BITMASK;
-
-		if (!_setOriginalRuleId) {
-			_setOriginalRuleId = true;
-
-			_originalRuleId = _ruleId;
-		}
-
 		_ruleId = ruleId;
-	}
-
-	public long getOriginalRuleId() {
-		return _originalRuleId;
 	}
 
 	@JSON
@@ -1255,28 +746,6 @@ public class QueryLinkModelImpl
 	@Override
 	public void setRuleInfo(String ruleInfo) {
 		_ruleInfo = ruleInfo;
-	}
-
-	@JSON
-	@Override
-	public int getActiveStatus() {
-		return _activeStatus;
-	}
-
-	@Override
-	public void setActiveStatus(int activeStatus) {
-		_activeStatus = activeStatus;
-	}
-
-	@JSON
-	@Override
-	public Date getInactiveDate() {
-		return _inactiveDate;
-	}
-
-	@Override
-	public void setInactiveDate(Date inactiveDate) {
-		_inactiveDate = inactiveDate;
 	}
 
 	@Override
@@ -1488,28 +957,8 @@ public class QueryLinkModelImpl
 		queryLinkImpl.setInstanceId(getInstanceId());
 		queryLinkImpl.setItemCode(getItemCode());
 		queryLinkImpl.setSourceType(getSourceType());
-		queryLinkImpl.setScope(getScope());
-		queryLinkImpl.setIsTypeManual(getIsTypeManual());
-		queryLinkImpl.setType(getType());
-		queryLinkImpl.setOpenUserId(getOpenUserId());
-		queryLinkImpl.setOpenUserName(getOpenUserName());
-		queryLinkImpl.setOpenDate(getOpenDate());
-		queryLinkImpl.setOpenComment(getOpenComment());
-		queryLinkImpl.setAnswerUserID(getAnswerUserID());
-		queryLinkImpl.setAnswerUserName(getAnswerUserName());
-		queryLinkImpl.setAnswerDate(getAnswerDate());
-		queryLinkImpl.setAnswerComment(getAnswerComment());
-		queryLinkImpl.setCloseUserID(getCloseUserID());
-		queryLinkImpl.setCloseUserName(getCloseUserName());
-		queryLinkImpl.setCloseDate(getCloseDate());
-		queryLinkImpl.setCloseComment(getCloseComment());
-		queryLinkImpl.setQueryStatus(getQueryStatus());
-		queryLinkImpl.setIsReopen(getIsReopen());
-		queryLinkImpl.setReopenId(getReopenId());
 		queryLinkImpl.setRuleId(getRuleId());
 		queryLinkImpl.setRuleInfo(getRuleInfo());
-		queryLinkImpl.setActiveStatus(getActiveStatus());
-		queryLinkImpl.setInactiveDate(getInactiveDate());
 
 		queryLinkImpl.resetOriginalValues();
 
@@ -1580,14 +1029,6 @@ public class QueryLinkModelImpl
 
 		_setOriginalCompanyId = false;
 
-		_originalProjectId = _projectId;
-
-		_setOriginalProjectId = false;
-
-		_originalUserId = _userId;
-
-		_setOriginalUserId = false;
-
 		_setModifiedDate = false;
 		_originalSubjectId = _subjectId;
 
@@ -1612,30 +1053,6 @@ public class QueryLinkModelImpl
 		_originalInstanceId = _instanceId;
 
 		_setOriginalInstanceId = false;
-
-		_originalItemCode = _itemCode;
-
-		_setOriginalItemCode = false;
-
-		_originalOpenUserId = _openUserId;
-
-		_setOriginalOpenUserId = false;
-
-		_originalAnswerUserID = _answerUserID;
-
-		_setOriginalAnswerUserID = false;
-
-		_originalCloseUserID = _closeUserID;
-
-		_setOriginalCloseUserID = false;
-
-		_originalReopenId = _reopenId;
-
-		_setOriginalReopenId = false;
-
-		_originalRuleId = _ruleId;
-
-		_setOriginalRuleId = false;
 
 		_columnBitmask = 0;
 	}
@@ -1710,123 +1127,6 @@ public class QueryLinkModelImpl
 			queryLinkCacheModel.sourceType = null;
 		}
 
-		queryLinkCacheModel.scope = getScope();
-
-		String scope = queryLinkCacheModel.scope;
-
-		if ((scope != null) && (scope.length() == 0)) {
-			queryLinkCacheModel.scope = null;
-		}
-
-		queryLinkCacheModel.isTypeManual = getIsTypeManual();
-
-		String isTypeManual = queryLinkCacheModel.isTypeManual;
-
-		if ((isTypeManual != null) && (isTypeManual.length() == 0)) {
-			queryLinkCacheModel.isTypeManual = null;
-		}
-
-		queryLinkCacheModel.type = getType();
-
-		String type = queryLinkCacheModel.type;
-
-		if ((type != null) && (type.length() == 0)) {
-			queryLinkCacheModel.type = null;
-		}
-
-		queryLinkCacheModel.openUserId = getOpenUserId();
-
-		queryLinkCacheModel.openUserName = getOpenUserName();
-
-		String openUserName = queryLinkCacheModel.openUserName;
-
-		if ((openUserName != null) && (openUserName.length() == 0)) {
-			queryLinkCacheModel.openUserName = null;
-		}
-
-		Date openDate = getOpenDate();
-
-		if (openDate != null) {
-			queryLinkCacheModel.openDate = openDate.getTime();
-		}
-		else {
-			queryLinkCacheModel.openDate = Long.MIN_VALUE;
-		}
-
-		queryLinkCacheModel.openComment = getOpenComment();
-
-		String openComment = queryLinkCacheModel.openComment;
-
-		if ((openComment != null) && (openComment.length() == 0)) {
-			queryLinkCacheModel.openComment = null;
-		}
-
-		queryLinkCacheModel.answerUserID = getAnswerUserID();
-
-		queryLinkCacheModel.answerUserName = getAnswerUserName();
-
-		String answerUserName = queryLinkCacheModel.answerUserName;
-
-		if ((answerUserName != null) && (answerUserName.length() == 0)) {
-			queryLinkCacheModel.answerUserName = null;
-		}
-
-		Date answerDate = getAnswerDate();
-
-		if (answerDate != null) {
-			queryLinkCacheModel.answerDate = answerDate.getTime();
-		}
-		else {
-			queryLinkCacheModel.answerDate = Long.MIN_VALUE;
-		}
-
-		queryLinkCacheModel.answerComment = getAnswerComment();
-
-		String answerComment = queryLinkCacheModel.answerComment;
-
-		if ((answerComment != null) && (answerComment.length() == 0)) {
-			queryLinkCacheModel.answerComment = null;
-		}
-
-		queryLinkCacheModel.closeUserID = getCloseUserID();
-
-		queryLinkCacheModel.closeUserName = getCloseUserName();
-
-		String closeUserName = queryLinkCacheModel.closeUserName;
-
-		if ((closeUserName != null) && (closeUserName.length() == 0)) {
-			queryLinkCacheModel.closeUserName = null;
-		}
-
-		Date closeDate = getCloseDate();
-
-		if (closeDate != null) {
-			queryLinkCacheModel.closeDate = closeDate.getTime();
-		}
-		else {
-			queryLinkCacheModel.closeDate = Long.MIN_VALUE;
-		}
-
-		queryLinkCacheModel.closeComment = getCloseComment();
-
-		String closeComment = queryLinkCacheModel.closeComment;
-
-		if ((closeComment != null) && (closeComment.length() == 0)) {
-			queryLinkCacheModel.closeComment = null;
-		}
-
-		queryLinkCacheModel.queryStatus = getQueryStatus();
-
-		queryLinkCacheModel.isReopen = getIsReopen();
-
-		String isReopen = queryLinkCacheModel.isReopen;
-
-		if ((isReopen != null) && (isReopen.length() == 0)) {
-			queryLinkCacheModel.isReopen = null;
-		}
-
-		queryLinkCacheModel.reopenId = getReopenId();
-
 		queryLinkCacheModel.ruleId = getRuleId();
 
 		queryLinkCacheModel.ruleInfo = getRuleInfo();
@@ -1835,17 +1135,6 @@ public class QueryLinkModelImpl
 
 		if ((ruleInfo != null) && (ruleInfo.length() == 0)) {
 			queryLinkCacheModel.ruleInfo = null;
-		}
-
-		queryLinkCacheModel.activeStatus = getActiveStatus();
-
-		Date inactiveDate = getInactiveDate();
-
-		if (inactiveDate != null) {
-			queryLinkCacheModel.inactiveDate = inactiveDate.getTime();
-		}
-		else {
-			queryLinkCacheModel.inactiveDate = Long.MIN_VALUE;
 		}
 
 		return queryLinkCacheModel;
@@ -1953,11 +1242,7 @@ public class QueryLinkModelImpl
 	private long _originalCompanyId;
 	private boolean _setOriginalCompanyId;
 	private long _projectId;
-	private long _originalProjectId;
-	private boolean _setOriginalProjectId;
 	private long _userId;
-	private long _originalUserId;
-	private boolean _setOriginalUserId;
 	private String _userName;
 	private Date _createDate;
 	private Date _modifiedDate;
@@ -1981,41 +1266,9 @@ public class QueryLinkModelImpl
 	private long _originalInstanceId;
 	private boolean _setOriginalInstanceId;
 	private long _itemCode;
-	private long _originalItemCode;
-	private boolean _setOriginalItemCode;
 	private String _sourceType;
-	private String _scope;
-	private String _isTypeManual;
-	private String _type;
-	private long _openUserId;
-	private long _originalOpenUserId;
-	private boolean _setOriginalOpenUserId;
-	private String _openUserName;
-	private Date _openDate;
-	private String _openComment;
-	private long _answerUserID;
-	private long _originalAnswerUserID;
-	private boolean _setOriginalAnswerUserID;
-	private String _answerUserName;
-	private Date _answerDate;
-	private String _answerComment;
-	private long _closeUserID;
-	private long _originalCloseUserID;
-	private boolean _setOriginalCloseUserID;
-	private String _closeUserName;
-	private Date _closeDate;
-	private String _closeComment;
-	private int _queryStatus;
-	private String _isReopen;
-	private long _reopenId;
-	private long _originalReopenId;
-	private boolean _setOriginalReopenId;
 	private long _ruleId;
-	private long _originalRuleId;
-	private boolean _setOriginalRuleId;
 	private String _ruleInfo;
-	private int _activeStatus;
-	private Date _inactiveDate;
 	private long _columnBitmask;
 	private QueryLink _escapedModel;
 

@@ -842,42 +842,46 @@
         <column name="instanceId" type="long" />
         <column name="itemCode" type="long" />
         <column name="sourceType" type="String" />
-        <column name="scope" type="String" />
-        <column name="isTypeManual" type="String" />
-        <column name="type" type="String" />
-        <column name="openUserId" type="long" />
-        <column name="openUserName" type="String" />
-        <column name="openDate" type="Date" />
-        <column name="openComment" type="String" />
-        <column name="answerUserID" type="long" />
-        <column name="answerUserName" type="String" />
-        <column name="answerDate" type="Date" />
-        <column name="answerComment" type="String" />
-        <column name="closeUserID" type="long" />
-        <column name="closeUserName" type="String" />
-        <column name="closeDate" type="Date" />
-        <column name="closeComment" type="String" />
-        <column name="queryStatus" type="int" />
-        <column name="isReopen" type="String" />
-        <column name="reopenId" type="long" />
+
         <column name="ruleId" type="long" />
         <column name="ruleInfo" type="String" />
-        <column name="activeStatus" type="int" />
-        <column name="inactiveDate" type="Date" />
+
 
       	<!-- Finder --> 
-        <finder name="CompanyId" return-type="Collection">
-    		<finder-column name="companyId" />
+        <finder name="SubjectId" return-type="Collection">
+    		<finder-column name="subjectId" />
     	</finder>
+    	
+    	<finder name="InstanceId" return-type="Collection">
+    		<finder-column name="instanceId" />
+    	</finder>
+    	
+    	<finder name="S_VG" return-type="Collection">
+        	<finder-column name="subjectId"></finder-column>
+        	<finder-column name="visitGroupId"></finder-column>
+        </finder>    
+    	
+    	<finder name="S_VG_VD" return-type="Collection">
+        	<finder-column name="subjectId"></finder-column>
+        	<finder-column name="visitGroupId"></finder-column>
+        	<finder-column name="visitDefinitionId"></finder-column>
+        </finder>    
+    	
+    	<finder name="S_VG_VD_VC" return-type="Collection">
+        	<finder-column name="subjectId"></finder-column>
+        	<finder-column name="visitGroupId"></finder-column>
+        	<finder-column name="visitDefinitionId"></finder-column>
+        	<finder-column name="visitCRFId"></finder-column>
+        </finder>    
          	
-       	<finder name="G_P" return-type="Collection">
-        	<finder-column name="groupId"></finder-column>
-        	<finder-column name="projectId"></finder-column>
-        </finder>        
-        
-        <finder name="UserId" return-type="Collection">
-    		<finder-column name="userId" />
-    	</finder> 
+     	<finder name="S_VG_VD_VC_S" return-type="Collection">
+        	<finder-column name="subjectId"></finder-column>
+        	<finder-column name="visitGroupId"></finder-column>
+        	<finder-column name="visitDefinitionId"></finder-column>
+        	<finder-column name="visitCRFId"></finder-column>
+        	<finder-column name="subCRFId"></finder-column>
+        </finder>    
+
 
     	<finder name="S_VG_VD_VC_S_I" return-type="Collection">
         	<finder-column name="subjectId"></finder-column>
@@ -887,29 +891,9 @@
         	<finder-column name="subCRFId"></finder-column>
         	<finder-column name="instanceId"></finder-column>
         </finder>    	
-    	
-        <finder name="ItemCode" return-type="Collection">
-    		<finder-column name="itemCode" />
-    	</finder>   	
-    	
-        <finder name="OpenUserId" return-type="Collection">
-    		<finder-column name="openUserId" />
-    	</finder>   
-
-        <finder name="AnswerUserID" return-type="Collection">
-    		<finder-column name="answerUserID" />
-    	</finder>    
-
-
-        <finder name="CloseUserID" return-type="Collection">
-    		<finder-column name="closeUserID" />
-    	</finder>     	       
+    		       
     	       
-    	       
-        <finder name="R_R" return-type="Collection">
-    		<finder-column name="reopenId"></finder-column>
-        	<finder-column name="ruleId"></finder-column>
-    	</finder>     	       
+    	         	       
 
         <!-- Reference -->
  		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />

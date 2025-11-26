@@ -48,28 +48,8 @@ public class QueryLinkSoap implements Serializable {
 		soapModel.setInstanceId(model.getInstanceId());
 		soapModel.setItemCode(model.getItemCode());
 		soapModel.setSourceType(model.getSourceType());
-		soapModel.setScope(model.getScope());
-		soapModel.setIsTypeManual(model.getIsTypeManual());
-		soapModel.setType(model.getType());
-		soapModel.setOpenUserId(model.getOpenUserId());
-		soapModel.setOpenUserName(model.getOpenUserName());
-		soapModel.setOpenDate(model.getOpenDate());
-		soapModel.setOpenComment(model.getOpenComment());
-		soapModel.setAnswerUserID(model.getAnswerUserID());
-		soapModel.setAnswerUserName(model.getAnswerUserName());
-		soapModel.setAnswerDate(model.getAnswerDate());
-		soapModel.setAnswerComment(model.getAnswerComment());
-		soapModel.setCloseUserID(model.getCloseUserID());
-		soapModel.setCloseUserName(model.getCloseUserName());
-		soapModel.setCloseDate(model.getCloseDate());
-		soapModel.setCloseComment(model.getCloseComment());
-		soapModel.setQueryStatus(model.getQueryStatus());
-		soapModel.setIsReopen(model.getIsReopen());
-		soapModel.setReopenId(model.getReopenId());
 		soapModel.setRuleId(model.getRuleId());
 		soapModel.setRuleInfo(model.getRuleInfo());
-		soapModel.setActiveStatus(model.getActiveStatus());
-		soapModel.setInactiveDate(model.getInactiveDate());
 
 		return soapModel;
 	}
@@ -259,150 +239,6 @@ public class QueryLinkSoap implements Serializable {
 		_sourceType = sourceType;
 	}
 
-	public String getScope() {
-		return _scope;
-	}
-
-	public void setScope(String scope) {
-		_scope = scope;
-	}
-
-	public String getIsTypeManual() {
-		return _isTypeManual;
-	}
-
-	public void setIsTypeManual(String isTypeManual) {
-		_isTypeManual = isTypeManual;
-	}
-
-	public String getType() {
-		return _type;
-	}
-
-	public void setType(String type) {
-		_type = type;
-	}
-
-	public long getOpenUserId() {
-		return _openUserId;
-	}
-
-	public void setOpenUserId(long openUserId) {
-		_openUserId = openUserId;
-	}
-
-	public String getOpenUserName() {
-		return _openUserName;
-	}
-
-	public void setOpenUserName(String openUserName) {
-		_openUserName = openUserName;
-	}
-
-	public Date getOpenDate() {
-		return _openDate;
-	}
-
-	public void setOpenDate(Date openDate) {
-		_openDate = openDate;
-	}
-
-	public String getOpenComment() {
-		return _openComment;
-	}
-
-	public void setOpenComment(String openComment) {
-		_openComment = openComment;
-	}
-
-	public long getAnswerUserID() {
-		return _answerUserID;
-	}
-
-	public void setAnswerUserID(long answerUserID) {
-		_answerUserID = answerUserID;
-	}
-
-	public String getAnswerUserName() {
-		return _answerUserName;
-	}
-
-	public void setAnswerUserName(String answerUserName) {
-		_answerUserName = answerUserName;
-	}
-
-	public Date getAnswerDate() {
-		return _answerDate;
-	}
-
-	public void setAnswerDate(Date answerDate) {
-		_answerDate = answerDate;
-	}
-
-	public String getAnswerComment() {
-		return _answerComment;
-	}
-
-	public void setAnswerComment(String answerComment) {
-		_answerComment = answerComment;
-	}
-
-	public long getCloseUserID() {
-		return _closeUserID;
-	}
-
-	public void setCloseUserID(long closeUserID) {
-		_closeUserID = closeUserID;
-	}
-
-	public String getCloseUserName() {
-		return _closeUserName;
-	}
-
-	public void setCloseUserName(String closeUserName) {
-		_closeUserName = closeUserName;
-	}
-
-	public Date getCloseDate() {
-		return _closeDate;
-	}
-
-	public void setCloseDate(Date closeDate) {
-		_closeDate = closeDate;
-	}
-
-	public String getCloseComment() {
-		return _closeComment;
-	}
-
-	public void setCloseComment(String closeComment) {
-		_closeComment = closeComment;
-	}
-
-	public int getQueryStatus() {
-		return _queryStatus;
-	}
-
-	public void setQueryStatus(int queryStatus) {
-		_queryStatus = queryStatus;
-	}
-
-	public String getIsReopen() {
-		return _isReopen;
-	}
-
-	public void setIsReopen(String isReopen) {
-		_isReopen = isReopen;
-	}
-
-	public long getReopenId() {
-		return _reopenId;
-	}
-
-	public void setReopenId(long reopenId) {
-		_reopenId = reopenId;
-	}
-
 	public long getRuleId() {
 		return _ruleId;
 	}
@@ -417,22 +253,6 @@ public class QueryLinkSoap implements Serializable {
 
 	public void setRuleInfo(String ruleInfo) {
 		_ruleInfo = ruleInfo;
-	}
-
-	public int getActiveStatus() {
-		return _activeStatus;
-	}
-
-	public void setActiveStatus(int activeStatus) {
-		_activeStatus = activeStatus;
-	}
-
-	public Date getInactiveDate() {
-		return _inactiveDate;
-	}
-
-	public void setInactiveDate(Date inactiveDate) {
-		_inactiveDate = inactiveDate;
 	}
 
 	private String _uuid;
@@ -452,27 +272,7 @@ public class QueryLinkSoap implements Serializable {
 	private long _instanceId;
 	private long _itemCode;
 	private String _sourceType;
-	private String _scope;
-	private String _isTypeManual;
-	private String _type;
-	private long _openUserId;
-	private String _openUserName;
-	private Date _openDate;
-	private String _openComment;
-	private long _answerUserID;
-	private String _answerUserName;
-	private Date _answerDate;
-	private String _answerComment;
-	private long _closeUserID;
-	private String _closeUserName;
-	private Date _closeDate;
-	private String _closeComment;
-	private int _queryStatus;
-	private String _isReopen;
-	private long _reopenId;
 	private long _ruleId;
 	private String _ruleInfo;
-	private int _activeStatus;
-	private Date _inactiveDate;
 
 }
