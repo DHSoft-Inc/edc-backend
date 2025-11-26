@@ -179,28 +179,8 @@ create table EDC_QueryLink (
 	instanceId LONG,
 	itemCode LONG,
 	sourceType VARCHAR(75) null,
-	scope VARCHAR(75) null,
-	isTypeManual VARCHAR(75) null,
-	type_ VARCHAR(75) null,
-	openUserId LONG,
-	openUserName VARCHAR(75) null,
-	openDate DATE null,
-	openComment VARCHAR(75) null,
-	answerUserID LONG,
-	answerUserName VARCHAR(75) null,
-	answerDate DATE null,
-	answerComment VARCHAR(75) null,
-	closeUserID LONG,
-	closeUserName VARCHAR(75) null,
-	closeDate DATE null,
-	closeComment VARCHAR(75) null,
-	queryStatus INTEGER,
-	isReopen VARCHAR(75) null,
-	reopenId LONG,
 	ruleId LONG,
-	ruleInfo VARCHAR(75) null,
-	activeStatus INTEGER,
-	inactiveDate DATE null
+	ruleInfo VARCHAR(75) null
 );
 
 create table EDC_Randomization (

@@ -49,13 +49,10 @@ create index IX_AAEA85ED on EDC_Query (userId);
 create index IX_FCBC6BE7 on EDC_Query (uuid_[$COLUMN_LENGTH:75$], companyId);
 create unique index IX_1E6CC029 on EDC_Query (uuid_[$COLUMN_LENGTH:75$], groupId);
 
-create index IX_8C4E5985 on EDC_QueryLink (answerUserID);
-create index IX_DB600441 on EDC_QueryLink (closeUserID);
 create index IX_AE2A3A3B on EDC_QueryLink (companyId);
 create index IX_FBA43127 on EDC_QueryLink (groupId, projectId);
+create index IX_97212751 on EDC_QueryLink (instanceId);
 create index IX_B4CCCA21 on EDC_QueryLink (itemCode);
-create index IX_478793F1 on EDC_QueryLink (openUserId);
-create index IX_65189364 on EDC_QueryLink (reopenId, ruleId);
 create index IX_E7DE6661 on EDC_QueryLink (subjectId, visitGroupId, visitDefinitionId, visitCRFId, subCRFId, instanceId);
 create index IX_B3B81307 on EDC_QueryLink (userId);
 create index IX_3EF7E081 on EDC_QueryLink (uuid_[$COLUMN_LENGTH:75$], companyId);

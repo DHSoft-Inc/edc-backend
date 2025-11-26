@@ -60,28 +60,8 @@ public class QueryLinkWrapper
 		attributes.put("instanceId", getInstanceId());
 		attributes.put("itemCode", getItemCode());
 		attributes.put("sourceType", getSourceType());
-		attributes.put("scope", getScope());
-		attributes.put("isTypeManual", getIsTypeManual());
-		attributes.put("type", getType());
-		attributes.put("openUserId", getOpenUserId());
-		attributes.put("openUserName", getOpenUserName());
-		attributes.put("openDate", getOpenDate());
-		attributes.put("openComment", getOpenComment());
-		attributes.put("answerUserID", getAnswerUserID());
-		attributes.put("answerUserName", getAnswerUserName());
-		attributes.put("answerDate", getAnswerDate());
-		attributes.put("answerComment", getAnswerComment());
-		attributes.put("closeUserID", getCloseUserID());
-		attributes.put("closeUserName", getCloseUserName());
-		attributes.put("closeDate", getCloseDate());
-		attributes.put("closeComment", getCloseComment());
-		attributes.put("queryStatus", getQueryStatus());
-		attributes.put("isReopen", getIsReopen());
-		attributes.put("reopenId", getReopenId());
 		attributes.put("ruleId", getRuleId());
 		attributes.put("ruleInfo", getRuleInfo());
-		attributes.put("activeStatus", getActiveStatus());
-		attributes.put("inactiveDate", getInactiveDate());
 
 		return attributes;
 	}
@@ -190,114 +170,6 @@ public class QueryLinkWrapper
 			setSourceType(sourceType);
 		}
 
-		String scope = (String)attributes.get("scope");
-
-		if (scope != null) {
-			setScope(scope);
-		}
-
-		String isTypeManual = (String)attributes.get("isTypeManual");
-
-		if (isTypeManual != null) {
-			setIsTypeManual(isTypeManual);
-		}
-
-		String type = (String)attributes.get("type");
-
-		if (type != null) {
-			setType(type);
-		}
-
-		Long openUserId = (Long)attributes.get("openUserId");
-
-		if (openUserId != null) {
-			setOpenUserId(openUserId);
-		}
-
-		String openUserName = (String)attributes.get("openUserName");
-
-		if (openUserName != null) {
-			setOpenUserName(openUserName);
-		}
-
-		Date openDate = (Date)attributes.get("openDate");
-
-		if (openDate != null) {
-			setOpenDate(openDate);
-		}
-
-		String openComment = (String)attributes.get("openComment");
-
-		if (openComment != null) {
-			setOpenComment(openComment);
-		}
-
-		Long answerUserID = (Long)attributes.get("answerUserID");
-
-		if (answerUserID != null) {
-			setAnswerUserID(answerUserID);
-		}
-
-		String answerUserName = (String)attributes.get("answerUserName");
-
-		if (answerUserName != null) {
-			setAnswerUserName(answerUserName);
-		}
-
-		Date answerDate = (Date)attributes.get("answerDate");
-
-		if (answerDate != null) {
-			setAnswerDate(answerDate);
-		}
-
-		String answerComment = (String)attributes.get("answerComment");
-
-		if (answerComment != null) {
-			setAnswerComment(answerComment);
-		}
-
-		Long closeUserID = (Long)attributes.get("closeUserID");
-
-		if (closeUserID != null) {
-			setCloseUserID(closeUserID);
-		}
-
-		String closeUserName = (String)attributes.get("closeUserName");
-
-		if (closeUserName != null) {
-			setCloseUserName(closeUserName);
-		}
-
-		Date closeDate = (Date)attributes.get("closeDate");
-
-		if (closeDate != null) {
-			setCloseDate(closeDate);
-		}
-
-		String closeComment = (String)attributes.get("closeComment");
-
-		if (closeComment != null) {
-			setCloseComment(closeComment);
-		}
-
-		Integer queryStatus = (Integer)attributes.get("queryStatus");
-
-		if (queryStatus != null) {
-			setQueryStatus(queryStatus);
-		}
-
-		String isReopen = (String)attributes.get("isReopen");
-
-		if (isReopen != null) {
-			setIsReopen(isReopen);
-		}
-
-		Long reopenId = (Long)attributes.get("reopenId");
-
-		if (reopenId != null) {
-			setReopenId(reopenId);
-		}
-
 		Long ruleId = (Long)attributes.get("ruleId");
 
 		if (ruleId != null) {
@@ -309,108 +181,6 @@ public class QueryLinkWrapper
 		if (ruleInfo != null) {
 			setRuleInfo(ruleInfo);
 		}
-
-		Integer activeStatus = (Integer)attributes.get("activeStatus");
-
-		if (activeStatus != null) {
-			setActiveStatus(activeStatus);
-		}
-
-		Date inactiveDate = (Date)attributes.get("inactiveDate");
-
-		if (inactiveDate != null) {
-			setInactiveDate(inactiveDate);
-		}
-	}
-
-	/**
-	 * Returns the active status of this query link.
-	 *
-	 * @return the active status of this query link
-	 */
-	@Override
-	public int getActiveStatus() {
-		return model.getActiveStatus();
-	}
-
-	/**
-	 * Returns the answer comment of this query link.
-	 *
-	 * @return the answer comment of this query link
-	 */
-	@Override
-	public String getAnswerComment() {
-		return model.getAnswerComment();
-	}
-
-	/**
-	 * Returns the answer date of this query link.
-	 *
-	 * @return the answer date of this query link
-	 */
-	@Override
-	public Date getAnswerDate() {
-		return model.getAnswerDate();
-	}
-
-	/**
-	 * Returns the answer user ID of this query link.
-	 *
-	 * @return the answer user ID of this query link
-	 */
-	@Override
-	public long getAnswerUserID() {
-		return model.getAnswerUserID();
-	}
-
-	/**
-	 * Returns the answer user name of this query link.
-	 *
-	 * @return the answer user name of this query link
-	 */
-	@Override
-	public String getAnswerUserName() {
-		return model.getAnswerUserName();
-	}
-
-	/**
-	 * Returns the close comment of this query link.
-	 *
-	 * @return the close comment of this query link
-	 */
-	@Override
-	public String getCloseComment() {
-		return model.getCloseComment();
-	}
-
-	/**
-	 * Returns the close date of this query link.
-	 *
-	 * @return the close date of this query link
-	 */
-	@Override
-	public Date getCloseDate() {
-		return model.getCloseDate();
-	}
-
-	/**
-	 * Returns the close user ID of this query link.
-	 *
-	 * @return the close user ID of this query link
-	 */
-	@Override
-	public long getCloseUserID() {
-		return model.getCloseUserID();
-	}
-
-	/**
-	 * Returns the close user name of this query link.
-	 *
-	 * @return the close user name of this query link
-	 */
-	@Override
-	public String getCloseUserName() {
-		return model.getCloseUserName();
 	}
 
 	/**
@@ -444,16 +214,6 @@ public class QueryLinkWrapper
 	}
 
 	/**
-	 * Returns the inactive date of this query link.
-	 *
-	 * @return the inactive date of this query link
-	 */
-	@Override
-	public Date getInactiveDate() {
-		return model.getInactiveDate();
-	}
-
-	/**
 	 * Returns the instance ID of this query link.
 	 *
 	 * @return the instance ID of this query link
@@ -461,26 +221,6 @@ public class QueryLinkWrapper
 	@Override
 	public long getInstanceId() {
 		return model.getInstanceId();
-	}
-
-	/**
-	 * Returns the is reopen of this query link.
-	 *
-	 * @return the is reopen of this query link
-	 */
-	@Override
-	public String getIsReopen() {
-		return model.getIsReopen();
-	}
-
-	/**
-	 * Returns the is type manual of this query link.
-	 *
-	 * @return the is type manual of this query link
-	 */
-	@Override
-	public String getIsTypeManual() {
-		return model.getIsTypeManual();
 	}
 
 	/**
@@ -501,56 +241,6 @@ public class QueryLinkWrapper
 	@Override
 	public Date getModifiedDate() {
 		return model.getModifiedDate();
-	}
-
-	/**
-	 * Returns the open comment of this query link.
-	 *
-	 * @return the open comment of this query link
-	 */
-	@Override
-	public String getOpenComment() {
-		return model.getOpenComment();
-	}
-
-	/**
-	 * Returns the open date of this query link.
-	 *
-	 * @return the open date of this query link
-	 */
-	@Override
-	public Date getOpenDate() {
-		return model.getOpenDate();
-	}
-
-	/**
-	 * Returns the open user ID of this query link.
-	 *
-	 * @return the open user ID of this query link
-	 */
-	@Override
-	public long getOpenUserId() {
-		return model.getOpenUserId();
-	}
-
-	/**
-	 * Returns the open user name of this query link.
-	 *
-	 * @return the open user name of this query link
-	 */
-	@Override
-	public String getOpenUserName() {
-		return model.getOpenUserName();
-	}
-
-	/**
-	 * Returns the open user uuid of this query link.
-	 *
-	 * @return the open user uuid of this query link
-	 */
-	@Override
-	public String getOpenUserUuid() {
-		return model.getOpenUserUuid();
 	}
 
 	/**
@@ -584,26 +274,6 @@ public class QueryLinkWrapper
 	}
 
 	/**
-	 * Returns the query status of this query link.
-	 *
-	 * @return the query status of this query link
-	 */
-	@Override
-	public int getQueryStatus() {
-		return model.getQueryStatus();
-	}
-
-	/**
-	 * Returns the reopen ID of this query link.
-	 *
-	 * @return the reopen ID of this query link
-	 */
-	@Override
-	public long getReopenId() {
-		return model.getReopenId();
-	}
-
-	/**
 	 * Returns the rule ID of this query link.
 	 *
 	 * @return the rule ID of this query link
@@ -621,16 +291,6 @@ public class QueryLinkWrapper
 	@Override
 	public String getRuleInfo() {
 		return model.getRuleInfo();
-	}
-
-	/**
-	 * Returns the scope of this query link.
-	 *
-	 * @return the scope of this query link
-	 */
-	@Override
-	public String getScope() {
-		return model.getScope();
 	}
 
 	/**
@@ -705,16 +365,6 @@ public class QueryLinkWrapper
 	@Override
 	public com.liferay.portal.kernel.trash.TrashHandler getTrashHandler() {
 		return model.getTrashHandler();
-	}
-
-	/**
-	 * Returns the type of this query link.
-	 *
-	 * @return the type of this query link
-	 */
-	@Override
-	public String getType() {
-		return model.getType();
 	}
 
 	/**
@@ -823,96 +473,6 @@ public class QueryLinkWrapper
 	}
 
 	/**
-	 * Sets the active status of this query link.
-	 *
-	 * @param activeStatus the active status of this query link
-	 */
-	@Override
-	public void setActiveStatus(int activeStatus) {
-		model.setActiveStatus(activeStatus);
-	}
-
-	/**
-	 * Sets the answer comment of this query link.
-	 *
-	 * @param answerComment the answer comment of this query link
-	 */
-	@Override
-	public void setAnswerComment(String answerComment) {
-		model.setAnswerComment(answerComment);
-	}
-
-	/**
-	 * Sets the answer date of this query link.
-	 *
-	 * @param answerDate the answer date of this query link
-	 */
-	@Override
-	public void setAnswerDate(Date answerDate) {
-		model.setAnswerDate(answerDate);
-	}
-
-	/**
-	 * Sets the answer user ID of this query link.
-	 *
-	 * @param answerUserID the answer user ID of this query link
-	 */
-	@Override
-	public void setAnswerUserID(long answerUserID) {
-		model.setAnswerUserID(answerUserID);
-	}
-
-	/**
-	 * Sets the answer user name of this query link.
-	 *
-	 * @param answerUserName the answer user name of this query link
-	 */
-	@Override
-	public void setAnswerUserName(String answerUserName) {
-		model.setAnswerUserName(answerUserName);
-	}
-
-	/**
-	 * Sets the close comment of this query link.
-	 *
-	 * @param closeComment the close comment of this query link
-	 */
-	@Override
-	public void setCloseComment(String closeComment) {
-		model.setCloseComment(closeComment);
-	}
-
-	/**
-	 * Sets the close date of this query link.
-	 *
-	 * @param closeDate the close date of this query link
-	 */
-	@Override
-	public void setCloseDate(Date closeDate) {
-		model.setCloseDate(closeDate);
-	}
-
-	/**
-	 * Sets the close user ID of this query link.
-	 *
-	 * @param closeUserID the close user ID of this query link
-	 */
-	@Override
-	public void setCloseUserID(long closeUserID) {
-		model.setCloseUserID(closeUserID);
-	}
-
-	/**
-	 * Sets the close user name of this query link.
-	 *
-	 * @param closeUserName the close user name of this query link
-	 */
-	@Override
-	public void setCloseUserName(String closeUserName) {
-		model.setCloseUserName(closeUserName);
-	}
-
-	/**
 	 * Sets the company ID of this query link.
 	 *
 	 * @param companyId the company ID of this query link
@@ -943,16 +503,6 @@ public class QueryLinkWrapper
 	}
 
 	/**
-	 * Sets the inactive date of this query link.
-	 *
-	 * @param inactiveDate the inactive date of this query link
-	 */
-	@Override
-	public void setInactiveDate(Date inactiveDate) {
-		model.setInactiveDate(inactiveDate);
-	}
-
-	/**
 	 * Sets the instance ID of this query link.
 	 *
 	 * @param instanceId the instance ID of this query link
@@ -960,26 +510,6 @@ public class QueryLinkWrapper
 	@Override
 	public void setInstanceId(long instanceId) {
 		model.setInstanceId(instanceId);
-	}
-
-	/**
-	 * Sets the is reopen of this query link.
-	 *
-	 * @param isReopen the is reopen of this query link
-	 */
-	@Override
-	public void setIsReopen(String isReopen) {
-		model.setIsReopen(isReopen);
-	}
-
-	/**
-	 * Sets the is type manual of this query link.
-	 *
-	 * @param isTypeManual the is type manual of this query link
-	 */
-	@Override
-	public void setIsTypeManual(String isTypeManual) {
-		model.setIsTypeManual(isTypeManual);
 	}
 
 	/**
@@ -1000,56 +530,6 @@ public class QueryLinkWrapper
 	@Override
 	public void setModifiedDate(Date modifiedDate) {
 		model.setModifiedDate(modifiedDate);
-	}
-
-	/**
-	 * Sets the open comment of this query link.
-	 *
-	 * @param openComment the open comment of this query link
-	 */
-	@Override
-	public void setOpenComment(String openComment) {
-		model.setOpenComment(openComment);
-	}
-
-	/**
-	 * Sets the open date of this query link.
-	 *
-	 * @param openDate the open date of this query link
-	 */
-	@Override
-	public void setOpenDate(Date openDate) {
-		model.setOpenDate(openDate);
-	}
-
-	/**
-	 * Sets the open user ID of this query link.
-	 *
-	 * @param openUserId the open user ID of this query link
-	 */
-	@Override
-	public void setOpenUserId(long openUserId) {
-		model.setOpenUserId(openUserId);
-	}
-
-	/**
-	 * Sets the open user name of this query link.
-	 *
-	 * @param openUserName the open user name of this query link
-	 */
-	@Override
-	public void setOpenUserName(String openUserName) {
-		model.setOpenUserName(openUserName);
-	}
-
-	/**
-	 * Sets the open user uuid of this query link.
-	 *
-	 * @param openUserUuid the open user uuid of this query link
-	 */
-	@Override
-	public void setOpenUserUuid(String openUserUuid) {
-		model.setOpenUserUuid(openUserUuid);
 	}
 
 	/**
@@ -1083,26 +563,6 @@ public class QueryLinkWrapper
 	}
 
 	/**
-	 * Sets the query status of this query link.
-	 *
-	 * @param queryStatus the query status of this query link
-	 */
-	@Override
-	public void setQueryStatus(int queryStatus) {
-		model.setQueryStatus(queryStatus);
-	}
-
-	/**
-	 * Sets the reopen ID of this query link.
-	 *
-	 * @param reopenId the reopen ID of this query link
-	 */
-	@Override
-	public void setReopenId(long reopenId) {
-		model.setReopenId(reopenId);
-	}
-
-	/**
 	 * Sets the rule ID of this query link.
 	 *
 	 * @param ruleId the rule ID of this query link
@@ -1120,16 +580,6 @@ public class QueryLinkWrapper
 	@Override
 	public void setRuleInfo(String ruleInfo) {
 		model.setRuleInfo(ruleInfo);
-	}
-
-	/**
-	 * Sets the scope of this query link.
-	 *
-	 * @param scope the scope of this query link
-	 */
-	@Override
-	public void setScope(String scope) {
-		model.setScope(scope);
 	}
 
 	/**
@@ -1160,16 +610,6 @@ public class QueryLinkWrapper
 	@Override
 	public void setSubjectId(long subjectId) {
 		model.setSubjectId(subjectId);
-	}
-
-	/**
-	 * Sets the type of this query link.
-	 *
-	 * @param type the type of this query link
-	 */
-	@Override
-	public void setType(String type) {
-		model.setType(type);
 	}
 
 	/**

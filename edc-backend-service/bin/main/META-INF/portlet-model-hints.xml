@@ -134,28 +134,8 @@
 		<field name="instanceId" type="long" />
 		<field name="itemCode" type="long" />
 		<field name="sourceType" type="String" />
-		<field name="scope" type="String" />
-		<field name="isTypeManual" type="String" />
-		<field name="type" type="String" />
-		<field name="openUserId" type="long" />
-		<field name="openUserName" type="String" />
-		<field name="openDate" type="Date" />
-		<field name="openComment" type="String" />
-		<field name="answerUserID" type="long" />
-		<field name="answerUserName" type="String" />
-		<field name="answerDate" type="Date" />
-		<field name="answerComment" type="String" />
-		<field name="closeUserID" type="long" />
-		<field name="closeUserName" type="String" />
-		<field name="closeDate" type="Date" />
-		<field name="closeComment" type="String" />
-		<field name="queryStatus" type="int" />
-		<field name="isReopen" type="String" />
-		<field name="reopenId" type="long" />
 		<field name="ruleId" type="long" />
 		<field name="ruleInfo" type="String" />
-		<field name="activeStatus" type="int" />
-		<field name="inactiveDate" type="Date" />
 	</model>
 	<model name="com.dhsoft.edc.backend.model.Randomization">
 		<field name="uuid" type="String" />
