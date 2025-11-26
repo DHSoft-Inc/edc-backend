@@ -99,6 +99,7 @@ create index IX_C0683463 on EDC_VisitDefinition (userId);
 create index IX_2CE2FEDD on EDC_VisitDefinition (uuid_[$COLUMN_LENGTH:75$], companyId);
 create unique index IX_41E7989F on EDC_VisitDefinition (uuid_[$COLUMN_LENGTH:75$], groupId);
 create index IX_72D98324 on EDC_VisitDefinition (visitCRFId);
+create index IX_322B29F2 on EDC_VisitDefinition (visitDefinitionCode[$COLUMN_LENGTH:75$]);
 create index IX_34699FCC on EDC_VisitDefinition (visitGroupId);
 
 create index IX_55C2918 on EDC_VisitEvent (companyId);

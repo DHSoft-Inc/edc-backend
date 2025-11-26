@@ -1262,6 +1262,150 @@ public interface VisitDefinitionPersistence
 	public int countByVisitCRFId(long visitCRFId);
 
 	/**
+	 * Returns all the visit definitions where visitDefinitionCode = &#63;.
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @return the matching visit definitions
+	 */
+	public java.util.List<VisitDefinition> findByVisitDefinitionCode(
+		String visitDefinitionCode);
+
+	/**
+	 * Returns a range of all the visit definitions where visitDefinitionCode = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>VisitDefinitionModelImpl</code>.
+	 * </p>
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @param start the lower bound of the range of visit definitions
+	 * @param end the upper bound of the range of visit definitions (not inclusive)
+	 * @return the range of matching visit definitions
+	 */
+	public java.util.List<VisitDefinition> findByVisitDefinitionCode(
+		String visitDefinitionCode, int start, int end);
+
+	/**
+	 * Returns an ordered range of all the visit definitions where visitDefinitionCode = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>VisitDefinitionModelImpl</code>.
+	 * </p>
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @param start the lower bound of the range of visit definitions
+	 * @param end the upper bound of the range of visit definitions (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching visit definitions
+	 */
+	public java.util.List<VisitDefinition> findByVisitDefinitionCode(
+		String visitDefinitionCode, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<VisitDefinition>
+			orderByComparator);
+
+	/**
+	 * Returns an ordered range of all the visit definitions where visitDefinitionCode = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>VisitDefinitionModelImpl</code>.
+	 * </p>
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @param start the lower bound of the range of visit definitions
+	 * @param end the upper bound of the range of visit definitions (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching visit definitions
+	 */
+	public java.util.List<VisitDefinition> findByVisitDefinitionCode(
+		String visitDefinitionCode, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<VisitDefinition>
+			orderByComparator,
+		boolean useFinderCache);
+
+	/**
+	 * Returns the first visit definition in the ordered set where visitDefinitionCode = &#63;.
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching visit definition
+	 * @throws NoSuchVisitDefinitionException if a matching visit definition could not be found
+	 */
+	public VisitDefinition findByVisitDefinitionCode_First(
+			String visitDefinitionCode,
+			com.liferay.portal.kernel.util.OrderByComparator<VisitDefinition>
+				orderByComparator)
+		throws NoSuchVisitDefinitionException;
+
+	/**
+	 * Returns the first visit definition in the ordered set where visitDefinitionCode = &#63;.
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching visit definition, or <code>null</code> if a matching visit definition could not be found
+	 */
+	public VisitDefinition fetchByVisitDefinitionCode_First(
+		String visitDefinitionCode,
+		com.liferay.portal.kernel.util.OrderByComparator<VisitDefinition>
+			orderByComparator);
+
+	/**
+	 * Returns the last visit definition in the ordered set where visitDefinitionCode = &#63;.
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching visit definition
+	 * @throws NoSuchVisitDefinitionException if a matching visit definition could not be found
+	 */
+	public VisitDefinition findByVisitDefinitionCode_Last(
+			String visitDefinitionCode,
+			com.liferay.portal.kernel.util.OrderByComparator<VisitDefinition>
+				orderByComparator)
+		throws NoSuchVisitDefinitionException;
+
+	/**
+	 * Returns the last visit definition in the ordered set where visitDefinitionCode = &#63;.
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching visit definition, or <code>null</code> if a matching visit definition could not be found
+	 */
+	public VisitDefinition fetchByVisitDefinitionCode_Last(
+		String visitDefinitionCode,
+		com.liferay.portal.kernel.util.OrderByComparator<VisitDefinition>
+			orderByComparator);
+
+	/**
+	 * Returns the visit definitions before and after the current visit definition in the ordered set where visitDefinitionCode = &#63;.
+	 *
+	 * @param visitDefinitionId the primary key of the current visit definition
+	 * @param visitDefinitionCode the visit definition code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next visit definition
+	 * @throws NoSuchVisitDefinitionException if a visit definition with the primary key could not be found
+	 */
+	public VisitDefinition[] findByVisitDefinitionCode_PrevAndNext(
+			long visitDefinitionId, String visitDefinitionCode,
+			com.liferay.portal.kernel.util.OrderByComparator<VisitDefinition>
+				orderByComparator)
+		throws NoSuchVisitDefinitionException;
+
+	/**
+	 * Removes all the visit definitions where visitDefinitionCode = &#63; from the database.
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 */
+	public void removeByVisitDefinitionCode(String visitDefinitionCode);
+
+	/**
+	 * Returns the number of visit definitions where visitDefinitionCode = &#63;.
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @return the number of matching visit definitions
+	 */
+	public int countByVisitDefinitionCode(String visitDefinitionCode);
+
+	/**
 	 * Caches the visit definition in the entity cache if it is enabled.
 	 *
 	 * @param visitDefinition the visit definition

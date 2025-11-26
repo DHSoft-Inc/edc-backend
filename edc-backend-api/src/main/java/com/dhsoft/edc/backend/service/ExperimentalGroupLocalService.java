@@ -209,6 +209,10 @@ public interface ExperimentalGroupLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<ExperimentalGroup> getByGroupAndProject(
+		long groupId, long projectId);
+
 	/**
 	 * Returns the experimental group with the primary key.
 	 *

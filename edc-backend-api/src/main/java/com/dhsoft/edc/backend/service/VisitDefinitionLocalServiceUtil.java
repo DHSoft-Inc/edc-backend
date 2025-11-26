@@ -44,18 +44,6 @@ public class VisitDefinitionLocalServiceUtil {
 	 *
 	 * Never modify this class directly. Add custom service methods to <code>com.dhsoft.edc.backend.service.impl.VisitDefinitionLocalServiceImpl</code> and rerun ServiceBuilder to regenerate this class.
 	 */
-	public static void addVisitDefinition(
-		long companyId, long groupId, long projectId, long visitGroupId,
-		long userId, String userName, int status, long statusByUserId,
-		String statusByUserName, java.util.Date statusDate, String anchorType,
-		int offset, int windowMinus, int windowPlus, int type, int repeatCount,
-		long visitCRFId) {
-
-		getService().addVisitDefinition(
-			companyId, groupId, projectId, visitGroupId, userId, userName,
-			status, statusByUserId, statusByUserName, statusDate, anchorType,
-			offset, windowMinus, windowPlus, type, repeatCount, visitCRFId);
-	}
 
 	/**
 	 * Adds the visit definition to the database. Also notifies the appropriate model listeners.
@@ -74,6 +62,20 @@ public class VisitDefinitionLocalServiceUtil {
 	}
 
 	/**
+	 * ADD: VisitDefinition ����
+	 */
+	public static VisitDefinition addVisitDefinitionForGroup(
+			long companyId, long groupId, long userId, String userName,
+			long experimentalGroupId, String name, int offset, int windowMinus,
+			int windowPlus)
+		throws PortalException {
+
+		return getService().addVisitDefinitionForGroup(
+			companyId, groupId, userId, userName, experimentalGroupId, name,
+			offset, windowMinus, windowPlus);
+	}
+
+	/**
 	 * Creates a new visit definition with the primary key. Does not add the visit definition to the database.
 	 *
 	 * @param visitDefinitionId the primary key for the new visit definition
@@ -83,10 +85,6 @@ public class VisitDefinitionLocalServiceUtil {
 		long visitDefinitionId) {
 
 		return getService().createVisitDefinition(visitDefinitionId);
-	}
-
-	public static void deleteDefinition(long visitDefinitionId) {
-		getService().deleteDefinition(visitDefinitionId);
 	}
 
 	/**
@@ -130,6 +128,16 @@ public class VisitDefinitionLocalServiceUtil {
 		VisitDefinition visitDefinition) {
 
 		return getService().deleteVisitDefinition(visitDefinition);
+	}
+
+	/**
+	 * DELETE
+	 */
+	public static VisitDefinition deleteVisitDefinitionById(
+			long visitDefinitionId)
+		throws PortalException {
+
+		return getService().deleteVisitDefinitionById(visitDefinitionId);
 	}
 
 	public static DynamicQuery dynamicQuery() {
@@ -230,6 +238,17 @@ public class VisitDefinitionLocalServiceUtil {
 		getActionableDynamicQuery() {
 
 		return getService().getActionableDynamicQuery();
+	}
+
+	/**
+	 * GET: ���豺 ID�� visitDefinition ��������
+	 * experimentalGroupId �� expCode �� visitDefinitionCode
+	 */
+	public static List<VisitDefinition> getByExperimentalGroup(
+			long experimentalGroupId)
+		throws PortalException {
+
+		return getService().getByExperimentalGroup(experimentalGroupId);
 	}
 
 	public static com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery
@@ -365,6 +384,18 @@ public class VisitDefinitionLocalServiceUtil {
 		VisitDefinition visitDefinition) {
 
 		return getService().updateVisitDefinition(visitDefinition);
+	}
+
+	/**
+	 * UPDATE
+	 */
+	public static VisitDefinition updateVisitDefinitionBasic(
+			long visitDefinitionId, String name, int offset, int windowMinus,
+			int windowPlus)
+		throws PortalException {
+
+		return getService().updateVisitDefinitionBasic(
+			visitDefinitionId, name, offset, windowMinus, windowPlus);
 	}
 
 	public static VisitDefinitionLocalService getService() {

@@ -4555,6 +4555,572 @@ public class VisitDefinitionPersistenceImpl
 	private static final String _FINDER_COLUMN_VISITCRFID_VISITCRFID_2 =
 		"visitDefinition.visitCRFId = ?";
 
+	private FinderPath _finderPathWithPaginationFindByVisitDefinitionCode;
+	private FinderPath _finderPathWithoutPaginationFindByVisitDefinitionCode;
+	private FinderPath _finderPathCountByVisitDefinitionCode;
+
+	/**
+	 * Returns all the visit definitions where visitDefinitionCode = &#63;.
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @return the matching visit definitions
+	 */
+	@Override
+	public List<VisitDefinition> findByVisitDefinitionCode(
+		String visitDefinitionCode) {
+
+		return findByVisitDefinitionCode(
+			visitDefinitionCode, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Returns a range of all the visit definitions where visitDefinitionCode = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>VisitDefinitionModelImpl</code>.
+	 * </p>
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @param start the lower bound of the range of visit definitions
+	 * @param end the upper bound of the range of visit definitions (not inclusive)
+	 * @return the range of matching visit definitions
+	 */
+	@Override
+	public List<VisitDefinition> findByVisitDefinitionCode(
+		String visitDefinitionCode, int start, int end) {
+
+		return findByVisitDefinitionCode(visitDefinitionCode, start, end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the visit definitions where visitDefinitionCode = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>VisitDefinitionModelImpl</code>.
+	 * </p>
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @param start the lower bound of the range of visit definitions
+	 * @param end the upper bound of the range of visit definitions (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching visit definitions
+	 */
+	@Override
+	public List<VisitDefinition> findByVisitDefinitionCode(
+		String visitDefinitionCode, int start, int end,
+		OrderByComparator<VisitDefinition> orderByComparator) {
+
+		return findByVisitDefinitionCode(
+			visitDefinitionCode, start, end, orderByComparator, true);
+	}
+
+	/**
+	 * Returns an ordered range of all the visit definitions where visitDefinitionCode = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>VisitDefinitionModelImpl</code>.
+	 * </p>
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @param start the lower bound of the range of visit definitions
+	 * @param end the upper bound of the range of visit definitions (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching visit definitions
+	 */
+	@Override
+	public List<VisitDefinition> findByVisitDefinitionCode(
+		String visitDefinitionCode, int start, int end,
+		OrderByComparator<VisitDefinition> orderByComparator,
+		boolean useFinderCache) {
+
+		visitDefinitionCode = Objects.toString(visitDefinitionCode, "");
+
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+			(orderByComparator == null)) {
+
+			if (useFinderCache) {
+				finderPath =
+					_finderPathWithoutPaginationFindByVisitDefinitionCode;
+				finderArgs = new Object[] {visitDefinitionCode};
+			}
+		}
+		else if (useFinderCache) {
+			finderPath = _finderPathWithPaginationFindByVisitDefinitionCode;
+			finderArgs = new Object[] {
+				visitDefinitionCode, start, end, orderByComparator
+			};
+		}
+
+		List<VisitDefinition> list = null;
+
+		if (useFinderCache) {
+			list = (List<VisitDefinition>)finderCache.getResult(
+				finderPath, finderArgs, this);
+
+			if ((list != null) && !list.isEmpty()) {
+				for (VisitDefinition visitDefinition : list) {
+					if (!visitDefinitionCode.equals(
+							visitDefinition.getVisitDefinitionCode())) {
+
+						list = null;
+
+						break;
+					}
+				}
+			}
+		}
+
+		if (list == null) {
+			StringBundler sb = null;
+
+			if (orderByComparator != null) {
+				sb = new StringBundler(
+					3 + (orderByComparator.getOrderByFields().length * 2));
+			}
+			else {
+				sb = new StringBundler(3);
+			}
+
+			sb.append(_SQL_SELECT_VISITDEFINITION_WHERE);
+
+			boolean bindVisitDefinitionCode = false;
+
+			if (visitDefinitionCode.isEmpty()) {
+				sb.append(
+					_FINDER_COLUMN_VISITDEFINITIONCODE_VISITDEFINITIONCODE_3);
+			}
+			else {
+				bindVisitDefinitionCode = true;
+
+				sb.append(
+					_FINDER_COLUMN_VISITDEFINITIONCODE_VISITDEFINITIONCODE_2);
+			}
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(
+					sb, _ORDER_BY_ENTITY_ALIAS, orderByComparator);
+			}
+			else {
+				sb.append(VisitDefinitionModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = sb.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query query = session.createQuery(sql);
+
+				QueryPos queryPos = QueryPos.getInstance(query);
+
+				if (bindVisitDefinitionCode) {
+					queryPos.add(visitDefinitionCode);
+				}
+
+				list = (List<VisitDefinition>)QueryUtil.list(
+					query, getDialect(), start, end);
+
+				cacheResult(list);
+
+				if (useFinderCache) {
+					finderCache.putResult(finderPath, finderArgs, list);
+				}
+			}
+			catch (Exception exception) {
+				if (useFinderCache) {
+					finderCache.removeResult(finderPath, finderArgs);
+				}
+
+				throw processException(exception);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first visit definition in the ordered set where visitDefinitionCode = &#63;.
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching visit definition
+	 * @throws NoSuchVisitDefinitionException if a matching visit definition could not be found
+	 */
+	@Override
+	public VisitDefinition findByVisitDefinitionCode_First(
+			String visitDefinitionCode,
+			OrderByComparator<VisitDefinition> orderByComparator)
+		throws NoSuchVisitDefinitionException {
+
+		VisitDefinition visitDefinition = fetchByVisitDefinitionCode_First(
+			visitDefinitionCode, orderByComparator);
+
+		if (visitDefinition != null) {
+			return visitDefinition;
+		}
+
+		StringBundler sb = new StringBundler(4);
+
+		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		sb.append("visitDefinitionCode=");
+		sb.append(visitDefinitionCode);
+
+		sb.append("}");
+
+		throw new NoSuchVisitDefinitionException(sb.toString());
+	}
+
+	/**
+	 * Returns the first visit definition in the ordered set where visitDefinitionCode = &#63;.
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching visit definition, or <code>null</code> if a matching visit definition could not be found
+	 */
+	@Override
+	public VisitDefinition fetchByVisitDefinitionCode_First(
+		String visitDefinitionCode,
+		OrderByComparator<VisitDefinition> orderByComparator) {
+
+		List<VisitDefinition> list = findByVisitDefinitionCode(
+			visitDefinitionCode, 0, 1, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the last visit definition in the ordered set where visitDefinitionCode = &#63;.
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching visit definition
+	 * @throws NoSuchVisitDefinitionException if a matching visit definition could not be found
+	 */
+	@Override
+	public VisitDefinition findByVisitDefinitionCode_Last(
+			String visitDefinitionCode,
+			OrderByComparator<VisitDefinition> orderByComparator)
+		throws NoSuchVisitDefinitionException {
+
+		VisitDefinition visitDefinition = fetchByVisitDefinitionCode_Last(
+			visitDefinitionCode, orderByComparator);
+
+		if (visitDefinition != null) {
+			return visitDefinition;
+		}
+
+		StringBundler sb = new StringBundler(4);
+
+		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		sb.append("visitDefinitionCode=");
+		sb.append(visitDefinitionCode);
+
+		sb.append("}");
+
+		throw new NoSuchVisitDefinitionException(sb.toString());
+	}
+
+	/**
+	 * Returns the last visit definition in the ordered set where visitDefinitionCode = &#63;.
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching visit definition, or <code>null</code> if a matching visit definition could not be found
+	 */
+	@Override
+	public VisitDefinition fetchByVisitDefinitionCode_Last(
+		String visitDefinitionCode,
+		OrderByComparator<VisitDefinition> orderByComparator) {
+
+		int count = countByVisitDefinitionCode(visitDefinitionCode);
+
+		if (count == 0) {
+			return null;
+		}
+
+		List<VisitDefinition> list = findByVisitDefinitionCode(
+			visitDefinitionCode, count - 1, count, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the visit definitions before and after the current visit definition in the ordered set where visitDefinitionCode = &#63;.
+	 *
+	 * @param visitDefinitionId the primary key of the current visit definition
+	 * @param visitDefinitionCode the visit definition code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next visit definition
+	 * @throws NoSuchVisitDefinitionException if a visit definition with the primary key could not be found
+	 */
+	@Override
+	public VisitDefinition[] findByVisitDefinitionCode_PrevAndNext(
+			long visitDefinitionId, String visitDefinitionCode,
+			OrderByComparator<VisitDefinition> orderByComparator)
+		throws NoSuchVisitDefinitionException {
+
+		visitDefinitionCode = Objects.toString(visitDefinitionCode, "");
+
+		VisitDefinition visitDefinition = findByPrimaryKey(visitDefinitionId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			VisitDefinition[] array = new VisitDefinitionImpl[3];
+
+			array[0] = getByVisitDefinitionCode_PrevAndNext(
+				session, visitDefinition, visitDefinitionCode,
+				orderByComparator, true);
+
+			array[1] = visitDefinition;
+
+			array[2] = getByVisitDefinitionCode_PrevAndNext(
+				session, visitDefinition, visitDefinitionCode,
+				orderByComparator, false);
+
+			return array;
+		}
+		catch (Exception exception) {
+			throw processException(exception);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected VisitDefinition getByVisitDefinitionCode_PrevAndNext(
+		Session session, VisitDefinition visitDefinition,
+		String visitDefinitionCode,
+		OrderByComparator<VisitDefinition> orderByComparator,
+		boolean previous) {
+
+		StringBundler sb = null;
+
+		if (orderByComparator != null) {
+			sb = new StringBundler(
+				4 + (orderByComparator.getOrderByConditionFields().length * 3) +
+					(orderByComparator.getOrderByFields().length * 3));
+		}
+		else {
+			sb = new StringBundler(3);
+		}
+
+		sb.append(_SQL_SELECT_VISITDEFINITION_WHERE);
+
+		boolean bindVisitDefinitionCode = false;
+
+		if (visitDefinitionCode.isEmpty()) {
+			sb.append(_FINDER_COLUMN_VISITDEFINITIONCODE_VISITDEFINITIONCODE_3);
+		}
+		else {
+			bindVisitDefinitionCode = true;
+
+			sb.append(_FINDER_COLUMN_VISITDEFINITIONCODE_VISITDEFINITIONCODE_2);
+		}
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields =
+				orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				sb.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				sb.append(_ORDER_BY_ENTITY_ALIAS);
+				sb.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						sb.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(WHERE_GREATER_THAN);
+					}
+					else {
+						sb.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			sb.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				sb.append(_ORDER_BY_ENTITY_ALIAS);
+				sb.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						sb.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(ORDER_BY_ASC);
+					}
+					else {
+						sb.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+		else {
+			sb.append(VisitDefinitionModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = sb.toString();
+
+		Query query = session.createQuery(sql);
+
+		query.setFirstResult(0);
+		query.setMaxResults(2);
+
+		QueryPos queryPos = QueryPos.getInstance(query);
+
+		if (bindVisitDefinitionCode) {
+			queryPos.add(visitDefinitionCode);
+		}
+
+		if (orderByComparator != null) {
+			for (Object orderByConditionValue :
+					orderByComparator.getOrderByConditionValues(
+						visitDefinition)) {
+
+				queryPos.add(orderByConditionValue);
+			}
+		}
+
+		List<VisitDefinition> list = query.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
+	 * Removes all the visit definitions where visitDefinitionCode = &#63; from the database.
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 */
+	@Override
+	public void removeByVisitDefinitionCode(String visitDefinitionCode) {
+		for (VisitDefinition visitDefinition :
+				findByVisitDefinitionCode(
+					visitDefinitionCode, QueryUtil.ALL_POS, QueryUtil.ALL_POS,
+					null)) {
+
+			remove(visitDefinition);
+		}
+	}
+
+	/**
+	 * Returns the number of visit definitions where visitDefinitionCode = &#63;.
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @return the number of matching visit definitions
+	 */
+	@Override
+	public int countByVisitDefinitionCode(String visitDefinitionCode) {
+		visitDefinitionCode = Objects.toString(visitDefinitionCode, "");
+
+		FinderPath finderPath = _finderPathCountByVisitDefinitionCode;
+
+		Object[] finderArgs = new Object[] {visitDefinitionCode};
+
+		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
+
+		if (count == null) {
+			StringBundler sb = new StringBundler(2);
+
+			sb.append(_SQL_COUNT_VISITDEFINITION_WHERE);
+
+			boolean bindVisitDefinitionCode = false;
+
+			if (visitDefinitionCode.isEmpty()) {
+				sb.append(
+					_FINDER_COLUMN_VISITDEFINITIONCODE_VISITDEFINITIONCODE_3);
+			}
+			else {
+				bindVisitDefinitionCode = true;
+
+				sb.append(
+					_FINDER_COLUMN_VISITDEFINITIONCODE_VISITDEFINITIONCODE_2);
+			}
+
+			String sql = sb.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query query = session.createQuery(sql);
+
+				QueryPos queryPos = QueryPos.getInstance(query);
+
+				if (bindVisitDefinitionCode) {
+					queryPos.add(visitDefinitionCode);
+				}
+
+				count = (Long)query.uniqueResult();
+
+				finderCache.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception exception) {
+				finderCache.removeResult(finderPath, finderArgs);
+
+				throw processException(exception);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String
+		_FINDER_COLUMN_VISITDEFINITIONCODE_VISITDEFINITIONCODE_2 =
+			"visitDefinition.visitDefinitionCode = ?";
+
+	private static final String
+		_FINDER_COLUMN_VISITDEFINITIONCODE_VISITDEFINITIONCODE_3 =
+			"(visitDefinition.visitDefinitionCode IS NULL OR visitDefinition.visitDefinitionCode = '')";
+
 	public VisitDefinitionPersistenceImpl() {
 		Map<String, String> dbColumnNames = new HashMap<String, String>();
 
@@ -4969,6 +5535,15 @@ public class VisitDefinitionPersistenceImpl
 			finderCache.removeResult(
 				_finderPathWithoutPaginationFindByVisitCRFId, args);
 
+			args = new Object[] {
+				visitDefinitionModelImpl.getVisitDefinitionCode()
+			};
+
+			finderCache.removeResult(
+				_finderPathCountByVisitDefinitionCode, args);
+			finderCache.removeResult(
+				_finderPathWithoutPaginationFindByVisitDefinitionCode, args);
+
 			finderCache.removeResult(_finderPathCountAll, FINDER_ARGS_EMPTY);
 			finderCache.removeResult(
 				_finderPathWithoutPaginationFindAll, FINDER_ARGS_EMPTY);
@@ -5134,6 +5709,31 @@ public class VisitDefinitionPersistenceImpl
 				finderCache.removeResult(_finderPathCountByVisitCRFId, args);
 				finderCache.removeResult(
 					_finderPathWithoutPaginationFindByVisitCRFId, args);
+			}
+
+			if ((visitDefinitionModelImpl.getColumnBitmask() &
+				 _finderPathWithoutPaginationFindByVisitDefinitionCode.
+					 getColumnBitmask()) != 0) {
+
+				Object[] args = new Object[] {
+					visitDefinitionModelImpl.getOriginalVisitDefinitionCode()
+				};
+
+				finderCache.removeResult(
+					_finderPathCountByVisitDefinitionCode, args);
+				finderCache.removeResult(
+					_finderPathWithoutPaginationFindByVisitDefinitionCode,
+					args);
+
+				args = new Object[] {
+					visitDefinitionModelImpl.getVisitDefinitionCode()
+				};
+
+				finderCache.removeResult(
+					_finderPathCountByVisitDefinitionCode, args);
+				finderCache.removeResult(
+					_finderPathWithoutPaginationFindByVisitDefinitionCode,
+					args);
 			}
 		}
 
@@ -5604,6 +6204,26 @@ public class VisitDefinitionPersistenceImpl
 			entityCacheEnabled, finderCacheEnabled, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByVisitCRFId",
 			new String[] {Long.class.getName()});
+
+		_finderPathWithPaginationFindByVisitDefinitionCode = new FinderPath(
+			entityCacheEnabled, finderCacheEnabled, VisitDefinitionImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByVisitDefinitionCode",
+			new String[] {
+				String.class.getName(), Integer.class.getName(),
+				Integer.class.getName(), OrderByComparator.class.getName()
+			});
+
+		_finderPathWithoutPaginationFindByVisitDefinitionCode = new FinderPath(
+			entityCacheEnabled, finderCacheEnabled, VisitDefinitionImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
+			"findByVisitDefinitionCode", new String[] {String.class.getName()},
+			VisitDefinitionModelImpl.VISITDEFINITIONCODE_COLUMN_BITMASK);
+
+		_finderPathCountByVisitDefinitionCode = new FinderPath(
+			entityCacheEnabled, finderCacheEnabled, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
+			"countByVisitDefinitionCode",
+			new String[] {String.class.getName()});
 
 		_setVisitDefinitionUtilPersistence(this);
 	}
