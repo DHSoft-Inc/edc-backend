@@ -155,9 +155,11 @@ public class VisitDefinitionModelImpl
 
 	public static final long VISITCRFID_COLUMN_BITMASK = 32L;
 
-	public static final long VISITGROUPID_COLUMN_BITMASK = 64L;
+	public static final long VISITDEFINITIONCODE_COLUMN_BITMASK = 64L;
 
-	public static final long VISITDEFINITIONID_COLUMN_BITMASK = 128L;
+	public static final long VISITGROUPID_COLUMN_BITMASK = 128L;
+
+	public static final long VISITDEFINITIONID_COLUMN_BITMASK = 256L;
 
 	public static void setEntityCacheEnabled(boolean entityCacheEnabled) {
 		_entityCacheEnabled = entityCacheEnabled;
@@ -749,7 +751,17 @@ public class VisitDefinitionModelImpl
 
 	@Override
 	public void setVisitDefinitionCode(String visitDefinitionCode) {
+		_columnBitmask |= VISITDEFINITIONCODE_COLUMN_BITMASK;
+
+		if (_originalVisitDefinitionCode == null) {
+			_originalVisitDefinitionCode = _visitDefinitionCode;
+		}
+
 		_visitDefinitionCode = visitDefinitionCode;
+	}
+
+	public String getOriginalVisitDefinitionCode() {
+		return GetterUtil.getString(_originalVisitDefinitionCode);
 	}
 
 	@JSON
@@ -1248,6 +1260,8 @@ public class VisitDefinitionModelImpl
 
 		_setModifiedDate = false;
 
+		_originalVisitDefinitionCode = _visitDefinitionCode;
+
 		_originalVisitCRFId = _visitCRFId;
 
 		_setOriginalVisitCRFId = false;
@@ -1491,6 +1505,7 @@ public class VisitDefinitionModelImpl
 	private String _statusByUserName;
 	private Date _statusDate;
 	private String _visitDefinitionCode;
+	private String _originalVisitDefinitionCode;
 	private String _name;
 	private int _order;
 	private String _anchorType;

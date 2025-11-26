@@ -1571,6 +1571,182 @@ public class VisitDefinitionUtil {
 	}
 
 	/**
+	 * Returns all the visit definitions where visitDefinitionCode = &#63;.
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @return the matching visit definitions
+	 */
+	public static List<VisitDefinition> findByVisitDefinitionCode(
+		String visitDefinitionCode) {
+
+		return getPersistence().findByVisitDefinitionCode(visitDefinitionCode);
+	}
+
+	/**
+	 * Returns a range of all the visit definitions where visitDefinitionCode = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>VisitDefinitionModelImpl</code>.
+	 * </p>
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @param start the lower bound of the range of visit definitions
+	 * @param end the upper bound of the range of visit definitions (not inclusive)
+	 * @return the range of matching visit definitions
+	 */
+	public static List<VisitDefinition> findByVisitDefinitionCode(
+		String visitDefinitionCode, int start, int end) {
+
+		return getPersistence().findByVisitDefinitionCode(
+			visitDefinitionCode, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the visit definitions where visitDefinitionCode = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>VisitDefinitionModelImpl</code>.
+	 * </p>
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @param start the lower bound of the range of visit definitions
+	 * @param end the upper bound of the range of visit definitions (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching visit definitions
+	 */
+	public static List<VisitDefinition> findByVisitDefinitionCode(
+		String visitDefinitionCode, int start, int end,
+		OrderByComparator<VisitDefinition> orderByComparator) {
+
+		return getPersistence().findByVisitDefinitionCode(
+			visitDefinitionCode, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the visit definitions where visitDefinitionCode = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>VisitDefinitionModelImpl</code>.
+	 * </p>
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @param start the lower bound of the range of visit definitions
+	 * @param end the upper bound of the range of visit definitions (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching visit definitions
+	 */
+	public static List<VisitDefinition> findByVisitDefinitionCode(
+		String visitDefinitionCode, int start, int end,
+		OrderByComparator<VisitDefinition> orderByComparator,
+		boolean useFinderCache) {
+
+		return getPersistence().findByVisitDefinitionCode(
+			visitDefinitionCode, start, end, orderByComparator, useFinderCache);
+	}
+
+	/**
+	 * Returns the first visit definition in the ordered set where visitDefinitionCode = &#63;.
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching visit definition
+	 * @throws NoSuchVisitDefinitionException if a matching visit definition could not be found
+	 */
+	public static VisitDefinition findByVisitDefinitionCode_First(
+			String visitDefinitionCode,
+			OrderByComparator<VisitDefinition> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchVisitDefinitionException {
+
+		return getPersistence().findByVisitDefinitionCode_First(
+			visitDefinitionCode, orderByComparator);
+	}
+
+	/**
+	 * Returns the first visit definition in the ordered set where visitDefinitionCode = &#63;.
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching visit definition, or <code>null</code> if a matching visit definition could not be found
+	 */
+	public static VisitDefinition fetchByVisitDefinitionCode_First(
+		String visitDefinitionCode,
+		OrderByComparator<VisitDefinition> orderByComparator) {
+
+		return getPersistence().fetchByVisitDefinitionCode_First(
+			visitDefinitionCode, orderByComparator);
+	}
+
+	/**
+	 * Returns the last visit definition in the ordered set where visitDefinitionCode = &#63;.
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching visit definition
+	 * @throws NoSuchVisitDefinitionException if a matching visit definition could not be found
+	 */
+	public static VisitDefinition findByVisitDefinitionCode_Last(
+			String visitDefinitionCode,
+			OrderByComparator<VisitDefinition> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchVisitDefinitionException {
+
+		return getPersistence().findByVisitDefinitionCode_Last(
+			visitDefinitionCode, orderByComparator);
+	}
+
+	/**
+	 * Returns the last visit definition in the ordered set where visitDefinitionCode = &#63;.
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching visit definition, or <code>null</code> if a matching visit definition could not be found
+	 */
+	public static VisitDefinition fetchByVisitDefinitionCode_Last(
+		String visitDefinitionCode,
+		OrderByComparator<VisitDefinition> orderByComparator) {
+
+		return getPersistence().fetchByVisitDefinitionCode_Last(
+			visitDefinitionCode, orderByComparator);
+	}
+
+	/**
+	 * Returns the visit definitions before and after the current visit definition in the ordered set where visitDefinitionCode = &#63;.
+	 *
+	 * @param visitDefinitionId the primary key of the current visit definition
+	 * @param visitDefinitionCode the visit definition code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next visit definition
+	 * @throws NoSuchVisitDefinitionException if a visit definition with the primary key could not be found
+	 */
+	public static VisitDefinition[] findByVisitDefinitionCode_PrevAndNext(
+			long visitDefinitionId, String visitDefinitionCode,
+			OrderByComparator<VisitDefinition> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchVisitDefinitionException {
+
+		return getPersistence().findByVisitDefinitionCode_PrevAndNext(
+			visitDefinitionId, visitDefinitionCode, orderByComparator);
+	}
+
+	/**
+	 * Removes all the visit definitions where visitDefinitionCode = &#63; from the database.
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 */
+	public static void removeByVisitDefinitionCode(String visitDefinitionCode) {
+		getPersistence().removeByVisitDefinitionCode(visitDefinitionCode);
+	}
+
+	/**
+	 * Returns the number of visit definitions where visitDefinitionCode = &#63;.
+	 *
+	 * @param visitDefinitionCode the visit definition code
+	 * @return the number of matching visit definitions
+	 */
+	public static int countByVisitDefinitionCode(String visitDefinitionCode) {
+		return getPersistence().countByVisitDefinitionCode(visitDefinitionCode);
+	}
+
+	/**
 	 * Caches the visit definition in the entity cache if it is enabled.
 	 *
 	 * @param visitDefinition the visit definition

@@ -421,6 +421,10 @@
     		<finder-column name="visitCRFId" />
     	</finder>  
     	
+    	<finder name="VisitDefinitionCode" return-type="Collection">
+        	<finder-column name="visitDefinitionCode" />
+    	</finder>
+    	
         <!-- Reference -->
  		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
 		<reference entity="AssetLink" package-path="com.liferay.portlet.asset" />

@@ -226,6 +226,12 @@ public class ExperimentalGroupLocalServiceUtil {
 		return getService().getActionableDynamicQuery();
 	}
 
+	public static List<ExperimentalGroup> getByGroupAndProject(
+		long groupId, long projectId) {
+
+		return getService().getByGroupAndProject(groupId, projectId);
+	}
+
 	/**
 	 * Returns the experimental group with the primary key.
 	 *

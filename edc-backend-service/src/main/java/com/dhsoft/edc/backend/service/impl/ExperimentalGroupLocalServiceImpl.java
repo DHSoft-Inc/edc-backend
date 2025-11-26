@@ -18,6 +18,8 @@ import com.dhsoft.edc.backend.model.ExperimentalGroup;
 import com.dhsoft.edc.backend.service.base.ExperimentalGroupLocalServiceBaseImpl;
 import com.liferay.portal.aop.AopService;
 
+import java.util.List;
+
 import org.osgi.service.component.annotations.Component;
 
 /**
@@ -37,4 +39,9 @@ public class ExperimentalGroupLocalServiceImpl
 			return null;
 		}
 	}
+	
+	public List<ExperimentalGroup> getByGroupAndProject(long groupId, long projectId) {
+	    return experimentalGroupPersistence.findByG_P(groupId, projectId);
+	}
+
 }

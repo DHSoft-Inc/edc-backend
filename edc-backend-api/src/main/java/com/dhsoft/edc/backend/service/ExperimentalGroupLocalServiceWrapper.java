@@ -245,6 +245,14 @@ public class ExperimentalGroupLocalServiceWrapper
 		return _experimentalGroupLocalService.getActionableDynamicQuery();
 	}
 
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.ExperimentalGroup>
+		getByGroupAndProject(long groupId, long projectId) {
+
+		return _experimentalGroupLocalService.getByGroupAndProject(
+			groupId, projectId);
+	}
+
 	/**
 	 * Returns the experimental group with the primary key.
 	 *

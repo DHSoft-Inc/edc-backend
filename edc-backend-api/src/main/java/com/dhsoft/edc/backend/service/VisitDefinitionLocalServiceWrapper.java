@@ -33,20 +33,6 @@ public class VisitDefinitionLocalServiceWrapper
 		_visitDefinitionLocalService = visitDefinitionLocalService;
 	}
 
-	@Override
-	public void addVisitDefinition(
-		long companyId, long groupId, long projectId, long visitGroupId,
-		long userId, String userName, int status, long statusByUserId,
-		String statusByUserName, java.util.Date statusDate, String anchorType,
-		int offset, int windowMinus, int windowPlus, int type, int repeatCount,
-		long visitCRFId) {
-
-		_visitDefinitionLocalService.addVisitDefinition(
-			companyId, groupId, projectId, visitGroupId, userId, userName,
-			status, statusByUserId, statusByUserName, statusDate, anchorType,
-			offset, windowMinus, windowPlus, type, repeatCount, visitCRFId);
-	}
-
 	/**
 	 * Adds the visit definition to the database. Also notifies the appropriate model listeners.
 	 *
@@ -65,6 +51,22 @@ public class VisitDefinitionLocalServiceWrapper
 	}
 
 	/**
+	 * ADD: VisitDefinition ����
+	 */
+	@Override
+	public com.dhsoft.edc.backend.model.VisitDefinition
+			addVisitDefinitionForGroup(
+				long companyId, long groupId, long userId, String userName,
+				long experimentalGroupId, String name, int offset,
+				int windowMinus, int windowPlus)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _visitDefinitionLocalService.addVisitDefinitionForGroup(
+			companyId, groupId, userId, userName, experimentalGroupId, name,
+			offset, windowMinus, windowPlus);
+	}
+
+	/**
 	 * Creates a new visit definition with the primary key. Does not add the visit definition to the database.
 	 *
 	 * @param visitDefinitionId the primary key for the new visit definition
@@ -76,11 +78,6 @@ public class VisitDefinitionLocalServiceWrapper
 
 		return _visitDefinitionLocalService.createVisitDefinition(
 			visitDefinitionId);
-	}
-
-	@Override
-	public void deleteDefinition(long visitDefinitionId) {
-		_visitDefinitionLocalService.deleteDefinition(visitDefinitionId);
 	}
 
 	/**
@@ -131,6 +128,18 @@ public class VisitDefinitionLocalServiceWrapper
 
 		return _visitDefinitionLocalService.deleteVisitDefinition(
 			visitDefinition);
+	}
+
+	/**
+	 * DELETE
+	 */
+	@Override
+	public com.dhsoft.edc.backend.model.VisitDefinition
+			deleteVisitDefinitionById(long visitDefinitionId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _visitDefinitionLocalService.deleteVisitDefinitionById(
+			visitDefinitionId);
 	}
 
 	@Override
@@ -252,6 +261,19 @@ public class VisitDefinitionLocalServiceWrapper
 		getActionableDynamicQuery() {
 
 		return _visitDefinitionLocalService.getActionableDynamicQuery();
+	}
+
+	/**
+	 * GET: ���豺 ID�� visitDefinition ��������
+	 * experimentalGroupId �� expCode �� visitDefinitionCode
+	 */
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.VisitDefinition>
+			getByExperimentalGroup(long experimentalGroupId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _visitDefinitionLocalService.getByExperimentalGroup(
+			experimentalGroupId);
 	}
 
 	@Override
@@ -408,6 +430,20 @@ public class VisitDefinitionLocalServiceWrapper
 
 		return _visitDefinitionLocalService.updateVisitDefinition(
 			visitDefinition);
+	}
+
+	/**
+	 * UPDATE
+	 */
+	@Override
+	public com.dhsoft.edc.backend.model.VisitDefinition
+			updateVisitDefinitionBasic(
+				long visitDefinitionId, String name, int offset,
+				int windowMinus, int windowPlus)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _visitDefinitionLocalService.updateVisitDefinitionBasic(
+			visitDefinitionId, name, offset, windowMinus, windowPlus);
 	}
 
 	@Override
