@@ -223,6 +223,16 @@ public class InstanceLinkLocalServiceWrapper
 	}
 
 	@Override
+	public com.dhsoft.edc.backend.model.InstanceLink findByS_VG_VD_VC_S_I(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, long subCRFId, long instanceId) {
+
+		return _instanceLinkLocalService.findByS_VG_VD_VC_S_I(
+			subjectId, visitGroupId, visitDefinitionId, visitCRFId, subCRFId,
+			instanceId);
+	}
+
+	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
