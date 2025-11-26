@@ -200,6 +200,10 @@ public interface InstanceLinkLocalService
 	public InstanceLink fetchInstanceLinkByUuidAndGroupId(
 		String uuid, long groupId);
 
+	public InstanceLink findByS_VG_VD_VC_S_I(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, long subCRFId, long instanceId);
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
 

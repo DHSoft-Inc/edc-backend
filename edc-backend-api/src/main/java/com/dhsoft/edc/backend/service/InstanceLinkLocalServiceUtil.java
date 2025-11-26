@@ -204,6 +204,15 @@ public class InstanceLinkLocalServiceUtil {
 		return getService().fetchInstanceLinkByUuidAndGroupId(uuid, groupId);
 	}
 
+	public static InstanceLink findByS_VG_VD_VC_S_I(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, long subCRFId, long instanceId) {
+
+		return getService().findByS_VG_VD_VC_S_I(
+			subjectId, visitGroupId, visitDefinitionId, visitCRFId, subCRFId,
+			instanceId);
+	}
+
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
