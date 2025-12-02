@@ -14,22 +14,13 @@
 
 package com.dhsoft.edc.backend.service.http;
 
-import com.dhsoft.edc.backend.service.SubjectVisitDefinitionServiceUtil;
-
-import com.liferay.portal.kernel.log.Log;
-import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.liferay.portal.kernel.security.auth.HttpPrincipal;
-import com.liferay.portal.kernel.service.http.TunnelUtil;
-import com.liferay.portal.kernel.util.MethodHandler;
-import com.liferay.portal.kernel.util.MethodKey;
-
 /**
  * Provides the HTTP utility for the
- * <code>SubjectVisitDefinitionServiceUtil</code> service
+ * <code>com.dhsoft.edc.backend.service.SubjectVisitDefinitionServiceUtil</code> service
  * utility. The
  * static methods of this class calls the same methods of the service utility.
  * However, the signatures are different because it requires an additional
- * <code>HttpPrincipal</code> parameter.
+ * <code>com.liferay.portal.kernel.security.auth.HttpPrincipal</code> parameter.
  *
  * <p>
  * The benefits of using the HTTP utility is that it is fast and allows for
@@ -51,45 +42,4 @@ import com.liferay.portal.kernel.util.MethodKey;
  * @generated
  */
 public class SubjectVisitDefinitionServiceHttp {
-
-	public static java.util.List
-		<com.dhsoft.edc.backend.model.SubjectVisitDefinition> findBySubjectId(
-			HttpPrincipal httpPrincipal, long SubjectId) {
-
-		try {
-			MethodKey methodKey = new MethodKey(
-				SubjectVisitDefinitionServiceUtil.class, "findBySubjectId",
-				_findBySubjectIdParameterTypes0);
-
-			MethodHandler methodHandler = new MethodHandler(
-				methodKey, SubjectId);
-
-			Object returnObj = null;
-
-			try {
-				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
-			}
-			catch (Exception exception) {
-				throw new com.liferay.portal.kernel.exception.SystemException(
-					exception);
-			}
-
-			return (java.util.List
-				<com.dhsoft.edc.backend.model.SubjectVisitDefinition>)returnObj;
-		}
-		catch (com.liferay.portal.kernel.exception.SystemException
-					systemException) {
-
-			_log.error(systemException, systemException);
-
-			throw systemException;
-		}
-	}
-
-	private static Log _log = LogFactoryUtil.getLog(
-		SubjectVisitDefinitionServiceHttp.class);
-
-	private static final Class<?>[] _findBySubjectIdParameterTypes0 =
-		new Class[] {long.class};
-
 }

@@ -62,17 +62,17 @@ public class VisitDefinitionLocalServiceUtil {
 	}
 
 	/**
-	 * ADD: VisitDefinition 생성
+	 * ADD: VisitDefinition ����
 	 */
 	public static VisitDefinition addVisitDefinitionForGroup(
 			long companyId, long groupId, long userId, String userName,
-			long experimentalGroupId, String name, String anchorType,
-			int offset, int windowMinus, int windowPlus)
+			long experimentalGroupId, String name, int offset, int windowMinus,
+			int windowPlus)
 		throws PortalException {
 
 		return getService().addVisitDefinitionForGroup(
 			companyId, groupId, userId, userName, experimentalGroupId, name,
-			anchorType, offset, windowMinus, windowPlus);
+			offset, windowMinus, windowPlus);
 	}
 
 	/**
@@ -241,24 +241,14 @@ public class VisitDefinitionLocalServiceUtil {
 	}
 
 	/**
-	 * GET: 실험군 ID로 visitDefinition 가져오기
-	 * experimentalGroupId → expCode → visitDefinitionCode
+	 * GET: ���豺 ID�� visitDefinition ��������
+	 * experimentalGroupId �� expCode �� visitDefinitionCode
 	 */
 	public static List<VisitDefinition> getByExperimentalGroup(
 			long experimentalGroupId)
 		throws PortalException {
 
 		return getService().getByExperimentalGroup(experimentalGroupId);
-	}
-
-	public static List<VisitDefinition> getByVisitDefinitionCode(
-		String visitDefinitionCode) {
-
-		return getService().getByVisitDefinitionCode(visitDefinitionCode);
-	}
-
-	public static List<VisitDefinition> getByVisitGroupId(long visitGroupId) {
-		return getService().getByVisitGroupId(visitGroupId);
 	}
 
 	public static com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery
@@ -400,22 +390,12 @@ public class VisitDefinitionLocalServiceUtil {
 	 * UPDATE
 	 */
 	public static VisitDefinition updateVisitDefinitionBasic(
-			long visitDefinitionId, String name, String anchorType, int offset,
-			int windowMinus, int windowPlus)
+			long visitDefinitionId, String name, int offset, int windowMinus,
+			int windowPlus)
 		throws PortalException {
 
 		return getService().updateVisitDefinitionBasic(
-			visitDefinitionId, name, anchorType, offset, windowMinus,
-			windowPlus);
-	}
-
-	public static VisitDefinition updateVisitDefinitionFull(
-		long visitDefinitionId, String name, String anchorType, int offset,
-		int windowMinus, int windowPlus) {
-
-		return getService().updateVisitDefinitionFull(
-			visitDefinitionId, name, anchorType, offset, windowMinus,
-			windowPlus);
+			visitDefinitionId, name, offset, windowMinus, windowPlus);
 	}
 
 	public static VisitDefinitionLocalService getService() {

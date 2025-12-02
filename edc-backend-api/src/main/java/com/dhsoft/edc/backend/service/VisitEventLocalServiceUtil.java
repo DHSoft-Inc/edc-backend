@@ -219,13 +219,6 @@ public class VisitEventLocalServiceUtil {
 		return getService().findBySubjectId(subjectId);
 	}
 
-	public static List<VisitEvent> findBySubjectIdAndVisitDefinitionId(
-		long subjectId, long visitDefinitionId) {
-
-		return getService().findBySubjectIdAndVisitDefinitionId(
-			subjectId, visitDefinitionId);
-	}
-
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
@@ -346,15 +339,6 @@ public class VisitEventLocalServiceUtil {
 	 */
 	public static int getVisitEventsCount() {
 		return getService().getVisitEventsCount();
-	}
-
-	public static VisitEvent saveOrUpdateVisitEvent(
-		long subjectId, long visitDefinitionId, String anchorType, int offset,
-		java.util.Date anchorDate, java.util.Date planDate) {
-
-		return getService().saveOrUpdateVisitEvent(
-			subjectId, visitDefinitionId, anchorType, offset, anchorDate,
-			planDate);
 	}
 
 	public static void updateCRFData(long visitEventId, long structuredDataId) {

@@ -43,8 +43,5 @@ public class ExperimentalGroupLocalServiceImpl
 	public List<ExperimentalGroup> getByGroupAndProject(long groupId, long projectId) {
 	    return experimentalGroupPersistence.findByG_P(groupId, projectId);
 	}
-	
-	public List<ExperimentalGroup> getByGroupId(long groupId) {
-	    return experimentalGroupPersistence.findByGroupId(groupId);
-	}
+
 }

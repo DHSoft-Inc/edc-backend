@@ -78,12 +78,12 @@ public interface VisitDefinitionLocalService
 	public VisitDefinition addVisitDefinition(VisitDefinition visitDefinition);
 
 	/**
-	 * ADD: VisitDefinition 생성
+	 * ADD: VisitDefinition ����
 	 */
 	public VisitDefinition addVisitDefinitionForGroup(
 			long companyId, long groupId, long userId, String userName,
-			long experimentalGroupId, String name, String anchorType,
-			int offset, int windowMinus, int windowPlus)
+			long experimentalGroupId, String name, int offset, int windowMinus,
+			int windowPlus)
 		throws PortalException;
 
 	/**
@@ -221,20 +221,13 @@ public interface VisitDefinitionLocalService
 	public ActionableDynamicQuery getActionableDynamicQuery();
 
 	/**
-	 * GET: 실험군 ID로 visitDefinition 가져오기
-	 * experimentalGroupId → expCode → visitDefinitionCode
+	 * GET: ���豺 ID�� visitDefinition ��������
+	 * experimentalGroupId �� expCode �� visitDefinitionCode
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<VisitDefinition> getByExperimentalGroup(
 			long experimentalGroupId)
 		throws PortalException;
-
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<VisitDefinition> getByVisitDefinitionCode(
-		String visitDefinitionCode);
-
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<VisitDefinition> getByVisitGroupId(long visitGroupId);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ExportActionableDynamicQuery getExportActionableDynamicQuery(
@@ -348,12 +341,8 @@ public interface VisitDefinitionLocalService
 	 * UPDATE
 	 */
 	public VisitDefinition updateVisitDefinitionBasic(
-			long visitDefinitionId, String name, String anchorType, int offset,
-			int windowMinus, int windowPlus)
+			long visitDefinitionId, String name, int offset, int windowMinus,
+			int windowPlus)
 		throws PortalException;
-
-	public VisitDefinition updateVisitDefinitionFull(
-		long visitDefinitionId, String name, String anchorType, int offset,
-		int windowMinus, int windowPlus);
 
 }

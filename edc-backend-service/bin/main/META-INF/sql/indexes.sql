@@ -102,7 +102,7 @@ create index IX_34699FCC on EDC_VisitDefinition (visitGroupId);
 create index IX_55C2918 on EDC_VisitEvent (companyId);
 create index IX_5624AAEA on EDC_VisitEvent (groupId, projectId);
 create index IX_B3E2AE05 on EDC_VisitEvent (institutionId, subjectId, visitDefinitionId);
-create index IX_6E40A082 on EDC_VisitEvent (subjectId, visitDefinitionId);
+create index IX_FFB55247 on EDC_VisitEvent (subjectId);
 create index IX_1FE6D94A on EDC_VisitEvent (userId);
 create index IX_A3C1EF04 on EDC_VisitEvent (uuid_[$COLUMN_LENGTH:75$], companyId);
 create unique index IX_E4426686 on EDC_VisitEvent (uuid_[$COLUMN_LENGTH:75$], groupId);

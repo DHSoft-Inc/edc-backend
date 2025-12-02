@@ -1,7 +1,6 @@
 package com.dhsoft.edc.backend.service.impl;
 
 import com.dhsoft.edc.backend.model.ExperimentalGroup;
-import com.dhsoft.edc.backend.model.SubjectVisitDefinition;
 import com.dhsoft.edc.backend.model.VisitDefinition;
 import com.dhsoft.edc.backend.service.ExperimentalGroupLocalService;
 import com.dhsoft.edc.backend.service.base.VisitDefinitionLocalServiceBaseImpl;
@@ -27,8 +26,8 @@ import org.osgi.service.component.annotations.Reference;
 	    private ExperimentalGroupLocalService _experimentalGroupLocalService;
 
 	    /**
-	     * GET: Ïã§ÌóòÍµ∞ IDÎ°ú visitDefinition Í∞ÄÏ†∏Ïò§Í∏∞
-	     * experimentalGroupId ‚Üí expCode ‚Üí visitDefinitionCode
+	     * GET: Ω««Ë±∫ ID∑Œ visitDefinition ∞°¡Æø¿±‚
+	     * experimentalGroupId °Ê expCode °Ê visitDefinitionCode
 	     */
 	    public List<VisitDefinition> getByExperimentalGroup(long experimentalGroupId)
 	            throws PortalException {
@@ -42,7 +41,7 @@ import org.osgi.service.component.annotations.Reference;
 	    }
 
 	    /**
-	     * ADD: VisitDefinition ÏÉùÏÑ±
+	     * ADD: VisitDefinition ª˝º∫
 	     */
 	    public VisitDefinition addVisitDefinitionForGroup(
 	            long companyId,
@@ -51,7 +50,6 @@ import org.osgi.service.component.annotations.Reference;
 	            String userName,
 	            long experimentalGroupId,
 	            String name,
-	            String anchorType,
 	            int offset,
 	            int windowMinus,
 	            int windowPlus
@@ -81,13 +79,12 @@ import org.osgi.service.component.annotations.Reference;
 	        vd.setStatusByUserName(userName);
 	        vd.setStatusDate(now);
 
-	        // ÌïµÏã¨ Îß§Ìïë
+	        // «ŸΩ… ∏≈«Œ
 	        vd.setVisitDefinitionCode(expGroup.getExpCode());
 	        vd.setVisitGroupId(experimentalGroupId);
 
-	        // ÏóîÌã∞Ìã∞ Îç∞Ïù¥ÌÑ∞
+	        // ø£∆º∆º µ•¿Ã≈Õ
 	        vd.setName(name);
-	        vd.setAnchorType(anchorType);
 	        vd.setOffset(offset);
 	        vd.setWindowMinus(windowMinus);
 	        vd.setWindowPlus(windowPlus);
@@ -105,37 +102,15 @@ import org.osgi.service.component.annotations.Reference;
 	    public VisitDefinition updateVisitDefinitionBasic(
 	            long visitDefinitionId,
 	            String name,
-	            String anchorType,
 	            int offset,
 	            int windowMinus,
 	            int windowPlus
 	    ) throws PortalException {
 
-	        VisitDefinition vd = visitDefinitionPersistence.findByPrimaryKey(visitDefinitionId);
-
-	        vd.setName(name);
-	        vd.setAnchorType(anchorType);
-	        vd.setOffset(offset);
-	        vd.setWindowMinus(windowMinus);
-	        vd.setWindowPlus(windowPlus);
-	        vd.setModifiedDate(new Date());
-
-	        return visitDefinitionPersistence.update(vd);
-	    }
-	    
-	    public VisitDefinition updateVisitDefinitionFull(
-	            long visitDefinitionId,
-	            String name,
-	            String anchorType,
-	            int offset,
-	            int windowMinus,
-	            int windowPlus) {
-
 	        VisitDefinition vd =
-	            visitDefinitionPersistence.fetchByPrimaryKey(visitDefinitionId);
+	                visitDefinitionPersistence.findByPrimaryKey(visitDefinitionId);
 
 	        vd.setName(name);
-	        vd.setAnchorType(anchorType);   // üî• Ïù¥ Ï§ÑÏù¥ Íº≠ ÏûàÏñ¥Ïïº Ìï®
 	        vd.setOffset(offset);
 	        vd.setWindowMinus(windowMinus);
 	        vd.setWindowPlus(windowPlus);
@@ -152,14 +127,4 @@ import org.osgi.service.component.annotations.Reference;
 
 	        return visitDefinitionPersistence.remove(visitDefinitionId);
 	    }
-	    
-	    public List<VisitDefinition> getByVisitGroupId(long visitGroupId) {
-	        // service.xml Ïóê finder name="VisitGroupId" ÏûàÏúºÎãàÍπå ÏïÑÎûò Î©îÏÜåÎìúÍ∞Ä ÏûêÎèô ÏÉùÏÑ±Îê®
-	        return visitDefinitionPersistence.findByVisitGroupId(visitGroupId);
-	    }
-	    
-	    public List<VisitDefinition> getByVisitDefinitionCode(String visitDefinitionCode) {
-	        return visitDefinitionPersistence.findByVisitDefinitionCode(visitDefinitionCode);
-	    }
-
 	}
