@@ -389,444 +389,1008 @@ public interface QueryLinkPersistence extends BasePersistence<QueryLink> {
 	public int countByUuid_C(String uuid, long companyId);
 
 	/**
-	 * Returns all the query links where companyId = &#63;.
+	 * Returns all the query links where subjectId = &#63;.
 	 *
-	 * @param companyId the company ID
+	 * @param subjectId the subject ID
 	 * @return the matching query links
 	 */
-	public java.util.List<QueryLink> findByCompanyId(long companyId);
+	public java.util.List<QueryLink> findBySubjectId(long subjectId);
 
 	/**
-	 * Returns a range of all the query links where companyId = &#63;.
+	 * Returns a range of all the query links where subjectId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
 	 * </p>
 	 *
-	 * @param companyId the company ID
+	 * @param subjectId the subject ID
 	 * @param start the lower bound of the range of query links
 	 * @param end the upper bound of the range of query links (not inclusive)
 	 * @return the range of matching query links
 	 */
-	public java.util.List<QueryLink> findByCompanyId(
-		long companyId, int start, int end);
+	public java.util.List<QueryLink> findBySubjectId(
+		long subjectId, int start, int end);
 
 	/**
-	 * Returns an ordered range of all the query links where companyId = &#63;.
+	 * Returns an ordered range of all the query links where subjectId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
 	 * </p>
 	 *
-	 * @param companyId the company ID
+	 * @param subjectId the subject ID
 	 * @param start the lower bound of the range of query links
 	 * @param end the upper bound of the range of query links (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching query links
 	 */
-	public java.util.List<QueryLink> findByCompanyId(
-		long companyId, int start, int end,
+	public java.util.List<QueryLink> findBySubjectId(
+		long subjectId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
 			orderByComparator);
 
 	/**
-	 * Returns an ordered range of all the query links where companyId = &#63;.
+	 * Returns an ordered range of all the query links where subjectId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
 	 * </p>
 	 *
-	 * @param companyId the company ID
+	 * @param subjectId the subject ID
 	 * @param start the lower bound of the range of query links
 	 * @param end the upper bound of the range of query links (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching query links
 	 */
-	public java.util.List<QueryLink> findByCompanyId(
-		long companyId, int start, int end,
+	public java.util.List<QueryLink> findBySubjectId(
+		long subjectId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
 			orderByComparator,
 		boolean useFinderCache);
 
 	/**
-	 * Returns the first query link in the ordered set where companyId = &#63;.
+	 * Returns the first query link in the ordered set where subjectId = &#63;.
 	 *
-	 * @param companyId the company ID
+	 * @param subjectId the subject ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching query link
 	 * @throws NoSuchQueryLinkException if a matching query link could not be found
 	 */
-	public QueryLink findByCompanyId_First(
-			long companyId,
+	public QueryLink findBySubjectId_First(
+			long subjectId,
 			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
 				orderByComparator)
 		throws NoSuchQueryLinkException;
 
 	/**
-	 * Returns the first query link in the ordered set where companyId = &#63;.
+	 * Returns the first query link in the ordered set where subjectId = &#63;.
 	 *
-	 * @param companyId the company ID
+	 * @param subjectId the subject ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching query link, or <code>null</code> if a matching query link could not be found
 	 */
-	public QueryLink fetchByCompanyId_First(
-		long companyId,
+	public QueryLink fetchBySubjectId_First(
+		long subjectId,
 		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
 			orderByComparator);
 
 	/**
-	 * Returns the last query link in the ordered set where companyId = &#63;.
+	 * Returns the last query link in the ordered set where subjectId = &#63;.
 	 *
-	 * @param companyId the company ID
+	 * @param subjectId the subject ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching query link
 	 * @throws NoSuchQueryLinkException if a matching query link could not be found
 	 */
-	public QueryLink findByCompanyId_Last(
-			long companyId,
+	public QueryLink findBySubjectId_Last(
+			long subjectId,
 			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
 				orderByComparator)
 		throws NoSuchQueryLinkException;
 
 	/**
-	 * Returns the last query link in the ordered set where companyId = &#63;.
+	 * Returns the last query link in the ordered set where subjectId = &#63;.
 	 *
-	 * @param companyId the company ID
+	 * @param subjectId the subject ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching query link, or <code>null</code> if a matching query link could not be found
 	 */
-	public QueryLink fetchByCompanyId_Last(
-		long companyId,
+	public QueryLink fetchBySubjectId_Last(
+		long subjectId,
 		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
 			orderByComparator);
 
 	/**
-	 * Returns the query links before and after the current query link in the ordered set where companyId = &#63;.
+	 * Returns the query links before and after the current query link in the ordered set where subjectId = &#63;.
 	 *
 	 * @param queryId the primary key of the current query link
-	 * @param companyId the company ID
+	 * @param subjectId the subject ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next query link
 	 * @throws NoSuchQueryLinkException if a query link with the primary key could not be found
 	 */
-	public QueryLink[] findByCompanyId_PrevAndNext(
-			long queryId, long companyId,
+	public QueryLink[] findBySubjectId_PrevAndNext(
+			long queryId, long subjectId,
 			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
 				orderByComparator)
 		throws NoSuchQueryLinkException;
 
 	/**
-	 * Removes all the query links where companyId = &#63; from the database.
+	 * Removes all the query links where subjectId = &#63; from the database.
 	 *
-	 * @param companyId the company ID
+	 * @param subjectId the subject ID
 	 */
-	public void removeByCompanyId(long companyId);
+	public void removeBySubjectId(long subjectId);
 
 	/**
-	 * Returns the number of query links where companyId = &#63;.
+	 * Returns the number of query links where subjectId = &#63;.
 	 *
-	 * @param companyId the company ID
+	 * @param subjectId the subject ID
 	 * @return the number of matching query links
 	 */
-	public int countByCompanyId(long companyId);
+	public int countBySubjectId(long subjectId);
 
 	/**
-	 * Returns all the query links where groupId = &#63; and projectId = &#63;.
+	 * Returns all the query links where instanceId = &#63;.
 	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
+	 * @param instanceId the instance ID
 	 * @return the matching query links
 	 */
-	public java.util.List<QueryLink> findByG_P(long groupId, long projectId);
+	public java.util.List<QueryLink> findByInstanceId(long instanceId);
 
 	/**
-	 * Returns a range of all the query links where groupId = &#63; and projectId = &#63;.
+	 * Returns a range of all the query links where instanceId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
 	 * </p>
 	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
+	 * @param instanceId the instance ID
 	 * @param start the lower bound of the range of query links
 	 * @param end the upper bound of the range of query links (not inclusive)
 	 * @return the range of matching query links
 	 */
-	public java.util.List<QueryLink> findByG_P(
-		long groupId, long projectId, int start, int end);
+	public java.util.List<QueryLink> findByInstanceId(
+		long instanceId, int start, int end);
 
 	/**
-	 * Returns an ordered range of all the query links where groupId = &#63; and projectId = &#63;.
+	 * Returns an ordered range of all the query links where instanceId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
 	 * </p>
 	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
+	 * @param instanceId the instance ID
 	 * @param start the lower bound of the range of query links
 	 * @param end the upper bound of the range of query links (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching query links
 	 */
-	public java.util.List<QueryLink> findByG_P(
-		long groupId, long projectId, int start, int end,
+	public java.util.List<QueryLink> findByInstanceId(
+		long instanceId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
 			orderByComparator);
 
 	/**
-	 * Returns an ordered range of all the query links where groupId = &#63; and projectId = &#63;.
+	 * Returns an ordered range of all the query links where instanceId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
 	 * </p>
 	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
+	 * @param instanceId the instance ID
 	 * @param start the lower bound of the range of query links
 	 * @param end the upper bound of the range of query links (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching query links
 	 */
-	public java.util.List<QueryLink> findByG_P(
-		long groupId, long projectId, int start, int end,
+	public java.util.List<QueryLink> findByInstanceId(
+		long instanceId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
 			orderByComparator,
 		boolean useFinderCache);
 
 	/**
-	 * Returns the first query link in the ordered set where groupId = &#63; and projectId = &#63;.
+	 * Returns the first query link in the ordered set where instanceId = &#63;.
 	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
+	 * @param instanceId the instance ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching query link
 	 * @throws NoSuchQueryLinkException if a matching query link could not be found
 	 */
-	public QueryLink findByG_P_First(
-			long groupId, long projectId,
+	public QueryLink findByInstanceId_First(
+			long instanceId,
 			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
 				orderByComparator)
 		throws NoSuchQueryLinkException;
 
 	/**
-	 * Returns the first query link in the ordered set where groupId = &#63; and projectId = &#63;.
+	 * Returns the first query link in the ordered set where instanceId = &#63;.
 	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
+	 * @param instanceId the instance ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching query link, or <code>null</code> if a matching query link could not be found
 	 */
-	public QueryLink fetchByG_P_First(
-		long groupId, long projectId,
+	public QueryLink fetchByInstanceId_First(
+		long instanceId,
 		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
 			orderByComparator);
 
 	/**
-	 * Returns the last query link in the ordered set where groupId = &#63; and projectId = &#63;.
+	 * Returns the last query link in the ordered set where instanceId = &#63;.
 	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
+	 * @param instanceId the instance ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching query link
 	 * @throws NoSuchQueryLinkException if a matching query link could not be found
 	 */
-	public QueryLink findByG_P_Last(
-			long groupId, long projectId,
+	public QueryLink findByInstanceId_Last(
+			long instanceId,
 			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
 				orderByComparator)
 		throws NoSuchQueryLinkException;
 
 	/**
-	 * Returns the last query link in the ordered set where groupId = &#63; and projectId = &#63;.
+	 * Returns the last query link in the ordered set where instanceId = &#63;.
 	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
+	 * @param instanceId the instance ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching query link, or <code>null</code> if a matching query link could not be found
 	 */
-	public QueryLink fetchByG_P_Last(
-		long groupId, long projectId,
+	public QueryLink fetchByInstanceId_Last(
+		long instanceId,
 		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
 			orderByComparator);
 
 	/**
-	 * Returns the query links before and after the current query link in the ordered set where groupId = &#63; and projectId = &#63;.
+	 * Returns the query links before and after the current query link in the ordered set where instanceId = &#63;.
 	 *
 	 * @param queryId the primary key of the current query link
-	 * @param groupId the group ID
-	 * @param projectId the project ID
+	 * @param instanceId the instance ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next query link
 	 * @throws NoSuchQueryLinkException if a query link with the primary key could not be found
 	 */
-	public QueryLink[] findByG_P_PrevAndNext(
-			long queryId, long groupId, long projectId,
+	public QueryLink[] findByInstanceId_PrevAndNext(
+			long queryId, long instanceId,
 			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
 				orderByComparator)
 		throws NoSuchQueryLinkException;
 
 	/**
-	 * Removes all the query links where groupId = &#63; and projectId = &#63; from the database.
+	 * Removes all the query links where instanceId = &#63; from the database.
 	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
+	 * @param instanceId the instance ID
 	 */
-	public void removeByG_P(long groupId, long projectId);
+	public void removeByInstanceId(long instanceId);
 
 	/**
-	 * Returns the number of query links where groupId = &#63; and projectId = &#63;.
+	 * Returns the number of query links where instanceId = &#63;.
 	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
+	 * @param instanceId the instance ID
 	 * @return the number of matching query links
 	 */
-	public int countByG_P(long groupId, long projectId);
+	public int countByInstanceId(long instanceId);
 
 	/**
-	 * Returns all the query links where userId = &#63;.
+	 * Returns all the query links where subjectId = &#63; and visitGroupId = &#63;.
 	 *
-	 * @param userId the user ID
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
 	 * @return the matching query links
 	 */
-	public java.util.List<QueryLink> findByUserId(long userId);
+	public java.util.List<QueryLink> findByS_VG(
+		long subjectId, long visitGroupId);
 
 	/**
-	 * Returns a range of all the query links where userId = &#63;.
+	 * Returns a range of all the query links where subjectId = &#63; and visitGroupId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
 	 * </p>
 	 *
-	 * @param userId the user ID
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
 	 * @param start the lower bound of the range of query links
 	 * @param end the upper bound of the range of query links (not inclusive)
 	 * @return the range of matching query links
 	 */
-	public java.util.List<QueryLink> findByUserId(
-		long userId, int start, int end);
+	public java.util.List<QueryLink> findByS_VG(
+		long subjectId, long visitGroupId, int start, int end);
 
 	/**
-	 * Returns an ordered range of all the query links where userId = &#63;.
+	 * Returns an ordered range of all the query links where subjectId = &#63; and visitGroupId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
 	 * </p>
 	 *
-	 * @param userId the user ID
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
 	 * @param start the lower bound of the range of query links
 	 * @param end the upper bound of the range of query links (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching query links
 	 */
-	public java.util.List<QueryLink> findByUserId(
-		long userId, int start, int end,
+	public java.util.List<QueryLink> findByS_VG(
+		long subjectId, long visitGroupId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
 			orderByComparator);
 
 	/**
-	 * Returns an ordered range of all the query links where userId = &#63;.
+	 * Returns an ordered range of all the query links where subjectId = &#63; and visitGroupId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
 	 * </p>
 	 *
-	 * @param userId the user ID
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
 	 * @param start the lower bound of the range of query links
 	 * @param end the upper bound of the range of query links (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching query links
 	 */
-	public java.util.List<QueryLink> findByUserId(
-		long userId, int start, int end,
+	public java.util.List<QueryLink> findByS_VG(
+		long subjectId, long visitGroupId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
 			orderByComparator,
 		boolean useFinderCache);
 
 	/**
-	 * Returns the first query link in the ordered set where userId = &#63;.
+	 * Returns the first query link in the ordered set where subjectId = &#63; and visitGroupId = &#63;.
 	 *
-	 * @param userId the user ID
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching query link
 	 * @throws NoSuchQueryLinkException if a matching query link could not be found
 	 */
-	public QueryLink findByUserId_First(
-			long userId,
+	public QueryLink findByS_VG_First(
+			long subjectId, long visitGroupId,
 			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
 				orderByComparator)
 		throws NoSuchQueryLinkException;
 
 	/**
-	 * Returns the first query link in the ordered set where userId = &#63;.
+	 * Returns the first query link in the ordered set where subjectId = &#63; and visitGroupId = &#63;.
 	 *
-	 * @param userId the user ID
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching query link, or <code>null</code> if a matching query link could not be found
 	 */
-	public QueryLink fetchByUserId_First(
-		long userId,
+	public QueryLink fetchByS_VG_First(
+		long subjectId, long visitGroupId,
 		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
 			orderByComparator);
 
 	/**
-	 * Returns the last query link in the ordered set where userId = &#63;.
+	 * Returns the last query link in the ordered set where subjectId = &#63; and visitGroupId = &#63;.
 	 *
-	 * @param userId the user ID
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching query link
 	 * @throws NoSuchQueryLinkException if a matching query link could not be found
 	 */
-	public QueryLink findByUserId_Last(
-			long userId,
+	public QueryLink findByS_VG_Last(
+			long subjectId, long visitGroupId,
 			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
 				orderByComparator)
 		throws NoSuchQueryLinkException;
 
 	/**
-	 * Returns the last query link in the ordered set where userId = &#63;.
+	 * Returns the last query link in the ordered set where subjectId = &#63; and visitGroupId = &#63;.
 	 *
-	 * @param userId the user ID
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching query link, or <code>null</code> if a matching query link could not be found
 	 */
-	public QueryLink fetchByUserId_Last(
-		long userId,
+	public QueryLink fetchByS_VG_Last(
+		long subjectId, long visitGroupId,
 		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
 			orderByComparator);
 
 	/**
-	 * Returns the query links before and after the current query link in the ordered set where userId = &#63;.
+	 * Returns the query links before and after the current query link in the ordered set where subjectId = &#63; and visitGroupId = &#63;.
 	 *
 	 * @param queryId the primary key of the current query link
-	 * @param userId the user ID
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next query link
 	 * @throws NoSuchQueryLinkException if a query link with the primary key could not be found
 	 */
-	public QueryLink[] findByUserId_PrevAndNext(
-			long queryId, long userId,
+	public QueryLink[] findByS_VG_PrevAndNext(
+			long queryId, long subjectId, long visitGroupId,
 			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
 				orderByComparator)
 		throws NoSuchQueryLinkException;
 
 	/**
-	 * Removes all the query links where userId = &#63; from the database.
+	 * Removes all the query links where subjectId = &#63; and visitGroupId = &#63; from the database.
 	 *
-	 * @param userId the user ID
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
 	 */
-	public void removeByUserId(long userId);
+	public void removeByS_VG(long subjectId, long visitGroupId);
 
 	/**
-	 * Returns the number of query links where userId = &#63;.
+	 * Returns the number of query links where subjectId = &#63; and visitGroupId = &#63;.
 	 *
-	 * @param userId the user ID
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
 	 * @return the number of matching query links
 	 */
-	public int countByUserId(long userId);
+	public int countByS_VG(long subjectId, long visitGroupId);
+
+	/**
+	 * Returns all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @return the matching query links
+	 */
+	public java.util.List<QueryLink> findByS_VG_VD(
+		long subjectId, long visitGroupId, long visitDefinitionId);
+
+	/**
+	 * Returns a range of all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
+	 * </p>
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param start the lower bound of the range of query links
+	 * @param end the upper bound of the range of query links (not inclusive)
+	 * @return the range of matching query links
+	 */
+	public java.util.List<QueryLink> findByS_VG_VD(
+		long subjectId, long visitGroupId, long visitDefinitionId, int start,
+		int end);
+
+	/**
+	 * Returns an ordered range of all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
+	 * </p>
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param start the lower bound of the range of query links
+	 * @param end the upper bound of the range of query links (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching query links
+	 */
+	public java.util.List<QueryLink> findByS_VG_VD(
+		long subjectId, long visitGroupId, long visitDefinitionId, int start,
+		int end,
+		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
+			orderByComparator);
+
+	/**
+	 * Returns an ordered range of all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
+	 * </p>
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param start the lower bound of the range of query links
+	 * @param end the upper bound of the range of query links (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching query links
+	 */
+	public java.util.List<QueryLink> findByS_VG_VD(
+		long subjectId, long visitGroupId, long visitDefinitionId, int start,
+		int end,
+		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
+			orderByComparator,
+		boolean useFinderCache);
+
+	/**
+	 * Returns the first query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching query link
+	 * @throws NoSuchQueryLinkException if a matching query link could not be found
+	 */
+	public QueryLink findByS_VG_VD_First(
+			long subjectId, long visitGroupId, long visitDefinitionId,
+			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
+				orderByComparator)
+		throws NoSuchQueryLinkException;
+
+	/**
+	 * Returns the first query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching query link, or <code>null</code> if a matching query link could not be found
+	 */
+	public QueryLink fetchByS_VG_VD_First(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
+			orderByComparator);
+
+	/**
+	 * Returns the last query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching query link
+	 * @throws NoSuchQueryLinkException if a matching query link could not be found
+	 */
+	public QueryLink findByS_VG_VD_Last(
+			long subjectId, long visitGroupId, long visitDefinitionId,
+			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
+				orderByComparator)
+		throws NoSuchQueryLinkException;
+
+	/**
+	 * Returns the last query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching query link, or <code>null</code> if a matching query link could not be found
+	 */
+	public QueryLink fetchByS_VG_VD_Last(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
+			orderByComparator);
+
+	/**
+	 * Returns the query links before and after the current query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * @param queryId the primary key of the current query link
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next query link
+	 * @throws NoSuchQueryLinkException if a query link with the primary key could not be found
+	 */
+	public QueryLink[] findByS_VG_VD_PrevAndNext(
+			long queryId, long subjectId, long visitGroupId,
+			long visitDefinitionId,
+			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
+				orderByComparator)
+		throws NoSuchQueryLinkException;
+
+	/**
+	 * Removes all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; from the database.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 */
+	public void removeByS_VG_VD(
+		long subjectId, long visitGroupId, long visitDefinitionId);
+
+	/**
+	 * Returns the number of query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @return the number of matching query links
+	 */
+	public int countByS_VG_VD(
+		long subjectId, long visitGroupId, long visitDefinitionId);
+
+	/**
+	 * Returns all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @return the matching query links
+	 */
+	public java.util.List<QueryLink> findByS_VG_VD_VC(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId);
+
+	/**
+	 * Returns a range of all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
+	 * </p>
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param start the lower bound of the range of query links
+	 * @param end the upper bound of the range of query links (not inclusive)
+	 * @return the range of matching query links
+	 */
+	public java.util.List<QueryLink> findByS_VG_VD_VC(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, int start, int end);
+
+	/**
+	 * Returns an ordered range of all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
+	 * </p>
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param start the lower bound of the range of query links
+	 * @param end the upper bound of the range of query links (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching query links
+	 */
+	public java.util.List<QueryLink> findByS_VG_VD_VC(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
+			orderByComparator);
+
+	/**
+	 * Returns an ordered range of all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
+	 * </p>
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param start the lower bound of the range of query links
+	 * @param end the upper bound of the range of query links (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching query links
+	 */
+	public java.util.List<QueryLink> findByS_VG_VD_VC(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
+			orderByComparator,
+		boolean useFinderCache);
+
+	/**
+	 * Returns the first query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching query link
+	 * @throws NoSuchQueryLinkException if a matching query link could not be found
+	 */
+	public QueryLink findByS_VG_VD_VC_First(
+			long subjectId, long visitGroupId, long visitDefinitionId,
+			long visitCRFId,
+			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
+				orderByComparator)
+		throws NoSuchQueryLinkException;
+
+	/**
+	 * Returns the first query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching query link, or <code>null</code> if a matching query link could not be found
+	 */
+	public QueryLink fetchByS_VG_VD_VC_First(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId,
+		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
+			orderByComparator);
+
+	/**
+	 * Returns the last query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching query link
+	 * @throws NoSuchQueryLinkException if a matching query link could not be found
+	 */
+	public QueryLink findByS_VG_VD_VC_Last(
+			long subjectId, long visitGroupId, long visitDefinitionId,
+			long visitCRFId,
+			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
+				orderByComparator)
+		throws NoSuchQueryLinkException;
+
+	/**
+	 * Returns the last query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching query link, or <code>null</code> if a matching query link could not be found
+	 */
+	public QueryLink fetchByS_VG_VD_VC_Last(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId,
+		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
+			orderByComparator);
+
+	/**
+	 * Returns the query links before and after the current query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63;.
+	 *
+	 * @param queryId the primary key of the current query link
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next query link
+	 * @throws NoSuchQueryLinkException if a query link with the primary key could not be found
+	 */
+	public QueryLink[] findByS_VG_VD_VC_PrevAndNext(
+			long queryId, long subjectId, long visitGroupId,
+			long visitDefinitionId, long visitCRFId,
+			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
+				orderByComparator)
+		throws NoSuchQueryLinkException;
+
+	/**
+	 * Removes all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; from the database.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 */
+	public void removeByS_VG_VD_VC(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId);
+
+	/**
+	 * Returns the number of query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @return the number of matching query links
+	 */
+	public int countByS_VG_VD_VC(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId);
+
+	/**
+	 * Returns all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; and subCRFId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param subCRFId the sub crf ID
+	 * @return the matching query links
+	 */
+	public java.util.List<QueryLink> findByS_VG_VD_VC_S(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, long subCRFId);
+
+	/**
+	 * Returns a range of all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; and subCRFId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
+	 * </p>
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param subCRFId the sub crf ID
+	 * @param start the lower bound of the range of query links
+	 * @param end the upper bound of the range of query links (not inclusive)
+	 * @return the range of matching query links
+	 */
+	public java.util.List<QueryLink> findByS_VG_VD_VC_S(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, long subCRFId, int start, int end);
+
+	/**
+	 * Returns an ordered range of all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; and subCRFId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
+	 * </p>
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param subCRFId the sub crf ID
+	 * @param start the lower bound of the range of query links
+	 * @param end the upper bound of the range of query links (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching query links
+	 */
+	public java.util.List<QueryLink> findByS_VG_VD_VC_S(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, long subCRFId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
+			orderByComparator);
+
+	/**
+	 * Returns an ordered range of all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; and subCRFId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
+	 * </p>
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param subCRFId the sub crf ID
+	 * @param start the lower bound of the range of query links
+	 * @param end the upper bound of the range of query links (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching query links
+	 */
+	public java.util.List<QueryLink> findByS_VG_VD_VC_S(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, long subCRFId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
+			orderByComparator,
+		boolean useFinderCache);
+
+	/**
+	 * Returns the first query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; and subCRFId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param subCRFId the sub crf ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching query link
+	 * @throws NoSuchQueryLinkException if a matching query link could not be found
+	 */
+	public QueryLink findByS_VG_VD_VC_S_First(
+			long subjectId, long visitGroupId, long visitDefinitionId,
+			long visitCRFId, long subCRFId,
+			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
+				orderByComparator)
+		throws NoSuchQueryLinkException;
+
+	/**
+	 * Returns the first query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; and subCRFId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param subCRFId the sub crf ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching query link, or <code>null</code> if a matching query link could not be found
+	 */
+	public QueryLink fetchByS_VG_VD_VC_S_First(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, long subCRFId,
+		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
+			orderByComparator);
+
+	/**
+	 * Returns the last query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; and subCRFId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param subCRFId the sub crf ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching query link
+	 * @throws NoSuchQueryLinkException if a matching query link could not be found
+	 */
+	public QueryLink findByS_VG_VD_VC_S_Last(
+			long subjectId, long visitGroupId, long visitDefinitionId,
+			long visitCRFId, long subCRFId,
+			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
+				orderByComparator)
+		throws NoSuchQueryLinkException;
+
+	/**
+	 * Returns the last query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; and subCRFId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param subCRFId the sub crf ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching query link, or <code>null</code> if a matching query link could not be found
+	 */
+	public QueryLink fetchByS_VG_VD_VC_S_Last(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, long subCRFId,
+		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
+			orderByComparator);
+
+	/**
+	 * Returns the query links before and after the current query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; and subCRFId = &#63;.
+	 *
+	 * @param queryId the primary key of the current query link
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param subCRFId the sub crf ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next query link
+	 * @throws NoSuchQueryLinkException if a query link with the primary key could not be found
+	 */
+	public QueryLink[] findByS_VG_VD_VC_S_PrevAndNext(
+			long queryId, long subjectId, long visitGroupId,
+			long visitDefinitionId, long visitCRFId, long subCRFId,
+			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
+				orderByComparator)
+		throws NoSuchQueryLinkException;
+
+	/**
+	 * Removes all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; and subCRFId = &#63; from the database.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param subCRFId the sub crf ID
+	 */
+	public void removeByS_VG_VD_VC_S(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, long subCRFId);
+
+	/**
+	 * Returns the number of query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; and subCRFId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param subCRFId the sub crf ID
+	 * @return the number of matching query links
+	 */
+	public int countByS_VG_VD_VC_S(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, long subCRFId);
 
 	/**
 	 * Returns all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; and subCRFId = &#63; and instanceId = &#63;.
@@ -1040,732 +1604,6 @@ public interface QueryLinkPersistence extends BasePersistence<QueryLink> {
 	public int countByS_VG_VD_VC_S_I(
 		long subjectId, long visitGroupId, long visitDefinitionId,
 		long visitCRFId, long subCRFId, long instanceId);
-
-	/**
-	 * Returns all the query links where itemCode = &#63;.
-	 *
-	 * @param itemCode the item code
-	 * @return the matching query links
-	 */
-	public java.util.List<QueryLink> findByItemCode(long itemCode);
-
-	/**
-	 * Returns a range of all the query links where itemCode = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param itemCode the item code
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @return the range of matching query links
-	 */
-	public java.util.List<QueryLink> findByItemCode(
-		long itemCode, int start, int end);
-
-	/**
-	 * Returns an ordered range of all the query links where itemCode = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param itemCode the item code
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the ordered range of matching query links
-	 */
-	public java.util.List<QueryLink> findByItemCode(
-		long itemCode, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-			orderByComparator);
-
-	/**
-	 * Returns an ordered range of all the query links where itemCode = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param itemCode the item code
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @param useFinderCache whether to use the finder cache
-	 * @return the ordered range of matching query links
-	 */
-	public java.util.List<QueryLink> findByItemCode(
-		long itemCode, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-			orderByComparator,
-		boolean useFinderCache);
-
-	/**
-	 * Returns the first query link in the ordered set where itemCode = &#63;.
-	 *
-	 * @param itemCode the item code
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching query link
-	 * @throws NoSuchQueryLinkException if a matching query link could not be found
-	 */
-	public QueryLink findByItemCode_First(
-			long itemCode,
-			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-				orderByComparator)
-		throws NoSuchQueryLinkException;
-
-	/**
-	 * Returns the first query link in the ordered set where itemCode = &#63;.
-	 *
-	 * @param itemCode the item code
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching query link, or <code>null</code> if a matching query link could not be found
-	 */
-	public QueryLink fetchByItemCode_First(
-		long itemCode,
-		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-			orderByComparator);
-
-	/**
-	 * Returns the last query link in the ordered set where itemCode = &#63;.
-	 *
-	 * @param itemCode the item code
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching query link
-	 * @throws NoSuchQueryLinkException if a matching query link could not be found
-	 */
-	public QueryLink findByItemCode_Last(
-			long itemCode,
-			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-				orderByComparator)
-		throws NoSuchQueryLinkException;
-
-	/**
-	 * Returns the last query link in the ordered set where itemCode = &#63;.
-	 *
-	 * @param itemCode the item code
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching query link, or <code>null</code> if a matching query link could not be found
-	 */
-	public QueryLink fetchByItemCode_Last(
-		long itemCode,
-		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-			orderByComparator);
-
-	/**
-	 * Returns the query links before and after the current query link in the ordered set where itemCode = &#63;.
-	 *
-	 * @param queryId the primary key of the current query link
-	 * @param itemCode the item code
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the previous, current, and next query link
-	 * @throws NoSuchQueryLinkException if a query link with the primary key could not be found
-	 */
-	public QueryLink[] findByItemCode_PrevAndNext(
-			long queryId, long itemCode,
-			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-				orderByComparator)
-		throws NoSuchQueryLinkException;
-
-	/**
-	 * Removes all the query links where itemCode = &#63; from the database.
-	 *
-	 * @param itemCode the item code
-	 */
-	public void removeByItemCode(long itemCode);
-
-	/**
-	 * Returns the number of query links where itemCode = &#63;.
-	 *
-	 * @param itemCode the item code
-	 * @return the number of matching query links
-	 */
-	public int countByItemCode(long itemCode);
-
-	/**
-	 * Returns all the query links where openUserId = &#63;.
-	 *
-	 * @param openUserId the open user ID
-	 * @return the matching query links
-	 */
-	public java.util.List<QueryLink> findByOpenUserId(long openUserId);
-
-	/**
-	 * Returns a range of all the query links where openUserId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param openUserId the open user ID
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @return the range of matching query links
-	 */
-	public java.util.List<QueryLink> findByOpenUserId(
-		long openUserId, int start, int end);
-
-	/**
-	 * Returns an ordered range of all the query links where openUserId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param openUserId the open user ID
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the ordered range of matching query links
-	 */
-	public java.util.List<QueryLink> findByOpenUserId(
-		long openUserId, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-			orderByComparator);
-
-	/**
-	 * Returns an ordered range of all the query links where openUserId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param openUserId the open user ID
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @param useFinderCache whether to use the finder cache
-	 * @return the ordered range of matching query links
-	 */
-	public java.util.List<QueryLink> findByOpenUserId(
-		long openUserId, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-			orderByComparator,
-		boolean useFinderCache);
-
-	/**
-	 * Returns the first query link in the ordered set where openUserId = &#63;.
-	 *
-	 * @param openUserId the open user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching query link
-	 * @throws NoSuchQueryLinkException if a matching query link could not be found
-	 */
-	public QueryLink findByOpenUserId_First(
-			long openUserId,
-			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-				orderByComparator)
-		throws NoSuchQueryLinkException;
-
-	/**
-	 * Returns the first query link in the ordered set where openUserId = &#63;.
-	 *
-	 * @param openUserId the open user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching query link, or <code>null</code> if a matching query link could not be found
-	 */
-	public QueryLink fetchByOpenUserId_First(
-		long openUserId,
-		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-			orderByComparator);
-
-	/**
-	 * Returns the last query link in the ordered set where openUserId = &#63;.
-	 *
-	 * @param openUserId the open user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching query link
-	 * @throws NoSuchQueryLinkException if a matching query link could not be found
-	 */
-	public QueryLink findByOpenUserId_Last(
-			long openUserId,
-			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-				orderByComparator)
-		throws NoSuchQueryLinkException;
-
-	/**
-	 * Returns the last query link in the ordered set where openUserId = &#63;.
-	 *
-	 * @param openUserId the open user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching query link, or <code>null</code> if a matching query link could not be found
-	 */
-	public QueryLink fetchByOpenUserId_Last(
-		long openUserId,
-		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-			orderByComparator);
-
-	/**
-	 * Returns the query links before and after the current query link in the ordered set where openUserId = &#63;.
-	 *
-	 * @param queryId the primary key of the current query link
-	 * @param openUserId the open user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the previous, current, and next query link
-	 * @throws NoSuchQueryLinkException if a query link with the primary key could not be found
-	 */
-	public QueryLink[] findByOpenUserId_PrevAndNext(
-			long queryId, long openUserId,
-			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-				orderByComparator)
-		throws NoSuchQueryLinkException;
-
-	/**
-	 * Removes all the query links where openUserId = &#63; from the database.
-	 *
-	 * @param openUserId the open user ID
-	 */
-	public void removeByOpenUserId(long openUserId);
-
-	/**
-	 * Returns the number of query links where openUserId = &#63;.
-	 *
-	 * @param openUserId the open user ID
-	 * @return the number of matching query links
-	 */
-	public int countByOpenUserId(long openUserId);
-
-	/**
-	 * Returns all the query links where answerUserID = &#63;.
-	 *
-	 * @param answerUserID the answer user ID
-	 * @return the matching query links
-	 */
-	public java.util.List<QueryLink> findByAnswerUserID(long answerUserID);
-
-	/**
-	 * Returns a range of all the query links where answerUserID = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param answerUserID the answer user ID
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @return the range of matching query links
-	 */
-	public java.util.List<QueryLink> findByAnswerUserID(
-		long answerUserID, int start, int end);
-
-	/**
-	 * Returns an ordered range of all the query links where answerUserID = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param answerUserID the answer user ID
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the ordered range of matching query links
-	 */
-	public java.util.List<QueryLink> findByAnswerUserID(
-		long answerUserID, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-			orderByComparator);
-
-	/**
-	 * Returns an ordered range of all the query links where answerUserID = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param answerUserID the answer user ID
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @param useFinderCache whether to use the finder cache
-	 * @return the ordered range of matching query links
-	 */
-	public java.util.List<QueryLink> findByAnswerUserID(
-		long answerUserID, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-			orderByComparator,
-		boolean useFinderCache);
-
-	/**
-	 * Returns the first query link in the ordered set where answerUserID = &#63;.
-	 *
-	 * @param answerUserID the answer user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching query link
-	 * @throws NoSuchQueryLinkException if a matching query link could not be found
-	 */
-	public QueryLink findByAnswerUserID_First(
-			long answerUserID,
-			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-				orderByComparator)
-		throws NoSuchQueryLinkException;
-
-	/**
-	 * Returns the first query link in the ordered set where answerUserID = &#63;.
-	 *
-	 * @param answerUserID the answer user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching query link, or <code>null</code> if a matching query link could not be found
-	 */
-	public QueryLink fetchByAnswerUserID_First(
-		long answerUserID,
-		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-			orderByComparator);
-
-	/**
-	 * Returns the last query link in the ordered set where answerUserID = &#63;.
-	 *
-	 * @param answerUserID the answer user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching query link
-	 * @throws NoSuchQueryLinkException if a matching query link could not be found
-	 */
-	public QueryLink findByAnswerUserID_Last(
-			long answerUserID,
-			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-				orderByComparator)
-		throws NoSuchQueryLinkException;
-
-	/**
-	 * Returns the last query link in the ordered set where answerUserID = &#63;.
-	 *
-	 * @param answerUserID the answer user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching query link, or <code>null</code> if a matching query link could not be found
-	 */
-	public QueryLink fetchByAnswerUserID_Last(
-		long answerUserID,
-		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-			orderByComparator);
-
-	/**
-	 * Returns the query links before and after the current query link in the ordered set where answerUserID = &#63;.
-	 *
-	 * @param queryId the primary key of the current query link
-	 * @param answerUserID the answer user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the previous, current, and next query link
-	 * @throws NoSuchQueryLinkException if a query link with the primary key could not be found
-	 */
-	public QueryLink[] findByAnswerUserID_PrevAndNext(
-			long queryId, long answerUserID,
-			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-				orderByComparator)
-		throws NoSuchQueryLinkException;
-
-	/**
-	 * Removes all the query links where answerUserID = &#63; from the database.
-	 *
-	 * @param answerUserID the answer user ID
-	 */
-	public void removeByAnswerUserID(long answerUserID);
-
-	/**
-	 * Returns the number of query links where answerUserID = &#63;.
-	 *
-	 * @param answerUserID the answer user ID
-	 * @return the number of matching query links
-	 */
-	public int countByAnswerUserID(long answerUserID);
-
-	/**
-	 * Returns all the query links where closeUserID = &#63;.
-	 *
-	 * @param closeUserID the close user ID
-	 * @return the matching query links
-	 */
-	public java.util.List<QueryLink> findByCloseUserID(long closeUserID);
-
-	/**
-	 * Returns a range of all the query links where closeUserID = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param closeUserID the close user ID
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @return the range of matching query links
-	 */
-	public java.util.List<QueryLink> findByCloseUserID(
-		long closeUserID, int start, int end);
-
-	/**
-	 * Returns an ordered range of all the query links where closeUserID = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param closeUserID the close user ID
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the ordered range of matching query links
-	 */
-	public java.util.List<QueryLink> findByCloseUserID(
-		long closeUserID, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-			orderByComparator);
-
-	/**
-	 * Returns an ordered range of all the query links where closeUserID = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param closeUserID the close user ID
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @param useFinderCache whether to use the finder cache
-	 * @return the ordered range of matching query links
-	 */
-	public java.util.List<QueryLink> findByCloseUserID(
-		long closeUserID, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-			orderByComparator,
-		boolean useFinderCache);
-
-	/**
-	 * Returns the first query link in the ordered set where closeUserID = &#63;.
-	 *
-	 * @param closeUserID the close user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching query link
-	 * @throws NoSuchQueryLinkException if a matching query link could not be found
-	 */
-	public QueryLink findByCloseUserID_First(
-			long closeUserID,
-			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-				orderByComparator)
-		throws NoSuchQueryLinkException;
-
-	/**
-	 * Returns the first query link in the ordered set where closeUserID = &#63;.
-	 *
-	 * @param closeUserID the close user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching query link, or <code>null</code> if a matching query link could not be found
-	 */
-	public QueryLink fetchByCloseUserID_First(
-		long closeUserID,
-		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-			orderByComparator);
-
-	/**
-	 * Returns the last query link in the ordered set where closeUserID = &#63;.
-	 *
-	 * @param closeUserID the close user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching query link
-	 * @throws NoSuchQueryLinkException if a matching query link could not be found
-	 */
-	public QueryLink findByCloseUserID_Last(
-			long closeUserID,
-			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-				orderByComparator)
-		throws NoSuchQueryLinkException;
-
-	/**
-	 * Returns the last query link in the ordered set where closeUserID = &#63;.
-	 *
-	 * @param closeUserID the close user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching query link, or <code>null</code> if a matching query link could not be found
-	 */
-	public QueryLink fetchByCloseUserID_Last(
-		long closeUserID,
-		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-			orderByComparator);
-
-	/**
-	 * Returns the query links before and after the current query link in the ordered set where closeUserID = &#63;.
-	 *
-	 * @param queryId the primary key of the current query link
-	 * @param closeUserID the close user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the previous, current, and next query link
-	 * @throws NoSuchQueryLinkException if a query link with the primary key could not be found
-	 */
-	public QueryLink[] findByCloseUserID_PrevAndNext(
-			long queryId, long closeUserID,
-			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-				orderByComparator)
-		throws NoSuchQueryLinkException;
-
-	/**
-	 * Removes all the query links where closeUserID = &#63; from the database.
-	 *
-	 * @param closeUserID the close user ID
-	 */
-	public void removeByCloseUserID(long closeUserID);
-
-	/**
-	 * Returns the number of query links where closeUserID = &#63;.
-	 *
-	 * @param closeUserID the close user ID
-	 * @return the number of matching query links
-	 */
-	public int countByCloseUserID(long closeUserID);
-
-	/**
-	 * Returns all the query links where reopenId = &#63; and ruleId = &#63;.
-	 *
-	 * @param reopenId the reopen ID
-	 * @param ruleId the rule ID
-	 * @return the matching query links
-	 */
-	public java.util.List<QueryLink> findByR_R(long reopenId, long ruleId);
-
-	/**
-	 * Returns a range of all the query links where reopenId = &#63; and ruleId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param reopenId the reopen ID
-	 * @param ruleId the rule ID
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @return the range of matching query links
-	 */
-	public java.util.List<QueryLink> findByR_R(
-		long reopenId, long ruleId, int start, int end);
-
-	/**
-	 * Returns an ordered range of all the query links where reopenId = &#63; and ruleId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param reopenId the reopen ID
-	 * @param ruleId the rule ID
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the ordered range of matching query links
-	 */
-	public java.util.List<QueryLink> findByR_R(
-		long reopenId, long ruleId, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-			orderByComparator);
-
-	/**
-	 * Returns an ordered range of all the query links where reopenId = &#63; and ruleId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param reopenId the reopen ID
-	 * @param ruleId the rule ID
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @param useFinderCache whether to use the finder cache
-	 * @return the ordered range of matching query links
-	 */
-	public java.util.List<QueryLink> findByR_R(
-		long reopenId, long ruleId, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-			orderByComparator,
-		boolean useFinderCache);
-
-	/**
-	 * Returns the first query link in the ordered set where reopenId = &#63; and ruleId = &#63;.
-	 *
-	 * @param reopenId the reopen ID
-	 * @param ruleId the rule ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching query link
-	 * @throws NoSuchQueryLinkException if a matching query link could not be found
-	 */
-	public QueryLink findByR_R_First(
-			long reopenId, long ruleId,
-			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-				orderByComparator)
-		throws NoSuchQueryLinkException;
-
-	/**
-	 * Returns the first query link in the ordered set where reopenId = &#63; and ruleId = &#63;.
-	 *
-	 * @param reopenId the reopen ID
-	 * @param ruleId the rule ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching query link, or <code>null</code> if a matching query link could not be found
-	 */
-	public QueryLink fetchByR_R_First(
-		long reopenId, long ruleId,
-		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-			orderByComparator);
-
-	/**
-	 * Returns the last query link in the ordered set where reopenId = &#63; and ruleId = &#63;.
-	 *
-	 * @param reopenId the reopen ID
-	 * @param ruleId the rule ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching query link
-	 * @throws NoSuchQueryLinkException if a matching query link could not be found
-	 */
-	public QueryLink findByR_R_Last(
-			long reopenId, long ruleId,
-			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-				orderByComparator)
-		throws NoSuchQueryLinkException;
-
-	/**
-	 * Returns the last query link in the ordered set where reopenId = &#63; and ruleId = &#63;.
-	 *
-	 * @param reopenId the reopen ID
-	 * @param ruleId the rule ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching query link, or <code>null</code> if a matching query link could not be found
-	 */
-	public QueryLink fetchByR_R_Last(
-		long reopenId, long ruleId,
-		com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-			orderByComparator);
-
-	/**
-	 * Returns the query links before and after the current query link in the ordered set where reopenId = &#63; and ruleId = &#63;.
-	 *
-	 * @param queryId the primary key of the current query link
-	 * @param reopenId the reopen ID
-	 * @param ruleId the rule ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the previous, current, and next query link
-	 * @throws NoSuchQueryLinkException if a query link with the primary key could not be found
-	 */
-	public QueryLink[] findByR_R_PrevAndNext(
-			long queryId, long reopenId, long ruleId,
-			com.liferay.portal.kernel.util.OrderByComparator<QueryLink>
-				orderByComparator)
-		throws NoSuchQueryLinkException;
-
-	/**
-	 * Removes all the query links where reopenId = &#63; and ruleId = &#63; from the database.
-	 *
-	 * @param reopenId the reopen ID
-	 * @param ruleId the rule ID
-	 */
-	public void removeByR_R(long reopenId, long ruleId);
-
-	/**
-	 * Returns the number of query links where reopenId = &#63; and ruleId = &#63;.
-	 *
-	 * @param reopenId the reopen ID
-	 * @param ruleId the rule ID
-	 * @return the number of matching query links
-	 */
-	public int countByR_R(long reopenId, long ruleId);
 
 	/**
 	 * Caches the query link in the entity cache if it is enabled.

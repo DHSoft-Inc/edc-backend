@@ -530,521 +530,1214 @@ public class QueryLinkUtil {
 	}
 
 	/**
-	 * Returns all the query links where companyId = &#63;.
+	 * Returns all the query links where subjectId = &#63;.
 	 *
-	 * @param companyId the company ID
+	 * @param subjectId the subject ID
 	 * @return the matching query links
 	 */
-	public static List<QueryLink> findByCompanyId(long companyId) {
-		return getPersistence().findByCompanyId(companyId);
+	public static List<QueryLink> findBySubjectId(long subjectId) {
+		return getPersistence().findBySubjectId(subjectId);
 	}
 
 	/**
-	 * Returns a range of all the query links where companyId = &#63;.
+	 * Returns a range of all the query links where subjectId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
 	 * </p>
 	 *
-	 * @param companyId the company ID
+	 * @param subjectId the subject ID
 	 * @param start the lower bound of the range of query links
 	 * @param end the upper bound of the range of query links (not inclusive)
 	 * @return the range of matching query links
 	 */
-	public static List<QueryLink> findByCompanyId(
-		long companyId, int start, int end) {
+	public static List<QueryLink> findBySubjectId(
+		long subjectId, int start, int end) {
 
-		return getPersistence().findByCompanyId(companyId, start, end);
+		return getPersistence().findBySubjectId(subjectId, start, end);
 	}
 
 	/**
-	 * Returns an ordered range of all the query links where companyId = &#63;.
+	 * Returns an ordered range of all the query links where subjectId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
 	 * </p>
 	 *
-	 * @param companyId the company ID
+	 * @param subjectId the subject ID
 	 * @param start the lower bound of the range of query links
 	 * @param end the upper bound of the range of query links (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching query links
 	 */
-	public static List<QueryLink> findByCompanyId(
-		long companyId, int start, int end,
+	public static List<QueryLink> findBySubjectId(
+		long subjectId, int start, int end,
 		OrderByComparator<QueryLink> orderByComparator) {
 
-		return getPersistence().findByCompanyId(
-			companyId, start, end, orderByComparator);
+		return getPersistence().findBySubjectId(
+			subjectId, start, end, orderByComparator);
 	}
 
 	/**
-	 * Returns an ordered range of all the query links where companyId = &#63;.
+	 * Returns an ordered range of all the query links where subjectId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
 	 * </p>
 	 *
-	 * @param companyId the company ID
+	 * @param subjectId the subject ID
 	 * @param start the lower bound of the range of query links
 	 * @param end the upper bound of the range of query links (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching query links
 	 */
-	public static List<QueryLink> findByCompanyId(
-		long companyId, int start, int end,
+	public static List<QueryLink> findBySubjectId(
+		long subjectId, int start, int end,
 		OrderByComparator<QueryLink> orderByComparator,
 		boolean useFinderCache) {
 
-		return getPersistence().findByCompanyId(
-			companyId, start, end, orderByComparator, useFinderCache);
+		return getPersistence().findBySubjectId(
+			subjectId, start, end, orderByComparator, useFinderCache);
 	}
 
 	/**
-	 * Returns the first query link in the ordered set where companyId = &#63;.
+	 * Returns the first query link in the ordered set where subjectId = &#63;.
 	 *
-	 * @param companyId the company ID
+	 * @param subjectId the subject ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching query link
 	 * @throws NoSuchQueryLinkException if a matching query link could not be found
 	 */
-	public static QueryLink findByCompanyId_First(
-			long companyId, OrderByComparator<QueryLink> orderByComparator)
+	public static QueryLink findBySubjectId_First(
+			long subjectId, OrderByComparator<QueryLink> orderByComparator)
 		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
 
-		return getPersistence().findByCompanyId_First(
-			companyId, orderByComparator);
+		return getPersistence().findBySubjectId_First(
+			subjectId, orderByComparator);
 	}
 
 	/**
-	 * Returns the first query link in the ordered set where companyId = &#63;.
+	 * Returns the first query link in the ordered set where subjectId = &#63;.
 	 *
-	 * @param companyId the company ID
+	 * @param subjectId the subject ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching query link, or <code>null</code> if a matching query link could not be found
 	 */
-	public static QueryLink fetchByCompanyId_First(
-		long companyId, OrderByComparator<QueryLink> orderByComparator) {
+	public static QueryLink fetchBySubjectId_First(
+		long subjectId, OrderByComparator<QueryLink> orderByComparator) {
 
-		return getPersistence().fetchByCompanyId_First(
-			companyId, orderByComparator);
+		return getPersistence().fetchBySubjectId_First(
+			subjectId, orderByComparator);
 	}
 
 	/**
-	 * Returns the last query link in the ordered set where companyId = &#63;.
+	 * Returns the last query link in the ordered set where subjectId = &#63;.
 	 *
-	 * @param companyId the company ID
+	 * @param subjectId the subject ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching query link
 	 * @throws NoSuchQueryLinkException if a matching query link could not be found
 	 */
-	public static QueryLink findByCompanyId_Last(
-			long companyId, OrderByComparator<QueryLink> orderByComparator)
+	public static QueryLink findBySubjectId_Last(
+			long subjectId, OrderByComparator<QueryLink> orderByComparator)
 		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
 
-		return getPersistence().findByCompanyId_Last(
-			companyId, orderByComparator);
+		return getPersistence().findBySubjectId_Last(
+			subjectId, orderByComparator);
 	}
 
 	/**
-	 * Returns the last query link in the ordered set where companyId = &#63;.
+	 * Returns the last query link in the ordered set where subjectId = &#63;.
 	 *
-	 * @param companyId the company ID
+	 * @param subjectId the subject ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching query link, or <code>null</code> if a matching query link could not be found
 	 */
-	public static QueryLink fetchByCompanyId_Last(
-		long companyId, OrderByComparator<QueryLink> orderByComparator) {
+	public static QueryLink fetchBySubjectId_Last(
+		long subjectId, OrderByComparator<QueryLink> orderByComparator) {
 
-		return getPersistence().fetchByCompanyId_Last(
-			companyId, orderByComparator);
+		return getPersistence().fetchBySubjectId_Last(
+			subjectId, orderByComparator);
 	}
 
 	/**
-	 * Returns the query links before and after the current query link in the ordered set where companyId = &#63;.
+	 * Returns the query links before and after the current query link in the ordered set where subjectId = &#63;.
 	 *
 	 * @param queryId the primary key of the current query link
-	 * @param companyId the company ID
+	 * @param subjectId the subject ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next query link
 	 * @throws NoSuchQueryLinkException if a query link with the primary key could not be found
 	 */
-	public static QueryLink[] findByCompanyId_PrevAndNext(
-			long queryId, long companyId,
+	public static QueryLink[] findBySubjectId_PrevAndNext(
+			long queryId, long subjectId,
 			OrderByComparator<QueryLink> orderByComparator)
 		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
 
-		return getPersistence().findByCompanyId_PrevAndNext(
-			queryId, companyId, orderByComparator);
+		return getPersistence().findBySubjectId_PrevAndNext(
+			queryId, subjectId, orderByComparator);
 	}
 
 	/**
-	 * Removes all the query links where companyId = &#63; from the database.
+	 * Removes all the query links where subjectId = &#63; from the database.
 	 *
-	 * @param companyId the company ID
+	 * @param subjectId the subject ID
 	 */
-	public static void removeByCompanyId(long companyId) {
-		getPersistence().removeByCompanyId(companyId);
+	public static void removeBySubjectId(long subjectId) {
+		getPersistence().removeBySubjectId(subjectId);
 	}
 
 	/**
-	 * Returns the number of query links where companyId = &#63;.
+	 * Returns the number of query links where subjectId = &#63;.
 	 *
-	 * @param companyId the company ID
+	 * @param subjectId the subject ID
 	 * @return the number of matching query links
 	 */
-	public static int countByCompanyId(long companyId) {
-		return getPersistence().countByCompanyId(companyId);
+	public static int countBySubjectId(long subjectId) {
+		return getPersistence().countBySubjectId(subjectId);
 	}
 
 	/**
-	 * Returns all the query links where groupId = &#63; and projectId = &#63;.
+	 * Returns all the query links where instanceId = &#63;.
 	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
+	 * @param instanceId the instance ID
 	 * @return the matching query links
 	 */
-	public static List<QueryLink> findByG_P(long groupId, long projectId) {
-		return getPersistence().findByG_P(groupId, projectId);
+	public static List<QueryLink> findByInstanceId(long instanceId) {
+		return getPersistence().findByInstanceId(instanceId);
 	}
 
 	/**
-	 * Returns a range of all the query links where groupId = &#63; and projectId = &#63;.
+	 * Returns a range of all the query links where instanceId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
 	 * </p>
 	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
+	 * @param instanceId the instance ID
 	 * @param start the lower bound of the range of query links
 	 * @param end the upper bound of the range of query links (not inclusive)
 	 * @return the range of matching query links
 	 */
-	public static List<QueryLink> findByG_P(
-		long groupId, long projectId, int start, int end) {
+	public static List<QueryLink> findByInstanceId(
+		long instanceId, int start, int end) {
 
-		return getPersistence().findByG_P(groupId, projectId, start, end);
+		return getPersistence().findByInstanceId(instanceId, start, end);
 	}
 
 	/**
-	 * Returns an ordered range of all the query links where groupId = &#63; and projectId = &#63;.
+	 * Returns an ordered range of all the query links where instanceId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
 	 * </p>
 	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
+	 * @param instanceId the instance ID
 	 * @param start the lower bound of the range of query links
 	 * @param end the upper bound of the range of query links (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching query links
 	 */
-	public static List<QueryLink> findByG_P(
-		long groupId, long projectId, int start, int end,
+	public static List<QueryLink> findByInstanceId(
+		long instanceId, int start, int end,
 		OrderByComparator<QueryLink> orderByComparator) {
 
-		return getPersistence().findByG_P(
-			groupId, projectId, start, end, orderByComparator);
+		return getPersistence().findByInstanceId(
+			instanceId, start, end, orderByComparator);
 	}
 
 	/**
-	 * Returns an ordered range of all the query links where groupId = &#63; and projectId = &#63;.
+	 * Returns an ordered range of all the query links where instanceId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
 	 * </p>
 	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
+	 * @param instanceId the instance ID
 	 * @param start the lower bound of the range of query links
 	 * @param end the upper bound of the range of query links (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching query links
 	 */
-	public static List<QueryLink> findByG_P(
-		long groupId, long projectId, int start, int end,
+	public static List<QueryLink> findByInstanceId(
+		long instanceId, int start, int end,
 		OrderByComparator<QueryLink> orderByComparator,
 		boolean useFinderCache) {
 
-		return getPersistence().findByG_P(
-			groupId, projectId, start, end, orderByComparator, useFinderCache);
+		return getPersistence().findByInstanceId(
+			instanceId, start, end, orderByComparator, useFinderCache);
 	}
 
 	/**
-	 * Returns the first query link in the ordered set where groupId = &#63; and projectId = &#63;.
+	 * Returns the first query link in the ordered set where instanceId = &#63;.
 	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
+	 * @param instanceId the instance ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching query link
 	 * @throws NoSuchQueryLinkException if a matching query link could not be found
 	 */
-	public static QueryLink findByG_P_First(
-			long groupId, long projectId,
-			OrderByComparator<QueryLink> orderByComparator)
+	public static QueryLink findByInstanceId_First(
+			long instanceId, OrderByComparator<QueryLink> orderByComparator)
 		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
 
-		return getPersistence().findByG_P_First(
-			groupId, projectId, orderByComparator);
+		return getPersistence().findByInstanceId_First(
+			instanceId, orderByComparator);
 	}
 
 	/**
-	 * Returns the first query link in the ordered set where groupId = &#63; and projectId = &#63;.
+	 * Returns the first query link in the ordered set where instanceId = &#63;.
 	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
+	 * @param instanceId the instance ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching query link, or <code>null</code> if a matching query link could not be found
 	 */
-	public static QueryLink fetchByG_P_First(
-		long groupId, long projectId,
-		OrderByComparator<QueryLink> orderByComparator) {
+	public static QueryLink fetchByInstanceId_First(
+		long instanceId, OrderByComparator<QueryLink> orderByComparator) {
 
-		return getPersistence().fetchByG_P_First(
-			groupId, projectId, orderByComparator);
+		return getPersistence().fetchByInstanceId_First(
+			instanceId, orderByComparator);
 	}
 
 	/**
-	 * Returns the last query link in the ordered set where groupId = &#63; and projectId = &#63;.
+	 * Returns the last query link in the ordered set where instanceId = &#63;.
 	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
+	 * @param instanceId the instance ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching query link
 	 * @throws NoSuchQueryLinkException if a matching query link could not be found
 	 */
-	public static QueryLink findByG_P_Last(
-			long groupId, long projectId,
-			OrderByComparator<QueryLink> orderByComparator)
+	public static QueryLink findByInstanceId_Last(
+			long instanceId, OrderByComparator<QueryLink> orderByComparator)
 		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
 
-		return getPersistence().findByG_P_Last(
-			groupId, projectId, orderByComparator);
+		return getPersistence().findByInstanceId_Last(
+			instanceId, orderByComparator);
 	}
 
 	/**
-	 * Returns the last query link in the ordered set where groupId = &#63; and projectId = &#63;.
+	 * Returns the last query link in the ordered set where instanceId = &#63;.
 	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
+	 * @param instanceId the instance ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching query link, or <code>null</code> if a matching query link could not be found
 	 */
-	public static QueryLink fetchByG_P_Last(
-		long groupId, long projectId,
-		OrderByComparator<QueryLink> orderByComparator) {
+	public static QueryLink fetchByInstanceId_Last(
+		long instanceId, OrderByComparator<QueryLink> orderByComparator) {
 
-		return getPersistence().fetchByG_P_Last(
-			groupId, projectId, orderByComparator);
+		return getPersistence().fetchByInstanceId_Last(
+			instanceId, orderByComparator);
 	}
 
 	/**
-	 * Returns the query links before and after the current query link in the ordered set where groupId = &#63; and projectId = &#63;.
+	 * Returns the query links before and after the current query link in the ordered set where instanceId = &#63;.
 	 *
 	 * @param queryId the primary key of the current query link
-	 * @param groupId the group ID
-	 * @param projectId the project ID
+	 * @param instanceId the instance ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next query link
 	 * @throws NoSuchQueryLinkException if a query link with the primary key could not be found
 	 */
-	public static QueryLink[] findByG_P_PrevAndNext(
-			long queryId, long groupId, long projectId,
+	public static QueryLink[] findByInstanceId_PrevAndNext(
+			long queryId, long instanceId,
 			OrderByComparator<QueryLink> orderByComparator)
 		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
 
-		return getPersistence().findByG_P_PrevAndNext(
-			queryId, groupId, projectId, orderByComparator);
+		return getPersistence().findByInstanceId_PrevAndNext(
+			queryId, instanceId, orderByComparator);
 	}
 
 	/**
-	 * Removes all the query links where groupId = &#63; and projectId = &#63; from the database.
+	 * Removes all the query links where instanceId = &#63; from the database.
 	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
+	 * @param instanceId the instance ID
 	 */
-	public static void removeByG_P(long groupId, long projectId) {
-		getPersistence().removeByG_P(groupId, projectId);
+	public static void removeByInstanceId(long instanceId) {
+		getPersistence().removeByInstanceId(instanceId);
 	}
 
 	/**
-	 * Returns the number of query links where groupId = &#63; and projectId = &#63;.
+	 * Returns the number of query links where instanceId = &#63;.
 	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
+	 * @param instanceId the instance ID
 	 * @return the number of matching query links
 	 */
-	public static int countByG_P(long groupId, long projectId) {
-		return getPersistence().countByG_P(groupId, projectId);
+	public static int countByInstanceId(long instanceId) {
+		return getPersistence().countByInstanceId(instanceId);
 	}
 
 	/**
-	 * Returns all the query links where userId = &#63;.
+	 * Returns all the query links where subjectId = &#63; and visitGroupId = &#63;.
 	 *
-	 * @param userId the user ID
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
 	 * @return the matching query links
 	 */
-	public static List<QueryLink> findByUserId(long userId) {
-		return getPersistence().findByUserId(userId);
+	public static List<QueryLink> findByS_VG(
+		long subjectId, long visitGroupId) {
+
+		return getPersistence().findByS_VG(subjectId, visitGroupId);
 	}
 
 	/**
-	 * Returns a range of all the query links where userId = &#63;.
+	 * Returns a range of all the query links where subjectId = &#63; and visitGroupId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
 	 * </p>
 	 *
-	 * @param userId the user ID
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
 	 * @param start the lower bound of the range of query links
 	 * @param end the upper bound of the range of query links (not inclusive)
 	 * @return the range of matching query links
 	 */
-	public static List<QueryLink> findByUserId(
-		long userId, int start, int end) {
+	public static List<QueryLink> findByS_VG(
+		long subjectId, long visitGroupId, int start, int end) {
 
-		return getPersistence().findByUserId(userId, start, end);
+		return getPersistence().findByS_VG(subjectId, visitGroupId, start, end);
 	}
 
 	/**
-	 * Returns an ordered range of all the query links where userId = &#63;.
+	 * Returns an ordered range of all the query links where subjectId = &#63; and visitGroupId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
 	 * </p>
 	 *
-	 * @param userId the user ID
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
 	 * @param start the lower bound of the range of query links
 	 * @param end the upper bound of the range of query links (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching query links
 	 */
-	public static List<QueryLink> findByUserId(
-		long userId, int start, int end,
+	public static List<QueryLink> findByS_VG(
+		long subjectId, long visitGroupId, int start, int end,
 		OrderByComparator<QueryLink> orderByComparator) {
 
-		return getPersistence().findByUserId(
-			userId, start, end, orderByComparator);
+		return getPersistence().findByS_VG(
+			subjectId, visitGroupId, start, end, orderByComparator);
 	}
 
 	/**
-	 * Returns an ordered range of all the query links where userId = &#63;.
+	 * Returns an ordered range of all the query links where subjectId = &#63; and visitGroupId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
 	 * </p>
 	 *
-	 * @param userId the user ID
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
 	 * @param start the lower bound of the range of query links
 	 * @param end the upper bound of the range of query links (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching query links
 	 */
-	public static List<QueryLink> findByUserId(
-		long userId, int start, int end,
+	public static List<QueryLink> findByS_VG(
+		long subjectId, long visitGroupId, int start, int end,
 		OrderByComparator<QueryLink> orderByComparator,
 		boolean useFinderCache) {
 
-		return getPersistence().findByUserId(
-			userId, start, end, orderByComparator, useFinderCache);
+		return getPersistence().findByS_VG(
+			subjectId, visitGroupId, start, end, orderByComparator,
+			useFinderCache);
 	}
 
 	/**
-	 * Returns the first query link in the ordered set where userId = &#63;.
+	 * Returns the first query link in the ordered set where subjectId = &#63; and visitGroupId = &#63;.
 	 *
-	 * @param userId the user ID
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching query link
 	 * @throws NoSuchQueryLinkException if a matching query link could not be found
 	 */
-	public static QueryLink findByUserId_First(
-			long userId, OrderByComparator<QueryLink> orderByComparator)
+	public static QueryLink findByS_VG_First(
+			long subjectId, long visitGroupId,
+			OrderByComparator<QueryLink> orderByComparator)
 		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
 
-		return getPersistence().findByUserId_First(userId, orderByComparator);
+		return getPersistence().findByS_VG_First(
+			subjectId, visitGroupId, orderByComparator);
 	}
 
 	/**
-	 * Returns the first query link in the ordered set where userId = &#63;.
+	 * Returns the first query link in the ordered set where subjectId = &#63; and visitGroupId = &#63;.
 	 *
-	 * @param userId the user ID
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching query link, or <code>null</code> if a matching query link could not be found
 	 */
-	public static QueryLink fetchByUserId_First(
-		long userId, OrderByComparator<QueryLink> orderByComparator) {
+	public static QueryLink fetchByS_VG_First(
+		long subjectId, long visitGroupId,
+		OrderByComparator<QueryLink> orderByComparator) {
 
-		return getPersistence().fetchByUserId_First(userId, orderByComparator);
+		return getPersistence().fetchByS_VG_First(
+			subjectId, visitGroupId, orderByComparator);
 	}
 
 	/**
-	 * Returns the last query link in the ordered set where userId = &#63;.
+	 * Returns the last query link in the ordered set where subjectId = &#63; and visitGroupId = &#63;.
 	 *
-	 * @param userId the user ID
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching query link
 	 * @throws NoSuchQueryLinkException if a matching query link could not be found
 	 */
-	public static QueryLink findByUserId_Last(
-			long userId, OrderByComparator<QueryLink> orderByComparator)
+	public static QueryLink findByS_VG_Last(
+			long subjectId, long visitGroupId,
+			OrderByComparator<QueryLink> orderByComparator)
 		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
 
-		return getPersistence().findByUserId_Last(userId, orderByComparator);
+		return getPersistence().findByS_VG_Last(
+			subjectId, visitGroupId, orderByComparator);
 	}
 
 	/**
-	 * Returns the last query link in the ordered set where userId = &#63;.
+	 * Returns the last query link in the ordered set where subjectId = &#63; and visitGroupId = &#63;.
 	 *
-	 * @param userId the user ID
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching query link, or <code>null</code> if a matching query link could not be found
 	 */
-	public static QueryLink fetchByUserId_Last(
-		long userId, OrderByComparator<QueryLink> orderByComparator) {
+	public static QueryLink fetchByS_VG_Last(
+		long subjectId, long visitGroupId,
+		OrderByComparator<QueryLink> orderByComparator) {
 
-		return getPersistence().fetchByUserId_Last(userId, orderByComparator);
+		return getPersistence().fetchByS_VG_Last(
+			subjectId, visitGroupId, orderByComparator);
 	}
 
 	/**
-	 * Returns the query links before and after the current query link in the ordered set where userId = &#63;.
+	 * Returns the query links before and after the current query link in the ordered set where subjectId = &#63; and visitGroupId = &#63;.
 	 *
 	 * @param queryId the primary key of the current query link
-	 * @param userId the user ID
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next query link
 	 * @throws NoSuchQueryLinkException if a query link with the primary key could not be found
 	 */
-	public static QueryLink[] findByUserId_PrevAndNext(
-			long queryId, long userId,
+	public static QueryLink[] findByS_VG_PrevAndNext(
+			long queryId, long subjectId, long visitGroupId,
 			OrderByComparator<QueryLink> orderByComparator)
 		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
 
-		return getPersistence().findByUserId_PrevAndNext(
-			queryId, userId, orderByComparator);
+		return getPersistence().findByS_VG_PrevAndNext(
+			queryId, subjectId, visitGroupId, orderByComparator);
 	}
 
 	/**
-	 * Removes all the query links where userId = &#63; from the database.
+	 * Removes all the query links where subjectId = &#63; and visitGroupId = &#63; from the database.
 	 *
-	 * @param userId the user ID
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
 	 */
-	public static void removeByUserId(long userId) {
-		getPersistence().removeByUserId(userId);
+	public static void removeByS_VG(long subjectId, long visitGroupId) {
+		getPersistence().removeByS_VG(subjectId, visitGroupId);
 	}
 
 	/**
-	 * Returns the number of query links where userId = &#63;.
+	 * Returns the number of query links where subjectId = &#63; and visitGroupId = &#63;.
 	 *
-	 * @param userId the user ID
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
 	 * @return the number of matching query links
 	 */
-	public static int countByUserId(long userId) {
-		return getPersistence().countByUserId(userId);
+	public static int countByS_VG(long subjectId, long visitGroupId) {
+		return getPersistence().countByS_VG(subjectId, visitGroupId);
+	}
+
+	/**
+	 * Returns all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @return the matching query links
+	 */
+	public static List<QueryLink> findByS_VG_VD(
+		long subjectId, long visitGroupId, long visitDefinitionId) {
+
+		return getPersistence().findByS_VG_VD(
+			subjectId, visitGroupId, visitDefinitionId);
+	}
+
+	/**
+	 * Returns a range of all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
+	 * </p>
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param start the lower bound of the range of query links
+	 * @param end the upper bound of the range of query links (not inclusive)
+	 * @return the range of matching query links
+	 */
+	public static List<QueryLink> findByS_VG_VD(
+		long subjectId, long visitGroupId, long visitDefinitionId, int start,
+		int end) {
+
+		return getPersistence().findByS_VG_VD(
+			subjectId, visitGroupId, visitDefinitionId, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
+	 * </p>
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param start the lower bound of the range of query links
+	 * @param end the upper bound of the range of query links (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching query links
+	 */
+	public static List<QueryLink> findByS_VG_VD(
+		long subjectId, long visitGroupId, long visitDefinitionId, int start,
+		int end, OrderByComparator<QueryLink> orderByComparator) {
+
+		return getPersistence().findByS_VG_VD(
+			subjectId, visitGroupId, visitDefinitionId, start, end,
+			orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
+	 * </p>
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param start the lower bound of the range of query links
+	 * @param end the upper bound of the range of query links (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching query links
+	 */
+	public static List<QueryLink> findByS_VG_VD(
+		long subjectId, long visitGroupId, long visitDefinitionId, int start,
+		int end, OrderByComparator<QueryLink> orderByComparator,
+		boolean useFinderCache) {
+
+		return getPersistence().findByS_VG_VD(
+			subjectId, visitGroupId, visitDefinitionId, start, end,
+			orderByComparator, useFinderCache);
+	}
+
+	/**
+	 * Returns the first query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching query link
+	 * @throws NoSuchQueryLinkException if a matching query link could not be found
+	 */
+	public static QueryLink findByS_VG_VD_First(
+			long subjectId, long visitGroupId, long visitDefinitionId,
+			OrderByComparator<QueryLink> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
+
+		return getPersistence().findByS_VG_VD_First(
+			subjectId, visitGroupId, visitDefinitionId, orderByComparator);
+	}
+
+	/**
+	 * Returns the first query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching query link, or <code>null</code> if a matching query link could not be found
+	 */
+	public static QueryLink fetchByS_VG_VD_First(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		OrderByComparator<QueryLink> orderByComparator) {
+
+		return getPersistence().fetchByS_VG_VD_First(
+			subjectId, visitGroupId, visitDefinitionId, orderByComparator);
+	}
+
+	/**
+	 * Returns the last query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching query link
+	 * @throws NoSuchQueryLinkException if a matching query link could not be found
+	 */
+	public static QueryLink findByS_VG_VD_Last(
+			long subjectId, long visitGroupId, long visitDefinitionId,
+			OrderByComparator<QueryLink> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
+
+		return getPersistence().findByS_VG_VD_Last(
+			subjectId, visitGroupId, visitDefinitionId, orderByComparator);
+	}
+
+	/**
+	 * Returns the last query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching query link, or <code>null</code> if a matching query link could not be found
+	 */
+	public static QueryLink fetchByS_VG_VD_Last(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		OrderByComparator<QueryLink> orderByComparator) {
+
+		return getPersistence().fetchByS_VG_VD_Last(
+			subjectId, visitGroupId, visitDefinitionId, orderByComparator);
+	}
+
+	/**
+	 * Returns the query links before and after the current query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * @param queryId the primary key of the current query link
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next query link
+	 * @throws NoSuchQueryLinkException if a query link with the primary key could not be found
+	 */
+	public static QueryLink[] findByS_VG_VD_PrevAndNext(
+			long queryId, long subjectId, long visitGroupId,
+			long visitDefinitionId,
+			OrderByComparator<QueryLink> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
+
+		return getPersistence().findByS_VG_VD_PrevAndNext(
+			queryId, subjectId, visitGroupId, visitDefinitionId,
+			orderByComparator);
+	}
+
+	/**
+	 * Removes all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; from the database.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 */
+	public static void removeByS_VG_VD(
+		long subjectId, long visitGroupId, long visitDefinitionId) {
+
+		getPersistence().removeByS_VG_VD(
+			subjectId, visitGroupId, visitDefinitionId);
+	}
+
+	/**
+	 * Returns the number of query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @return the number of matching query links
+	 */
+	public static int countByS_VG_VD(
+		long subjectId, long visitGroupId, long visitDefinitionId) {
+
+		return getPersistence().countByS_VG_VD(
+			subjectId, visitGroupId, visitDefinitionId);
+	}
+
+	/**
+	 * Returns all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @return the matching query links
+	 */
+	public static List<QueryLink> findByS_VG_VD_VC(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId) {
+
+		return getPersistence().findByS_VG_VD_VC(
+			subjectId, visitGroupId, visitDefinitionId, visitCRFId);
+	}
+
+	/**
+	 * Returns a range of all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
+	 * </p>
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param start the lower bound of the range of query links
+	 * @param end the upper bound of the range of query links (not inclusive)
+	 * @return the range of matching query links
+	 */
+	public static List<QueryLink> findByS_VG_VD_VC(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, int start, int end) {
+
+		return getPersistence().findByS_VG_VD_VC(
+			subjectId, visitGroupId, visitDefinitionId, visitCRFId, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
+	 * </p>
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param start the lower bound of the range of query links
+	 * @param end the upper bound of the range of query links (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching query links
+	 */
+	public static List<QueryLink> findByS_VG_VD_VC(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, int start, int end,
+		OrderByComparator<QueryLink> orderByComparator) {
+
+		return getPersistence().findByS_VG_VD_VC(
+			subjectId, visitGroupId, visitDefinitionId, visitCRFId, start, end,
+			orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
+	 * </p>
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param start the lower bound of the range of query links
+	 * @param end the upper bound of the range of query links (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching query links
+	 */
+	public static List<QueryLink> findByS_VG_VD_VC(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, int start, int end,
+		OrderByComparator<QueryLink> orderByComparator,
+		boolean useFinderCache) {
+
+		return getPersistence().findByS_VG_VD_VC(
+			subjectId, visitGroupId, visitDefinitionId, visitCRFId, start, end,
+			orderByComparator, useFinderCache);
+	}
+
+	/**
+	 * Returns the first query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching query link
+	 * @throws NoSuchQueryLinkException if a matching query link could not be found
+	 */
+	public static QueryLink findByS_VG_VD_VC_First(
+			long subjectId, long visitGroupId, long visitDefinitionId,
+			long visitCRFId, OrderByComparator<QueryLink> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
+
+		return getPersistence().findByS_VG_VD_VC_First(
+			subjectId, visitGroupId, visitDefinitionId, visitCRFId,
+			orderByComparator);
+	}
+
+	/**
+	 * Returns the first query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching query link, or <code>null</code> if a matching query link could not be found
+	 */
+	public static QueryLink fetchByS_VG_VD_VC_First(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, OrderByComparator<QueryLink> orderByComparator) {
+
+		return getPersistence().fetchByS_VG_VD_VC_First(
+			subjectId, visitGroupId, visitDefinitionId, visitCRFId,
+			orderByComparator);
+	}
+
+	/**
+	 * Returns the last query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching query link
+	 * @throws NoSuchQueryLinkException if a matching query link could not be found
+	 */
+	public static QueryLink findByS_VG_VD_VC_Last(
+			long subjectId, long visitGroupId, long visitDefinitionId,
+			long visitCRFId, OrderByComparator<QueryLink> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
+
+		return getPersistence().findByS_VG_VD_VC_Last(
+			subjectId, visitGroupId, visitDefinitionId, visitCRFId,
+			orderByComparator);
+	}
+
+	/**
+	 * Returns the last query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching query link, or <code>null</code> if a matching query link could not be found
+	 */
+	public static QueryLink fetchByS_VG_VD_VC_Last(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, OrderByComparator<QueryLink> orderByComparator) {
+
+		return getPersistence().fetchByS_VG_VD_VC_Last(
+			subjectId, visitGroupId, visitDefinitionId, visitCRFId,
+			orderByComparator);
+	}
+
+	/**
+	 * Returns the query links before and after the current query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63;.
+	 *
+	 * @param queryId the primary key of the current query link
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next query link
+	 * @throws NoSuchQueryLinkException if a query link with the primary key could not be found
+	 */
+	public static QueryLink[] findByS_VG_VD_VC_PrevAndNext(
+			long queryId, long subjectId, long visitGroupId,
+			long visitDefinitionId, long visitCRFId,
+			OrderByComparator<QueryLink> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
+
+		return getPersistence().findByS_VG_VD_VC_PrevAndNext(
+			queryId, subjectId, visitGroupId, visitDefinitionId, visitCRFId,
+			orderByComparator);
+	}
+
+	/**
+	 * Removes all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; from the database.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 */
+	public static void removeByS_VG_VD_VC(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId) {
+
+		getPersistence().removeByS_VG_VD_VC(
+			subjectId, visitGroupId, visitDefinitionId, visitCRFId);
+	}
+
+	/**
+	 * Returns the number of query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @return the number of matching query links
+	 */
+	public static int countByS_VG_VD_VC(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId) {
+
+		return getPersistence().countByS_VG_VD_VC(
+			subjectId, visitGroupId, visitDefinitionId, visitCRFId);
+	}
+
+	/**
+	 * Returns all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; and subCRFId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param subCRFId the sub crf ID
+	 * @return the matching query links
+	 */
+	public static List<QueryLink> findByS_VG_VD_VC_S(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, long subCRFId) {
+
+		return getPersistence().findByS_VG_VD_VC_S(
+			subjectId, visitGroupId, visitDefinitionId, visitCRFId, subCRFId);
+	}
+
+	/**
+	 * Returns a range of all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; and subCRFId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
+	 * </p>
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param subCRFId the sub crf ID
+	 * @param start the lower bound of the range of query links
+	 * @param end the upper bound of the range of query links (not inclusive)
+	 * @return the range of matching query links
+	 */
+	public static List<QueryLink> findByS_VG_VD_VC_S(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, long subCRFId, int start, int end) {
+
+		return getPersistence().findByS_VG_VD_VC_S(
+			subjectId, visitGroupId, visitDefinitionId, visitCRFId, subCRFId,
+			start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; and subCRFId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
+	 * </p>
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param subCRFId the sub crf ID
+	 * @param start the lower bound of the range of query links
+	 * @param end the upper bound of the range of query links (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching query links
+	 */
+	public static List<QueryLink> findByS_VG_VD_VC_S(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, long subCRFId, int start, int end,
+		OrderByComparator<QueryLink> orderByComparator) {
+
+		return getPersistence().findByS_VG_VD_VC_S(
+			subjectId, visitGroupId, visitDefinitionId, visitCRFId, subCRFId,
+			start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; and subCRFId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
+	 * </p>
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param subCRFId the sub crf ID
+	 * @param start the lower bound of the range of query links
+	 * @param end the upper bound of the range of query links (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching query links
+	 */
+	public static List<QueryLink> findByS_VG_VD_VC_S(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, long subCRFId, int start, int end,
+		OrderByComparator<QueryLink> orderByComparator,
+		boolean useFinderCache) {
+
+		return getPersistence().findByS_VG_VD_VC_S(
+			subjectId, visitGroupId, visitDefinitionId, visitCRFId, subCRFId,
+			start, end, orderByComparator, useFinderCache);
+	}
+
+	/**
+	 * Returns the first query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; and subCRFId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param subCRFId the sub crf ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching query link
+	 * @throws NoSuchQueryLinkException if a matching query link could not be found
+	 */
+	public static QueryLink findByS_VG_VD_VC_S_First(
+			long subjectId, long visitGroupId, long visitDefinitionId,
+			long visitCRFId, long subCRFId,
+			OrderByComparator<QueryLink> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
+
+		return getPersistence().findByS_VG_VD_VC_S_First(
+			subjectId, visitGroupId, visitDefinitionId, visitCRFId, subCRFId,
+			orderByComparator);
+	}
+
+	/**
+	 * Returns the first query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; and subCRFId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param subCRFId the sub crf ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching query link, or <code>null</code> if a matching query link could not be found
+	 */
+	public static QueryLink fetchByS_VG_VD_VC_S_First(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, long subCRFId,
+		OrderByComparator<QueryLink> orderByComparator) {
+
+		return getPersistence().fetchByS_VG_VD_VC_S_First(
+			subjectId, visitGroupId, visitDefinitionId, visitCRFId, subCRFId,
+			orderByComparator);
+	}
+
+	/**
+	 * Returns the last query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; and subCRFId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param subCRFId the sub crf ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching query link
+	 * @throws NoSuchQueryLinkException if a matching query link could not be found
+	 */
+	public static QueryLink findByS_VG_VD_VC_S_Last(
+			long subjectId, long visitGroupId, long visitDefinitionId,
+			long visitCRFId, long subCRFId,
+			OrderByComparator<QueryLink> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
+
+		return getPersistence().findByS_VG_VD_VC_S_Last(
+			subjectId, visitGroupId, visitDefinitionId, visitCRFId, subCRFId,
+			orderByComparator);
+	}
+
+	/**
+	 * Returns the last query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; and subCRFId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param subCRFId the sub crf ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching query link, or <code>null</code> if a matching query link could not be found
+	 */
+	public static QueryLink fetchByS_VG_VD_VC_S_Last(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, long subCRFId,
+		OrderByComparator<QueryLink> orderByComparator) {
+
+		return getPersistence().fetchByS_VG_VD_VC_S_Last(
+			subjectId, visitGroupId, visitDefinitionId, visitCRFId, subCRFId,
+			orderByComparator);
+	}
+
+	/**
+	 * Returns the query links before and after the current query link in the ordered set where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; and subCRFId = &#63;.
+	 *
+	 * @param queryId the primary key of the current query link
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param subCRFId the sub crf ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next query link
+	 * @throws NoSuchQueryLinkException if a query link with the primary key could not be found
+	 */
+	public static QueryLink[] findByS_VG_VD_VC_S_PrevAndNext(
+			long queryId, long subjectId, long visitGroupId,
+			long visitDefinitionId, long visitCRFId, long subCRFId,
+			OrderByComparator<QueryLink> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
+
+		return getPersistence().findByS_VG_VD_VC_S_PrevAndNext(
+			queryId, subjectId, visitGroupId, visitDefinitionId, visitCRFId,
+			subCRFId, orderByComparator);
+	}
+
+	/**
+	 * Removes all the query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; and subCRFId = &#63; from the database.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param subCRFId the sub crf ID
+	 */
+	public static void removeByS_VG_VD_VC_S(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, long subCRFId) {
+
+		getPersistence().removeByS_VG_VD_VC_S(
+			subjectId, visitGroupId, visitDefinitionId, visitCRFId, subCRFId);
+	}
+
+	/**
+	 * Returns the number of query links where subjectId = &#63; and visitGroupId = &#63; and visitDefinitionId = &#63; and visitCRFId = &#63; and subCRFId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitGroupId the visit group ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param visitCRFId the visit crf ID
+	 * @param subCRFId the sub crf ID
+	 * @return the number of matching query links
+	 */
+	public static int countByS_VG_VD_VC_S(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, long subCRFId) {
+
+		return getPersistence().countByS_VG_VD_VC_S(
+			subjectId, visitGroupId, visitDefinitionId, visitCRFId, subCRFId);
 	}
 
 	/**
@@ -1305,866 +1998,6 @@ public class QueryLinkUtil {
 		return getPersistence().countByS_VG_VD_VC_S_I(
 			subjectId, visitGroupId, visitDefinitionId, visitCRFId, subCRFId,
 			instanceId);
-	}
-
-	/**
-	 * Returns all the query links where itemCode = &#63;.
-	 *
-	 * @param itemCode the item code
-	 * @return the matching query links
-	 */
-	public static List<QueryLink> findByItemCode(long itemCode) {
-		return getPersistence().findByItemCode(itemCode);
-	}
-
-	/**
-	 * Returns a range of all the query links where itemCode = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param itemCode the item code
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @return the range of matching query links
-	 */
-	public static List<QueryLink> findByItemCode(
-		long itemCode, int start, int end) {
-
-		return getPersistence().findByItemCode(itemCode, start, end);
-	}
-
-	/**
-	 * Returns an ordered range of all the query links where itemCode = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param itemCode the item code
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the ordered range of matching query links
-	 */
-	public static List<QueryLink> findByItemCode(
-		long itemCode, int start, int end,
-		OrderByComparator<QueryLink> orderByComparator) {
-
-		return getPersistence().findByItemCode(
-			itemCode, start, end, orderByComparator);
-	}
-
-	/**
-	 * Returns an ordered range of all the query links where itemCode = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param itemCode the item code
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @param useFinderCache whether to use the finder cache
-	 * @return the ordered range of matching query links
-	 */
-	public static List<QueryLink> findByItemCode(
-		long itemCode, int start, int end,
-		OrderByComparator<QueryLink> orderByComparator,
-		boolean useFinderCache) {
-
-		return getPersistence().findByItemCode(
-			itemCode, start, end, orderByComparator, useFinderCache);
-	}
-
-	/**
-	 * Returns the first query link in the ordered set where itemCode = &#63;.
-	 *
-	 * @param itemCode the item code
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching query link
-	 * @throws NoSuchQueryLinkException if a matching query link could not be found
-	 */
-	public static QueryLink findByItemCode_First(
-			long itemCode, OrderByComparator<QueryLink> orderByComparator)
-		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
-
-		return getPersistence().findByItemCode_First(
-			itemCode, orderByComparator);
-	}
-
-	/**
-	 * Returns the first query link in the ordered set where itemCode = &#63;.
-	 *
-	 * @param itemCode the item code
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching query link, or <code>null</code> if a matching query link could not be found
-	 */
-	public static QueryLink fetchByItemCode_First(
-		long itemCode, OrderByComparator<QueryLink> orderByComparator) {
-
-		return getPersistence().fetchByItemCode_First(
-			itemCode, orderByComparator);
-	}
-
-	/**
-	 * Returns the last query link in the ordered set where itemCode = &#63;.
-	 *
-	 * @param itemCode the item code
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching query link
-	 * @throws NoSuchQueryLinkException if a matching query link could not be found
-	 */
-	public static QueryLink findByItemCode_Last(
-			long itemCode, OrderByComparator<QueryLink> orderByComparator)
-		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
-
-		return getPersistence().findByItemCode_Last(
-			itemCode, orderByComparator);
-	}
-
-	/**
-	 * Returns the last query link in the ordered set where itemCode = &#63;.
-	 *
-	 * @param itemCode the item code
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching query link, or <code>null</code> if a matching query link could not be found
-	 */
-	public static QueryLink fetchByItemCode_Last(
-		long itemCode, OrderByComparator<QueryLink> orderByComparator) {
-
-		return getPersistence().fetchByItemCode_Last(
-			itemCode, orderByComparator);
-	}
-
-	/**
-	 * Returns the query links before and after the current query link in the ordered set where itemCode = &#63;.
-	 *
-	 * @param queryId the primary key of the current query link
-	 * @param itemCode the item code
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the previous, current, and next query link
-	 * @throws NoSuchQueryLinkException if a query link with the primary key could not be found
-	 */
-	public static QueryLink[] findByItemCode_PrevAndNext(
-			long queryId, long itemCode,
-			OrderByComparator<QueryLink> orderByComparator)
-		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
-
-		return getPersistence().findByItemCode_PrevAndNext(
-			queryId, itemCode, orderByComparator);
-	}
-
-	/**
-	 * Removes all the query links where itemCode = &#63; from the database.
-	 *
-	 * @param itemCode the item code
-	 */
-	public static void removeByItemCode(long itemCode) {
-		getPersistence().removeByItemCode(itemCode);
-	}
-
-	/**
-	 * Returns the number of query links where itemCode = &#63;.
-	 *
-	 * @param itemCode the item code
-	 * @return the number of matching query links
-	 */
-	public static int countByItemCode(long itemCode) {
-		return getPersistence().countByItemCode(itemCode);
-	}
-
-	/**
-	 * Returns all the query links where openUserId = &#63;.
-	 *
-	 * @param openUserId the open user ID
-	 * @return the matching query links
-	 */
-	public static List<QueryLink> findByOpenUserId(long openUserId) {
-		return getPersistence().findByOpenUserId(openUserId);
-	}
-
-	/**
-	 * Returns a range of all the query links where openUserId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param openUserId the open user ID
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @return the range of matching query links
-	 */
-	public static List<QueryLink> findByOpenUserId(
-		long openUserId, int start, int end) {
-
-		return getPersistence().findByOpenUserId(openUserId, start, end);
-	}
-
-	/**
-	 * Returns an ordered range of all the query links where openUserId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param openUserId the open user ID
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the ordered range of matching query links
-	 */
-	public static List<QueryLink> findByOpenUserId(
-		long openUserId, int start, int end,
-		OrderByComparator<QueryLink> orderByComparator) {
-
-		return getPersistence().findByOpenUserId(
-			openUserId, start, end, orderByComparator);
-	}
-
-	/**
-	 * Returns an ordered range of all the query links where openUserId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param openUserId the open user ID
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @param useFinderCache whether to use the finder cache
-	 * @return the ordered range of matching query links
-	 */
-	public static List<QueryLink> findByOpenUserId(
-		long openUserId, int start, int end,
-		OrderByComparator<QueryLink> orderByComparator,
-		boolean useFinderCache) {
-
-		return getPersistence().findByOpenUserId(
-			openUserId, start, end, orderByComparator, useFinderCache);
-	}
-
-	/**
-	 * Returns the first query link in the ordered set where openUserId = &#63;.
-	 *
-	 * @param openUserId the open user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching query link
-	 * @throws NoSuchQueryLinkException if a matching query link could not be found
-	 */
-	public static QueryLink findByOpenUserId_First(
-			long openUserId, OrderByComparator<QueryLink> orderByComparator)
-		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
-
-		return getPersistence().findByOpenUserId_First(
-			openUserId, orderByComparator);
-	}
-
-	/**
-	 * Returns the first query link in the ordered set where openUserId = &#63;.
-	 *
-	 * @param openUserId the open user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching query link, or <code>null</code> if a matching query link could not be found
-	 */
-	public static QueryLink fetchByOpenUserId_First(
-		long openUserId, OrderByComparator<QueryLink> orderByComparator) {
-
-		return getPersistence().fetchByOpenUserId_First(
-			openUserId, orderByComparator);
-	}
-
-	/**
-	 * Returns the last query link in the ordered set where openUserId = &#63;.
-	 *
-	 * @param openUserId the open user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching query link
-	 * @throws NoSuchQueryLinkException if a matching query link could not be found
-	 */
-	public static QueryLink findByOpenUserId_Last(
-			long openUserId, OrderByComparator<QueryLink> orderByComparator)
-		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
-
-		return getPersistence().findByOpenUserId_Last(
-			openUserId, orderByComparator);
-	}
-
-	/**
-	 * Returns the last query link in the ordered set where openUserId = &#63;.
-	 *
-	 * @param openUserId the open user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching query link, or <code>null</code> if a matching query link could not be found
-	 */
-	public static QueryLink fetchByOpenUserId_Last(
-		long openUserId, OrderByComparator<QueryLink> orderByComparator) {
-
-		return getPersistence().fetchByOpenUserId_Last(
-			openUserId, orderByComparator);
-	}
-
-	/**
-	 * Returns the query links before and after the current query link in the ordered set where openUserId = &#63;.
-	 *
-	 * @param queryId the primary key of the current query link
-	 * @param openUserId the open user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the previous, current, and next query link
-	 * @throws NoSuchQueryLinkException if a query link with the primary key could not be found
-	 */
-	public static QueryLink[] findByOpenUserId_PrevAndNext(
-			long queryId, long openUserId,
-			OrderByComparator<QueryLink> orderByComparator)
-		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
-
-		return getPersistence().findByOpenUserId_PrevAndNext(
-			queryId, openUserId, orderByComparator);
-	}
-
-	/**
-	 * Removes all the query links where openUserId = &#63; from the database.
-	 *
-	 * @param openUserId the open user ID
-	 */
-	public static void removeByOpenUserId(long openUserId) {
-		getPersistence().removeByOpenUserId(openUserId);
-	}
-
-	/**
-	 * Returns the number of query links where openUserId = &#63;.
-	 *
-	 * @param openUserId the open user ID
-	 * @return the number of matching query links
-	 */
-	public static int countByOpenUserId(long openUserId) {
-		return getPersistence().countByOpenUserId(openUserId);
-	}
-
-	/**
-	 * Returns all the query links where answerUserID = &#63;.
-	 *
-	 * @param answerUserID the answer user ID
-	 * @return the matching query links
-	 */
-	public static List<QueryLink> findByAnswerUserID(long answerUserID) {
-		return getPersistence().findByAnswerUserID(answerUserID);
-	}
-
-	/**
-	 * Returns a range of all the query links where answerUserID = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param answerUserID the answer user ID
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @return the range of matching query links
-	 */
-	public static List<QueryLink> findByAnswerUserID(
-		long answerUserID, int start, int end) {
-
-		return getPersistence().findByAnswerUserID(answerUserID, start, end);
-	}
-
-	/**
-	 * Returns an ordered range of all the query links where answerUserID = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param answerUserID the answer user ID
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the ordered range of matching query links
-	 */
-	public static List<QueryLink> findByAnswerUserID(
-		long answerUserID, int start, int end,
-		OrderByComparator<QueryLink> orderByComparator) {
-
-		return getPersistence().findByAnswerUserID(
-			answerUserID, start, end, orderByComparator);
-	}
-
-	/**
-	 * Returns an ordered range of all the query links where answerUserID = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param answerUserID the answer user ID
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @param useFinderCache whether to use the finder cache
-	 * @return the ordered range of matching query links
-	 */
-	public static List<QueryLink> findByAnswerUserID(
-		long answerUserID, int start, int end,
-		OrderByComparator<QueryLink> orderByComparator,
-		boolean useFinderCache) {
-
-		return getPersistence().findByAnswerUserID(
-			answerUserID, start, end, orderByComparator, useFinderCache);
-	}
-
-	/**
-	 * Returns the first query link in the ordered set where answerUserID = &#63;.
-	 *
-	 * @param answerUserID the answer user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching query link
-	 * @throws NoSuchQueryLinkException if a matching query link could not be found
-	 */
-	public static QueryLink findByAnswerUserID_First(
-			long answerUserID, OrderByComparator<QueryLink> orderByComparator)
-		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
-
-		return getPersistence().findByAnswerUserID_First(
-			answerUserID, orderByComparator);
-	}
-
-	/**
-	 * Returns the first query link in the ordered set where answerUserID = &#63;.
-	 *
-	 * @param answerUserID the answer user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching query link, or <code>null</code> if a matching query link could not be found
-	 */
-	public static QueryLink fetchByAnswerUserID_First(
-		long answerUserID, OrderByComparator<QueryLink> orderByComparator) {
-
-		return getPersistence().fetchByAnswerUserID_First(
-			answerUserID, orderByComparator);
-	}
-
-	/**
-	 * Returns the last query link in the ordered set where answerUserID = &#63;.
-	 *
-	 * @param answerUserID the answer user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching query link
-	 * @throws NoSuchQueryLinkException if a matching query link could not be found
-	 */
-	public static QueryLink findByAnswerUserID_Last(
-			long answerUserID, OrderByComparator<QueryLink> orderByComparator)
-		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
-
-		return getPersistence().findByAnswerUserID_Last(
-			answerUserID, orderByComparator);
-	}
-
-	/**
-	 * Returns the last query link in the ordered set where answerUserID = &#63;.
-	 *
-	 * @param answerUserID the answer user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching query link, or <code>null</code> if a matching query link could not be found
-	 */
-	public static QueryLink fetchByAnswerUserID_Last(
-		long answerUserID, OrderByComparator<QueryLink> orderByComparator) {
-
-		return getPersistence().fetchByAnswerUserID_Last(
-			answerUserID, orderByComparator);
-	}
-
-	/**
-	 * Returns the query links before and after the current query link in the ordered set where answerUserID = &#63;.
-	 *
-	 * @param queryId the primary key of the current query link
-	 * @param answerUserID the answer user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the previous, current, and next query link
-	 * @throws NoSuchQueryLinkException if a query link with the primary key could not be found
-	 */
-	public static QueryLink[] findByAnswerUserID_PrevAndNext(
-			long queryId, long answerUserID,
-			OrderByComparator<QueryLink> orderByComparator)
-		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
-
-		return getPersistence().findByAnswerUserID_PrevAndNext(
-			queryId, answerUserID, orderByComparator);
-	}
-
-	/**
-	 * Removes all the query links where answerUserID = &#63; from the database.
-	 *
-	 * @param answerUserID the answer user ID
-	 */
-	public static void removeByAnswerUserID(long answerUserID) {
-		getPersistence().removeByAnswerUserID(answerUserID);
-	}
-
-	/**
-	 * Returns the number of query links where answerUserID = &#63;.
-	 *
-	 * @param answerUserID the answer user ID
-	 * @return the number of matching query links
-	 */
-	public static int countByAnswerUserID(long answerUserID) {
-		return getPersistence().countByAnswerUserID(answerUserID);
-	}
-
-	/**
-	 * Returns all the query links where closeUserID = &#63;.
-	 *
-	 * @param closeUserID the close user ID
-	 * @return the matching query links
-	 */
-	public static List<QueryLink> findByCloseUserID(long closeUserID) {
-		return getPersistence().findByCloseUserID(closeUserID);
-	}
-
-	/**
-	 * Returns a range of all the query links where closeUserID = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param closeUserID the close user ID
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @return the range of matching query links
-	 */
-	public static List<QueryLink> findByCloseUserID(
-		long closeUserID, int start, int end) {
-
-		return getPersistence().findByCloseUserID(closeUserID, start, end);
-	}
-
-	/**
-	 * Returns an ordered range of all the query links where closeUserID = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param closeUserID the close user ID
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the ordered range of matching query links
-	 */
-	public static List<QueryLink> findByCloseUserID(
-		long closeUserID, int start, int end,
-		OrderByComparator<QueryLink> orderByComparator) {
-
-		return getPersistence().findByCloseUserID(
-			closeUserID, start, end, orderByComparator);
-	}
-
-	/**
-	 * Returns an ordered range of all the query links where closeUserID = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param closeUserID the close user ID
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @param useFinderCache whether to use the finder cache
-	 * @return the ordered range of matching query links
-	 */
-	public static List<QueryLink> findByCloseUserID(
-		long closeUserID, int start, int end,
-		OrderByComparator<QueryLink> orderByComparator,
-		boolean useFinderCache) {
-
-		return getPersistence().findByCloseUserID(
-			closeUserID, start, end, orderByComparator, useFinderCache);
-	}
-
-	/**
-	 * Returns the first query link in the ordered set where closeUserID = &#63;.
-	 *
-	 * @param closeUserID the close user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching query link
-	 * @throws NoSuchQueryLinkException if a matching query link could not be found
-	 */
-	public static QueryLink findByCloseUserID_First(
-			long closeUserID, OrderByComparator<QueryLink> orderByComparator)
-		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
-
-		return getPersistence().findByCloseUserID_First(
-			closeUserID, orderByComparator);
-	}
-
-	/**
-	 * Returns the first query link in the ordered set where closeUserID = &#63;.
-	 *
-	 * @param closeUserID the close user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching query link, or <code>null</code> if a matching query link could not be found
-	 */
-	public static QueryLink fetchByCloseUserID_First(
-		long closeUserID, OrderByComparator<QueryLink> orderByComparator) {
-
-		return getPersistence().fetchByCloseUserID_First(
-			closeUserID, orderByComparator);
-	}
-
-	/**
-	 * Returns the last query link in the ordered set where closeUserID = &#63;.
-	 *
-	 * @param closeUserID the close user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching query link
-	 * @throws NoSuchQueryLinkException if a matching query link could not be found
-	 */
-	public static QueryLink findByCloseUserID_Last(
-			long closeUserID, OrderByComparator<QueryLink> orderByComparator)
-		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
-
-		return getPersistence().findByCloseUserID_Last(
-			closeUserID, orderByComparator);
-	}
-
-	/**
-	 * Returns the last query link in the ordered set where closeUserID = &#63;.
-	 *
-	 * @param closeUserID the close user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching query link, or <code>null</code> if a matching query link could not be found
-	 */
-	public static QueryLink fetchByCloseUserID_Last(
-		long closeUserID, OrderByComparator<QueryLink> orderByComparator) {
-
-		return getPersistence().fetchByCloseUserID_Last(
-			closeUserID, orderByComparator);
-	}
-
-	/**
-	 * Returns the query links before and after the current query link in the ordered set where closeUserID = &#63;.
-	 *
-	 * @param queryId the primary key of the current query link
-	 * @param closeUserID the close user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the previous, current, and next query link
-	 * @throws NoSuchQueryLinkException if a query link with the primary key could not be found
-	 */
-	public static QueryLink[] findByCloseUserID_PrevAndNext(
-			long queryId, long closeUserID,
-			OrderByComparator<QueryLink> orderByComparator)
-		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
-
-		return getPersistence().findByCloseUserID_PrevAndNext(
-			queryId, closeUserID, orderByComparator);
-	}
-
-	/**
-	 * Removes all the query links where closeUserID = &#63; from the database.
-	 *
-	 * @param closeUserID the close user ID
-	 */
-	public static void removeByCloseUserID(long closeUserID) {
-		getPersistence().removeByCloseUserID(closeUserID);
-	}
-
-	/**
-	 * Returns the number of query links where closeUserID = &#63;.
-	 *
-	 * @param closeUserID the close user ID
-	 * @return the number of matching query links
-	 */
-	public static int countByCloseUserID(long closeUserID) {
-		return getPersistence().countByCloseUserID(closeUserID);
-	}
-
-	/**
-	 * Returns all the query links where reopenId = &#63; and ruleId = &#63;.
-	 *
-	 * @param reopenId the reopen ID
-	 * @param ruleId the rule ID
-	 * @return the matching query links
-	 */
-	public static List<QueryLink> findByR_R(long reopenId, long ruleId) {
-		return getPersistence().findByR_R(reopenId, ruleId);
-	}
-
-	/**
-	 * Returns a range of all the query links where reopenId = &#63; and ruleId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param reopenId the reopen ID
-	 * @param ruleId the rule ID
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @return the range of matching query links
-	 */
-	public static List<QueryLink> findByR_R(
-		long reopenId, long ruleId, int start, int end) {
-
-		return getPersistence().findByR_R(reopenId, ruleId, start, end);
-	}
-
-	/**
-	 * Returns an ordered range of all the query links where reopenId = &#63; and ruleId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param reopenId the reopen ID
-	 * @param ruleId the rule ID
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the ordered range of matching query links
-	 */
-	public static List<QueryLink> findByR_R(
-		long reopenId, long ruleId, int start, int end,
-		OrderByComparator<QueryLink> orderByComparator) {
-
-		return getPersistence().findByR_R(
-			reopenId, ruleId, start, end, orderByComparator);
-	}
-
-	/**
-	 * Returns an ordered range of all the query links where reopenId = &#63; and ruleId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>QueryLinkModelImpl</code>.
-	 * </p>
-	 *
-	 * @param reopenId the reopen ID
-	 * @param ruleId the rule ID
-	 * @param start the lower bound of the range of query links
-	 * @param end the upper bound of the range of query links (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @param useFinderCache whether to use the finder cache
-	 * @return the ordered range of matching query links
-	 */
-	public static List<QueryLink> findByR_R(
-		long reopenId, long ruleId, int start, int end,
-		OrderByComparator<QueryLink> orderByComparator,
-		boolean useFinderCache) {
-
-		return getPersistence().findByR_R(
-			reopenId, ruleId, start, end, orderByComparator, useFinderCache);
-	}
-
-	/**
-	 * Returns the first query link in the ordered set where reopenId = &#63; and ruleId = &#63;.
-	 *
-	 * @param reopenId the reopen ID
-	 * @param ruleId the rule ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching query link
-	 * @throws NoSuchQueryLinkException if a matching query link could not be found
-	 */
-	public static QueryLink findByR_R_First(
-			long reopenId, long ruleId,
-			OrderByComparator<QueryLink> orderByComparator)
-		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
-
-		return getPersistence().findByR_R_First(
-			reopenId, ruleId, orderByComparator);
-	}
-
-	/**
-	 * Returns the first query link in the ordered set where reopenId = &#63; and ruleId = &#63;.
-	 *
-	 * @param reopenId the reopen ID
-	 * @param ruleId the rule ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching query link, or <code>null</code> if a matching query link could not be found
-	 */
-	public static QueryLink fetchByR_R_First(
-		long reopenId, long ruleId,
-		OrderByComparator<QueryLink> orderByComparator) {
-
-		return getPersistence().fetchByR_R_First(
-			reopenId, ruleId, orderByComparator);
-	}
-
-	/**
-	 * Returns the last query link in the ordered set where reopenId = &#63; and ruleId = &#63;.
-	 *
-	 * @param reopenId the reopen ID
-	 * @param ruleId the rule ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching query link
-	 * @throws NoSuchQueryLinkException if a matching query link could not be found
-	 */
-	public static QueryLink findByR_R_Last(
-			long reopenId, long ruleId,
-			OrderByComparator<QueryLink> orderByComparator)
-		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
-
-		return getPersistence().findByR_R_Last(
-			reopenId, ruleId, orderByComparator);
-	}
-
-	/**
-	 * Returns the last query link in the ordered set where reopenId = &#63; and ruleId = &#63;.
-	 *
-	 * @param reopenId the reopen ID
-	 * @param ruleId the rule ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching query link, or <code>null</code> if a matching query link could not be found
-	 */
-	public static QueryLink fetchByR_R_Last(
-		long reopenId, long ruleId,
-		OrderByComparator<QueryLink> orderByComparator) {
-
-		return getPersistence().fetchByR_R_Last(
-			reopenId, ruleId, orderByComparator);
-	}
-
-	/**
-	 * Returns the query links before and after the current query link in the ordered set where reopenId = &#63; and ruleId = &#63;.
-	 *
-	 * @param queryId the primary key of the current query link
-	 * @param reopenId the reopen ID
-	 * @param ruleId the rule ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the previous, current, and next query link
-	 * @throws NoSuchQueryLinkException if a query link with the primary key could not be found
-	 */
-	public static QueryLink[] findByR_R_PrevAndNext(
-			long queryId, long reopenId, long ruleId,
-			OrderByComparator<QueryLink> orderByComparator)
-		throws com.dhsoft.edc.backend.exception.NoSuchQueryLinkException {
-
-		return getPersistence().findByR_R_PrevAndNext(
-			queryId, reopenId, ruleId, orderByComparator);
-	}
-
-	/**
-	 * Removes all the query links where reopenId = &#63; and ruleId = &#63; from the database.
-	 *
-	 * @param reopenId the reopen ID
-	 * @param ruleId the rule ID
-	 */
-	public static void removeByR_R(long reopenId, long ruleId) {
-		getPersistence().removeByR_R(reopenId, ruleId);
-	}
-
-	/**
-	 * Returns the number of query links where reopenId = &#63; and ruleId = &#63;.
-	 *
-	 * @param reopenId the reopen ID
-	 * @param ruleId the rule ID
-	 * @return the number of matching query links
-	 */
-	public static int countByR_R(long reopenId, long ruleId) {
-		return getPersistence().countByR_R(reopenId, ruleId);
 	}
 
 	/**

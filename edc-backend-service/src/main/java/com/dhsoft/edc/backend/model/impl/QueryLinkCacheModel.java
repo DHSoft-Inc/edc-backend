@@ -62,7 +62,7 @@ public class QueryLinkCacheModel
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(79);
+		StringBundler sb = new StringBundler(39);
 
 		sb.append("{uuid=");
 		sb.append(uuid);
@@ -98,50 +98,10 @@ public class QueryLinkCacheModel
 		sb.append(itemCode);
 		sb.append(", sourceType=");
 		sb.append(sourceType);
-		sb.append(", scope=");
-		sb.append(scope);
-		sb.append(", isTypeManual=");
-		sb.append(isTypeManual);
-		sb.append(", type=");
-		sb.append(type);
-		sb.append(", openUserId=");
-		sb.append(openUserId);
-		sb.append(", openUserName=");
-		sb.append(openUserName);
-		sb.append(", openDate=");
-		sb.append(openDate);
-		sb.append(", openComment=");
-		sb.append(openComment);
-		sb.append(", answerUserID=");
-		sb.append(answerUserID);
-		sb.append(", answerUserName=");
-		sb.append(answerUserName);
-		sb.append(", answerDate=");
-		sb.append(answerDate);
-		sb.append(", answerComment=");
-		sb.append(answerComment);
-		sb.append(", closeUserID=");
-		sb.append(closeUserID);
-		sb.append(", closeUserName=");
-		sb.append(closeUserName);
-		sb.append(", closeDate=");
-		sb.append(closeDate);
-		sb.append(", closeComment=");
-		sb.append(closeComment);
-		sb.append(", queryStatus=");
-		sb.append(queryStatus);
-		sb.append(", isReopen=");
-		sb.append(isReopen);
-		sb.append(", reopenId=");
-		sb.append(reopenId);
 		sb.append(", ruleId=");
 		sb.append(ruleId);
 		sb.append(", ruleInfo=");
 		sb.append(ruleInfo);
-		sb.append(", activeStatus=");
-		sb.append(activeStatus);
-		sb.append(", inactiveDate=");
-		sb.append(inactiveDate);
 		sb.append("}");
 
 		return sb.toString();
@@ -200,106 +160,6 @@ public class QueryLinkCacheModel
 			queryLinkImpl.setSourceType(sourceType);
 		}
 
-		if (scope == null) {
-			queryLinkImpl.setScope("");
-		}
-		else {
-			queryLinkImpl.setScope(scope);
-		}
-
-		if (isTypeManual == null) {
-			queryLinkImpl.setIsTypeManual("");
-		}
-		else {
-			queryLinkImpl.setIsTypeManual(isTypeManual);
-		}
-
-		if (type == null) {
-			queryLinkImpl.setType("");
-		}
-		else {
-			queryLinkImpl.setType(type);
-		}
-
-		queryLinkImpl.setOpenUserId(openUserId);
-
-		if (openUserName == null) {
-			queryLinkImpl.setOpenUserName("");
-		}
-		else {
-			queryLinkImpl.setOpenUserName(openUserName);
-		}
-
-		if (openDate == Long.MIN_VALUE) {
-			queryLinkImpl.setOpenDate(null);
-		}
-		else {
-			queryLinkImpl.setOpenDate(new Date(openDate));
-		}
-
-		if (openComment == null) {
-			queryLinkImpl.setOpenComment("");
-		}
-		else {
-			queryLinkImpl.setOpenComment(openComment);
-		}
-
-		queryLinkImpl.setAnswerUserID(answerUserID);
-
-		if (answerUserName == null) {
-			queryLinkImpl.setAnswerUserName("");
-		}
-		else {
-			queryLinkImpl.setAnswerUserName(answerUserName);
-		}
-
-		if (answerDate == Long.MIN_VALUE) {
-			queryLinkImpl.setAnswerDate(null);
-		}
-		else {
-			queryLinkImpl.setAnswerDate(new Date(answerDate));
-		}
-
-		if (answerComment == null) {
-			queryLinkImpl.setAnswerComment("");
-		}
-		else {
-			queryLinkImpl.setAnswerComment(answerComment);
-		}
-
-		queryLinkImpl.setCloseUserID(closeUserID);
-
-		if (closeUserName == null) {
-			queryLinkImpl.setCloseUserName("");
-		}
-		else {
-			queryLinkImpl.setCloseUserName(closeUserName);
-		}
-
-		if (closeDate == Long.MIN_VALUE) {
-			queryLinkImpl.setCloseDate(null);
-		}
-		else {
-			queryLinkImpl.setCloseDate(new Date(closeDate));
-		}
-
-		if (closeComment == null) {
-			queryLinkImpl.setCloseComment("");
-		}
-		else {
-			queryLinkImpl.setCloseComment(closeComment);
-		}
-
-		queryLinkImpl.setQueryStatus(queryStatus);
-
-		if (isReopen == null) {
-			queryLinkImpl.setIsReopen("");
-		}
-		else {
-			queryLinkImpl.setIsReopen(isReopen);
-		}
-
-		queryLinkImpl.setReopenId(reopenId);
 		queryLinkImpl.setRuleId(ruleId);
 
 		if (ruleInfo == null) {
@@ -307,15 +167,6 @@ public class QueryLinkCacheModel
 		}
 		else {
 			queryLinkImpl.setRuleInfo(ruleInfo);
-		}
-
-		queryLinkImpl.setActiveStatus(activeStatus);
-
-		if (inactiveDate == Long.MIN_VALUE) {
-			queryLinkImpl.setInactiveDate(null);
-		}
-		else {
-			queryLinkImpl.setInactiveDate(new Date(inactiveDate));
 		}
 
 		queryLinkImpl.resetOriginalValues();
@@ -354,35 +205,9 @@ public class QueryLinkCacheModel
 
 		itemCode = objectInput.readLong();
 		sourceType = objectInput.readUTF();
-		scope = objectInput.readUTF();
-		isTypeManual = objectInput.readUTF();
-		type = objectInput.readUTF();
-
-		openUserId = objectInput.readLong();
-		openUserName = objectInput.readUTF();
-		openDate = objectInput.readLong();
-		openComment = objectInput.readUTF();
-
-		answerUserID = objectInput.readLong();
-		answerUserName = objectInput.readUTF();
-		answerDate = objectInput.readLong();
-		answerComment = objectInput.readUTF();
-
-		closeUserID = objectInput.readLong();
-		closeUserName = objectInput.readUTF();
-		closeDate = objectInput.readLong();
-		closeComment = objectInput.readUTF();
-
-		queryStatus = objectInput.readInt();
-		isReopen = objectInput.readUTF();
-
-		reopenId = objectInput.readLong();
 
 		ruleId = objectInput.readLong();
 		ruleInfo = objectInput.readUTF();
-
-		activeStatus = objectInput.readInt();
-		inactiveDate = objectInput.readLong();
 	}
 
 	@Override
@@ -435,92 +260,6 @@ public class QueryLinkCacheModel
 			objectOutput.writeUTF(sourceType);
 		}
 
-		if (scope == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(scope);
-		}
-
-		if (isTypeManual == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(isTypeManual);
-		}
-
-		if (type == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(type);
-		}
-
-		objectOutput.writeLong(openUserId);
-
-		if (openUserName == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(openUserName);
-		}
-
-		objectOutput.writeLong(openDate);
-
-		if (openComment == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(openComment);
-		}
-
-		objectOutput.writeLong(answerUserID);
-
-		if (answerUserName == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(answerUserName);
-		}
-
-		objectOutput.writeLong(answerDate);
-
-		if (answerComment == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(answerComment);
-		}
-
-		objectOutput.writeLong(closeUserID);
-
-		if (closeUserName == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(closeUserName);
-		}
-
-		objectOutput.writeLong(closeDate);
-
-		if (closeComment == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(closeComment);
-		}
-
-		objectOutput.writeInt(queryStatus);
-
-		if (isReopen == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(isReopen);
-		}
-
-		objectOutput.writeLong(reopenId);
-
 		objectOutput.writeLong(ruleId);
 
 		if (ruleInfo == null) {
@@ -529,9 +268,6 @@ public class QueryLinkCacheModel
 		else {
 			objectOutput.writeUTF(ruleInfo);
 		}
-
-		objectOutput.writeInt(activeStatus);
-		objectOutput.writeLong(inactiveDate);
 	}
 
 	public String uuid;
@@ -551,27 +287,7 @@ public class QueryLinkCacheModel
 	public long instanceId;
 	public long itemCode;
 	public String sourceType;
-	public String scope;
-	public String isTypeManual;
-	public String type;
-	public long openUserId;
-	public String openUserName;
-	public long openDate;
-	public String openComment;
-	public long answerUserID;
-	public String answerUserName;
-	public long answerDate;
-	public String answerComment;
-	public long closeUserID;
-	public String closeUserName;
-	public long closeDate;
-	public String closeComment;
-	public int queryStatus;
-	public String isReopen;
-	public long reopenId;
 	public long ruleId;
 	public String ruleInfo;
-	public int activeStatus;
-	public long inactiveDate;
 
 }
