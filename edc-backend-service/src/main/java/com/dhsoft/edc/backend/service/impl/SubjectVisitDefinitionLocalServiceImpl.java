@@ -76,21 +76,8 @@ public class SubjectVisitDefinitionLocalServiceImpl
 		}
 	}
 	
-	public void deleteBySubjectId(long subjectId) {
-	    List<SubjectVisitDefinition> list =
-	        subjectVisitDefinitionPersistence.findBySubjectId(subjectId);
-
-	    for (SubjectVisitDefinition d : list) {
-	        subjectVisitDefinitionLocalService.deleteSubjectVisitDefinition(d);
-	    }
+	public List <SubjectVisitDefinition> findBySubjectId (long SubjectId) {
+		return subjectVisitDefinitionPersistence.findBySubjectId(SubjectId);
 	}
-
-	
-    
-    public List<SubjectVisitDefinition> getBySubjectId(long subjectId) {
-        return subjectVisitDefinitionPersistence.findBySubjectId(subjectId);
-    }
-	
-
 	
 }

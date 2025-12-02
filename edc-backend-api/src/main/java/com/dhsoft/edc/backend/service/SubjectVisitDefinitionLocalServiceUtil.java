@@ -89,10 +89,6 @@ public class SubjectVisitDefinitionLocalServiceUtil {
 			subjectVisitDefinitionId);
 	}
 
-	public static void deleteBySubjectId(long subjectId) {
-		getService().deleteBySubjectId(subjectId);
-	}
-
 	/**
 	 * @throws PortalException
 	 */
@@ -237,14 +233,14 @@ public class SubjectVisitDefinitionLocalServiceUtil {
 			uuid, groupId);
 	}
 
+	public static List<SubjectVisitDefinition> findBySubjectId(long SubjectId) {
+		return getService().findBySubjectId(SubjectId);
+	}
+
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
 		return getService().getActionableDynamicQuery();
-	}
-
-	public static List<SubjectVisitDefinition> getBySubjectId(long subjectId) {
-		return getService().getBySubjectId(subjectId);
 	}
 
 	public static com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery

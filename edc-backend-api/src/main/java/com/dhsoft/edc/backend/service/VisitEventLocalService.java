@@ -209,9 +209,6 @@ public interface VisitEventLocalService
 
 	public List<VisitEvent> findBySubjectId(long subjectId);
 
-	public List<VisitEvent> findBySubjectIdAndVisitDefinitionId(
-		long subjectId, long visitDefinitionId);
-
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
 
@@ -306,10 +303,6 @@ public interface VisitEventLocalService
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public int getVisitEventsCount();
-
-	public VisitEvent saveOrUpdateVisitEvent(
-		long subjectId, long visitDefinitionId, String anchorType, int offset,
-		Date anchorDate, Date planDate);
 
 	public void updateCRFData(long visitEventId, long structuredDataId);
 

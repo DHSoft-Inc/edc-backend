@@ -33,13 +33,6 @@ public class SubjectVisitDefinitionServiceWrapper
 		_subjectVisitDefinitionService = subjectVisitDefinitionService;
 	}
 
-	@Override
-	public java.util.List<com.dhsoft.edc.backend.model.SubjectVisitDefinition>
-		findBySubjectId(long SubjectId) {
-
-		return _subjectVisitDefinitionService.findBySubjectId(SubjectId);
-	}
-
 	/**
 	 * Returns the OSGi service identifier.
 	 *

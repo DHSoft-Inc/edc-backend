@@ -14,16 +14,9 @@
 
 package com.dhsoft.edc.backend.service.http;
 
-import com.dhsoft.edc.backend.service.SubjectVisitDefinitionServiceUtil;
-
-import com.liferay.portal.kernel.log.Log;
-import com.liferay.portal.kernel.log.LogFactoryUtil;
-
-import java.rmi.RemoteException;
-
 /**
  * Provides the SOAP utility for the
- * <code>SubjectVisitDefinitionServiceUtil</code> service
+ * <code>com.dhsoft.edc.backend.service.SubjectVisitDefinitionServiceUtil</code> service
  * utility. The static methods of this class call the same methods of the
  * service utility. However, the signatures are different because it is
  * difficult for SOAP to support certain types.
@@ -61,27 +54,4 @@ import java.rmi.RemoteException;
  * @generated
  */
 public class SubjectVisitDefinitionServiceSoap {
-
-	public static com.dhsoft.edc.backend.model.SubjectVisitDefinitionSoap[]
-			findBySubjectId(long SubjectId)
-		throws RemoteException {
-
-		try {
-			java.util.List<com.dhsoft.edc.backend.model.SubjectVisitDefinition>
-				returnValue = SubjectVisitDefinitionServiceUtil.findBySubjectId(
-					SubjectId);
-
-			return com.dhsoft.edc.backend.model.SubjectVisitDefinitionSoap.
-				toSoapModels(returnValue);
-		}
-		catch (Exception exception) {
-			_log.error(exception, exception);
-
-			throw new RemoteException(exception.getMessage());
-		}
-	}
-
-	private static Log _log = LogFactoryUtil.getLog(
-		SubjectVisitDefinitionServiceSoap.class);
-
 }

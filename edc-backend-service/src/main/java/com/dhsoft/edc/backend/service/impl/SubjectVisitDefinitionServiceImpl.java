@@ -14,12 +14,9 @@
 
 package com.dhsoft.edc.backend.service.impl;
 
-import com.dhsoft.edc.backend.model.SubjectVisitDefinition;
 import com.dhsoft.edc.backend.service.base.SubjectVisitDefinitionServiceBaseImpl;
 
 import com.liferay.portal.aop.AopService;
-
-import java.util.List;
 
 import org.osgi.service.component.annotations.Component;
 
@@ -35,8 +32,4 @@ import org.osgi.service.component.annotations.Component;
 )
 public class SubjectVisitDefinitionServiceImpl
 	extends SubjectVisitDefinitionServiceBaseImpl {
-	
-	public List <SubjectVisitDefinition> findBySubjectId (long SubjectId) {
-		return subjectVisitDefinitionPersistence.findBySubjectId(SubjectId);
-	}
 }
