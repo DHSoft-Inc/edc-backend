@@ -16,6 +16,7 @@ package com.dhsoft.edc.backend.service.impl;
 
 import com.dhsoft.edc.backend.model.VisitEvent;
 import com.dhsoft.edc.backend.service.base.VisitEventLocalServiceBaseImpl;
+import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
 import com.liferay.portal.aop.AopService;
 import com.liferay.portal.kernel.json.JSONArray;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
@@ -34,6 +35,21 @@ import org.osgi.service.component.annotations.Component;
 	service = AopService.class
 )
 public class VisitEventLocalServiceImpl extends VisitEventLocalServiceBaseImpl {
+	
+    private VisitEvent createNewEvent(long subjectId, long visitDefinitionId) {
+
+        long id = CounterLocalServiceUtil.increment();
+        VisitEvent v = visitEventPersistence.create(id);
+
+        v.setSubjectId(subjectId);
+        v.setVisitDefinitionId(visitDefinitionId);
+
+        Date now = new Date();
+        v.setCreateDate(now);
+        v.setModifiedDate(now);
+
+        return v;
+    }
 	
 	public void addVisitEvent(long companyId, long groupId, long projectId, long institutionId, long subjectId, long visitDefinitionId, int status, long statusByUserId, String statusByUserName, Date statusDate, String anchorType, Date anchorDate, int offset, Date planDate)
 	{
@@ -120,9 +136,48 @@ public class VisitEventLocalServiceImpl extends VisitEventLocalServiceBaseImpl {
 		}
 	}
 	
+	    public VisitEvent saveOrUpdateVisitEvent(
+	            long subjectId,
+	            long visitDefinitionId,
+	            String anchorType,
+	            int offset,
+	            Date anchorDate,
+	            Date planDate
+	    ) {
+	
+	        List<VisitEvent> list =
+	                findBySubjectIdAndVisitDefinitionId(subjectId, visitDefinitionId);
+	
+	        VisitEvent event;
+	
+	        if (list.isEmpty()) {
+	            // 신규 생성
+	            event = createNewEvent(subjectId, visitDefinitionId);
+	        } else {
+	            // 업데이트
+	            event = list.get(0);
+	            event.setModifiedDate(new Date());
+	        }
+	
+	        event.setAnchorType(anchorType);
+	        event.setOffset(offset);
+	        event.setAnchorDate(anchorDate);
+	        event.setPlanDate(planDate);
+	
+	        return visitEventPersistence.update(event);
+	    }
+	    
+		//Find By Subject Id
+		public List<VisitEvent> findBySubjectIdAndVisitDefinitionId(long subjectId, long visitDefinitionId) {
+			return visitEventPersistence.findByS_VD(subjectId, visitDefinitionId);
+		}  
+	  
+	
 	//Find By Subject Id
 	public List<VisitEvent> findBySubjectId(long subjectId) {
 		return visitEventPersistence.findBysubjectId(subjectId);
 	}
+	
+	
 	
 }

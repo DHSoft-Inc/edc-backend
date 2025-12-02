@@ -553,6 +553,10 @@
         	<finder-column name="projectId"></finder-column>
         </finder>     
         
+        <finder name="GroupId" return-type="Collection">
+		    <finder-column name="groupId" />
+		</finder>
+        
        	<finder name="UserId" return-type="Collection">
     		<finder-column name="userId" />
     	</finder> 
@@ -727,6 +731,11 @@
         	<finder-column name="groupId"></finder-column>
         	<finder-column name="projectId"></finder-column>
         </finder>     
+        
+        <finder name="S_VD" return-type="Collection">
+		    <finder-column name="subjectId" />
+		    <finder-column name="visitDefinitionId" />
+		</finder>
         
          
        	<finder name="I_S_V" return-type="Collection">

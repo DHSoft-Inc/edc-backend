@@ -883,6 +883,194 @@ public class VisitEventUtil {
 	}
 
 	/**
+	 * Returns all the visit events where subjectId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @return the matching visit events
+	 */
+	public static List<VisitEvent> findByS_VD(
+		long subjectId, long visitDefinitionId) {
+
+		return getPersistence().findByS_VD(subjectId, visitDefinitionId);
+	}
+
+	/**
+	 * Returns a range of all the visit events where subjectId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>VisitEventModelImpl</code>.
+	 * </p>
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param start the lower bound of the range of visit events
+	 * @param end the upper bound of the range of visit events (not inclusive)
+	 * @return the range of matching visit events
+	 */
+	public static List<VisitEvent> findByS_VD(
+		long subjectId, long visitDefinitionId, int start, int end) {
+
+		return getPersistence().findByS_VD(
+			subjectId, visitDefinitionId, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the visit events where subjectId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>VisitEventModelImpl</code>.
+	 * </p>
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param start the lower bound of the range of visit events
+	 * @param end the upper bound of the range of visit events (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching visit events
+	 */
+	public static List<VisitEvent> findByS_VD(
+		long subjectId, long visitDefinitionId, int start, int end,
+		OrderByComparator<VisitEvent> orderByComparator) {
+
+		return getPersistence().findByS_VD(
+			subjectId, visitDefinitionId, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the visit events where subjectId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>VisitEventModelImpl</code>.
+	 * </p>
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param start the lower bound of the range of visit events
+	 * @param end the upper bound of the range of visit events (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching visit events
+	 */
+	public static List<VisitEvent> findByS_VD(
+		long subjectId, long visitDefinitionId, int start, int end,
+		OrderByComparator<VisitEvent> orderByComparator,
+		boolean useFinderCache) {
+
+		return getPersistence().findByS_VD(
+			subjectId, visitDefinitionId, start, end, orderByComparator,
+			useFinderCache);
+	}
+
+	/**
+	 * Returns the first visit event in the ordered set where subjectId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching visit event
+	 * @throws NoSuchVisitEventException if a matching visit event could not be found
+	 */
+	public static VisitEvent findByS_VD_First(
+			long subjectId, long visitDefinitionId,
+			OrderByComparator<VisitEvent> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchVisitEventException {
+
+		return getPersistence().findByS_VD_First(
+			subjectId, visitDefinitionId, orderByComparator);
+	}
+
+	/**
+	 * Returns the first visit event in the ordered set where subjectId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching visit event, or <code>null</code> if a matching visit event could not be found
+	 */
+	public static VisitEvent fetchByS_VD_First(
+		long subjectId, long visitDefinitionId,
+		OrderByComparator<VisitEvent> orderByComparator) {
+
+		return getPersistence().fetchByS_VD_First(
+			subjectId, visitDefinitionId, orderByComparator);
+	}
+
+	/**
+	 * Returns the last visit event in the ordered set where subjectId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching visit event
+	 * @throws NoSuchVisitEventException if a matching visit event could not be found
+	 */
+	public static VisitEvent findByS_VD_Last(
+			long subjectId, long visitDefinitionId,
+			OrderByComparator<VisitEvent> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchVisitEventException {
+
+		return getPersistence().findByS_VD_Last(
+			subjectId, visitDefinitionId, orderByComparator);
+	}
+
+	/**
+	 * Returns the last visit event in the ordered set where subjectId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching visit event, or <code>null</code> if a matching visit event could not be found
+	 */
+	public static VisitEvent fetchByS_VD_Last(
+		long subjectId, long visitDefinitionId,
+		OrderByComparator<VisitEvent> orderByComparator) {
+
+		return getPersistence().fetchByS_VD_Last(
+			subjectId, visitDefinitionId, orderByComparator);
+	}
+
+	/**
+	 * Returns the visit events before and after the current visit event in the ordered set where subjectId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * @param visitEventId the primary key of the current visit event
+	 * @param subjectId the subject ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next visit event
+	 * @throws NoSuchVisitEventException if a visit event with the primary key could not be found
+	 */
+	public static VisitEvent[] findByS_VD_PrevAndNext(
+			long visitEventId, long subjectId, long visitDefinitionId,
+			OrderByComparator<VisitEvent> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchVisitEventException {
+
+		return getPersistence().findByS_VD_PrevAndNext(
+			visitEventId, subjectId, visitDefinitionId, orderByComparator);
+	}
+
+	/**
+	 * Removes all the visit events where subjectId = &#63; and visitDefinitionId = &#63; from the database.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitDefinitionId the visit definition ID
+	 */
+	public static void removeByS_VD(long subjectId, long visitDefinitionId) {
+		getPersistence().removeByS_VD(subjectId, visitDefinitionId);
+	}
+
+	/**
+	 * Returns the number of visit events where subjectId = &#63; and visitDefinitionId = &#63;.
+	 *
+	 * @param subjectId the subject ID
+	 * @param visitDefinitionId the visit definition ID
+	 * @return the number of matching visit events
+	 */
+	public static int countByS_VD(long subjectId, long visitDefinitionId) {
+		return getPersistence().countByS_VD(subjectId, visitDefinitionId);
+	}
+
+	/**
 	 * Returns all the visit events where institutionId = &#63; and subjectId = &#63; and visitDefinitionId = &#63;.
 	 *
 	 * @param institutionId the institution ID

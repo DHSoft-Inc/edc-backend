@@ -35,4 +35,8 @@ public class SubjectLocalServiceImpl extends SubjectLocalServiceBaseImpl {
 		return subjectPersistence.findByInstitutionId(InstitutionId);
 		
 	}
+	
+    public List<Subject> getG_P(long groupId, long projectId) {
+        return subjectPersistence.findByG_P(groupId, projectId);
+    }
 }
