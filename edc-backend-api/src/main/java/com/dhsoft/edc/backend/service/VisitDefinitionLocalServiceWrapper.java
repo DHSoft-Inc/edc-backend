@@ -51,19 +51,19 @@ public class VisitDefinitionLocalServiceWrapper
 	}
 
 	/**
-	 * ADD: VisitDefinition ����
+	 * ADD: VisitDefinition 생성
 	 */
 	@Override
 	public com.dhsoft.edc.backend.model.VisitDefinition
 			addVisitDefinitionForGroup(
 				long companyId, long groupId, long userId, String userName,
-				long experimentalGroupId, String name, int offset,
-				int windowMinus, int windowPlus)
+				long experimentalGroupId, String name, String anchorType,
+				int offset, int windowMinus, int windowPlus)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _visitDefinitionLocalService.addVisitDefinitionForGroup(
 			companyId, groupId, userId, userName, experimentalGroupId, name,
-			offset, windowMinus, windowPlus);
+			anchorType, offset, windowMinus, windowPlus);
 	}
 
 	/**
@@ -264,8 +264,8 @@ public class VisitDefinitionLocalServiceWrapper
 	}
 
 	/**
-	 * GET: ���豺 ID�� visitDefinition ��������
-	 * experimentalGroupId �� expCode �� visitDefinitionCode
+	 * GET: 실험군 ID로 visitDefinition 가져오기
+	 * experimentalGroupId → expCode → visitDefinitionCode
 	 */
 	@Override
 	public java.util.List<com.dhsoft.edc.backend.model.VisitDefinition>
@@ -274,6 +274,21 @@ public class VisitDefinitionLocalServiceWrapper
 
 		return _visitDefinitionLocalService.getByExperimentalGroup(
 			experimentalGroupId);
+	}
+
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.VisitDefinition>
+		getByVisitDefinitionCode(String visitDefinitionCode) {
+
+		return _visitDefinitionLocalService.getByVisitDefinitionCode(
+			visitDefinitionCode);
+	}
+
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.VisitDefinition>
+		getByVisitGroupId(long visitGroupId) {
+
+		return _visitDefinitionLocalService.getByVisitGroupId(visitGroupId);
 	}
 
 	@Override
@@ -438,12 +453,24 @@ public class VisitDefinitionLocalServiceWrapper
 	@Override
 	public com.dhsoft.edc.backend.model.VisitDefinition
 			updateVisitDefinitionBasic(
-				long visitDefinitionId, String name, int offset,
-				int windowMinus, int windowPlus)
+				long visitDefinitionId, String name, String anchorType,
+				int offset, int windowMinus, int windowPlus)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _visitDefinitionLocalService.updateVisitDefinitionBasic(
-			visitDefinitionId, name, offset, windowMinus, windowPlus);
+			visitDefinitionId, name, anchorType, offset, windowMinus,
+			windowPlus);
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.VisitDefinition
+		updateVisitDefinitionFull(
+			long visitDefinitionId, String name, String anchorType, int offset,
+			int windowMinus, int windowPlus) {
+
+		return _visitDefinitionLocalService.updateVisitDefinitionFull(
+			visitDefinitionId, name, anchorType, offset, windowMinus,
+			windowPlus);
 	}
 
 	@Override

@@ -213,6 +213,9 @@ public interface ExperimentalGroupLocalService
 	public List<ExperimentalGroup> getByGroupAndProject(
 		long groupId, long projectId);
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<ExperimentalGroup> getByGroupId(long groupId);
+
 	/**
 	 * Returns the experimental group with the primary key.
 	 *

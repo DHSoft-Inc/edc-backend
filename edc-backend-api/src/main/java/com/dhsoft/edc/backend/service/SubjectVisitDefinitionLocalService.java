@@ -97,6 +97,8 @@ public interface SubjectVisitDefinitionLocalService
 	public SubjectVisitDefinition createSubjectVisitDefinition(
 		long subjectVisitDefinitionId);
 
+	public void deleteBySubjectId(long subjectId);
+
 	/**
 	 * @throws PortalException
 	 */
@@ -215,10 +217,11 @@ public interface SubjectVisitDefinitionLocalService
 	public SubjectVisitDefinition fetchSubjectVisitDefinitionByUuidAndGroupId(
 		String uuid, long groupId);
 
-	public List<SubjectVisitDefinition> findBySubjectId(long SubjectId);
-
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<SubjectVisitDefinition> getBySubjectId(long subjectId);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ExportActionableDynamicQuery getExportActionableDynamicQuery(

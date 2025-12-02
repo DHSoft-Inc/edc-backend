@@ -253,6 +253,13 @@ public class ExperimentalGroupLocalServiceWrapper
 			groupId, projectId);
 	}
 
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.ExperimentalGroup>
+		getByGroupId(long groupId) {
+
+		return _experimentalGroupLocalService.getByGroupId(groupId);
+	}
+
 	/**
 	 * Returns the experimental group with the primary key.
 	 *
