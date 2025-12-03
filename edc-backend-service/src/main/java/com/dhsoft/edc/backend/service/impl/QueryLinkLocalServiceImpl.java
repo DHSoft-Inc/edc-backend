@@ -14,9 +14,11 @@
 
 package com.dhsoft.edc.backend.service.impl;
 
+import com.dhsoft.edc.backend.model.QueryLink;
 import com.dhsoft.edc.backend.service.base.QueryLinkLocalServiceBaseImpl;
-
 import com.liferay.portal.aop.AopService;
+
+import java.util.List;
 
 import org.osgi.service.component.annotations.Component;
 
@@ -28,4 +30,16 @@ import org.osgi.service.component.annotations.Component;
 	service = AopService.class
 )
 public class QueryLinkLocalServiceImpl extends QueryLinkLocalServiceBaseImpl {
+	
+	public List<QueryLink> findByInstanceId (long instanceId) {
+		return queryLinkPersistence.findByInstanceId(instanceId);
+	}
+	
+	public List<QueryLink> findBySubjectId (long subjectId) {
+		return queryLinkPersistence.findBySubjectId(subjectId);
+	}
+	
+	public List<QueryLink> findByS_VG_VD_VC_S (long subjectId, long visitGroupId, long visitDefinitionId, long visitCRFId, long subCRFId) {
+		return queryLinkPersistence.findByS_VG_VD_VC_S(subjectId, visitGroupId, visitDefinitionId, visitCRFId, subCRFId);
+	}
 }

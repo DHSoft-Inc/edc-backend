@@ -199,6 +199,14 @@ public interface QueryLinkLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public QueryLink fetchQueryLinkByUuidAndGroupId(String uuid, long groupId);
 
+	public List<QueryLink> findByInstanceId(long instanceId);
+
+	public List<QueryLink> findByS_VG_VD_VC_S(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, long subCRFId);
+
+	public List<QueryLink> findBySubjectId(long subjectId);
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
 
