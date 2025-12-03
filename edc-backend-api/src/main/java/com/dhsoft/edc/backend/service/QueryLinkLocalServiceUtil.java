@@ -204,6 +204,22 @@ public class QueryLinkLocalServiceUtil {
 		return getService().fetchQueryLinkByUuidAndGroupId(uuid, groupId);
 	}
 
+	public static List<QueryLink> findByInstanceId(long instanceId) {
+		return getService().findByInstanceId(instanceId);
+	}
+
+	public static List<QueryLink> findByS_VG_VD_VC_S(
+		long subjectId, long visitGroupId, long visitDefinitionId,
+		long visitCRFId, long subCRFId) {
+
+		return getService().findByS_VG_VD_VC_S(
+			subjectId, visitGroupId, visitDefinitionId, visitCRFId, subCRFId);
+	}
+
+	public static List<QueryLink> findBySubjectId(long subjectId) {
+		return getService().findBySubjectId(subjectId);
+	}
+
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 

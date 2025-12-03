@@ -219,6 +219,30 @@ public class QueryLinkLocalServiceWrapper
 	}
 
 	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.QueryLink>
+		findByInstanceId(long instanceId) {
+
+		return _queryLinkLocalService.findByInstanceId(instanceId);
+	}
+
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.QueryLink>
+		findByS_VG_VD_VC_S(
+			long subjectId, long visitGroupId, long visitDefinitionId,
+			long visitCRFId, long subCRFId) {
+
+		return _queryLinkLocalService.findByS_VG_VD_VC_S(
+			subjectId, visitGroupId, visitDefinitionId, visitCRFId, subCRFId);
+	}
+
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.QueryLink>
+		findBySubjectId(long subjectId) {
+
+		return _queryLinkLocalService.findBySubjectId(subjectId);
+	}
+
+	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
