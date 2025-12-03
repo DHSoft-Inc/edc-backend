@@ -237,6 +237,10 @@ public class SubjectVisitDefinitionLocalServiceUtil {
 			uuid, groupId);
 	}
 
+	public static List<SubjectVisitDefinition> findBySubjectId(long subjectId) {
+		return getService().findBySubjectId(subjectId);
+	}
+
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 

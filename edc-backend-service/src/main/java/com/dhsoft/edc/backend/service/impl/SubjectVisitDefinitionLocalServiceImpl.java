@@ -91,6 +91,8 @@ public class SubjectVisitDefinitionLocalServiceImpl
         return subjectVisitDefinitionPersistence.findBySubjectId(subjectId);
     }
 	
-
+    public List<SubjectVisitDefinition> findBySubjectId(long subjectId) {
+        return subjectVisitDefinitionPersistence.findBySubjectId(subjectId);
+    }
 	
 }

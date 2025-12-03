@@ -217,6 +217,8 @@ public interface SubjectVisitDefinitionLocalService
 	public SubjectVisitDefinition fetchSubjectVisitDefinitionByUuidAndGroupId(
 		String uuid, long groupId);
 
+	public List<SubjectVisitDefinition> findBySubjectId(long subjectId);
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
 
