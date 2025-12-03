@@ -14,6 +14,10 @@
 
 package com.dhsoft.edc.backend.service;
 
+import com.dhsoft.edc.backend.model.SubjectVisitDefinition;
+
+import java.util.List;
+
 /**
  * Provides the remote service utility for SubjectVisitDefinition. This utility wraps
  * <code>com.dhsoft.edc.backend.service.impl.SubjectVisitDefinitionServiceImpl</code> and is an
@@ -33,13 +37,16 @@ public class SubjectVisitDefinitionServiceUtil {
 	 *
 	 * Never modify this class directly. Add custom service methods to <code>com.dhsoft.edc.backend.service.impl.SubjectVisitDefinitionServiceImpl</code> and rerun ServiceBuilder to regenerate this class.
 	 */
+	public static List<SubjectVisitDefinition> findBySubjectId(long SubjectId) {
+		return getService().findBySubjectId(SubjectId);
+	}
 
 	/**
 	 * Returns the OSGi service identifier.
 	 *
 	 * @return the OSGi service identifier
 	 */
-	public static java.lang.String getOSGiServiceIdentifier() {
+	public static String getOSGiServiceIdentifier() {
 		return getService().getOSGiServiceIdentifier();
 	}
 

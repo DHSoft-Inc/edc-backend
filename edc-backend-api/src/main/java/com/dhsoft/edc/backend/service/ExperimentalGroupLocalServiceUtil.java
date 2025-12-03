@@ -232,6 +232,10 @@ public class ExperimentalGroupLocalServiceUtil {
 		return getService().getByGroupAndProject(groupId, projectId);
 	}
 
+	public static List<ExperimentalGroup> getByGroupId(long groupId) {
+		return getService().getByGroupId(groupId);
+	}
+
 	/**
 	 * Returns the experimental group with the primary key.
 	 *

@@ -220,6 +220,10 @@ public class SubjectLocalServiceUtil {
 		return getService().getExportActionableDynamicQuery(portletDataContext);
 	}
 
+	public static List<Subject> getG_P(long groupId, long projectId) {
+		return getService().getG_P(groupId, projectId);
+	}
+
 	public static
 		com.liferay.portal.kernel.dao.orm.IndexableActionableDynamicQuery
 			getIndexableActionableDynamicQuery() {

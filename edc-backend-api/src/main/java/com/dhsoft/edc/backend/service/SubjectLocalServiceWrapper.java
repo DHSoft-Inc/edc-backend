@@ -237,6 +237,13 @@ public class SubjectLocalServiceWrapper
 	}
 
 	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.Subject> getG_P(
+		long groupId, long projectId) {
+
+		return _subjectLocalService.getG_P(groupId, projectId);
+	}
+
+	@Override
 	public com.liferay.portal.kernel.dao.orm.IndexableActionableDynamicQuery
 		getIndexableActionableDynamicQuery() {
 

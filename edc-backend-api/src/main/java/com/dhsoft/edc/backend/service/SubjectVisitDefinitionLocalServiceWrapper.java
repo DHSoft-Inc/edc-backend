@@ -85,6 +85,11 @@ public class SubjectVisitDefinitionLocalServiceWrapper
 			subjectVisitDefinitionId);
 	}
 
+	@Override
+	public void deleteBySubjectId(long subjectId) {
+		_subjectVisitDefinitionLocalService.deleteBySubjectId(subjectId);
+	}
+
 	/**
 	 * @throws PortalException
 	 */
@@ -253,17 +258,17 @@ public class SubjectVisitDefinitionLocalServiceWrapper
 	}
 
 	@Override
-	public java.util.List<com.dhsoft.edc.backend.model.SubjectVisitDefinition>
-		findBySubjectId(long SubjectId) {
-
-		return _subjectVisitDefinitionLocalService.findBySubjectId(SubjectId);
-	}
-
-	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
 		return _subjectVisitDefinitionLocalService.getActionableDynamicQuery();
+	}
+
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.SubjectVisitDefinition>
+		getBySubjectId(long subjectId) {
+
+		return _subjectVisitDefinitionLocalService.getBySubjectId(subjectId);
 	}
 
 	@Override
