@@ -258,6 +258,13 @@ public class SubjectVisitDefinitionLocalServiceWrapper
 	}
 
 	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.SubjectVisitDefinition>
+		findBySubjectId(long subjectId) {
+
+		return _subjectVisitDefinitionLocalService.findBySubjectId(subjectId);
+	}
+
+	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
