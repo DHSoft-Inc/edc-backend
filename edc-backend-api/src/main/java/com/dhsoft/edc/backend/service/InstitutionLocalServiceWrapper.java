@@ -63,6 +63,15 @@ public class InstitutionLocalServiceWrapper
 		return _institutionLocalService.createInstitution(institutionId);
 	}
 
+	@Override
+	public com.dhsoft.edc.backend.model.Institution CreateInstitution(
+		long companyId, long groupId, long projectId, long userId, String code,
+		String name, int type) {
+
+		return _institutionLocalService.CreateInstitution(
+			companyId, groupId, projectId, userId, code, name, type);
+	}
+
 	/**
 	 * Deletes the institution from the database. Also notifies the appropriate model listeners.
 	 *
@@ -78,6 +87,13 @@ public class InstitutionLocalServiceWrapper
 		com.dhsoft.edc.backend.model.Institution institution) {
 
 		return _institutionLocalService.deleteInstitution(institution);
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.Institution DeleteInstitution(
+		long institutionId) {
+
+		return _institutionLocalService.DeleteInstitution(institutionId);
 	}
 
 	/**
@@ -220,6 +236,14 @@ public class InstitutionLocalServiceWrapper
 
 		return _institutionLocalService.fetchInstitutionByUuidAndGroupId(
 			uuid, groupId);
+	}
+
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.Institution>
+		findByGroupAndProjectId(long groupId, long projectId) {
+
+		return _institutionLocalService.findByGroupAndProjectId(
+			groupId, projectId);
 	}
 
 	@Override
@@ -385,6 +409,14 @@ public class InstitutionLocalServiceWrapper
 		com.dhsoft.edc.backend.model.Institution institution) {
 
 		return _institutionLocalService.updateInstitution(institution);
+	}
+
+	@Override
+	public void UpdateInstitution(
+		long institutionId, long userId, String code, String name, int type) {
+
+		_institutionLocalService.UpdateInstitution(
+			institutionId, userId, code, name, type);
 	}
 
 	@Override

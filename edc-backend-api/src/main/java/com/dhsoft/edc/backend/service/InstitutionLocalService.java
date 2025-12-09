@@ -86,6 +86,10 @@ public interface InstitutionLocalService
 	@Transactional(enabled = false)
 	public Institution createInstitution(long institutionId);
 
+	public Institution CreateInstitution(
+		long companyId, long groupId, long projectId, long userId, String code,
+		String name, int type);
+
 	/**
 	 * Deletes the institution from the database. Also notifies the appropriate model listeners.
 	 *
@@ -98,6 +102,8 @@ public interface InstitutionLocalService
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	public Institution deleteInstitution(Institution institution);
+
+	public Institution DeleteInstitution(long institutionId);
 
 	/**
 	 * Deletes the institution with the primary key from the database. Also notifies the appropriate model listeners.
@@ -200,6 +206,9 @@ public interface InstitutionLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Institution fetchInstitutionByUuidAndGroupId(
 		String uuid, long groupId);
+
+	public List<Institution> findByGroupAndProjectId(
+		long groupId, long projectId);
 
 	public Institution findByInstitutionId(long institutionId);
 
@@ -311,5 +320,8 @@ public interface InstitutionLocalService
 	 */
 	@Indexable(type = IndexableType.REINDEX)
 	public Institution updateInstitution(Institution institution);
+
+	public void UpdateInstitution(
+		long institutionId, long userId, String code, String name, int type);
 
 }
