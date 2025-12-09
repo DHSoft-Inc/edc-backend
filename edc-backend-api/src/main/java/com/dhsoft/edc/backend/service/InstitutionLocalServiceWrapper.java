@@ -65,11 +65,16 @@ public class InstitutionLocalServiceWrapper
 
 	@Override
 	public com.dhsoft.edc.backend.model.Institution CreateInstitution(
-		long companyId, long groupId, long projectId, long userId, String code,
-		String name, int type) {
+		long companyId, long groupId, long projectId, long userId,
+		String userName, int status, long statusByUserId,
+		String statusByUserName, java.util.Date statusDate, String code,
+		String name, String enName, int type, String piName, String contactNum,
+		String email, java.util.Date irbDate) {
 
 		return _institutionLocalService.CreateInstitution(
-			companyId, groupId, projectId, userId, code, name, type);
+			companyId, groupId, projectId, userId, userName, status,
+			statusByUserId, statusByUserName, statusDate, code, name, enName,
+			type, piName, contactNum, email, irbDate);
 	}
 
 	/**
@@ -413,10 +418,14 @@ public class InstitutionLocalServiceWrapper
 
 	@Override
 	public void UpdateInstitution(
-		long institutionId, long userId, String code, String name, int type) {
+		long institutionId, int status, long statusByUserId,
+		String statusByUserName, java.util.Date statusDate, String code,
+		String name, String enName, int type, String piName, String contactNum,
+		String email, java.util.Date irbDate) {
 
 		_institutionLocalService.UpdateInstitution(
-			institutionId, userId, code, name, type);
+			institutionId, status, statusByUserId, statusByUserName, statusDate,
+			code, name, enName, type, piName, contactNum, email, irbDate);
 	}
 
 	@Override
