@@ -35,7 +35,7 @@ import org.osgi.service.component.annotations.Component;
 public class InstitutionLocalServiceImpl extends InstitutionLocalServiceBaseImpl {
 	
 	//Create New Institution: if success, return Institution. else, return null.
-	public Institution CreateInstitution(long companyId, long groupId, long projectId, long userId, String code, String name, int type) {
+	public Institution CreateInstitution(long companyId, long groupId, long projectId, long userId, String userName, int status, long statusByUserId, String statusByUserName, Date statusDate, String code, String name, String enName, int type, String piName, String contactNum, String email, Date irbDate) {
 		long institutionId = CounterLocalServiceUtil.increment("institutionId");
 		Date date = new Date();
 		try {
@@ -44,9 +44,19 @@ public class InstitutionLocalServiceImpl extends InstitutionLocalServiceBaseImpl
 			i.setGroupId(groupId);
 			i.setProjectId(projectId);
 			i.setUserId(userId);
+			i.setUserName(userName);
+			i.setStatus(status);
+			i.setStatusByUserId(statusByUserId);
+			i.setStatusByUserName(statusByUserName);
+			i.setStatusDate(statusDate);
 			i.setCode(code);
 			i.setName(name);
+			i.setEnName(enName);
 			i.setType(type);
+			i.setPiName(piName);
+			i.setContactNum(contactNum);
+			i.setEmail(email);
+			i.setIrbDate(irbDate);
 			i.setCreateDate(date);
 			i.setModifiedDate(date);
 			institutionPersistence.update(i);
@@ -57,14 +67,22 @@ public class InstitutionLocalServiceImpl extends InstitutionLocalServiceBaseImpl
 	}
 	
 	//Update Institution
-	public void UpdateInstitution(long institutionId, long userId, String code, String name, int type) {
+	public void UpdateInstitution(long institutionId, int status, long statusByUserId, String statusByUserName, Date statusDate, String code, String name, String enName, int type, String piName, String contactNum, String email, Date irbDate) {
 		try{
 			Date date = new Date();
 			Institution i = institutionPersistence.findByPrimaryKey(institutionId);
-			i.setUserId(userId);
+			i.setStatus(status);
+			i.setStatusByUserId(statusByUserId);
+			i.setStatusByUserName(statusByUserName);
+			i.setStatusDate(statusDate);
 			i.setCode(code);
 			i.setName(name);
+			i.setEnName(enName);
 			i.setType(type);
+			i.setPiName(piName);
+			i.setContactNum(contactNum);
+			i.setEmail(email);
+			i.setIrbDate(irbDate);
 			i.setModifiedDate(date);
 			institutionPersistence.update(i);
 		} catch (Exception e) {
