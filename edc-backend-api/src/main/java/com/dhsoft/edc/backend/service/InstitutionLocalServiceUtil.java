@@ -69,6 +69,14 @@ public class InstitutionLocalServiceUtil {
 		return getService().createInstitution(institutionId);
 	}
 
+	public static Institution CreateInstitution(
+		long companyId, long groupId, long projectId, long userId, String code,
+		String name, int type) {
+
+		return getService().CreateInstitution(
+			companyId, groupId, projectId, userId, code, name, type);
+	}
+
 	/**
 	 * Deletes the institution from the database. Also notifies the appropriate model listeners.
 	 *
@@ -81,6 +89,10 @@ public class InstitutionLocalServiceUtil {
 	 */
 	public static Institution deleteInstitution(Institution institution) {
 		return getService().deleteInstitution(institution);
+	}
+
+	public static Institution DeleteInstitution(long institutionId) {
+		return getService().DeleteInstitution(institutionId);
 	}
 
 	/**
@@ -202,6 +214,12 @@ public class InstitutionLocalServiceUtil {
 		String uuid, long groupId) {
 
 		return getService().fetchInstitutionByUuidAndGroupId(uuid, groupId);
+	}
+
+	public static List<Institution> findByGroupAndProjectId(
+		long groupId, long projectId) {
+
+		return getService().findByGroupAndProjectId(groupId, projectId);
 	}
 
 	public static Institution findByInstitutionId(long institutionId) {
@@ -342,6 +360,12 @@ public class InstitutionLocalServiceUtil {
 	 */
 	public static Institution updateInstitution(Institution institution) {
 		return getService().updateInstitution(institution);
+	}
+
+	public static void UpdateInstitution(
+		long institutionId, long userId, String code, String name, int type) {
+
+		getService().UpdateInstitution(institutionId, userId, code, name, type);
 	}
 
 	public static InstitutionLocalService getService() {

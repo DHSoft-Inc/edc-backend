@@ -85,14 +85,15 @@ public class SubjectVisitDefinitionLocalServiceImpl
 	    }
 	}
 
+    public List<SubjectVisitDefinition> findBySubjectId(long subjectId) {
+        return subjectVisitDefinitionPersistence.findBySubjectId(subjectId);
+    }
 	
     
     public List<SubjectVisitDefinition> getBySubjectId(long subjectId) {
         return subjectVisitDefinitionPersistence.findBySubjectId(subjectId);
     }
 	
-    public List<SubjectVisitDefinition> findBySubjectId(long subjectId) {
-        return subjectVisitDefinitionPersistence.findBySubjectId(subjectId);
-    }
+
 	
 }
