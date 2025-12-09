@@ -70,11 +70,16 @@ public class InstitutionLocalServiceUtil {
 	}
 
 	public static Institution CreateInstitution(
-		long companyId, long groupId, long projectId, long userId, String code,
-		String name, int type) {
+		long companyId, long groupId, long projectId, long userId,
+		String userName, int status, long statusByUserId,
+		String statusByUserName, java.util.Date statusDate, String code,
+		String name, String enName, int type, String piName, String contactNum,
+		String email, java.util.Date irbDate) {
 
 		return getService().CreateInstitution(
-			companyId, groupId, projectId, userId, code, name, type);
+			companyId, groupId, projectId, userId, userName, status,
+			statusByUserId, statusByUserName, statusDate, code, name, enName,
+			type, piName, contactNum, email, irbDate);
 	}
 
 	/**
@@ -363,9 +368,14 @@ public class InstitutionLocalServiceUtil {
 	}
 
 	public static void UpdateInstitution(
-		long institutionId, long userId, String code, String name, int type) {
+		long institutionId, int status, long statusByUserId,
+		String statusByUserName, java.util.Date statusDate, String code,
+		String name, String enName, int type, String piName, String contactNum,
+		String email, java.util.Date irbDate) {
 
-		getService().UpdateInstitution(institutionId, userId, code, name, type);
+		getService().UpdateInstitution(
+			institutionId, status, statusByUserId, statusByUserName, statusDate,
+			code, name, enName, type, piName, contactNum, email, irbDate);
 	}
 
 	public static InstitutionLocalService getService() {

@@ -36,6 +36,7 @@ import com.liferay.portal.kernel.util.OrderByComparator;
 
 import java.io.Serializable;
 
+import java.util.Date;
 import java.util.List;
 
 import org.osgi.annotation.versioning.ProviderType;
@@ -87,8 +88,11 @@ public interface InstitutionLocalService
 	public Institution createInstitution(long institutionId);
 
 	public Institution CreateInstitution(
-		long companyId, long groupId, long projectId, long userId, String code,
-		String name, int type);
+		long companyId, long groupId, long projectId, long userId,
+		String userName, int status, long statusByUserId,
+		String statusByUserName, Date statusDate, String code, String name,
+		String enName, int type, String piName, String contactNum, String email,
+		Date irbDate);
 
 	/**
 	 * Deletes the institution from the database. Also notifies the appropriate model listeners.
@@ -322,6 +326,9 @@ public interface InstitutionLocalService
 	public Institution updateInstitution(Institution institution);
 
 	public void UpdateInstitution(
-		long institutionId, long userId, String code, String name, int type);
+		long institutionId, int status, long statusByUserId,
+		String statusByUserName, Date statusDate, String code, String name,
+		String enName, int type, String piName, String contactNum, String email,
+		Date irbDate);
 
 }
