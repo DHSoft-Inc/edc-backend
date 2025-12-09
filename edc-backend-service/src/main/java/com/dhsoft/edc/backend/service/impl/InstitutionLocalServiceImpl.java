@@ -99,4 +99,12 @@ public class InstitutionLocalServiceImpl extends InstitutionLocalServiceBaseImpl
 		}
 	}
 	
+	public List<Institution> findByGroupAndProjectId (long groupId, long projectId) {
+		try {
+			return institutionPersistence.findByG_P(groupId, projectId);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
 }
