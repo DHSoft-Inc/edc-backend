@@ -202,10 +202,18 @@ public class ProjectLocalServiceUtil {
 		return getService().fetchProjectByUuidAndGroupId(uuid, groupId);
 	}
 
+	public static List<Project> findByGroupId(long groupId) {
+		return getService().findByGroupId(groupId);
+	}
+
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
 		return getService().getActionableDynamicQuery();
+	}
+
+	public static List<Project> getByGroupId(long groupId) {
+		return getService().getByGroupId(groupId);
 	}
 
 	public static com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery

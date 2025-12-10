@@ -14,9 +14,12 @@
 
 package com.dhsoft.edc.backend.service.impl;
 
+import com.dhsoft.edc.backend.model.Project;
 import com.dhsoft.edc.backend.service.base.ProjectLocalServiceBaseImpl;
-
+import com.dhsoft.edc.backend.service.persistence.ProjectPersistence;
 import com.liferay.portal.aop.AopService;
+
+import java.util.List;
 
 import org.osgi.service.component.annotations.Component;
 
@@ -28,4 +31,12 @@ import org.osgi.service.component.annotations.Component;
 	service = AopService.class
 )
 public class ProjectLocalServiceImpl extends ProjectLocalServiceBaseImpl {
+
+	public List<Project> findByGroupId(long groupId) {
+	    return projectPersistence.findByGroupId(groupId);
+	}
+	
+	public List<Project> getByGroupId(long groupId) {
+	    return projectPersistence.findByGroupId(groupId);
+	}
 }
