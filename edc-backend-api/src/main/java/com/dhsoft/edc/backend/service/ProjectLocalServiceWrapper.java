@@ -213,10 +213,24 @@ public class ProjectLocalServiceWrapper
 	}
 
 	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.Project> findByGroupId(
+		long groupId) {
+
+		return _projectLocalService.findByGroupId(groupId);
+	}
+
+	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
 		return _projectLocalService.getActionableDynamicQuery();
+	}
+
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.Project> getByGroupId(
+		long groupId) {
+
+		return _projectLocalService.getByGroupId(groupId);
 	}
 
 	@Override

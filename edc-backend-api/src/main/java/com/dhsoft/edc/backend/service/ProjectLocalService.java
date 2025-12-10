@@ -199,8 +199,13 @@ public interface ProjectLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Project fetchProjectByUuidAndGroupId(String uuid, long groupId);
 
+	public List<Project> findByGroupId(long groupId);
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Project> getByGroupId(long groupId);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ExportActionableDynamicQuery getExportActionableDynamicQuery(
