@@ -326,7 +326,7 @@ public interface InstitutionLocalService
 	public Institution updateInstitution(Institution institution);
 
 	public void UpdateInstitution(
-		long institutionId, int status, long statusByUserId,
+		long institutionId, int status, Long statusByUserId,
 		String statusByUserName, Date statusDate, String code, String name,
 		String enName, int type, String piName, String contactNum, String email,
 		Date irbDate);

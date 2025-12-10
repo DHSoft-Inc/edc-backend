@@ -368,7 +368,7 @@ public class InstitutionLocalServiceUtil {
 	}
 
 	public static void UpdateInstitution(
-		long institutionId, int status, long statusByUserId,
+		long institutionId, int status, Long statusByUserId,
 		String statusByUserName, java.util.Date statusDate, String code,
 		String name, String enName, int type, String piName, String contactNum,
 		String email, java.util.Date irbDate) {
