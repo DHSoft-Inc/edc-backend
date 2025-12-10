@@ -67,7 +67,7 @@ public class InstitutionLocalServiceImpl extends InstitutionLocalServiceBaseImpl
 	}
 	
 	//Update Institution
-	public void UpdateInstitution(long institutionId, int status, long statusByUserId, String statusByUserName, Date statusDate, String code, String name, String enName, int type, String piName, String contactNum, String email, Date irbDate) {
+	public void UpdateInstitution(long institutionId, int status, Long statusByUserId, String statusByUserName, Date statusDate, String code, String name, String enName, int type, String piName, String contactNum, String email, Date irbDate) {
 		try{
 			Date date = new Date();
 			Institution i = institutionPersistence.findByPrimaryKey(institutionId);
