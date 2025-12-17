@@ -14,6 +14,7 @@
 
 package com.dhsoft.edc.backend.service;
 
+import com.dhsoft.edc.backend.exception.NoSuchVisitGroupException;
 import com.dhsoft.edc.backend.model.VisitGroup;
 
 import com.liferay.exportimport.kernel.lar.PortletDataContext;
@@ -36,6 +37,7 @@ import com.liferay.portal.kernel.util.OrderByComparator;
 
 import java.io.Serializable;
 
+import java.util.Date;
 import java.util.List;
 
 import org.osgi.annotation.versioning.ProviderType;
@@ -63,6 +65,28 @@ public interface VisitGroupLocalService
 	 *
 	 * Never modify this interface directly. Add custom service methods to <code>com.dhsoft.edc.backend.service.impl.VisitGroupLocalServiceImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface. Consume the visit group local service via injection or a <code>org.osgi.util.tracker.ServiceTracker</code>. Use {@link VisitGroupLocalServiceUtil} if injection and service tracking are not available.
 	 */
+
+	/**
+	 * ✅ 긴 버전 addVisitGroup (VisitEvent 스타일)
+	 * 실제 create + set + persistence.update 수행.
+	 * (ServiceBuilder Util에서 요구하는 시그니처와 동일하게 유지)
+	 */
+	public VisitGroup addVisitGroup(
+		long companyId, long groupId, long projectId, long userId,
+		String userName, int status, long statusByUserId,
+		String statusByUserName, Date statusDate, long expGroupId,
+		String visitGroupCode, String name, String description,
+		int activeStatus, Date activeDate);
+
+	/**
+	 * ✅ (방법 A) 짧은 버전 addVisitGroup
+	 * ResourceCommand에서 편하게 쓰기 위한 오버로드.
+	 * status / statusBy / statusDate / activeDate는 기본값으로 채움.
+	 */
+	public VisitGroup addVisitGroup(
+		long companyId, long groupId, long projectId, long userId,
+		String userName, long expGroupId, String visitGroupCode, String name,
+		String description, int activeStatus);
 
 	/**
 	 * Adds the visit group to the database. Also notifies the appropriate model listeners.
@@ -201,6 +225,8 @@ public interface VisitGroupLocalService
 	public VisitGroup fetchVisitGroupByUuidAndGroupId(
 		String uuid, long groupId);
 
+	public List<VisitGroup> findByG_P(long groupId, long projectId);
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
 
@@ -295,6 +321,11 @@ public interface VisitGroupLocalService
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public int getVisitGroupsCount();
+
+	public VisitGroup updateVisitGroup(
+			long visitGroupId, long expGroupId, String visitGroupCode,
+			String name, String description, int activeStatus)
+		throws NoSuchVisitGroupException;
 
 	/**
 	 * Updates the visit group in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.

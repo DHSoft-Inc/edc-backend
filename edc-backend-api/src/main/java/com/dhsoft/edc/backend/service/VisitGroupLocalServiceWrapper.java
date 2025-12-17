@@ -33,6 +33,41 @@ public class VisitGroupLocalServiceWrapper
 	}
 
 	/**
+	 * ✅ 긴 버전 addVisitGroup (VisitEvent 스타일)
+	 * 실제 create + set + persistence.update 수행.
+	 * (ServiceBuilder Util에서 요구하는 시그니처와 동일하게 유지)
+	 */
+	@Override
+	public com.dhsoft.edc.backend.model.VisitGroup addVisitGroup(
+		long companyId, long groupId, long projectId, long userId,
+		String userName, int status, long statusByUserId,
+		String statusByUserName, java.util.Date statusDate, long expGroupId,
+		String visitGroupCode, String name, String description,
+		int activeStatus, java.util.Date activeDate) {
+
+		return _visitGroupLocalService.addVisitGroup(
+			companyId, groupId, projectId, userId, userName, status,
+			statusByUserId, statusByUserName, statusDate, expGroupId,
+			visitGroupCode, name, description, activeStatus, activeDate);
+	}
+
+	/**
+	 * ✅ (방법 A) 짧은 버전 addVisitGroup
+	 * ResourceCommand에서 편하게 쓰기 위한 오버로드.
+	 * status / statusBy / statusDate / activeDate는 기본값으로 채움.
+	 */
+	@Override
+	public com.dhsoft.edc.backend.model.VisitGroup addVisitGroup(
+		long companyId, long groupId, long projectId, long userId,
+		String userName, long expGroupId, String visitGroupCode, String name,
+		String description, int activeStatus) {
+
+		return _visitGroupLocalService.addVisitGroup(
+			companyId, groupId, projectId, userId, userName, expGroupId,
+			visitGroupCode, name, description, activeStatus);
+	}
+
+	/**
 	 * Adds the visit group to the database. Also notifies the appropriate model listeners.
 	 *
 	 * <p>
@@ -222,6 +257,13 @@ public class VisitGroupLocalServiceWrapper
 	}
 
 	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.VisitGroup> findByG_P(
+		long groupId, long projectId) {
+
+		return _visitGroupLocalService.findByG_P(groupId, projectId);
+	}
+
+	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
@@ -360,6 +402,17 @@ public class VisitGroupLocalServiceWrapper
 	@Override
 	public int getVisitGroupsCount() {
 		return _visitGroupLocalService.getVisitGroupsCount();
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.VisitGroup updateVisitGroup(
+			long visitGroupId, long expGroupId, String visitGroupCode,
+			String name, String description, int activeStatus)
+		throws com.dhsoft.edc.backend.exception.NoSuchVisitGroupException {
+
+		return _visitGroupLocalService.updateVisitGroup(
+			visitGroupId, expGroupId, visitGroupCode, name, description,
+			activeStatus);
 	}
 
 	/**
