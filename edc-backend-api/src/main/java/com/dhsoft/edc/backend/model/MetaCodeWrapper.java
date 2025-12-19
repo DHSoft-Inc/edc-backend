@@ -52,14 +52,16 @@ public class MetaCodeWrapper
 		attributes.put("userName", getUserName());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
-		attributes.put("name", getName());
-		attributes.put("type", getType());
-		attributes.put("group", getGroup());
+		attributes.put("status", getStatus());
+		attributes.put("statusByUserId", getStatusByUserId());
+		attributes.put("statusByUserName", getStatusByUserName());
+		attributes.put("statusDate", getStatusDate());
+		attributes.put("groupCode", getGroupCode());
 		attributes.put("code", getCode());
 		attributes.put("label", getLabel());
 		attributes.put("valueType", getValueType());
 		attributes.put("value", getValue());
-		attributes.put("isActive", getIsActive());
+		attributes.put("active", getActive());
 		attributes.put("inactiveDate", getInactiveDate());
 
 		return attributes;
@@ -121,22 +123,34 @@ public class MetaCodeWrapper
 			setModifiedDate(modifiedDate);
 		}
 
-		String name = (String)attributes.get("name");
+		Integer status = (Integer)attributes.get("status");
 
-		if (name != null) {
-			setName(name);
+		if (status != null) {
+			setStatus(status);
 		}
 
-		String type = (String)attributes.get("type");
+		Long statusByUserId = (Long)attributes.get("statusByUserId");
 
-		if (type != null) {
-			setType(type);
+		if (statusByUserId != null) {
+			setStatusByUserId(statusByUserId);
 		}
 
-		String group = (String)attributes.get("group");
+		String statusByUserName = (String)attributes.get("statusByUserName");
 
-		if (group != null) {
-			setGroup(group);
+		if (statusByUserName != null) {
+			setStatusByUserName(statusByUserName);
+		}
+
+		Date statusDate = (Date)attributes.get("statusDate");
+
+		if (statusDate != null) {
+			setStatusDate(statusDate);
+		}
+
+		String groupCode = (String)attributes.get("groupCode");
+
+		if (groupCode != null) {
+			setGroupCode(groupCode);
 		}
 
 		String code = (String)attributes.get("code");
@@ -163,10 +177,10 @@ public class MetaCodeWrapper
 			setValue(value);
 		}
 
-		String isActive = (String)attributes.get("isActive");
+		Boolean active = (Boolean)attributes.get("active");
 
-		if (isActive != null) {
-			setIsActive(isActive);
+		if (active != null) {
+			setActive(active);
 		}
 
 		Date inactiveDate = (Date)attributes.get("inactiveDate");
@@ -174,6 +188,16 @@ public class MetaCodeWrapper
 		if (inactiveDate != null) {
 			setInactiveDate(inactiveDate);
 		}
+	}
+
+	/**
+	 * Returns the active of this meta code.
+	 *
+	 * @return the active of this meta code
+	 */
+	@Override
+	public Boolean getActive() {
+		return model.getActive();
 	}
 
 	/**
@@ -207,13 +231,13 @@ public class MetaCodeWrapper
 	}
 
 	/**
-	 * Returns the group of this meta code.
+	 * Returns the group code of this meta code.
 	 *
-	 * @return the group of this meta code
+	 * @return the group code of this meta code
 	 */
 	@Override
-	public String getGroup() {
-		return model.getGroup();
+	public String getGroupCode() {
+		return model.getGroupCode();
 	}
 
 	/**
@@ -234,16 +258,6 @@ public class MetaCodeWrapper
 	@Override
 	public Date getInactiveDate() {
 		return model.getInactiveDate();
-	}
-
-	/**
-	 * Returns the is active of this meta code.
-	 *
-	 * @return the is active of this meta code
-	 */
-	@Override
-	public String getIsActive() {
-		return model.getIsActive();
 	}
 
 	/**
@@ -277,16 +291,6 @@ public class MetaCodeWrapper
 	}
 
 	/**
-	 * Returns the name of this meta code.
-	 *
-	 * @return the name of this meta code
-	 */
-	@Override
-	public String getName() {
-		return model.getName();
-	}
-
-	/**
 	 * Returns the primary key of this meta code.
 	 *
 	 * @return the primary key of this meta code
@@ -314,6 +318,46 @@ public class MetaCodeWrapper
 	@Override
 	public int getStatus() {
 		return model.getStatus();
+	}
+
+	/**
+	 * Returns the status by user ID of this meta code.
+	 *
+	 * @return the status by user ID of this meta code
+	 */
+	@Override
+	public long getStatusByUserId() {
+		return model.getStatusByUserId();
+	}
+
+	/**
+	 * Returns the status by user name of this meta code.
+	 *
+	 * @return the status by user name of this meta code
+	 */
+	@Override
+	public String getStatusByUserName() {
+		return model.getStatusByUserName();
+	}
+
+	/**
+	 * Returns the status by user uuid of this meta code.
+	 *
+	 * @return the status by user uuid of this meta code
+	 */
+	@Override
+	public String getStatusByUserUuid() {
+		return model.getStatusByUserUuid();
+	}
+
+	/**
+	 * Returns the status date of this meta code.
+	 *
+	 * @return the status date of this meta code
+	 */
+	@Override
+	public Date getStatusDate() {
+		return model.getStatusDate();
 	}
 
 	/**
@@ -348,16 +392,6 @@ public class MetaCodeWrapper
 	@Override
 	public com.liferay.portal.kernel.trash.TrashHandler getTrashHandler() {
 		return model.getTrashHandler();
-	}
-
-	/**
-	 * Returns the type of this meta code.
-	 *
-	 * @return the type of this meta code
-	 */
-	@Override
-	public String getType() {
-		return model.getType();
 	}
 
 	/**
@@ -421,6 +455,66 @@ public class MetaCodeWrapper
 	}
 
 	/**
+	 * Returns <code>true</code> if this meta code is approved.
+	 *
+	 * @return <code>true</code> if this meta code is approved; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isApproved() {
+		return model.isApproved();
+	}
+
+	/**
+	 * Returns <code>true</code> if this meta code is denied.
+	 *
+	 * @return <code>true</code> if this meta code is denied; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isDenied() {
+		return model.isDenied();
+	}
+
+	/**
+	 * Returns <code>true</code> if this meta code is a draft.
+	 *
+	 * @return <code>true</code> if this meta code is a draft; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isDraft() {
+		return model.isDraft();
+	}
+
+	/**
+	 * Returns <code>true</code> if this meta code is expired.
+	 *
+	 * @return <code>true</code> if this meta code is expired; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isExpired() {
+		return model.isExpired();
+	}
+
+	/**
+	 * Returns <code>true</code> if this meta code is inactive.
+	 *
+	 * @return <code>true</code> if this meta code is inactive; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isInactive() {
+		return model.isInactive();
+	}
+
+	/**
+	 * Returns <code>true</code> if this meta code is incomplete.
+	 *
+	 * @return <code>true</code> if this meta code is incomplete; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isIncomplete() {
+		return model.isIncomplete();
+	}
+
+	/**
 	 * Returns <code>true</code> if this meta code is in the Recycle Bin.
 	 *
 	 * @return <code>true</code> if this meta code is in the Recycle Bin; <code>false</code> otherwise
@@ -450,9 +544,39 @@ public class MetaCodeWrapper
 		return model.isInTrashImplicitly();
 	}
 
+	/**
+	 * Returns <code>true</code> if this meta code is pending.
+	 *
+	 * @return <code>true</code> if this meta code is pending; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isPending() {
+		return model.isPending();
+	}
+
+	/**
+	 * Returns <code>true</code> if this meta code is scheduled.
+	 *
+	 * @return <code>true</code> if this meta code is scheduled; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isScheduled() {
+		return model.isScheduled();
+	}
+
 	@Override
 	public void persist() {
 		model.persist();
+	}
+
+	/**
+	 * Sets the active of this meta code.
+	 *
+	 * @param active the active of this meta code
+	 */
+	@Override
+	public void setActive(Boolean active) {
+		model.setActive(active);
 	}
 
 	/**
@@ -486,13 +610,13 @@ public class MetaCodeWrapper
 	}
 
 	/**
-	 * Sets the group of this meta code.
+	 * Sets the group code of this meta code.
 	 *
-	 * @param group the group of this meta code
+	 * @param groupCode the group code of this meta code
 	 */
 	@Override
-	public void setGroup(String group) {
-		model.setGroup(group);
+	public void setGroupCode(String groupCode) {
+		model.setGroupCode(groupCode);
 	}
 
 	/**
@@ -513,16 +637,6 @@ public class MetaCodeWrapper
 	@Override
 	public void setInactiveDate(Date inactiveDate) {
 		model.setInactiveDate(inactiveDate);
-	}
-
-	/**
-	 * Sets the is active of this meta code.
-	 *
-	 * @param isActive the is active of this meta code
-	 */
-	@Override
-	public void setIsActive(String isActive) {
-		model.setIsActive(isActive);
 	}
 
 	/**
@@ -556,16 +670,6 @@ public class MetaCodeWrapper
 	}
 
 	/**
-	 * Sets the name of this meta code.
-	 *
-	 * @param name the name of this meta code
-	 */
-	@Override
-	public void setName(String name) {
-		model.setName(name);
-	}
-
-	/**
 	 * Sets the primary key of this meta code.
 	 *
 	 * @param primaryKey the primary key of this meta code
@@ -586,13 +690,53 @@ public class MetaCodeWrapper
 	}
 
 	/**
-	 * Sets the type of this meta code.
+	 * Sets the status of this meta code.
 	 *
-	 * @param type the type of this meta code
+	 * @param status the status of this meta code
 	 */
 	@Override
-	public void setType(String type) {
-		model.setType(type);
+	public void setStatus(int status) {
+		model.setStatus(status);
+	}
+
+	/**
+	 * Sets the status by user ID of this meta code.
+	 *
+	 * @param statusByUserId the status by user ID of this meta code
+	 */
+	@Override
+	public void setStatusByUserId(long statusByUserId) {
+		model.setStatusByUserId(statusByUserId);
+	}
+
+	/**
+	 * Sets the status by user name of this meta code.
+	 *
+	 * @param statusByUserName the status by user name of this meta code
+	 */
+	@Override
+	public void setStatusByUserName(String statusByUserName) {
+		model.setStatusByUserName(statusByUserName);
+	}
+
+	/**
+	 * Sets the status by user uuid of this meta code.
+	 *
+	 * @param statusByUserUuid the status by user uuid of this meta code
+	 */
+	@Override
+	public void setStatusByUserUuid(String statusByUserUuid) {
+		model.setStatusByUserUuid(statusByUserUuid);
+	}
+
+	/**
+	 * Sets the status date of this meta code.
+	 *
+	 * @param statusDate the status date of this meta code
+	 */
+	@Override
+	public void setStatusDate(Date statusDate) {
+		model.setStatusDate(statusDate);
 	}
 
 	/**

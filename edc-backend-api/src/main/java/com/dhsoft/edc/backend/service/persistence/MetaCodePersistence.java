@@ -542,6 +542,355 @@ public interface MetaCodePersistence extends BasePersistence<MetaCode> {
 	public int countByG_P(long groupId, long projectId);
 
 	/**
+	 * Returns all the meta codes where groupId = &#63; and projectId = &#63; and groupCode = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @return the matching meta codes
+	 */
+	public java.util.List<MetaCode> findByG_P_G(
+		long groupId, long projectId, String groupCode);
+
+	/**
+	 * Returns a range of all the meta codes where groupId = &#63; and projectId = &#63; and groupCode = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>MetaCodeModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param start the lower bound of the range of meta codes
+	 * @param end the upper bound of the range of meta codes (not inclusive)
+	 * @return the range of matching meta codes
+	 */
+	public java.util.List<MetaCode> findByG_P_G(
+		long groupId, long projectId, String groupCode, int start, int end);
+
+	/**
+	 * Returns an ordered range of all the meta codes where groupId = &#63; and projectId = &#63; and groupCode = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>MetaCodeModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param start the lower bound of the range of meta codes
+	 * @param end the upper bound of the range of meta codes (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching meta codes
+	 */
+	public java.util.List<MetaCode> findByG_P_G(
+		long groupId, long projectId, String groupCode, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<MetaCode>
+			orderByComparator);
+
+	/**
+	 * Returns an ordered range of all the meta codes where groupId = &#63; and projectId = &#63; and groupCode = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>MetaCodeModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param start the lower bound of the range of meta codes
+	 * @param end the upper bound of the range of meta codes (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching meta codes
+	 */
+	public java.util.List<MetaCode> findByG_P_G(
+		long groupId, long projectId, String groupCode, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<MetaCode>
+			orderByComparator,
+		boolean useFinderCache);
+
+	/**
+	 * Returns the first meta code in the ordered set where groupId = &#63; and projectId = &#63; and groupCode = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching meta code
+	 * @throws NoSuchMetaCodeException if a matching meta code could not be found
+	 */
+	public MetaCode findByG_P_G_First(
+			long groupId, long projectId, String groupCode,
+			com.liferay.portal.kernel.util.OrderByComparator<MetaCode>
+				orderByComparator)
+		throws NoSuchMetaCodeException;
+
+	/**
+	 * Returns the first meta code in the ordered set where groupId = &#63; and projectId = &#63; and groupCode = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching meta code, or <code>null</code> if a matching meta code could not be found
+	 */
+	public MetaCode fetchByG_P_G_First(
+		long groupId, long projectId, String groupCode,
+		com.liferay.portal.kernel.util.OrderByComparator<MetaCode>
+			orderByComparator);
+
+	/**
+	 * Returns the last meta code in the ordered set where groupId = &#63; and projectId = &#63; and groupCode = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching meta code
+	 * @throws NoSuchMetaCodeException if a matching meta code could not be found
+	 */
+	public MetaCode findByG_P_G_Last(
+			long groupId, long projectId, String groupCode,
+			com.liferay.portal.kernel.util.OrderByComparator<MetaCode>
+				orderByComparator)
+		throws NoSuchMetaCodeException;
+
+	/**
+	 * Returns the last meta code in the ordered set where groupId = &#63; and projectId = &#63; and groupCode = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching meta code, or <code>null</code> if a matching meta code could not be found
+	 */
+	public MetaCode fetchByG_P_G_Last(
+		long groupId, long projectId, String groupCode,
+		com.liferay.portal.kernel.util.OrderByComparator<MetaCode>
+			orderByComparator);
+
+	/**
+	 * Returns the meta codes before and after the current meta code in the ordered set where groupId = &#63; and projectId = &#63; and groupCode = &#63;.
+	 *
+	 * @param metaCodeId the primary key of the current meta code
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next meta code
+	 * @throws NoSuchMetaCodeException if a meta code with the primary key could not be found
+	 */
+	public MetaCode[] findByG_P_G_PrevAndNext(
+			long metaCodeId, long groupId, long projectId, String groupCode,
+			com.liferay.portal.kernel.util.OrderByComparator<MetaCode>
+				orderByComparator)
+		throws NoSuchMetaCodeException;
+
+	/**
+	 * Removes all the meta codes where groupId = &#63; and projectId = &#63; and groupCode = &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 */
+	public void removeByG_P_G(long groupId, long projectId, String groupCode);
+
+	/**
+	 * Returns the number of meta codes where groupId = &#63; and projectId = &#63; and groupCode = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @return the number of matching meta codes
+	 */
+	public int countByG_P_G(long groupId, long projectId, String groupCode);
+
+	/**
+	 * Returns all the meta codes where groupId = &#63; and projectId = &#63; and groupCode = &#63; and code = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param code the code
+	 * @return the matching meta codes
+	 */
+	public java.util.List<MetaCode> findByG_P_G_C(
+		long groupId, long projectId, String groupCode, String code);
+
+	/**
+	 * Returns a range of all the meta codes where groupId = &#63; and projectId = &#63; and groupCode = &#63; and code = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>MetaCodeModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param code the code
+	 * @param start the lower bound of the range of meta codes
+	 * @param end the upper bound of the range of meta codes (not inclusive)
+	 * @return the range of matching meta codes
+	 */
+	public java.util.List<MetaCode> findByG_P_G_C(
+		long groupId, long projectId, String groupCode, String code, int start,
+		int end);
+
+	/**
+	 * Returns an ordered range of all the meta codes where groupId = &#63; and projectId = &#63; and groupCode = &#63; and code = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>MetaCodeModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param code the code
+	 * @param start the lower bound of the range of meta codes
+	 * @param end the upper bound of the range of meta codes (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching meta codes
+	 */
+	public java.util.List<MetaCode> findByG_P_G_C(
+		long groupId, long projectId, String groupCode, String code, int start,
+		int end,
+		com.liferay.portal.kernel.util.OrderByComparator<MetaCode>
+			orderByComparator);
+
+	/**
+	 * Returns an ordered range of all the meta codes where groupId = &#63; and projectId = &#63; and groupCode = &#63; and code = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>MetaCodeModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param code the code
+	 * @param start the lower bound of the range of meta codes
+	 * @param end the upper bound of the range of meta codes (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching meta codes
+	 */
+	public java.util.List<MetaCode> findByG_P_G_C(
+		long groupId, long projectId, String groupCode, String code, int start,
+		int end,
+		com.liferay.portal.kernel.util.OrderByComparator<MetaCode>
+			orderByComparator,
+		boolean useFinderCache);
+
+	/**
+	 * Returns the first meta code in the ordered set where groupId = &#63; and projectId = &#63; and groupCode = &#63; and code = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param code the code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching meta code
+	 * @throws NoSuchMetaCodeException if a matching meta code could not be found
+	 */
+	public MetaCode findByG_P_G_C_First(
+			long groupId, long projectId, String groupCode, String code,
+			com.liferay.portal.kernel.util.OrderByComparator<MetaCode>
+				orderByComparator)
+		throws NoSuchMetaCodeException;
+
+	/**
+	 * Returns the first meta code in the ordered set where groupId = &#63; and projectId = &#63; and groupCode = &#63; and code = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param code the code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching meta code, or <code>null</code> if a matching meta code could not be found
+	 */
+	public MetaCode fetchByG_P_G_C_First(
+		long groupId, long projectId, String groupCode, String code,
+		com.liferay.portal.kernel.util.OrderByComparator<MetaCode>
+			orderByComparator);
+
+	/**
+	 * Returns the last meta code in the ordered set where groupId = &#63; and projectId = &#63; and groupCode = &#63; and code = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param code the code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching meta code
+	 * @throws NoSuchMetaCodeException if a matching meta code could not be found
+	 */
+	public MetaCode findByG_P_G_C_Last(
+			long groupId, long projectId, String groupCode, String code,
+			com.liferay.portal.kernel.util.OrderByComparator<MetaCode>
+				orderByComparator)
+		throws NoSuchMetaCodeException;
+
+	/**
+	 * Returns the last meta code in the ordered set where groupId = &#63; and projectId = &#63; and groupCode = &#63; and code = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param code the code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching meta code, or <code>null</code> if a matching meta code could not be found
+	 */
+	public MetaCode fetchByG_P_G_C_Last(
+		long groupId, long projectId, String groupCode, String code,
+		com.liferay.portal.kernel.util.OrderByComparator<MetaCode>
+			orderByComparator);
+
+	/**
+	 * Returns the meta codes before and after the current meta code in the ordered set where groupId = &#63; and projectId = &#63; and groupCode = &#63; and code = &#63;.
+	 *
+	 * @param metaCodeId the primary key of the current meta code
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param code the code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next meta code
+	 * @throws NoSuchMetaCodeException if a meta code with the primary key could not be found
+	 */
+	public MetaCode[] findByG_P_G_C_PrevAndNext(
+			long metaCodeId, long groupId, long projectId, String groupCode,
+			String code,
+			com.liferay.portal.kernel.util.OrderByComparator<MetaCode>
+				orderByComparator)
+		throws NoSuchMetaCodeException;
+
+	/**
+	 * Removes all the meta codes where groupId = &#63; and projectId = &#63; and groupCode = &#63; and code = &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param code the code
+	 */
+	public void removeByG_P_G_C(
+		long groupId, long projectId, String groupCode, String code);
+
+	/**
+	 * Returns the number of meta codes where groupId = &#63; and projectId = &#63; and groupCode = &#63; and code = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param code the code
+	 * @return the number of matching meta codes
+	 */
+	public int countByG_P_G_C(
+		long groupId, long projectId, String groupCode, String code);
+
+	/**
 	 * Returns all the meta codes where companyId = &#63;.
 	 *
 	 * @param companyId the company ID

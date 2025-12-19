@@ -14,9 +14,11 @@
 
 package com.dhsoft.edc.backend.service.impl;
 
+import com.dhsoft.edc.backend.model.InstResearcher;
 import com.dhsoft.edc.backend.service.base.InstResearcherLocalServiceBaseImpl;
-
 import com.liferay.portal.aop.AopService;
+
+import java.util.List;
 
 import org.osgi.service.component.annotations.Component;
 
@@ -29,4 +31,15 @@ import org.osgi.service.component.annotations.Component;
 )
 public class InstResearcherLocalServiceImpl
 	extends InstResearcherLocalServiceBaseImpl {
+	
+	public InstResearcher findByG_P_U(long groupId, long projectId, long userId)
+	{
+		InstResearcher result = null;
+		List<InstResearcher> GPList = instResearcherPersistence.findByG_P(groupId, projectId);
+		for(InstResearcher ir : GPList) {
+			if(ir.getUserId() == userId) result = ir;
+		}
+		return result;
+	}
+	
 }

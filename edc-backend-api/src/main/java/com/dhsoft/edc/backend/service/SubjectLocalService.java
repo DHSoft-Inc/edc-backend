@@ -36,6 +36,7 @@ import com.liferay.portal.kernel.util.OrderByComparator;
 
 import java.io.Serializable;
 
+import java.util.Date;
 import java.util.List;
 
 import org.osgi.annotation.versioning.ProviderType;
@@ -63,6 +64,11 @@ public interface SubjectLocalService
 	 *
 	 * Never modify this interface directly. Add custom service methods to <code>com.dhsoft.edc.backend.service.impl.SubjectLocalServiceImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface. Consume the subject local service via injection or a <code>org.osgi.util.tracker.ServiceTracker</code>. Use {@link SubjectLocalServiceUtil} if injection and service tracking are not available.
 	 */
+	public void AddSubject(
+		long companyId, long groupId, long projectId, long institutionId,
+		long userId, String userName, int status, long statusByUserId,
+		String statusByUserName, Date statusDate, String serialId, String name,
+		int subjectStatus, Date subjectStatusApplyDate, Date consentAgreeDate);
 
 	/**
 	 * Adds the subject to the database. Also notifies the appropriate model listeners.
@@ -298,6 +304,12 @@ public interface SubjectLocalService
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public int getSubjectsCount();
+
+	public void UpdateSubject(
+		long subjectId, int status, long statusByUserId,
+		String statusByUserName, Date statusDate, String serialId, String name,
+		int subjectStatus, Date subjectStatusApplyDate, Date consentAgreeDate,
+		long expGroupId, Date applyDate);
 
 	/**
 	 * Updates the subject in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.

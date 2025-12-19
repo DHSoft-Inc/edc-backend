@@ -56,6 +56,74 @@
 		<reference entity="WorkflowInstanceLink" package-path="com.liferay.portal" />
     </entity>
 
+    <!-- Project Scope Meta group -->
+    <entity name="MetaGroup" local-service="true" remote-service="true" uuid="true" uuid-accessor="true" trash-enabled="true">
+
+
+		<!-- PK fields -->
+        <column name="metaGroupId" type="long" primary="true" />
+        
+       	<!-- Group instance -->     
+        <column name="groupId" type="long" />
+        
+    	<!-- Audit fields -->       
+        <column name="companyId" type="long" />
+        <column name="projectId" type="long" />
+        <column name="userId" type="long" />
+        <column name="userName" type="String" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+        
+        <!-- Workflow fields -->
+        <column name="status" type="int" />
+        <column name="statusByUserId" type="long" />
+        <column name="statusByUserName" type="String" />
+        <column name="statusDate" type="Date" />
+        
+    	<!-- Entity fields -->        
+        <column name="groupCode" type="String" />
+        <column name="groupName" type="String" />
+        <column name="type" type="String" />
+        <column name="active" type="Boolean" />
+        <column name="inactiveDate" type="Date" />
+        
+        <!-- Order -->
+		<order>
+			<order-column name="groupCode" order-by="asc" />
+		</order>
+        
+        <!-- Finder -->
+        <finder name="G_P" return-type="Collection">
+        	<finder-column name="groupId"></finder-column>
+        	<finder-column name="projectId"></finder-column>
+        </finder>
+        
+		<!--  Meta group uniqueness  -->
+        <finder name="G_P_G" return-type="Collection">
+    		<finder-column name="groupId" />
+    		<finder-column name="projectId" />
+    		<finder-column name="groupCode" />
+		</finder>
+        
+        <finder name="CompanyId" return-type="Collection">
+    		<finder-column name="companyId" />
+    	</finder>
+    	
+    	<finder name="UserId" return-type="Collection">
+    		<finder-column name="userId" />
+    	</finder>
+        
+        <!-- Reference -->
+ 		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetLink" package-path="com.liferay.portlet.asset" />
+		<reference entity="RatingsStats" package-path="com.liferay.portlet.ratings" />
+		<reference entity="TrashEntry" package-path="com.liferay.portlet.trash" />
+		<reference entity="TrashVersion" package-path="com.liferay.portlet.trash" />
+		<reference entity="WorkflowInstanceLink" package-path="com.liferay.portal" />
+		
+    </entity>
+
+
     <!-- Project Scope Meta code -->
     <entity name="MetaCode" local-service="true" remote-service="true" uuid="true" uuid-accessor="true" trash-enabled="true">
 
@@ -74,20 +142,24 @@
         <column name="createDate" type="Date" />
         <column name="modifiedDate" type="Date" />
         
+        <!-- Workflow fields -->
+        <column name="status" type="int" />
+        <column name="statusByUserId" type="long" />
+        <column name="statusByUserName" type="String" />
+        <column name="statusDate" type="Date" />
+        
     	<!-- Entity fields -->        
-        <column name="name" type="String" />
-        <column name="type" type="String" />
-        <column name="group" type="String" />
+        <column name="groupCode" type="String" />
         <column name="code" type="String" />
         <column name="label" type="String" />
         <column name="valueType" type="String" />
         <column name="value" type="String" />
-        <column name="isActive" type="String" />
+        <column name="active" type="Boolean" />
         <column name="inactiveDate" type="Date" />
         
         <!-- Order -->
 		<order>
-			<order-column name="createDate" order-by="desc" />
+			<order-column name="code" order-by="asc" />
 		</order>
         
         <!-- Finder -->
@@ -96,6 +168,21 @@
         	<finder-column name="projectId"></finder-column>
         </finder>
         
+		<!--  Meta group -->
+        <finder name="G_P_G" return-type="Collection">
+    		<finder-column name="groupId" />
+    		<finder-column name="projectId" />
+    		<finder-column name="groupCode" />
+		</finder>
+        
+		<!--  Meta code uniqueness  -->
+        <finder name="G_P_G_C" return-type="Collection">
+    		<finder-column name="groupId" />
+    		<finder-column name="projectId" />
+    		<finder-column name="groupCode" />
+    		<finder-column name="code" />
+		</finder>
+        
         <finder name="CompanyId" return-type="Collection">
     		<finder-column name="companyId" />
     	</finder>
@@ -103,7 +190,6 @@
     	<finder name="UserId" return-type="Collection">
     		<finder-column name="userId" />
     	</finder>
-        
         
         <!-- Reference -->
  		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />

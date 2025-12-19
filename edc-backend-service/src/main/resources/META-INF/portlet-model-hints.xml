@@ -84,14 +84,36 @@
 		<field name="userName" type="String" />
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
-		<field name="name" type="String" />
-		<field name="type" type="String" />
-		<field name="group" type="String" />
+		<field name="status" type="int" />
+		<field name="statusByUserId" type="long" />
+		<field name="statusByUserName" type="String" />
+		<field name="statusDate" type="Date" />
+		<field name="groupCode" type="String" />
 		<field name="code" type="String" />
 		<field name="label" type="String" />
 		<field name="valueType" type="String" />
 		<field name="value" type="String" />
-		<field name="isActive" type="String" />
+		<field name="active" type="Boolean" />
+		<field name="inactiveDate" type="Date" />
+	</model>
+	<model name="com.dhsoft.edc.backend.model.MetaGroup">
+		<field name="uuid" type="String" />
+		<field name="metaGroupId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="projectId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="status" type="int" />
+		<field name="statusByUserId" type="long" />
+		<field name="statusByUserName" type="String" />
+		<field name="statusDate" type="Date" />
+		<field name="groupCode" type="String" />
+		<field name="groupName" type="String" />
+		<field name="type" type="String" />
+		<field name="active" type="Boolean" />
 		<field name="inactiveDate" type="Date" />
 	</model>
 	<model name="com.dhsoft.edc.backend.model.Project">

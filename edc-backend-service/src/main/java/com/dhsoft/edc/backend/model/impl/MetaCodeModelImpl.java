@@ -34,7 +34,6 @@ import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.model.impl.BaseModelImpl;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.service.UserLocalServiceUtil;
-import com.liferay.portal.kernel.util.DateUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
@@ -86,11 +85,12 @@ public class MetaCodeModelImpl
 		{"groupId", Types.BIGINT}, {"companyId", Types.BIGINT},
 		{"projectId", Types.BIGINT}, {"userId", Types.BIGINT},
 		{"userName", Types.VARCHAR}, {"createDate", Types.TIMESTAMP},
-		{"modifiedDate", Types.TIMESTAMP}, {"name", Types.VARCHAR},
-		{"type_", Types.VARCHAR}, {"group_", Types.VARCHAR},
+		{"modifiedDate", Types.TIMESTAMP}, {"status", Types.INTEGER},
+		{"statusByUserId", Types.BIGINT}, {"statusByUserName", Types.VARCHAR},
+		{"statusDate", Types.TIMESTAMP}, {"groupCode", Types.VARCHAR},
 		{"code_", Types.VARCHAR}, {"label", Types.VARCHAR},
 		{"valueType", Types.VARCHAR}, {"value", Types.VARCHAR},
-		{"isActive", Types.VARCHAR}, {"inactiveDate", Types.TIMESTAMP}
+		{"active_", Types.BOOLEAN}, {"inactiveDate", Types.TIMESTAMP}
 	};
 
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP =
@@ -106,27 +106,28 @@ public class MetaCodeModelImpl
 		TABLE_COLUMNS_MAP.put("userName", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("createDate", Types.TIMESTAMP);
 		TABLE_COLUMNS_MAP.put("modifiedDate", Types.TIMESTAMP);
-		TABLE_COLUMNS_MAP.put("name", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("type_", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("group_", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("status", Types.INTEGER);
+		TABLE_COLUMNS_MAP.put("statusByUserId", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("statusByUserName", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("statusDate", Types.TIMESTAMP);
+		TABLE_COLUMNS_MAP.put("groupCode", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("code_", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("label", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("valueType", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("value", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("isActive", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("active_", Types.BOOLEAN);
 		TABLE_COLUMNS_MAP.put("inactiveDate", Types.TIMESTAMP);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table EDC_MetaCode (uuid_ VARCHAR(75) null,metaCodeId LONG not null primary key,groupId LONG,companyId LONG,projectId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,name VARCHAR(75) null,type_ VARCHAR(75) null,group_ VARCHAR(75) null,code_ VARCHAR(75) null,label VARCHAR(75) null,valueType VARCHAR(75) null,value VARCHAR(75) null,isActive VARCHAR(75) null,inactiveDate DATE null)";
+		"create table EDC_MetaCode (uuid_ VARCHAR(75) null,metaCodeId LONG not null primary key,groupId LONG,companyId LONG,projectId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,status INTEGER,statusByUserId LONG,statusByUserName VARCHAR(75) null,statusDate DATE null,groupCode VARCHAR(75) null,code_ VARCHAR(75) null,label VARCHAR(75) null,valueType VARCHAR(75) null,value VARCHAR(75) null,active_ BOOLEAN,inactiveDate DATE null)";
 
 	public static final String TABLE_SQL_DROP = "drop table EDC_MetaCode";
 
-	public static final String ORDER_BY_JPQL =
-		" ORDER BY metaCode.createDate DESC";
+	public static final String ORDER_BY_JPQL = " ORDER BY metaCode.code ASC";
 
 	public static final String ORDER_BY_SQL =
-		" ORDER BY EDC_MetaCode.createDate DESC";
+		" ORDER BY EDC_MetaCode.code_ ASC";
 
 	public static final String DATA_SOURCE = "liferayDataSource";
 
@@ -134,17 +135,19 @@ public class MetaCodeModelImpl
 
 	public static final String TX_MANAGER = "liferayTransactionManager";
 
-	public static final long COMPANYID_COLUMN_BITMASK = 1L;
+	public static final long CODE_COLUMN_BITMASK = 1L;
 
-	public static final long GROUPID_COLUMN_BITMASK = 2L;
+	public static final long COMPANYID_COLUMN_BITMASK = 2L;
 
-	public static final long PROJECTID_COLUMN_BITMASK = 4L;
+	public static final long GROUPCODE_COLUMN_BITMASK = 4L;
 
-	public static final long USERID_COLUMN_BITMASK = 8L;
+	public static final long GROUPID_COLUMN_BITMASK = 8L;
 
-	public static final long UUID_COLUMN_BITMASK = 16L;
+	public static final long PROJECTID_COLUMN_BITMASK = 16L;
 
-	public static final long CREATEDATE_COLUMN_BITMASK = 32L;
+	public static final long USERID_COLUMN_BITMASK = 32L;
+
+	public static final long UUID_COLUMN_BITMASK = 64L;
 
 	public static void setEntityCacheEnabled(boolean entityCacheEnabled) {
 		_entityCacheEnabled = entityCacheEnabled;
@@ -176,14 +179,16 @@ public class MetaCodeModelImpl
 		model.setUserName(soapModel.getUserName());
 		model.setCreateDate(soapModel.getCreateDate());
 		model.setModifiedDate(soapModel.getModifiedDate());
-		model.setName(soapModel.getName());
-		model.setType(soapModel.getType());
-		model.setGroup(soapModel.getGroup());
+		model.setStatus(soapModel.getStatus());
+		model.setStatusByUserId(soapModel.getStatusByUserId());
+		model.setStatusByUserName(soapModel.getStatusByUserName());
+		model.setStatusDate(soapModel.getStatusDate());
+		model.setGroupCode(soapModel.getGroupCode());
 		model.setCode(soapModel.getCode());
 		model.setLabel(soapModel.getLabel());
 		model.setValueType(soapModel.getValueType());
 		model.setValue(soapModel.getValue());
-		model.setIsActive(soapModel.getIsActive());
+		model.setActive(soapModel.getActive());
 		model.setInactiveDate(soapModel.getInactiveDate());
 
 		return model;
@@ -335,15 +340,25 @@ public class MetaCodeModelImpl
 		attributeSetterBiConsumers.put(
 			"modifiedDate",
 			(BiConsumer<MetaCode, Date>)MetaCode::setModifiedDate);
-		attributeGetterFunctions.put("name", MetaCode::getName);
+		attributeGetterFunctions.put("status", MetaCode::getStatus);
 		attributeSetterBiConsumers.put(
-			"name", (BiConsumer<MetaCode, String>)MetaCode::setName);
-		attributeGetterFunctions.put("type", MetaCode::getType);
+			"status", (BiConsumer<MetaCode, Integer>)MetaCode::setStatus);
+		attributeGetterFunctions.put(
+			"statusByUserId", MetaCode::getStatusByUserId);
 		attributeSetterBiConsumers.put(
-			"type", (BiConsumer<MetaCode, String>)MetaCode::setType);
-		attributeGetterFunctions.put("group", MetaCode::getGroup);
+			"statusByUserId",
+			(BiConsumer<MetaCode, Long>)MetaCode::setStatusByUserId);
+		attributeGetterFunctions.put(
+			"statusByUserName", MetaCode::getStatusByUserName);
 		attributeSetterBiConsumers.put(
-			"group", (BiConsumer<MetaCode, String>)MetaCode::setGroup);
+			"statusByUserName",
+			(BiConsumer<MetaCode, String>)MetaCode::setStatusByUserName);
+		attributeGetterFunctions.put("statusDate", MetaCode::getStatusDate);
+		attributeSetterBiConsumers.put(
+			"statusDate", (BiConsumer<MetaCode, Date>)MetaCode::setStatusDate);
+		attributeGetterFunctions.put("groupCode", MetaCode::getGroupCode);
+		attributeSetterBiConsumers.put(
+			"groupCode", (BiConsumer<MetaCode, String>)MetaCode::setGroupCode);
 		attributeGetterFunctions.put("code", MetaCode::getCode);
 		attributeSetterBiConsumers.put(
 			"code", (BiConsumer<MetaCode, String>)MetaCode::setCode);
@@ -356,9 +371,9 @@ public class MetaCodeModelImpl
 		attributeGetterFunctions.put("value", MetaCode::getValue);
 		attributeSetterBiConsumers.put(
 			"value", (BiConsumer<MetaCode, String>)MetaCode::setValue);
-		attributeGetterFunctions.put("isActive", MetaCode::getIsActive);
+		attributeGetterFunctions.put("active", MetaCode::getActive);
 		attributeSetterBiConsumers.put(
-			"isActive", (BiConsumer<MetaCode, String>)MetaCode::setIsActive);
+			"active", (BiConsumer<MetaCode, Boolean>)MetaCode::setActive);
 		attributeGetterFunctions.put("inactiveDate", MetaCode::getInactiveDate);
 		attributeSetterBiConsumers.put(
 			"inactiveDate",
@@ -539,8 +554,6 @@ public class MetaCodeModelImpl
 
 	@Override
 	public void setCreateDate(Date createDate) {
-		_columnBitmask = -1L;
-
 		_createDate = createDate;
 	}
 
@@ -563,50 +576,93 @@ public class MetaCodeModelImpl
 
 	@JSON
 	@Override
-	public String getName() {
-		if (_name == null) {
-			return "";
-		}
-		else {
-			return _name;
-		}
+	public int getStatus() {
+		return _status;
 	}
 
 	@Override
-	public void setName(String name) {
-		_name = name;
+	public void setStatus(int status) {
+		_status = status;
 	}
 
 	@JSON
 	@Override
-	public String getType() {
-		if (_type == null) {
-			return "";
+	public long getStatusByUserId() {
+		return _statusByUserId;
+	}
+
+	@Override
+	public void setStatusByUserId(long statusByUserId) {
+		_statusByUserId = statusByUserId;
+	}
+
+	@Override
+	public String getStatusByUserUuid() {
+		try {
+			User user = UserLocalServiceUtil.getUserById(getStatusByUserId());
+
+			return user.getUuid();
 		}
-		else {
-			return _type;
+		catch (PortalException portalException) {
+			return "";
 		}
 	}
 
 	@Override
-	public void setType(String type) {
-		_type = type;
+	public void setStatusByUserUuid(String statusByUserUuid) {
 	}
 
 	@JSON
 	@Override
-	public String getGroup() {
-		if (_group == null) {
+	public String getStatusByUserName() {
+		if (_statusByUserName == null) {
 			return "";
 		}
 		else {
-			return _group;
+			return _statusByUserName;
 		}
 	}
 
 	@Override
-	public void setGroup(String group) {
-		_group = group;
+	public void setStatusByUserName(String statusByUserName) {
+		_statusByUserName = statusByUserName;
+	}
+
+	@JSON
+	@Override
+	public Date getStatusDate() {
+		return _statusDate;
+	}
+
+	@Override
+	public void setStatusDate(Date statusDate) {
+		_statusDate = statusDate;
+	}
+
+	@JSON
+	@Override
+	public String getGroupCode() {
+		if (_groupCode == null) {
+			return "";
+		}
+		else {
+			return _groupCode;
+		}
+	}
+
+	@Override
+	public void setGroupCode(String groupCode) {
+		_columnBitmask |= GROUPCODE_COLUMN_BITMASK;
+
+		if (_originalGroupCode == null) {
+			_originalGroupCode = _groupCode;
+		}
+
+		_groupCode = groupCode;
+	}
+
+	public String getOriginalGroupCode() {
+		return GetterUtil.getString(_originalGroupCode);
 	}
 
 	@JSON
@@ -622,7 +678,17 @@ public class MetaCodeModelImpl
 
 	@Override
 	public void setCode(String code) {
+		_columnBitmask = -1L;
+
+		if (_originalCode == null) {
+			_originalCode = _code;
+		}
+
 		_code = code;
+	}
+
+	public String getOriginalCode() {
+		return GetterUtil.getString(_originalCode);
 	}
 
 	@JSON
@@ -675,18 +741,13 @@ public class MetaCodeModelImpl
 
 	@JSON
 	@Override
-	public String getIsActive() {
-		if (_isActive == null) {
-			return "";
-		}
-		else {
-			return _isActive;
-		}
+	public Boolean getActive() {
+		return _active;
 	}
 
 	@Override
-	public void setIsActive(String isActive) {
-		_isActive = isActive;
+	public void setActive(Boolean active) {
+		_active = active;
 	}
 
 	@JSON
@@ -704,11 +765,6 @@ public class MetaCodeModelImpl
 	public StagedModelType getStagedModelType() {
 		return new StagedModelType(
 			PortalUtil.getClassNameId(MetaCode.class.getName()));
-	}
-
-	@Override
-	public int getStatus() {
-		return 0;
 	}
 
 	@Override
@@ -856,6 +912,86 @@ public class MetaCodeModelImpl
 		return true;
 	}
 
+	@Override
+	public boolean isApproved() {
+		if (getStatus() == WorkflowConstants.STATUS_APPROVED) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isDenied() {
+		if (getStatus() == WorkflowConstants.STATUS_DENIED) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isDraft() {
+		if (getStatus() == WorkflowConstants.STATUS_DRAFT) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isExpired() {
+		if (getStatus() == WorkflowConstants.STATUS_EXPIRED) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isInactive() {
+		if (getStatus() == WorkflowConstants.STATUS_INACTIVE) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isIncomplete() {
+		if (getStatus() == WorkflowConstants.STATUS_INCOMPLETE) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isPending() {
+		if (getStatus() == WorkflowConstants.STATUS_PENDING) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isScheduled() {
+		if (getStatus() == WorkflowConstants.STATUS_SCHEDULED) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
 	public long getColumnBitmask() {
 		return _columnBitmask;
 	}
@@ -901,14 +1037,16 @@ public class MetaCodeModelImpl
 		metaCodeImpl.setUserName(getUserName());
 		metaCodeImpl.setCreateDate(getCreateDate());
 		metaCodeImpl.setModifiedDate(getModifiedDate());
-		metaCodeImpl.setName(getName());
-		metaCodeImpl.setType(getType());
-		metaCodeImpl.setGroup(getGroup());
+		metaCodeImpl.setStatus(getStatus());
+		metaCodeImpl.setStatusByUserId(getStatusByUserId());
+		metaCodeImpl.setStatusByUserName(getStatusByUserName());
+		metaCodeImpl.setStatusDate(getStatusDate());
+		metaCodeImpl.setGroupCode(getGroupCode());
 		metaCodeImpl.setCode(getCode());
 		metaCodeImpl.setLabel(getLabel());
 		metaCodeImpl.setValueType(getValueType());
 		metaCodeImpl.setValue(getValue());
-		metaCodeImpl.setIsActive(getIsActive());
+		metaCodeImpl.setActive(getActive());
 		metaCodeImpl.setInactiveDate(getInactiveDate());
 
 		metaCodeImpl.resetOriginalValues();
@@ -920,9 +1058,7 @@ public class MetaCodeModelImpl
 	public int compareTo(MetaCode metaCode) {
 		int value = 0;
 
-		value = DateUtil.compareTo(getCreateDate(), metaCode.getCreateDate());
-
-		value = value * -1;
+		value = getCode().compareTo(metaCode.getCode());
 
 		if (value != 0) {
 			return value;
@@ -990,6 +1126,10 @@ public class MetaCodeModelImpl
 
 		_setModifiedDate = false;
 
+		_originalGroupCode = _groupCode;
+
+		_originalCode = _code;
+
 		_columnBitmask = 0;
 	}
 
@@ -1041,28 +1181,33 @@ public class MetaCodeModelImpl
 			metaCodeCacheModel.modifiedDate = Long.MIN_VALUE;
 		}
 
-		metaCodeCacheModel.name = getName();
+		metaCodeCacheModel.status = getStatus();
 
-		String name = metaCodeCacheModel.name;
+		metaCodeCacheModel.statusByUserId = getStatusByUserId();
 
-		if ((name != null) && (name.length() == 0)) {
-			metaCodeCacheModel.name = null;
+		metaCodeCacheModel.statusByUserName = getStatusByUserName();
+
+		String statusByUserName = metaCodeCacheModel.statusByUserName;
+
+		if ((statusByUserName != null) && (statusByUserName.length() == 0)) {
+			metaCodeCacheModel.statusByUserName = null;
 		}
 
-		metaCodeCacheModel.type = getType();
+		Date statusDate = getStatusDate();
 
-		String type = metaCodeCacheModel.type;
-
-		if ((type != null) && (type.length() == 0)) {
-			metaCodeCacheModel.type = null;
+		if (statusDate != null) {
+			metaCodeCacheModel.statusDate = statusDate.getTime();
+		}
+		else {
+			metaCodeCacheModel.statusDate = Long.MIN_VALUE;
 		}
 
-		metaCodeCacheModel.group = getGroup();
+		metaCodeCacheModel.groupCode = getGroupCode();
 
-		String group = metaCodeCacheModel.group;
+		String groupCode = metaCodeCacheModel.groupCode;
 
-		if ((group != null) && (group.length() == 0)) {
-			metaCodeCacheModel.group = null;
+		if ((groupCode != null) && (groupCode.length() == 0)) {
+			metaCodeCacheModel.groupCode = null;
 		}
 
 		metaCodeCacheModel.code = getCode();
@@ -1097,12 +1242,10 @@ public class MetaCodeModelImpl
 			metaCodeCacheModel.value = null;
 		}
 
-		metaCodeCacheModel.isActive = getIsActive();
+		Boolean active = getActive();
 
-		String isActive = metaCodeCacheModel.isActive;
-
-		if ((isActive != null) && (isActive.length() == 0)) {
-			metaCodeCacheModel.isActive = null;
+		if (active != null) {
+			metaCodeCacheModel.active = active;
 		}
 
 		Date inactiveDate = getInactiveDate();
@@ -1228,14 +1371,18 @@ public class MetaCodeModelImpl
 	private Date _createDate;
 	private Date _modifiedDate;
 	private boolean _setModifiedDate;
-	private String _name;
-	private String _type;
-	private String _group;
+	private int _status;
+	private long _statusByUserId;
+	private String _statusByUserName;
+	private Date _statusDate;
+	private String _groupCode;
+	private String _originalGroupCode;
 	private String _code;
+	private String _originalCode;
 	private String _label;
 	private String _valueType;
 	private String _value;
-	private String _isActive;
+	private Boolean _active;
 	private Date _inactiveDate;
 	private long _columnBitmask;
 	private MetaCode _escapedModel;

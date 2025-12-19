@@ -30,6 +30,20 @@ public class SubjectLocalServiceWrapper
 		_subjectLocalService = subjectLocalService;
 	}
 
+	@Override
+	public void AddSubject(
+		long companyId, long groupId, long projectId, long institutionId,
+		long userId, String userName, int status, long statusByUserId,
+		String statusByUserName, java.util.Date statusDate, String serialId,
+		String name, int subjectStatus, java.util.Date subjectStatusApplyDate,
+		java.util.Date consentAgreeDate) {
+
+		_subjectLocalService.AddSubject(
+			companyId, groupId, projectId, institutionId, userId, userName,
+			status, statusByUserId, statusByUserName, statusDate, serialId,
+			name, subjectStatus, subjectStatusApplyDate, consentAgreeDate);
+	}
+
 	/**
 	 * Adds the subject to the database. Also notifies the appropriate model listeners.
 	 *
@@ -363,6 +377,20 @@ public class SubjectLocalServiceWrapper
 	@Override
 	public int getSubjectsCount() {
 		return _subjectLocalService.getSubjectsCount();
+	}
+
+	@Override
+	public void UpdateSubject(
+		long subjectId, int status, long statusByUserId,
+		String statusByUserName, java.util.Date statusDate, String serialId,
+		String name, int subjectStatus, java.util.Date subjectStatusApplyDate,
+		java.util.Date consentAgreeDate, long expGroupId,
+		java.util.Date applyDate) {
+
+		_subjectLocalService.UpdateSubject(
+			subjectId, status, statusByUserId, statusByUserName, statusDate,
+			serialId, name, subjectStatus, subjectStatusApplyDate,
+			consentAgreeDate, expGroupId, applyDate);
 	}
 
 	/**

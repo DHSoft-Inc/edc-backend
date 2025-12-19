@@ -44,6 +44,18 @@ public class SubjectLocalServiceUtil {
 	 *
 	 * Never modify this class directly. Add custom service methods to <code>com.dhsoft.edc.backend.service.impl.SubjectLocalServiceImpl</code> and rerun ServiceBuilder to regenerate this class.
 	 */
+	public static void AddSubject(
+		long companyId, long groupId, long projectId, long institutionId,
+		long userId, String userName, int status, long statusByUserId,
+		String statusByUserName, java.util.Date statusDate, String serialId,
+		String name, int subjectStatus, java.util.Date subjectStatusApplyDate,
+		java.util.Date consentAgreeDate) {
+
+		getService().AddSubject(
+			companyId, groupId, projectId, institutionId, userId, userName,
+			status, statusByUserId, statusByUserName, statusDate, serialId,
+			name, subjectStatus, subjectStatusApplyDate, consentAgreeDate);
+	}
 
 	/**
 	 * Adds the subject to the database. Also notifies the appropriate model listeners.
@@ -327,6 +339,19 @@ public class SubjectLocalServiceUtil {
 	 */
 	public static int getSubjectsCount() {
 		return getService().getSubjectsCount();
+	}
+
+	public static void UpdateSubject(
+		long subjectId, int status, long statusByUserId,
+		String statusByUserName, java.util.Date statusDate, String serialId,
+		String name, int subjectStatus, java.util.Date subjectStatusApplyDate,
+		java.util.Date consentAgreeDate, long expGroupId,
+		java.util.Date applyDate) {
+
+		getService().UpdateSubject(
+			subjectId, status, statusByUserId, statusByUserName, statusDate,
+			serialId, name, subjectStatus, subjectStatusApplyDate,
+			consentAgreeDate, expGroupId, applyDate);
 	}
 
 	/**

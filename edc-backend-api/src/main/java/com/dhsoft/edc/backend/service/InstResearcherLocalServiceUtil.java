@@ -213,6 +213,12 @@ public class InstResearcherLocalServiceUtil {
 		return getService().fetchInstResearcherByUuidAndGroupId(uuid, groupId);
 	}
 
+	public static InstResearcher findByG_P_U(
+		long groupId, long projectId, long userId) {
+
+		return getService().findByG_P_U(groupId, projectId, userId);
+	}
+
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 

@@ -21,6 +21,7 @@ import com.liferay.portal.kernel.model.GroupedModel;
 import com.liferay.portal.kernel.model.ShardedModel;
 import com.liferay.portal.kernel.model.StagedAuditedModel;
 import com.liferay.portal.kernel.model.TrashedModel;
+import com.liferay.portal.kernel.model.WorkflowedModel;
 
 import java.util.Date;
 
@@ -40,7 +41,7 @@ import org.osgi.annotation.versioning.ProviderType;
 @ProviderType
 public interface MetaCodeModel
 	extends BaseModel<MetaCode>, GroupedModel, ShardedModel, StagedAuditedModel,
-			TrashedModel {
+			TrashedModel, WorkflowedModel {
 
 	/*
 	 * NOTE FOR DEVELOPERS:
@@ -221,49 +222,100 @@ public interface MetaCodeModel
 	public void setModifiedDate(Date modifiedDate);
 
 	/**
-	 * Returns the name of this meta code.
+	 * Returns the status of this meta code.
 	 *
-	 * @return the name of this meta code
+	 * @return the status of this meta code
+	 */
+	@Override
+	public int getStatus();
+
+	/**
+	 * Sets the status of this meta code.
+	 *
+	 * @param status the status of this meta code
+	 */
+	@Override
+	public void setStatus(int status);
+
+	/**
+	 * Returns the status by user ID of this meta code.
+	 *
+	 * @return the status by user ID of this meta code
+	 */
+	@Override
+	public long getStatusByUserId();
+
+	/**
+	 * Sets the status by user ID of this meta code.
+	 *
+	 * @param statusByUserId the status by user ID of this meta code
+	 */
+	@Override
+	public void setStatusByUserId(long statusByUserId);
+
+	/**
+	 * Returns the status by user uuid of this meta code.
+	 *
+	 * @return the status by user uuid of this meta code
+	 */
+	@Override
+	public String getStatusByUserUuid();
+
+	/**
+	 * Sets the status by user uuid of this meta code.
+	 *
+	 * @param statusByUserUuid the status by user uuid of this meta code
+	 */
+	@Override
+	public void setStatusByUserUuid(String statusByUserUuid);
+
+	/**
+	 * Returns the status by user name of this meta code.
+	 *
+	 * @return the status by user name of this meta code
 	 */
 	@AutoEscape
-	public String getName();
+	@Override
+	public String getStatusByUserName();
 
 	/**
-	 * Sets the name of this meta code.
+	 * Sets the status by user name of this meta code.
 	 *
-	 * @param name the name of this meta code
+	 * @param statusByUserName the status by user name of this meta code
 	 */
-	public void setName(String name);
+	@Override
+	public void setStatusByUserName(String statusByUserName);
 
 	/**
-	 * Returns the type of this meta code.
+	 * Returns the status date of this meta code.
 	 *
-	 * @return the type of this meta code
+	 * @return the status date of this meta code
+	 */
+	@Override
+	public Date getStatusDate();
+
+	/**
+	 * Sets the status date of this meta code.
+	 *
+	 * @param statusDate the status date of this meta code
+	 */
+	@Override
+	public void setStatusDate(Date statusDate);
+
+	/**
+	 * Returns the group code of this meta code.
+	 *
+	 * @return the group code of this meta code
 	 */
 	@AutoEscape
-	public String getType();
+	public String getGroupCode();
 
 	/**
-	 * Sets the type of this meta code.
+	 * Sets the group code of this meta code.
 	 *
-	 * @param type the type of this meta code
+	 * @param groupCode the group code of this meta code
 	 */
-	public void setType(String type);
-
-	/**
-	 * Returns the group of this meta code.
-	 *
-	 * @return the group of this meta code
-	 */
-	@AutoEscape
-	public String getGroup();
-
-	/**
-	 * Sets the group of this meta code.
-	 *
-	 * @param group the group of this meta code
-	 */
-	public void setGroup(String group);
+	public void setGroupCode(String groupCode);
 
 	/**
 	 * Returns the code of this meta code.
@@ -326,19 +378,18 @@ public interface MetaCodeModel
 	public void setValue(String value);
 
 	/**
-	 * Returns the is active of this meta code.
+	 * Returns the active of this meta code.
 	 *
-	 * @return the is active of this meta code
+	 * @return the active of this meta code
 	 */
-	@AutoEscape
-	public String getIsActive();
+	public Boolean getActive();
 
 	/**
-	 * Sets the is active of this meta code.
+	 * Sets the active of this meta code.
 	 *
-	 * @param isActive the is active of this meta code
+	 * @param active the active of this meta code
 	 */
-	public void setIsActive(String isActive);
+	public void setActive(Boolean active);
 
 	/**
 	 * Returns the inactive date of this meta code.
@@ -353,14 +404,6 @@ public interface MetaCodeModel
 	 * @param inactiveDate the inactive date of this meta code
 	 */
 	public void setInactiveDate(Date inactiveDate);
-
-	/**
-	 * Returns the status of this meta code.
-	 *
-	 * @return the status of this meta code
-	 */
-	@Override
-	public int getStatus();
 
 	/**
 	 * Returns the trash entry created when this meta code was moved to the Recycle Bin. The trash entry may belong to one of the ancestors of this meta code.
@@ -410,5 +453,69 @@ public interface MetaCodeModel
 
 	@Override
 	public boolean isInTrashImplicitly();
+
+	/**
+	 * Returns <code>true</code> if this meta code is approved.
+	 *
+	 * @return <code>true</code> if this meta code is approved; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isApproved();
+
+	/**
+	 * Returns <code>true</code> if this meta code is denied.
+	 *
+	 * @return <code>true</code> if this meta code is denied; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isDenied();
+
+	/**
+	 * Returns <code>true</code> if this meta code is a draft.
+	 *
+	 * @return <code>true</code> if this meta code is a draft; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isDraft();
+
+	/**
+	 * Returns <code>true</code> if this meta code is expired.
+	 *
+	 * @return <code>true</code> if this meta code is expired; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isExpired();
+
+	/**
+	 * Returns <code>true</code> if this meta code is inactive.
+	 *
+	 * @return <code>true</code> if this meta code is inactive; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isInactive();
+
+	/**
+	 * Returns <code>true</code> if this meta code is incomplete.
+	 *
+	 * @return <code>true</code> if this meta code is incomplete; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isIncomplete();
+
+	/**
+	 * Returns <code>true</code> if this meta code is pending.
+	 *
+	 * @return <code>true</code> if this meta code is pending; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isPending();
+
+	/**
+	 * Returns <code>true</code> if this meta code is scheduled.
+	 *
+	 * @return <code>true</code> if this meta code is scheduled; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isScheduled();
 
 }

@@ -201,6 +201,9 @@ public interface InstResearcherLocalService
 	public InstResearcher fetchInstResearcherByUuidAndGroupId(
 		String uuid, long groupId);
 
+	public InstResearcher findByG_P_U(
+		long groupId, long projectId, long userId);
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
 

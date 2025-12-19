@@ -22,6 +22,7 @@ import com.dhsoft.edc.backend.service.persistence.InstResearcherPersistence;
 import com.dhsoft.edc.backend.service.persistence.InstanceLinkPersistence;
 import com.dhsoft.edc.backend.service.persistence.InstitutionPersistence;
 import com.dhsoft.edc.backend.service.persistence.MetaCodePersistence;
+import com.dhsoft.edc.backend.service.persistence.MetaGroupPersistence;
 import com.dhsoft.edc.backend.service.persistence.ProjectPersistence;
 import com.dhsoft.edc.backend.service.persistence.QueryLinkPersistence;
 import com.dhsoft.edc.backend.service.persistence.RandomizationPersistence;
@@ -586,6 +587,9 @@ public abstract class QueryLinkLocalServiceBaseImpl
 
 	@Reference
 	protected MetaCodePersistence metaCodePersistence;
+
+	@Reference
+	protected MetaGroupPersistence metaGroupPersistence;
 
 	@Reference
 	protected ProjectPersistence projectPersistence;

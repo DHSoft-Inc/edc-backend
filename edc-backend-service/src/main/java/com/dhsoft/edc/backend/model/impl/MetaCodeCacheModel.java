@@ -62,7 +62,7 @@ public class MetaCodeCacheModel
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(37);
+		StringBundler sb = new StringBundler(41);
 
 		sb.append("{uuid=");
 		sb.append(uuid);
@@ -82,12 +82,16 @@ public class MetaCodeCacheModel
 		sb.append(createDate);
 		sb.append(", modifiedDate=");
 		sb.append(modifiedDate);
-		sb.append(", name=");
-		sb.append(name);
-		sb.append(", type=");
-		sb.append(type);
-		sb.append(", group=");
-		sb.append(group);
+		sb.append(", status=");
+		sb.append(status);
+		sb.append(", statusByUserId=");
+		sb.append(statusByUserId);
+		sb.append(", statusByUserName=");
+		sb.append(statusByUserName);
+		sb.append(", statusDate=");
+		sb.append(statusDate);
+		sb.append(", groupCode=");
+		sb.append(groupCode);
 		sb.append(", code=");
 		sb.append(code);
 		sb.append(", label=");
@@ -96,8 +100,8 @@ public class MetaCodeCacheModel
 		sb.append(valueType);
 		sb.append(", value=");
 		sb.append(value);
-		sb.append(", isActive=");
-		sb.append(isActive);
+		sb.append(", active=");
+		sb.append(active);
 		sb.append(", inactiveDate=");
 		sb.append(inactiveDate);
 		sb.append("}");
@@ -143,25 +147,28 @@ public class MetaCodeCacheModel
 			metaCodeImpl.setModifiedDate(new Date(modifiedDate));
 		}
 
-		if (name == null) {
-			metaCodeImpl.setName("");
+		metaCodeImpl.setStatus(status);
+		metaCodeImpl.setStatusByUserId(statusByUserId);
+
+		if (statusByUserName == null) {
+			metaCodeImpl.setStatusByUserName("");
 		}
 		else {
-			metaCodeImpl.setName(name);
+			metaCodeImpl.setStatusByUserName(statusByUserName);
 		}
 
-		if (type == null) {
-			metaCodeImpl.setType("");
+		if (statusDate == Long.MIN_VALUE) {
+			metaCodeImpl.setStatusDate(null);
 		}
 		else {
-			metaCodeImpl.setType(type);
+			metaCodeImpl.setStatusDate(new Date(statusDate));
 		}
 
-		if (group == null) {
-			metaCodeImpl.setGroup("");
+		if (groupCode == null) {
+			metaCodeImpl.setGroupCode("");
 		}
 		else {
-			metaCodeImpl.setGroup(group);
+			metaCodeImpl.setGroupCode(groupCode);
 		}
 
 		if (code == null) {
@@ -192,12 +199,7 @@ public class MetaCodeCacheModel
 			metaCodeImpl.setValue(value);
 		}
 
-		if (isActive == null) {
-			metaCodeImpl.setIsActive("");
-		}
-		else {
-			metaCodeImpl.setIsActive(isActive);
-		}
+		metaCodeImpl.setActive(active);
 
 		if (inactiveDate == Long.MIN_VALUE) {
 			metaCodeImpl.setInactiveDate(null);
@@ -227,14 +229,19 @@ public class MetaCodeCacheModel
 		userName = objectInput.readUTF();
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
-		name = objectInput.readUTF();
-		type = objectInput.readUTF();
-		group = objectInput.readUTF();
+
+		status = objectInput.readInt();
+
+		statusByUserId = objectInput.readLong();
+		statusByUserName = objectInput.readUTF();
+		statusDate = objectInput.readLong();
+		groupCode = objectInput.readUTF();
 		code = objectInput.readUTF();
 		label = objectInput.readUTF();
 		valueType = objectInput.readUTF();
 		value = objectInput.readUTF();
-		isActive = objectInput.readUTF();
+
+		active = objectInput.readBoolean();
 		inactiveDate = objectInput.readLong();
 	}
 
@@ -267,25 +274,24 @@ public class MetaCodeCacheModel
 		objectOutput.writeLong(createDate);
 		objectOutput.writeLong(modifiedDate);
 
-		if (name == null) {
+		objectOutput.writeInt(status);
+
+		objectOutput.writeLong(statusByUserId);
+
+		if (statusByUserName == null) {
 			objectOutput.writeUTF("");
 		}
 		else {
-			objectOutput.writeUTF(name);
+			objectOutput.writeUTF(statusByUserName);
 		}
 
-		if (type == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(type);
-		}
+		objectOutput.writeLong(statusDate);
 
-		if (group == null) {
+		if (groupCode == null) {
 			objectOutput.writeUTF("");
 		}
 		else {
-			objectOutput.writeUTF(group);
+			objectOutput.writeUTF(groupCode);
 		}
 
 		if (code == null) {
@@ -316,13 +322,7 @@ public class MetaCodeCacheModel
 			objectOutput.writeUTF(value);
 		}
 
-		if (isActive == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(isActive);
-		}
-
+		objectOutput.writeBoolean(active);
 		objectOutput.writeLong(inactiveDate);
 	}
 
@@ -335,14 +335,16 @@ public class MetaCodeCacheModel
 	public String userName;
 	public long createDate;
 	public long modifiedDate;
-	public String name;
-	public String type;
-	public String group;
+	public int status;
+	public long statusByUserId;
+	public String statusByUserName;
+	public long statusDate;
+	public String groupCode;
 	public String code;
 	public String label;
 	public String valueType;
 	public String value;
-	public String isActive;
+	public boolean active;
 	public long inactiveDate;
 
 }

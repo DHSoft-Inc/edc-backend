@@ -2011,6 +2011,1334 @@ public class MetaCodePersistenceImpl
 	private static final String _FINDER_COLUMN_G_P_PROJECTID_2 =
 		"metaCode.projectId = ?";
 
+	private FinderPath _finderPathWithPaginationFindByG_P_G;
+	private FinderPath _finderPathWithoutPaginationFindByG_P_G;
+	private FinderPath _finderPathCountByG_P_G;
+
+	/**
+	 * Returns all the meta codes where groupId = &#63; and projectId = &#63; and groupCode = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @return the matching meta codes
+	 */
+	@Override
+	public List<MetaCode> findByG_P_G(
+		long groupId, long projectId, String groupCode) {
+
+		return findByG_P_G(
+			groupId, projectId, groupCode, QueryUtil.ALL_POS, QueryUtil.ALL_POS,
+			null);
+	}
+
+	/**
+	 * Returns a range of all the meta codes where groupId = &#63; and projectId = &#63; and groupCode = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>MetaCodeModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param start the lower bound of the range of meta codes
+	 * @param end the upper bound of the range of meta codes (not inclusive)
+	 * @return the range of matching meta codes
+	 */
+	@Override
+	public List<MetaCode> findByG_P_G(
+		long groupId, long projectId, String groupCode, int start, int end) {
+
+		return findByG_P_G(groupId, projectId, groupCode, start, end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the meta codes where groupId = &#63; and projectId = &#63; and groupCode = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>MetaCodeModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param start the lower bound of the range of meta codes
+	 * @param end the upper bound of the range of meta codes (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching meta codes
+	 */
+	@Override
+	public List<MetaCode> findByG_P_G(
+		long groupId, long projectId, String groupCode, int start, int end,
+		OrderByComparator<MetaCode> orderByComparator) {
+
+		return findByG_P_G(
+			groupId, projectId, groupCode, start, end, orderByComparator, true);
+	}
+
+	/**
+	 * Returns an ordered range of all the meta codes where groupId = &#63; and projectId = &#63; and groupCode = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>MetaCodeModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param start the lower bound of the range of meta codes
+	 * @param end the upper bound of the range of meta codes (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching meta codes
+	 */
+	@Override
+	public List<MetaCode> findByG_P_G(
+		long groupId, long projectId, String groupCode, int start, int end,
+		OrderByComparator<MetaCode> orderByComparator, boolean useFinderCache) {
+
+		groupCode = Objects.toString(groupCode, "");
+
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+			(orderByComparator == null)) {
+
+			if (useFinderCache) {
+				finderPath = _finderPathWithoutPaginationFindByG_P_G;
+				finderArgs = new Object[] {groupId, projectId, groupCode};
+			}
+		}
+		else if (useFinderCache) {
+			finderPath = _finderPathWithPaginationFindByG_P_G;
+			finderArgs = new Object[] {
+				groupId, projectId, groupCode, start, end, orderByComparator
+			};
+		}
+
+		List<MetaCode> list = null;
+
+		if (useFinderCache) {
+			list = (List<MetaCode>)finderCache.getResult(
+				finderPath, finderArgs, this);
+
+			if ((list != null) && !list.isEmpty()) {
+				for (MetaCode metaCode : list) {
+					if ((groupId != metaCode.getGroupId()) ||
+						(projectId != metaCode.getProjectId()) ||
+						!groupCode.equals(metaCode.getGroupCode())) {
+
+						list = null;
+
+						break;
+					}
+				}
+			}
+		}
+
+		if (list == null) {
+			StringBundler sb = null;
+
+			if (orderByComparator != null) {
+				sb = new StringBundler(
+					5 + (orderByComparator.getOrderByFields().length * 2));
+			}
+			else {
+				sb = new StringBundler(5);
+			}
+
+			sb.append(_SQL_SELECT_METACODE_WHERE);
+
+			sb.append(_FINDER_COLUMN_G_P_G_GROUPID_2);
+
+			sb.append(_FINDER_COLUMN_G_P_G_PROJECTID_2);
+
+			boolean bindGroupCode = false;
+
+			if (groupCode.isEmpty()) {
+				sb.append(_FINDER_COLUMN_G_P_G_GROUPCODE_3);
+			}
+			else {
+				bindGroupCode = true;
+
+				sb.append(_FINDER_COLUMN_G_P_G_GROUPCODE_2);
+			}
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(
+					sb, _ORDER_BY_ENTITY_ALIAS, orderByComparator);
+			}
+			else {
+				sb.append(MetaCodeModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = sb.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query query = session.createQuery(sql);
+
+				QueryPos queryPos = QueryPos.getInstance(query);
+
+				queryPos.add(groupId);
+
+				queryPos.add(projectId);
+
+				if (bindGroupCode) {
+					queryPos.add(groupCode);
+				}
+
+				list = (List<MetaCode>)QueryUtil.list(
+					query, getDialect(), start, end);
+
+				cacheResult(list);
+
+				if (useFinderCache) {
+					finderCache.putResult(finderPath, finderArgs, list);
+				}
+			}
+			catch (Exception exception) {
+				if (useFinderCache) {
+					finderCache.removeResult(finderPath, finderArgs);
+				}
+
+				throw processException(exception);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first meta code in the ordered set where groupId = &#63; and projectId = &#63; and groupCode = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching meta code
+	 * @throws NoSuchMetaCodeException if a matching meta code could not be found
+	 */
+	@Override
+	public MetaCode findByG_P_G_First(
+			long groupId, long projectId, String groupCode,
+			OrderByComparator<MetaCode> orderByComparator)
+		throws NoSuchMetaCodeException {
+
+		MetaCode metaCode = fetchByG_P_G_First(
+			groupId, projectId, groupCode, orderByComparator);
+
+		if (metaCode != null) {
+			return metaCode;
+		}
+
+		StringBundler sb = new StringBundler(8);
+
+		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		sb.append("groupId=");
+		sb.append(groupId);
+
+		sb.append(", projectId=");
+		sb.append(projectId);
+
+		sb.append(", groupCode=");
+		sb.append(groupCode);
+
+		sb.append("}");
+
+		throw new NoSuchMetaCodeException(sb.toString());
+	}
+
+	/**
+	 * Returns the first meta code in the ordered set where groupId = &#63; and projectId = &#63; and groupCode = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching meta code, or <code>null</code> if a matching meta code could not be found
+	 */
+	@Override
+	public MetaCode fetchByG_P_G_First(
+		long groupId, long projectId, String groupCode,
+		OrderByComparator<MetaCode> orderByComparator) {
+
+		List<MetaCode> list = findByG_P_G(
+			groupId, projectId, groupCode, 0, 1, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the last meta code in the ordered set where groupId = &#63; and projectId = &#63; and groupCode = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching meta code
+	 * @throws NoSuchMetaCodeException if a matching meta code could not be found
+	 */
+	@Override
+	public MetaCode findByG_P_G_Last(
+			long groupId, long projectId, String groupCode,
+			OrderByComparator<MetaCode> orderByComparator)
+		throws NoSuchMetaCodeException {
+
+		MetaCode metaCode = fetchByG_P_G_Last(
+			groupId, projectId, groupCode, orderByComparator);
+
+		if (metaCode != null) {
+			return metaCode;
+		}
+
+		StringBundler sb = new StringBundler(8);
+
+		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		sb.append("groupId=");
+		sb.append(groupId);
+
+		sb.append(", projectId=");
+		sb.append(projectId);
+
+		sb.append(", groupCode=");
+		sb.append(groupCode);
+
+		sb.append("}");
+
+		throw new NoSuchMetaCodeException(sb.toString());
+	}
+
+	/**
+	 * Returns the last meta code in the ordered set where groupId = &#63; and projectId = &#63; and groupCode = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching meta code, or <code>null</code> if a matching meta code could not be found
+	 */
+	@Override
+	public MetaCode fetchByG_P_G_Last(
+		long groupId, long projectId, String groupCode,
+		OrderByComparator<MetaCode> orderByComparator) {
+
+		int count = countByG_P_G(groupId, projectId, groupCode);
+
+		if (count == 0) {
+			return null;
+		}
+
+		List<MetaCode> list = findByG_P_G(
+			groupId, projectId, groupCode, count - 1, count, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the meta codes before and after the current meta code in the ordered set where groupId = &#63; and projectId = &#63; and groupCode = &#63;.
+	 *
+	 * @param metaCodeId the primary key of the current meta code
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next meta code
+	 * @throws NoSuchMetaCodeException if a meta code with the primary key could not be found
+	 */
+	@Override
+	public MetaCode[] findByG_P_G_PrevAndNext(
+			long metaCodeId, long groupId, long projectId, String groupCode,
+			OrderByComparator<MetaCode> orderByComparator)
+		throws NoSuchMetaCodeException {
+
+		groupCode = Objects.toString(groupCode, "");
+
+		MetaCode metaCode = findByPrimaryKey(metaCodeId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			MetaCode[] array = new MetaCodeImpl[3];
+
+			array[0] = getByG_P_G_PrevAndNext(
+				session, metaCode, groupId, projectId, groupCode,
+				orderByComparator, true);
+
+			array[1] = metaCode;
+
+			array[2] = getByG_P_G_PrevAndNext(
+				session, metaCode, groupId, projectId, groupCode,
+				orderByComparator, false);
+
+			return array;
+		}
+		catch (Exception exception) {
+			throw processException(exception);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected MetaCode getByG_P_G_PrevAndNext(
+		Session session, MetaCode metaCode, long groupId, long projectId,
+		String groupCode, OrderByComparator<MetaCode> orderByComparator,
+		boolean previous) {
+
+		StringBundler sb = null;
+
+		if (orderByComparator != null) {
+			sb = new StringBundler(
+				6 + (orderByComparator.getOrderByConditionFields().length * 3) +
+					(orderByComparator.getOrderByFields().length * 3));
+		}
+		else {
+			sb = new StringBundler(5);
+		}
+
+		sb.append(_SQL_SELECT_METACODE_WHERE);
+
+		sb.append(_FINDER_COLUMN_G_P_G_GROUPID_2);
+
+		sb.append(_FINDER_COLUMN_G_P_G_PROJECTID_2);
+
+		boolean bindGroupCode = false;
+
+		if (groupCode.isEmpty()) {
+			sb.append(_FINDER_COLUMN_G_P_G_GROUPCODE_3);
+		}
+		else {
+			bindGroupCode = true;
+
+			sb.append(_FINDER_COLUMN_G_P_G_GROUPCODE_2);
+		}
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields =
+				orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				sb.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				sb.append(_ORDER_BY_ENTITY_ALIAS);
+				sb.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						sb.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(WHERE_GREATER_THAN);
+					}
+					else {
+						sb.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			sb.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				sb.append(_ORDER_BY_ENTITY_ALIAS);
+				sb.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						sb.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(ORDER_BY_ASC);
+					}
+					else {
+						sb.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+		else {
+			sb.append(MetaCodeModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = sb.toString();
+
+		Query query = session.createQuery(sql);
+
+		query.setFirstResult(0);
+		query.setMaxResults(2);
+
+		QueryPos queryPos = QueryPos.getInstance(query);
+
+		queryPos.add(groupId);
+
+		queryPos.add(projectId);
+
+		if (bindGroupCode) {
+			queryPos.add(groupCode);
+		}
+
+		if (orderByComparator != null) {
+			for (Object orderByConditionValue :
+					orderByComparator.getOrderByConditionValues(metaCode)) {
+
+				queryPos.add(orderByConditionValue);
+			}
+		}
+
+		List<MetaCode> list = query.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
+	 * Removes all the meta codes where groupId = &#63; and projectId = &#63; and groupCode = &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 */
+	@Override
+	public void removeByG_P_G(long groupId, long projectId, String groupCode) {
+		for (MetaCode metaCode :
+				findByG_P_G(
+					groupId, projectId, groupCode, QueryUtil.ALL_POS,
+					QueryUtil.ALL_POS, null)) {
+
+			remove(metaCode);
+		}
+	}
+
+	/**
+	 * Returns the number of meta codes where groupId = &#63; and projectId = &#63; and groupCode = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @return the number of matching meta codes
+	 */
+	@Override
+	public int countByG_P_G(long groupId, long projectId, String groupCode) {
+		groupCode = Objects.toString(groupCode, "");
+
+		FinderPath finderPath = _finderPathCountByG_P_G;
+
+		Object[] finderArgs = new Object[] {groupId, projectId, groupCode};
+
+		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
+
+		if (count == null) {
+			StringBundler sb = new StringBundler(4);
+
+			sb.append(_SQL_COUNT_METACODE_WHERE);
+
+			sb.append(_FINDER_COLUMN_G_P_G_GROUPID_2);
+
+			sb.append(_FINDER_COLUMN_G_P_G_PROJECTID_2);
+
+			boolean bindGroupCode = false;
+
+			if (groupCode.isEmpty()) {
+				sb.append(_FINDER_COLUMN_G_P_G_GROUPCODE_3);
+			}
+			else {
+				bindGroupCode = true;
+
+				sb.append(_FINDER_COLUMN_G_P_G_GROUPCODE_2);
+			}
+
+			String sql = sb.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query query = session.createQuery(sql);
+
+				QueryPos queryPos = QueryPos.getInstance(query);
+
+				queryPos.add(groupId);
+
+				queryPos.add(projectId);
+
+				if (bindGroupCode) {
+					queryPos.add(groupCode);
+				}
+
+				count = (Long)query.uniqueResult();
+
+				finderCache.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception exception) {
+				finderCache.removeResult(finderPath, finderArgs);
+
+				throw processException(exception);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String _FINDER_COLUMN_G_P_G_GROUPID_2 =
+		"metaCode.groupId = ? AND ";
+
+	private static final String _FINDER_COLUMN_G_P_G_PROJECTID_2 =
+		"metaCode.projectId = ? AND ";
+
+	private static final String _FINDER_COLUMN_G_P_G_GROUPCODE_2 =
+		"metaCode.groupCode = ?";
+
+	private static final String _FINDER_COLUMN_G_P_G_GROUPCODE_3 =
+		"(metaCode.groupCode IS NULL OR metaCode.groupCode = '')";
+
+	private FinderPath _finderPathWithPaginationFindByG_P_G_C;
+	private FinderPath _finderPathWithoutPaginationFindByG_P_G_C;
+	private FinderPath _finderPathCountByG_P_G_C;
+
+	/**
+	 * Returns all the meta codes where groupId = &#63; and projectId = &#63; and groupCode = &#63; and code = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param code the code
+	 * @return the matching meta codes
+	 */
+	@Override
+	public List<MetaCode> findByG_P_G_C(
+		long groupId, long projectId, String groupCode, String code) {
+
+		return findByG_P_G_C(
+			groupId, projectId, groupCode, code, QueryUtil.ALL_POS,
+			QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Returns a range of all the meta codes where groupId = &#63; and projectId = &#63; and groupCode = &#63; and code = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>MetaCodeModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param code the code
+	 * @param start the lower bound of the range of meta codes
+	 * @param end the upper bound of the range of meta codes (not inclusive)
+	 * @return the range of matching meta codes
+	 */
+	@Override
+	public List<MetaCode> findByG_P_G_C(
+		long groupId, long projectId, String groupCode, String code, int start,
+		int end) {
+
+		return findByG_P_G_C(
+			groupId, projectId, groupCode, code, start, end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the meta codes where groupId = &#63; and projectId = &#63; and groupCode = &#63; and code = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>MetaCodeModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param code the code
+	 * @param start the lower bound of the range of meta codes
+	 * @param end the upper bound of the range of meta codes (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching meta codes
+	 */
+	@Override
+	public List<MetaCode> findByG_P_G_C(
+		long groupId, long projectId, String groupCode, String code, int start,
+		int end, OrderByComparator<MetaCode> orderByComparator) {
+
+		return findByG_P_G_C(
+			groupId, projectId, groupCode, code, start, end, orderByComparator,
+			true);
+	}
+
+	/**
+	 * Returns an ordered range of all the meta codes where groupId = &#63; and projectId = &#63; and groupCode = &#63; and code = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>MetaCodeModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param code the code
+	 * @param start the lower bound of the range of meta codes
+	 * @param end the upper bound of the range of meta codes (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching meta codes
+	 */
+	@Override
+	public List<MetaCode> findByG_P_G_C(
+		long groupId, long projectId, String groupCode, String code, int start,
+		int end, OrderByComparator<MetaCode> orderByComparator,
+		boolean useFinderCache) {
+
+		groupCode = Objects.toString(groupCode, "");
+		code = Objects.toString(code, "");
+
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+			(orderByComparator == null)) {
+
+			if (useFinderCache) {
+				finderPath = _finderPathWithoutPaginationFindByG_P_G_C;
+				finderArgs = new Object[] {groupId, projectId, groupCode, code};
+			}
+		}
+		else if (useFinderCache) {
+			finderPath = _finderPathWithPaginationFindByG_P_G_C;
+			finderArgs = new Object[] {
+				groupId, projectId, groupCode, code, start, end,
+				orderByComparator
+			};
+		}
+
+		List<MetaCode> list = null;
+
+		if (useFinderCache) {
+			list = (List<MetaCode>)finderCache.getResult(
+				finderPath, finderArgs, this);
+
+			if ((list != null) && !list.isEmpty()) {
+				for (MetaCode metaCode : list) {
+					if ((groupId != metaCode.getGroupId()) ||
+						(projectId != metaCode.getProjectId()) ||
+						!groupCode.equals(metaCode.getGroupCode()) ||
+						!code.equals(metaCode.getCode())) {
+
+						list = null;
+
+						break;
+					}
+				}
+			}
+		}
+
+		if (list == null) {
+			StringBundler sb = null;
+
+			if (orderByComparator != null) {
+				sb = new StringBundler(
+					6 + (orderByComparator.getOrderByFields().length * 2));
+			}
+			else {
+				sb = new StringBundler(6);
+			}
+
+			sb.append(_SQL_SELECT_METACODE_WHERE);
+
+			sb.append(_FINDER_COLUMN_G_P_G_C_GROUPID_2);
+
+			sb.append(_FINDER_COLUMN_G_P_G_C_PROJECTID_2);
+
+			boolean bindGroupCode = false;
+
+			if (groupCode.isEmpty()) {
+				sb.append(_FINDER_COLUMN_G_P_G_C_GROUPCODE_3);
+			}
+			else {
+				bindGroupCode = true;
+
+				sb.append(_FINDER_COLUMN_G_P_G_C_GROUPCODE_2);
+			}
+
+			boolean bindCode = false;
+
+			if (code.isEmpty()) {
+				sb.append(_FINDER_COLUMN_G_P_G_C_CODE_3);
+			}
+			else {
+				bindCode = true;
+
+				sb.append(_FINDER_COLUMN_G_P_G_C_CODE_2);
+			}
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(
+					sb, _ORDER_BY_ENTITY_ALIAS, orderByComparator);
+			}
+			else {
+				sb.append(MetaCodeModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = sb.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query query = session.createQuery(sql);
+
+				QueryPos queryPos = QueryPos.getInstance(query);
+
+				queryPos.add(groupId);
+
+				queryPos.add(projectId);
+
+				if (bindGroupCode) {
+					queryPos.add(groupCode);
+				}
+
+				if (bindCode) {
+					queryPos.add(code);
+				}
+
+				list = (List<MetaCode>)QueryUtil.list(
+					query, getDialect(), start, end);
+
+				cacheResult(list);
+
+				if (useFinderCache) {
+					finderCache.putResult(finderPath, finderArgs, list);
+				}
+			}
+			catch (Exception exception) {
+				if (useFinderCache) {
+					finderCache.removeResult(finderPath, finderArgs);
+				}
+
+				throw processException(exception);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first meta code in the ordered set where groupId = &#63; and projectId = &#63; and groupCode = &#63; and code = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param code the code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching meta code
+	 * @throws NoSuchMetaCodeException if a matching meta code could not be found
+	 */
+	@Override
+	public MetaCode findByG_P_G_C_First(
+			long groupId, long projectId, String groupCode, String code,
+			OrderByComparator<MetaCode> orderByComparator)
+		throws NoSuchMetaCodeException {
+
+		MetaCode metaCode = fetchByG_P_G_C_First(
+			groupId, projectId, groupCode, code, orderByComparator);
+
+		if (metaCode != null) {
+			return metaCode;
+		}
+
+		StringBundler sb = new StringBundler(10);
+
+		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		sb.append("groupId=");
+		sb.append(groupId);
+
+		sb.append(", projectId=");
+		sb.append(projectId);
+
+		sb.append(", groupCode=");
+		sb.append(groupCode);
+
+		sb.append(", code=");
+		sb.append(code);
+
+		sb.append("}");
+
+		throw new NoSuchMetaCodeException(sb.toString());
+	}
+
+	/**
+	 * Returns the first meta code in the ordered set where groupId = &#63; and projectId = &#63; and groupCode = &#63; and code = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param code the code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching meta code, or <code>null</code> if a matching meta code could not be found
+	 */
+	@Override
+	public MetaCode fetchByG_P_G_C_First(
+		long groupId, long projectId, String groupCode, String code,
+		OrderByComparator<MetaCode> orderByComparator) {
+
+		List<MetaCode> list = findByG_P_G_C(
+			groupId, projectId, groupCode, code, 0, 1, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the last meta code in the ordered set where groupId = &#63; and projectId = &#63; and groupCode = &#63; and code = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param code the code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching meta code
+	 * @throws NoSuchMetaCodeException if a matching meta code could not be found
+	 */
+	@Override
+	public MetaCode findByG_P_G_C_Last(
+			long groupId, long projectId, String groupCode, String code,
+			OrderByComparator<MetaCode> orderByComparator)
+		throws NoSuchMetaCodeException {
+
+		MetaCode metaCode = fetchByG_P_G_C_Last(
+			groupId, projectId, groupCode, code, orderByComparator);
+
+		if (metaCode != null) {
+			return metaCode;
+		}
+
+		StringBundler sb = new StringBundler(10);
+
+		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		sb.append("groupId=");
+		sb.append(groupId);
+
+		sb.append(", projectId=");
+		sb.append(projectId);
+
+		sb.append(", groupCode=");
+		sb.append(groupCode);
+
+		sb.append(", code=");
+		sb.append(code);
+
+		sb.append("}");
+
+		throw new NoSuchMetaCodeException(sb.toString());
+	}
+
+	/**
+	 * Returns the last meta code in the ordered set where groupId = &#63; and projectId = &#63; and groupCode = &#63; and code = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param code the code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching meta code, or <code>null</code> if a matching meta code could not be found
+	 */
+	@Override
+	public MetaCode fetchByG_P_G_C_Last(
+		long groupId, long projectId, String groupCode, String code,
+		OrderByComparator<MetaCode> orderByComparator) {
+
+		int count = countByG_P_G_C(groupId, projectId, groupCode, code);
+
+		if (count == 0) {
+			return null;
+		}
+
+		List<MetaCode> list = findByG_P_G_C(
+			groupId, projectId, groupCode, code, count - 1, count,
+			orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the meta codes before and after the current meta code in the ordered set where groupId = &#63; and projectId = &#63; and groupCode = &#63; and code = &#63;.
+	 *
+	 * @param metaCodeId the primary key of the current meta code
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param code the code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next meta code
+	 * @throws NoSuchMetaCodeException if a meta code with the primary key could not be found
+	 */
+	@Override
+	public MetaCode[] findByG_P_G_C_PrevAndNext(
+			long metaCodeId, long groupId, long projectId, String groupCode,
+			String code, OrderByComparator<MetaCode> orderByComparator)
+		throws NoSuchMetaCodeException {
+
+		groupCode = Objects.toString(groupCode, "");
+		code = Objects.toString(code, "");
+
+		MetaCode metaCode = findByPrimaryKey(metaCodeId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			MetaCode[] array = new MetaCodeImpl[3];
+
+			array[0] = getByG_P_G_C_PrevAndNext(
+				session, metaCode, groupId, projectId, groupCode, code,
+				orderByComparator, true);
+
+			array[1] = metaCode;
+
+			array[2] = getByG_P_G_C_PrevAndNext(
+				session, metaCode, groupId, projectId, groupCode, code,
+				orderByComparator, false);
+
+			return array;
+		}
+		catch (Exception exception) {
+			throw processException(exception);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected MetaCode getByG_P_G_C_PrevAndNext(
+		Session session, MetaCode metaCode, long groupId, long projectId,
+		String groupCode, String code,
+		OrderByComparator<MetaCode> orderByComparator, boolean previous) {
+
+		StringBundler sb = null;
+
+		if (orderByComparator != null) {
+			sb = new StringBundler(
+				7 + (orderByComparator.getOrderByConditionFields().length * 3) +
+					(orderByComparator.getOrderByFields().length * 3));
+		}
+		else {
+			sb = new StringBundler(6);
+		}
+
+		sb.append(_SQL_SELECT_METACODE_WHERE);
+
+		sb.append(_FINDER_COLUMN_G_P_G_C_GROUPID_2);
+
+		sb.append(_FINDER_COLUMN_G_P_G_C_PROJECTID_2);
+
+		boolean bindGroupCode = false;
+
+		if (groupCode.isEmpty()) {
+			sb.append(_FINDER_COLUMN_G_P_G_C_GROUPCODE_3);
+		}
+		else {
+			bindGroupCode = true;
+
+			sb.append(_FINDER_COLUMN_G_P_G_C_GROUPCODE_2);
+		}
+
+		boolean bindCode = false;
+
+		if (code.isEmpty()) {
+			sb.append(_FINDER_COLUMN_G_P_G_C_CODE_3);
+		}
+		else {
+			bindCode = true;
+
+			sb.append(_FINDER_COLUMN_G_P_G_C_CODE_2);
+		}
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields =
+				orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				sb.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				sb.append(_ORDER_BY_ENTITY_ALIAS);
+				sb.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						sb.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(WHERE_GREATER_THAN);
+					}
+					else {
+						sb.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			sb.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				sb.append(_ORDER_BY_ENTITY_ALIAS);
+				sb.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						sb.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(ORDER_BY_ASC);
+					}
+					else {
+						sb.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+		else {
+			sb.append(MetaCodeModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = sb.toString();
+
+		Query query = session.createQuery(sql);
+
+		query.setFirstResult(0);
+		query.setMaxResults(2);
+
+		QueryPos queryPos = QueryPos.getInstance(query);
+
+		queryPos.add(groupId);
+
+		queryPos.add(projectId);
+
+		if (bindGroupCode) {
+			queryPos.add(groupCode);
+		}
+
+		if (bindCode) {
+			queryPos.add(code);
+		}
+
+		if (orderByComparator != null) {
+			for (Object orderByConditionValue :
+					orderByComparator.getOrderByConditionValues(metaCode)) {
+
+				queryPos.add(orderByConditionValue);
+			}
+		}
+
+		List<MetaCode> list = query.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
+	 * Removes all the meta codes where groupId = &#63; and projectId = &#63; and groupCode = &#63; and code = &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param code the code
+	 */
+	@Override
+	public void removeByG_P_G_C(
+		long groupId, long projectId, String groupCode, String code) {
+
+		for (MetaCode metaCode :
+				findByG_P_G_C(
+					groupId, projectId, groupCode, code, QueryUtil.ALL_POS,
+					QueryUtil.ALL_POS, null)) {
+
+			remove(metaCode);
+		}
+	}
+
+	/**
+	 * Returns the number of meta codes where groupId = &#63; and projectId = &#63; and groupCode = &#63; and code = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param groupCode the group code
+	 * @param code the code
+	 * @return the number of matching meta codes
+	 */
+	@Override
+	public int countByG_P_G_C(
+		long groupId, long projectId, String groupCode, String code) {
+
+		groupCode = Objects.toString(groupCode, "");
+		code = Objects.toString(code, "");
+
+		FinderPath finderPath = _finderPathCountByG_P_G_C;
+
+		Object[] finderArgs = new Object[] {
+			groupId, projectId, groupCode, code
+		};
+
+		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
+
+		if (count == null) {
+			StringBundler sb = new StringBundler(5);
+
+			sb.append(_SQL_COUNT_METACODE_WHERE);
+
+			sb.append(_FINDER_COLUMN_G_P_G_C_GROUPID_2);
+
+			sb.append(_FINDER_COLUMN_G_P_G_C_PROJECTID_2);
+
+			boolean bindGroupCode = false;
+
+			if (groupCode.isEmpty()) {
+				sb.append(_FINDER_COLUMN_G_P_G_C_GROUPCODE_3);
+			}
+			else {
+				bindGroupCode = true;
+
+				sb.append(_FINDER_COLUMN_G_P_G_C_GROUPCODE_2);
+			}
+
+			boolean bindCode = false;
+
+			if (code.isEmpty()) {
+				sb.append(_FINDER_COLUMN_G_P_G_C_CODE_3);
+			}
+			else {
+				bindCode = true;
+
+				sb.append(_FINDER_COLUMN_G_P_G_C_CODE_2);
+			}
+
+			String sql = sb.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query query = session.createQuery(sql);
+
+				QueryPos queryPos = QueryPos.getInstance(query);
+
+				queryPos.add(groupId);
+
+				queryPos.add(projectId);
+
+				if (bindGroupCode) {
+					queryPos.add(groupCode);
+				}
+
+				if (bindCode) {
+					queryPos.add(code);
+				}
+
+				count = (Long)query.uniqueResult();
+
+				finderCache.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception exception) {
+				finderCache.removeResult(finderPath, finderArgs);
+
+				throw processException(exception);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String _FINDER_COLUMN_G_P_G_C_GROUPID_2 =
+		"metaCode.groupId = ? AND ";
+
+	private static final String _FINDER_COLUMN_G_P_G_C_PROJECTID_2 =
+		"metaCode.projectId = ? AND ";
+
+	private static final String _FINDER_COLUMN_G_P_G_C_GROUPCODE_2 =
+		"metaCode.groupCode = ? AND ";
+
+	private static final String _FINDER_COLUMN_G_P_G_C_GROUPCODE_3 =
+		"(metaCode.groupCode IS NULL OR metaCode.groupCode = '') AND ";
+
+	private static final String _FINDER_COLUMN_G_P_G_C_CODE_2 =
+		"metaCode.code = ?";
+
+	private static final String _FINDER_COLUMN_G_P_G_C_CODE_3 =
+		"(metaCode.code IS NULL OR metaCode.code = '')";
+
 	private FinderPath _finderPathWithPaginationFindByCompanyId;
 	private FinderPath _finderPathWithoutPaginationFindByCompanyId;
 	private FinderPath _finderPathCountByCompanyId;
@@ -3006,9 +4334,8 @@ public class MetaCodePersistenceImpl
 		Map<String, String> dbColumnNames = new HashMap<String, String>();
 
 		dbColumnNames.put("uuid", "uuid_");
-		dbColumnNames.put("type", "type_");
-		dbColumnNames.put("group", "group_");
 		dbColumnNames.put("code", "code_");
+		dbColumnNames.put("active", "active_");
 
 		setDBColumnNames(dbColumnNames);
 
@@ -3367,6 +4694,26 @@ public class MetaCodePersistenceImpl
 			finderCache.removeResult(
 				_finderPathWithoutPaginationFindByG_P, args);
 
+			args = new Object[] {
+				metaCodeModelImpl.getGroupId(),
+				metaCodeModelImpl.getProjectId(),
+				metaCodeModelImpl.getGroupCode()
+			};
+
+			finderCache.removeResult(_finderPathCountByG_P_G, args);
+			finderCache.removeResult(
+				_finderPathWithoutPaginationFindByG_P_G, args);
+
+			args = new Object[] {
+				metaCodeModelImpl.getGroupId(),
+				metaCodeModelImpl.getProjectId(),
+				metaCodeModelImpl.getGroupCode(), metaCodeModelImpl.getCode()
+			};
+
+			finderCache.removeResult(_finderPathCountByG_P_G_C, args);
+			finderCache.removeResult(
+				_finderPathWithoutPaginationFindByG_P_G_C, args);
+
 			args = new Object[] {metaCodeModelImpl.getCompanyId()};
 
 			finderCache.removeResult(_finderPathCountByCompanyId, args);
@@ -3447,6 +4794,58 @@ public class MetaCodePersistenceImpl
 				finderCache.removeResult(_finderPathCountByG_P, args);
 				finderCache.removeResult(
 					_finderPathWithoutPaginationFindByG_P, args);
+			}
+
+			if ((metaCodeModelImpl.getColumnBitmask() &
+				 _finderPathWithoutPaginationFindByG_P_G.getColumnBitmask()) !=
+					 0) {
+
+				Object[] args = new Object[] {
+					metaCodeModelImpl.getOriginalGroupId(),
+					metaCodeModelImpl.getOriginalProjectId(),
+					metaCodeModelImpl.getOriginalGroupCode()
+				};
+
+				finderCache.removeResult(_finderPathCountByG_P_G, args);
+				finderCache.removeResult(
+					_finderPathWithoutPaginationFindByG_P_G, args);
+
+				args = new Object[] {
+					metaCodeModelImpl.getGroupId(),
+					metaCodeModelImpl.getProjectId(),
+					metaCodeModelImpl.getGroupCode()
+				};
+
+				finderCache.removeResult(_finderPathCountByG_P_G, args);
+				finderCache.removeResult(
+					_finderPathWithoutPaginationFindByG_P_G, args);
+			}
+
+			if ((metaCodeModelImpl.getColumnBitmask() &
+				 _finderPathWithoutPaginationFindByG_P_G_C.
+					 getColumnBitmask()) != 0) {
+
+				Object[] args = new Object[] {
+					metaCodeModelImpl.getOriginalGroupId(),
+					metaCodeModelImpl.getOriginalProjectId(),
+					metaCodeModelImpl.getOriginalGroupCode(),
+					metaCodeModelImpl.getOriginalCode()
+				};
+
+				finderCache.removeResult(_finderPathCountByG_P_G_C, args);
+				finderCache.removeResult(
+					_finderPathWithoutPaginationFindByG_P_G_C, args);
+
+				args = new Object[] {
+					metaCodeModelImpl.getGroupId(),
+					metaCodeModelImpl.getProjectId(),
+					metaCodeModelImpl.getGroupCode(),
+					metaCodeModelImpl.getCode()
+				};
+
+				finderCache.removeResult(_finderPathCountByG_P_G_C, args);
+				finderCache.removeResult(
+					_finderPathWithoutPaginationFindByG_P_G_C, args);
 			}
 
 			if ((metaCodeModelImpl.getColumnBitmask() &
@@ -3799,7 +5198,7 @@ public class MetaCodePersistenceImpl
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByUuid",
 			new String[] {String.class.getName()},
 			MetaCodeModelImpl.UUID_COLUMN_BITMASK |
-			MetaCodeModelImpl.CREATEDATE_COLUMN_BITMASK);
+			MetaCodeModelImpl.CODE_COLUMN_BITMASK);
 
 		_finderPathCountByUuid = new FinderPath(
 			entityCacheEnabled, finderCacheEnabled, Long.class,
@@ -3833,7 +5232,7 @@ public class MetaCodePersistenceImpl
 			new String[] {String.class.getName(), Long.class.getName()},
 			MetaCodeModelImpl.UUID_COLUMN_BITMASK |
 			MetaCodeModelImpl.COMPANYID_COLUMN_BITMASK |
-			MetaCodeModelImpl.CREATEDATE_COLUMN_BITMASK);
+			MetaCodeModelImpl.CODE_COLUMN_BITMASK);
 
 		_finderPathCountByUuid_C = new FinderPath(
 			entityCacheEnabled, finderCacheEnabled, Long.class,
@@ -3855,12 +5254,71 @@ public class MetaCodePersistenceImpl
 			new String[] {Long.class.getName(), Long.class.getName()},
 			MetaCodeModelImpl.GROUPID_COLUMN_BITMASK |
 			MetaCodeModelImpl.PROJECTID_COLUMN_BITMASK |
-			MetaCodeModelImpl.CREATEDATE_COLUMN_BITMASK);
+			MetaCodeModelImpl.CODE_COLUMN_BITMASK);
 
 		_finderPathCountByG_P = new FinderPath(
 			entityCacheEnabled, finderCacheEnabled, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByG_P",
 			new String[] {Long.class.getName(), Long.class.getName()});
+
+		_finderPathWithPaginationFindByG_P_G = new FinderPath(
+			entityCacheEnabled, finderCacheEnabled, MetaCodeImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByG_P_G",
+			new String[] {
+				Long.class.getName(), Long.class.getName(),
+				String.class.getName(), Integer.class.getName(),
+				Integer.class.getName(), OrderByComparator.class.getName()
+			});
+
+		_finderPathWithoutPaginationFindByG_P_G = new FinderPath(
+			entityCacheEnabled, finderCacheEnabled, MetaCodeImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByG_P_G",
+			new String[] {
+				Long.class.getName(), Long.class.getName(),
+				String.class.getName()
+			},
+			MetaCodeModelImpl.GROUPID_COLUMN_BITMASK |
+			MetaCodeModelImpl.PROJECTID_COLUMN_BITMASK |
+			MetaCodeModelImpl.GROUPCODE_COLUMN_BITMASK |
+			MetaCodeModelImpl.CODE_COLUMN_BITMASK);
+
+		_finderPathCountByG_P_G = new FinderPath(
+			entityCacheEnabled, finderCacheEnabled, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByG_P_G",
+			new String[] {
+				Long.class.getName(), Long.class.getName(),
+				String.class.getName()
+			});
+
+		_finderPathWithPaginationFindByG_P_G_C = new FinderPath(
+			entityCacheEnabled, finderCacheEnabled, MetaCodeImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByG_P_G_C",
+			new String[] {
+				Long.class.getName(), Long.class.getName(),
+				String.class.getName(), String.class.getName(),
+				Integer.class.getName(), Integer.class.getName(),
+				OrderByComparator.class.getName()
+			});
+
+		_finderPathWithoutPaginationFindByG_P_G_C = new FinderPath(
+			entityCacheEnabled, finderCacheEnabled, MetaCodeImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByG_P_G_C",
+			new String[] {
+				Long.class.getName(), Long.class.getName(),
+				String.class.getName(), String.class.getName()
+			},
+			MetaCodeModelImpl.GROUPID_COLUMN_BITMASK |
+			MetaCodeModelImpl.PROJECTID_COLUMN_BITMASK |
+			MetaCodeModelImpl.GROUPCODE_COLUMN_BITMASK |
+			MetaCodeModelImpl.CODE_COLUMN_BITMASK);
+
+		_finderPathCountByG_P_G_C = new FinderPath(
+			entityCacheEnabled, finderCacheEnabled, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByG_P_G_C",
+			new String[] {
+				Long.class.getName(), Long.class.getName(),
+				String.class.getName(), String.class.getName()
+			});
 
 		_finderPathWithPaginationFindByCompanyId = new FinderPath(
 			entityCacheEnabled, finderCacheEnabled, MetaCodeImpl.class,
@@ -3875,7 +5333,7 @@ public class MetaCodePersistenceImpl
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByCompanyId",
 			new String[] {Long.class.getName()},
 			MetaCodeModelImpl.COMPANYID_COLUMN_BITMASK |
-			MetaCodeModelImpl.CREATEDATE_COLUMN_BITMASK);
+			MetaCodeModelImpl.CODE_COLUMN_BITMASK);
 
 		_finderPathCountByCompanyId = new FinderPath(
 			entityCacheEnabled, finderCacheEnabled, Long.class,
@@ -3895,7 +5353,7 @@ public class MetaCodePersistenceImpl
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByUserId",
 			new String[] {Long.class.getName()},
 			MetaCodeModelImpl.USERID_COLUMN_BITMASK |
-			MetaCodeModelImpl.CREATEDATE_COLUMN_BITMASK);
+			MetaCodeModelImpl.CODE_COLUMN_BITMASK);
 
 		_finderPathCountByUserId = new FinderPath(
 			entityCacheEnabled, finderCacheEnabled, Long.class,
@@ -3995,6 +5453,6 @@ public class MetaCodePersistenceImpl
 		MetaCodePersistenceImpl.class);
 
 	private static final Set<String> _badColumnNames = SetUtil.fromArray(
-		new String[] {"uuid", "type", "group", "code"});
+		new String[] {"uuid", "code", "active"});
 
 }

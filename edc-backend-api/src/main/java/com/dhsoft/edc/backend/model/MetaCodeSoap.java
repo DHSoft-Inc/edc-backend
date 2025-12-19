@@ -40,14 +40,16 @@ public class MetaCodeSoap implements Serializable {
 		soapModel.setUserName(model.getUserName());
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
-		soapModel.setName(model.getName());
-		soapModel.setType(model.getType());
-		soapModel.setGroup(model.getGroup());
+		soapModel.setStatus(model.getStatus());
+		soapModel.setStatusByUserId(model.getStatusByUserId());
+		soapModel.setStatusByUserName(model.getStatusByUserName());
+		soapModel.setStatusDate(model.getStatusDate());
+		soapModel.setGroupCode(model.getGroupCode());
 		soapModel.setCode(model.getCode());
 		soapModel.setLabel(model.getLabel());
 		soapModel.setValueType(model.getValueType());
 		soapModel.setValue(model.getValue());
-		soapModel.setIsActive(model.getIsActive());
+		soapModel.setActive(model.getActive());
 		soapModel.setInactiveDate(model.getInactiveDate());
 
 		return soapModel;
@@ -174,28 +176,44 @@ public class MetaCodeSoap implements Serializable {
 		_modifiedDate = modifiedDate;
 	}
 
-	public String getName() {
-		return _name;
+	public int getStatus() {
+		return _status;
 	}
 
-	public void setName(String name) {
-		_name = name;
+	public void setStatus(int status) {
+		_status = status;
 	}
 
-	public String getType() {
-		return _type;
+	public long getStatusByUserId() {
+		return _statusByUserId;
 	}
 
-	public void setType(String type) {
-		_type = type;
+	public void setStatusByUserId(long statusByUserId) {
+		_statusByUserId = statusByUserId;
 	}
 
-	public String getGroup() {
-		return _group;
+	public String getStatusByUserName() {
+		return _statusByUserName;
 	}
 
-	public void setGroup(String group) {
-		_group = group;
+	public void setStatusByUserName(String statusByUserName) {
+		_statusByUserName = statusByUserName;
+	}
+
+	public Date getStatusDate() {
+		return _statusDate;
+	}
+
+	public void setStatusDate(Date statusDate) {
+		_statusDate = statusDate;
+	}
+
+	public String getGroupCode() {
+		return _groupCode;
+	}
+
+	public void setGroupCode(String groupCode) {
+		_groupCode = groupCode;
 	}
 
 	public String getCode() {
@@ -230,12 +248,12 @@ public class MetaCodeSoap implements Serializable {
 		_value = value;
 	}
 
-	public String getIsActive() {
-		return _isActive;
+	public Boolean getActive() {
+		return _active;
 	}
 
-	public void setIsActive(String isActive) {
-		_isActive = isActive;
+	public void setActive(Boolean active) {
+		_active = active;
 	}
 
 	public Date getInactiveDate() {
@@ -255,14 +273,16 @@ public class MetaCodeSoap implements Serializable {
 	private String _userName;
 	private Date _createDate;
 	private Date _modifiedDate;
-	private String _name;
-	private String _type;
-	private String _group;
+	private int _status;
+	private long _statusByUserId;
+	private String _statusByUserName;
+	private Date _statusDate;
+	private String _groupCode;
 	private String _code;
 	private String _label;
 	private String _valueType;
 	private String _value;
-	private String _isActive;
+	private Boolean _active;
 	private Date _inactiveDate;
 
 }

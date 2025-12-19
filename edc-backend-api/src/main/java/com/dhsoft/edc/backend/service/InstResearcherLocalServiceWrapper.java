@@ -227,6 +227,14 @@ public class InstResearcherLocalServiceWrapper
 	}
 
 	@Override
+	public com.dhsoft.edc.backend.model.InstResearcher findByG_P_U(
+		long groupId, long projectId, long userId) {
+
+		return _instResearcherLocalService.findByG_P_U(
+			groupId, projectId, userId);
+	}
+
+	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 

@@ -27,10 +27,16 @@ create index IX_8D5DA117 on EDC_Institution (uuid_[$COLUMN_LENGTH:75$], companyI
 create unique index IX_AF398159 on EDC_Institution (uuid_[$COLUMN_LENGTH:75$], groupId);
 
 create index IX_C81AD9B5 on EDC_MetaCode (companyId);
-create index IX_17F65AED on EDC_MetaCode (groupId, projectId);
+create index IX_491042B3 on EDC_MetaCode (groupId, projectId, groupCode[$COLUMN_LENGTH:75$], code_[$COLUMN_LENGTH:75$]);
 create index IX_ACD635CD on EDC_MetaCode (userId);
 create index IX_7335C3C7 on EDC_MetaCode (uuid_[$COLUMN_LENGTH:75$], companyId);
 create unique index IX_891A9009 on EDC_MetaCode (uuid_[$COLUMN_LENGTH:75$], groupId);
+
+create index IX_7127DEA3 on EDC_MetaGroup (companyId);
+create index IX_CDEF169D on EDC_MetaGroup (groupId, projectId, groupCode[$COLUMN_LENGTH:75$]);
+create index IX_A2AB079F on EDC_MetaGroup (userId);
+create index IX_993F719 on EDC_MetaGroup (uuid_[$COLUMN_LENGTH:75$], companyId);
+create unique index IX_E9B16FDB on EDC_MetaGroup (uuid_[$COLUMN_LENGTH:75$], groupId);
 
 create index IX_1A1AAC24 on EDC_Project (companyId);
 create index IX_2DE7EBA6 on EDC_Project (groupId);
