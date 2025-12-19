@@ -84,6 +84,15 @@ public class SubjectLocalServiceImpl extends SubjectLocalServiceBaseImpl {
 		}
 	}
 	
+	public void DeleteSubject(long subjectId) {
+		try {
+			Subject deleteSubject = subjectPersistence.findByPrimaryKey(subjectId);
+			subjectPersistence.remove(deleteSubject);
+		} catch (Exception e) {
+			
+		}
+	}
+	
 	
 	public List<Subject> findByInstitution (long InstitutionId) {
 		
