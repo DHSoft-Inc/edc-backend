@@ -285,6 +285,13 @@ public class ProjectLocalServiceWrapper
 		return _projectLocalService.getProject(projectId);
 	}
 
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.Project>
+		getProjectByCode(String projectCode) {
+
+		return _projectLocalService.getProjectByCode(projectCode);
+	}
+
 	/**
 	 * Returns the project matching the UUID and group.
 	 *

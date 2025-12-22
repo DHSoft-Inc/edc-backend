@@ -33,7 +33,7 @@ import org.osgi.service.component.annotations.Component;
 )
 public class SubjectLocalServiceImpl extends SubjectLocalServiceBaseImpl {
 	
-	public void AddSubject(long companyId, long groupId, long projectId, long institutionId, long userId, String userName, int status, long statusByUserId, String statusByUserName, Date statusDate, String serialId, String name, int subjectStatus, Date subjectStatusApplyDate, Date consentAgreeDate) {
+	public Subject AddSubject(long companyId, long groupId, long projectId, long institutionId, long userId, String userName, int status, String serialId, String name, int subjectStatus, Date consentAgreeDate) {
 		long subjectId = CounterLocalServiceUtil.increment("Subject");
 		
 		Date date = new Date();
@@ -46,35 +46,42 @@ public class SubjectLocalServiceImpl extends SubjectLocalServiceBaseImpl {
 		newSubject.setUserId(userId);
 		newSubject.setUserName(userName);
 		newSubject.setStatus(status);
-		newSubject.setStatusByUserId(statusByUserId);
-		newSubject.setStatusByUserName(statusByUserName);
-		newSubject.setStatusDate(statusDate);
+		newSubject.setStatusByUserId(userId);
+		newSubject.setStatusByUserName(userName);
+		newSubject.setStatusDate(date);
 		newSubject.setSerialId(serialId);
 		newSubject.setName(name);
 		newSubject.setSubjectStatus(subjectStatus);
-		newSubject.setSubjectStatusApplyDate(subjectStatusApplyDate);
+		newSubject.setSubjectStatusApplyDate(date);
 		newSubject.setConsentAgreeDate(consentAgreeDate);
 		newSubject.setCreateDate(date);
 		newSubject.setModifiedDate(date);
 		
 		subjectPersistence.update(newSubject);
+		
+		return newSubject;
 	}
 	
-	public void UpdateSubject(long subjectId, int status, long statusByUserId, String statusByUserName, Date statusDate, String serialId, String name, int subjectStatus, Date subjectStatusApplyDate, Date consentAgreeDate, long expGroupId, Date applyDate) {
+	public void UpdateSubject(long subjectId, long userId, String userName, int status, String serialId, String name, int subjectStatus, Date consentAgreeDate) {
 		try {
 		
 			Date date = new Date();
 			
 			Subject updateSubject= subjectPersistence.findByPrimaryKey(subjectId);
-	
+			int originStatus = updateSubject.getStatus();
+			int originSubjectStatus = updateSubject.getSubjectStatus();
+			
 			updateSubject.setStatus(status);
-			updateSubject.setStatusByUserId(statusByUserId);
-			updateSubject.setStatusByUserName(statusByUserName);
-			updateSubject.setStatusDate(statusDate);
+			if(status != originStatus)
+			{
+				updateSubject.setStatusByUserId(userId);
+				updateSubject.setStatusByUserName(userName);
+				updateSubject.setStatusDate(date);
+			}
 			updateSubject.setSerialId(serialId);
 			updateSubject.setName(name);
 			updateSubject.setSubjectStatus(subjectStatus);
-			updateSubject.setSubjectStatusApplyDate(subjectStatusApplyDate);
+			if (subjectStatus != originSubjectStatus) { updateSubject.setSubjectStatusApplyDate(date); }
 			updateSubject.setConsentAgreeDate(consentAgreeDate);
 			updateSubject.setModifiedDate(date);
 			
@@ -90,6 +97,14 @@ public class SubjectLocalServiceImpl extends SubjectLocalServiceBaseImpl {
 			subjectPersistence.remove(deleteSubject);
 		} catch (Exception e) {
 			
+		}
+	}
+	
+	public Subject findSubjectId (long subjectId) {
+		try {
+			return subjectPersistence.findByPrimaryKey(subjectId);
+		} catch (Exception e) {
+			return null;
 		}
 	}
 	

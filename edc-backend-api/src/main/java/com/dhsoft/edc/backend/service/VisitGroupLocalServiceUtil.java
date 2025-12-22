@@ -237,6 +237,10 @@ public class VisitGroupLocalServiceUtil {
 		return getService().fetchVisitGroupByUuidAndGroupId(uuid, groupId);
 	}
 
+	public static List<VisitGroup> findByExpGroupId(long expGroupId) {
+		return getService().findByExpGroupId(expGroupId);
+	}
+
 	public static List<VisitGroup> findByG_P(long groupId, long projectId) {
 		return getService().findByG_P(groupId, projectId);
 	}

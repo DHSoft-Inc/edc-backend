@@ -674,6 +674,149 @@ public interface ProjectPersistence extends BasePersistence<Project> {
 	public int countByGroupId(long groupId);
 
 	/**
+	 * Returns all the projects where projectCode = &#63;.
+	 *
+	 * @param projectCode the project code
+	 * @return the matching projects
+	 */
+	public java.util.List<Project> findByCode(String projectCode);
+
+	/**
+	 * Returns a range of all the projects where projectCode = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ProjectModelImpl</code>.
+	 * </p>
+	 *
+	 * @param projectCode the project code
+	 * @param start the lower bound of the range of projects
+	 * @param end the upper bound of the range of projects (not inclusive)
+	 * @return the range of matching projects
+	 */
+	public java.util.List<Project> findByCode(
+		String projectCode, int start, int end);
+
+	/**
+	 * Returns an ordered range of all the projects where projectCode = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ProjectModelImpl</code>.
+	 * </p>
+	 *
+	 * @param projectCode the project code
+	 * @param start the lower bound of the range of projects
+	 * @param end the upper bound of the range of projects (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching projects
+	 */
+	public java.util.List<Project> findByCode(
+		String projectCode, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<Project>
+			orderByComparator);
+
+	/**
+	 * Returns an ordered range of all the projects where projectCode = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ProjectModelImpl</code>.
+	 * </p>
+	 *
+	 * @param projectCode the project code
+	 * @param start the lower bound of the range of projects
+	 * @param end the upper bound of the range of projects (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching projects
+	 */
+	public java.util.List<Project> findByCode(
+		String projectCode, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<Project>
+			orderByComparator,
+		boolean useFinderCache);
+
+	/**
+	 * Returns the first project in the ordered set where projectCode = &#63;.
+	 *
+	 * @param projectCode the project code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching project
+	 * @throws NoSuchProjectException if a matching project could not be found
+	 */
+	public Project findByCode_First(
+			String projectCode,
+			com.liferay.portal.kernel.util.OrderByComparator<Project>
+				orderByComparator)
+		throws NoSuchProjectException;
+
+	/**
+	 * Returns the first project in the ordered set where projectCode = &#63;.
+	 *
+	 * @param projectCode the project code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching project, or <code>null</code> if a matching project could not be found
+	 */
+	public Project fetchByCode_First(
+		String projectCode,
+		com.liferay.portal.kernel.util.OrderByComparator<Project>
+			orderByComparator);
+
+	/**
+	 * Returns the last project in the ordered set where projectCode = &#63;.
+	 *
+	 * @param projectCode the project code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching project
+	 * @throws NoSuchProjectException if a matching project could not be found
+	 */
+	public Project findByCode_Last(
+			String projectCode,
+			com.liferay.portal.kernel.util.OrderByComparator<Project>
+				orderByComparator)
+		throws NoSuchProjectException;
+
+	/**
+	 * Returns the last project in the ordered set where projectCode = &#63;.
+	 *
+	 * @param projectCode the project code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching project, or <code>null</code> if a matching project could not be found
+	 */
+	public Project fetchByCode_Last(
+		String projectCode,
+		com.liferay.portal.kernel.util.OrderByComparator<Project>
+			orderByComparator);
+
+	/**
+	 * Returns the projects before and after the current project in the ordered set where projectCode = &#63;.
+	 *
+	 * @param projectId the primary key of the current project
+	 * @param projectCode the project code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next project
+	 * @throws NoSuchProjectException if a project with the primary key could not be found
+	 */
+	public Project[] findByCode_PrevAndNext(
+			long projectId, String projectCode,
+			com.liferay.portal.kernel.util.OrderByComparator<Project>
+				orderByComparator)
+		throws NoSuchProjectException;
+
+	/**
+	 * Removes all the projects where projectCode = &#63; from the database.
+	 *
+	 * @param projectCode the project code
+	 */
+	public void removeByCode(String projectCode);
+
+	/**
+	 * Returns the number of projects where projectCode = &#63;.
+	 *
+	 * @param projectCode the project code
+	 * @return the number of matching projects
+	 */
+	public int countByCode(String projectCode);
+
+	/**
 	 * Caches the project in the entity cache if it is enabled.
 	 *
 	 * @param project the project

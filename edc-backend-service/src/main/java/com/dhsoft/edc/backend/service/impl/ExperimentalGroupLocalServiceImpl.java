@@ -32,19 +32,19 @@ import org.osgi.service.component.annotations.Component;
 public class ExperimentalGroupLocalServiceImpl
 	extends ExperimentalGroupLocalServiceBaseImpl {
 	
-	public ExperimentalGroup findByExperimentalGroupId(long experimentalGroupId) {
-		try {
-			return experimentalGroupPersistence.findByPrimaryKey(experimentalGroupId);
-		} catch (Exception e) {
-			return null;
-		}
-	}
-	
-	public List<ExperimentalGroup> getByGroupAndProject(long groupId, long projectId) {
-	    return experimentalGroupPersistence.findByG_P(groupId, projectId);
-	}
-	
-	public List<ExperimentalGroup> getByGroupId(long groupId) {
-	    return experimentalGroupPersistence.findByGroupId(groupId);
-	}
+   public ExperimentalGroup findByExperimentalGroupId(long experimentalGroupId) {
+	      try {
+	         return experimentalGroupPersistence.findByPrimaryKey(experimentalGroupId);
+	      } catch (Exception e) {
+	         return null;
+	      }
+	   }
+	   
+	   public List<ExperimentalGroup> getByGroupAndProject(long groupId, long projectId) {
+	       return experimentalGroupPersistence.findByG_P(groupId, projectId);
+	   }
+	   
+	   public List<ExperimentalGroup> getByGroupId(long groupId) {
+	       return experimentalGroupPersistence.findByGroupId(groupId);
+	   }
 }

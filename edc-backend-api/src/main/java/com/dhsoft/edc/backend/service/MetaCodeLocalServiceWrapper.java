@@ -62,6 +62,20 @@ public class MetaCodeLocalServiceWrapper
 		return _metaCodeLocalService.createMetaCode(metaCodeId);
 	}
 
+	@Override
+	public com.dhsoft.edc.backend.model.MetaCode CreateMetaCode(
+		long companyId, long groupId, long projectId, long userId,
+		String userName, int status, long statusByUserId,
+		String statusByUserName, java.util.Date statusDate, String groupCode,
+		String code, String label, String valueType, String value,
+		Boolean active, java.util.Date inactiveDate) {
+
+		return _metaCodeLocalService.CreateMetaCode(
+			companyId, groupId, projectId, userId, userName, status,
+			statusByUserId, statusByUserName, statusDate, groupCode, code,
+			label, valueType, value, active, inactiveDate);
+	}
+
 	/**
 	 * Deletes the meta code with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
@@ -78,6 +92,13 @@ public class MetaCodeLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _metaCodeLocalService.deleteMetaCode(metaCodeId);
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.MetaCode DeleteMetaCode(
+		long metaCodeId) {
+
+		return _metaCodeLocalService.DeleteMetaCode(metaCodeId);
 	}
 
 	/**
@@ -221,6 +242,29 @@ public class MetaCodeLocalServiceWrapper
 	}
 
 	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.MetaCode>
+		findByGroupAndProjectId(long groupId, long projectId) {
+
+		return _metaCodeLocalService.findByGroupAndProjectId(
+			groupId, projectId);
+	}
+
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.MetaCode>
+		findByGroupCode(long groupId, long projectId, String groupCode) {
+
+		return _metaCodeLocalService.findByGroupCode(
+			groupId, projectId, groupCode);
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.MetaCode findByMetaCodeId(
+		long metaCodeId) {
+
+		return _metaCodeLocalService.findByMetaCodeId(metaCodeId);
+	}
+
+	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
@@ -357,6 +401,19 @@ public class MetaCodeLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _metaCodeLocalService.getPersistedModel(primaryKeyObj);
+	}
+
+	@Override
+	public void UpdateMetaCode(
+		long metaCodeId, long groupId, long projectId, int status,
+		long statusByUserId, String statusByUserName, java.util.Date statusDate,
+		String groupCode, String code, String label, String valueType,
+		String value, Boolean active, java.util.Date inactiveDate) {
+
+		_metaCodeLocalService.UpdateMetaCode(
+			metaCodeId, groupId, projectId, status, statusByUserId,
+			statusByUserName, statusDate, groupCode, code, label, valueType,
+			value, active, inactiveDate);
 	}
 
 	/**

@@ -69,6 +69,19 @@ public class MetaCodeLocalServiceUtil {
 		return getService().createMetaCode(metaCodeId);
 	}
 
+	public static MetaCode CreateMetaCode(
+		long companyId, long groupId, long projectId, long userId,
+		String userName, int status, long statusByUserId,
+		String statusByUserName, java.util.Date statusDate, String groupCode,
+		String code, String label, String valueType, String value,
+		Boolean active, java.util.Date inactiveDate) {
+
+		return getService().CreateMetaCode(
+			companyId, groupId, projectId, userId, userName, status,
+			statusByUserId, statusByUserName, statusDate, groupCode, code,
+			label, valueType, value, active, inactiveDate);
+	}
+
 	/**
 	 * Deletes the meta code with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
@@ -84,6 +97,10 @@ public class MetaCodeLocalServiceUtil {
 		throws PortalException {
 
 		return getService().deleteMetaCode(metaCodeId);
+	}
+
+	public static MetaCode DeleteMetaCode(long metaCodeId) {
+		return getService().DeleteMetaCode(metaCodeId);
 	}
 
 	/**
@@ -204,6 +221,22 @@ public class MetaCodeLocalServiceUtil {
 		return getService().fetchMetaCodeByUuidAndGroupId(uuid, groupId);
 	}
 
+	public static List<MetaCode> findByGroupAndProjectId(
+		long groupId, long projectId) {
+
+		return getService().findByGroupAndProjectId(groupId, projectId);
+	}
+
+	public static List<MetaCode> findByGroupCode(
+		long groupId, long projectId, String groupCode) {
+
+		return getService().findByGroupCode(groupId, projectId, groupCode);
+	}
+
+	public static MetaCode findByMetaCodeId(long metaCodeId) {
+		return getService().findByMetaCodeId(metaCodeId);
+	}
+
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
@@ -322,6 +355,18 @@ public class MetaCodeLocalServiceUtil {
 		throws PortalException {
 
 		return getService().getPersistedModel(primaryKeyObj);
+	}
+
+	public static void UpdateMetaCode(
+		long metaCodeId, long groupId, long projectId, int status,
+		long statusByUserId, String statusByUserName, java.util.Date statusDate,
+		String groupCode, String code, String label, String valueType,
+		String value, Boolean active, java.util.Date inactiveDate) {
+
+		getService().UpdateMetaCode(
+			metaCodeId, groupId, projectId, status, statusByUserId,
+			statusByUserName, statusDate, groupCode, code, label, valueType,
+			value, active, inactiveDate);
 	}
 
 	/**

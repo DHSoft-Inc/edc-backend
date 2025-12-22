@@ -239,6 +239,9 @@ public interface ProjectLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Project getProject(long projectId) throws PortalException;
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Project> getProjectByCode(String projectCode);
+
 	/**
 	 * Returns the project matching the UUID and group.
 	 *

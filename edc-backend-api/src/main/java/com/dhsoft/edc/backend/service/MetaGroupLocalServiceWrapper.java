@@ -62,6 +62,20 @@ public class MetaGroupLocalServiceWrapper
 		return _metaGroupLocalService.createMetaGroup(metaGroupId);
 	}
 
+	@Override
+	public com.dhsoft.edc.backend.model.MetaGroup CreateMetaGroup(
+		long companyId, long groupId, long projectId, long userId,
+		String userName, int status, long statusByUserId,
+		String statusByUserName, java.util.Date statusDate, String groupCode,
+		String groupName, String type, Boolean active,
+		java.util.Date inactiveDate) {
+
+		return _metaGroupLocalService.CreateMetaGroup(
+			companyId, groupId, projectId, userId, userName, status,
+			statusByUserId, statusByUserName, statusDate, groupCode, groupName,
+			type, active, inactiveDate);
+	}
+
 	/**
 	 * Deletes the meta group with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
@@ -79,6 +93,13 @@ public class MetaGroupLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _metaGroupLocalService.deleteMetaGroup(metaGroupId);
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.MetaGroup DeleteMetaGroup(
+		long metaGroupId) {
+
+		return _metaGroupLocalService.DeleteMetaGroup(metaGroupId);
 	}
 
 	/**
@@ -222,6 +243,21 @@ public class MetaGroupLocalServiceWrapper
 	}
 
 	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.MetaGroup>
+		findByGroupAndProjectId(long groupId, long projectId) {
+
+		return _metaGroupLocalService.findByGroupAndProjectId(
+			groupId, projectId);
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.MetaGroup findByMetaGroupId(
+		long metaGroupId) {
+
+		return _metaGroupLocalService.findByMetaGroupId(metaGroupId);
+	}
+
+	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
@@ -359,6 +395,18 @@ public class MetaGroupLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _metaGroupLocalService.getPersistedModel(primaryKeyObj);
+	}
+
+	@Override
+	public void UpdateMetaGroup(
+		long metaGroupId, int status, Long statusByUserId,
+		String statusByUserName, java.util.Date statusDate, String groupCode,
+		String groupName, String type, Boolean active,
+		java.util.Date inactiveDate) {
+
+		_metaGroupLocalService.UpdateMetaGroup(
+			metaGroupId, status, statusByUserId, statusByUserName, statusDate,
+			groupCode, groupName, type, active, inactiveDate);
 	}
 
 	/**
