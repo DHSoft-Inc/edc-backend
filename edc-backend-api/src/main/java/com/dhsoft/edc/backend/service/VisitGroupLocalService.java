@@ -225,6 +225,8 @@ public interface VisitGroupLocalService
 	public VisitGroup fetchVisitGroupByUuidAndGroupId(
 		String uuid, long groupId);
 
+	public List<VisitGroup> findByExpGroupId(long expGroupId);
+
 	public List<VisitGroup> findByG_P(long groupId, long projectId);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)

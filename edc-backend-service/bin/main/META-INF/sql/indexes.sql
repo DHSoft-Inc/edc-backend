@@ -40,6 +40,7 @@ create unique index IX_E9B16FDB on EDC_MetaGroup (uuid_[$COLUMN_LENGTH:75$], gro
 
 create index IX_1A1AAC24 on EDC_Project (companyId);
 create index IX_2DE7EBA6 on EDC_Project (groupId);
+create index IX_6A4C4052 on EDC_Project (projectCode[$COLUMN_LENGTH:75$]);
 create index IX_75C82678 on EDC_Project (uuid_[$COLUMN_LENGTH:75$], companyId);
 create unique index IX_B597EAFA on EDC_Project (uuid_[$COLUMN_LENGTH:75$], groupId);
 

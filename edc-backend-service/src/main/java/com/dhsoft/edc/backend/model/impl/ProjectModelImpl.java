@@ -141,9 +141,11 @@ public class ProjectModelImpl
 
 	public static final long GROUPID_COLUMN_BITMASK = 2L;
 
-	public static final long UUID_COLUMN_BITMASK = 4L;
+	public static final long PROJECTCODE_COLUMN_BITMASK = 4L;
 
-	public static final long CREATEDATE_COLUMN_BITMASK = 8L;
+	public static final long UUID_COLUMN_BITMASK = 8L;
+
+	public static final long CREATEDATE_COLUMN_BITMASK = 16L;
 
 	public static void setEntityCacheEnabled(boolean entityCacheEnabled) {
 		_entityCacheEnabled = entityCacheEnabled;
@@ -628,7 +630,17 @@ public class ProjectModelImpl
 
 	@Override
 	public void setProjectCode(String projectCode) {
+		_columnBitmask |= PROJECTCODE_COLUMN_BITMASK;
+
+		if (_originalProjectCode == null) {
+			_originalProjectCode = _projectCode;
+		}
+
 		_projectCode = projectCode;
+	}
+
+	public String getOriginalProjectCode() {
+		return GetterUtil.getString(_originalProjectCode);
 	}
 
 	@JSON
@@ -1071,6 +1083,8 @@ public class ProjectModelImpl
 
 		_setModifiedDate = false;
 
+		_originalProjectCode = _projectCode;
+
 		_columnBitmask = 0;
 	}
 
@@ -1310,6 +1324,7 @@ public class ProjectModelImpl
 	private Date _statusDate;
 	private long _dataCollectionId;
 	private String _projectCode;
+	private String _originalProjectCode;
 	private String _title;
 	private String _shortTitle;
 	private String _purpose;

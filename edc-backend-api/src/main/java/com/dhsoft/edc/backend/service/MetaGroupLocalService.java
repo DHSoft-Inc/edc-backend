@@ -36,6 +36,7 @@ import com.liferay.portal.kernel.util.OrderByComparator;
 
 import java.io.Serializable;
 
+import java.util.Date;
 import java.util.List;
 
 import org.osgi.annotation.versioning.ProviderType;
@@ -86,6 +87,12 @@ public interface MetaGroupLocalService
 	@Transactional(enabled = false)
 	public MetaGroup createMetaGroup(long metaGroupId);
 
+	public MetaGroup CreateMetaGroup(
+		long companyId, long groupId, long projectId, long userId,
+		String userName, int status, long statusByUserId,
+		String statusByUserName, Date statusDate, String groupCode,
+		String groupName, String type, Boolean active, Date inactiveDate);
+
 	/**
 	 * Deletes the meta group with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
@@ -99,6 +106,8 @@ public interface MetaGroupLocalService
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	public MetaGroup deleteMetaGroup(long metaGroupId) throws PortalException;
+
+	public MetaGroup DeleteMetaGroup(long metaGroupId);
 
 	/**
 	 * Deletes the meta group from the database. Also notifies the appropriate model listeners.
@@ -199,6 +208,11 @@ public interface MetaGroupLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public MetaGroup fetchMetaGroupByUuidAndGroupId(String uuid, long groupId);
 
+	public List<MetaGroup> findByGroupAndProjectId(
+		long groupId, long projectId);
+
+	public MetaGroup findByMetaGroupId(long metaGroupId);
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
 
@@ -293,6 +307,11 @@ public interface MetaGroupLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public PersistedModel getPersistedModel(Serializable primaryKeyObj)
 		throws PortalException;
+
+	public void UpdateMetaGroup(
+		long metaGroupId, int status, Long statusByUserId,
+		String statusByUserName, Date statusDate, String groupCode,
+		String groupName, String type, Boolean active, Date inactiveDate);
 
 	/**
 	 * Updates the meta group in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.

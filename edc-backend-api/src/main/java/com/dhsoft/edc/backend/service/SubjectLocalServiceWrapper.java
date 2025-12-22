@@ -31,17 +31,14 @@ public class SubjectLocalServiceWrapper
 	}
 
 	@Override
-	public void AddSubject(
+	public com.dhsoft.edc.backend.model.Subject AddSubject(
 		long companyId, long groupId, long projectId, long institutionId,
-		long userId, String userName, int status, long statusByUserId,
-		String statusByUserName, java.util.Date statusDate, String serialId,
-		String name, int subjectStatus, java.util.Date subjectStatusApplyDate,
-		java.util.Date consentAgreeDate) {
+		long userId, String userName, int status, String serialId, String name,
+		int subjectStatus, java.util.Date consentAgreeDate) {
 
-		_subjectLocalService.AddSubject(
+		return _subjectLocalService.AddSubject(
 			companyId, groupId, projectId, institutionId, userId, userName,
-			status, statusByUserId, statusByUserName, statusDate, serialId,
-			name, subjectStatus, subjectStatusApplyDate, consentAgreeDate);
+			status, serialId, name, subjectStatus, consentAgreeDate);
 	}
 
 	/**
@@ -99,6 +96,11 @@ public class SubjectLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _subjectLocalService.deleteSubject(subjectId);
+	}
+
+	@Override
+	public void DeleteSubject(long subjectId) {
+		_subjectLocalService.DeleteSubject(subjectId);
 	}
 
 	/**
@@ -231,6 +233,11 @@ public class SubjectLocalServiceWrapper
 		findByInstitution(long InstitutionId) {
 
 		return _subjectLocalService.findByInstitution(InstitutionId);
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.Subject findSubjectId(long subjectId) {
+		return _subjectLocalService.findSubjectId(subjectId);
 	}
 
 	@Override
@@ -381,16 +388,13 @@ public class SubjectLocalServiceWrapper
 
 	@Override
 	public void UpdateSubject(
-		long subjectId, int status, long statusByUserId,
-		String statusByUserName, java.util.Date statusDate, String serialId,
-		String name, int subjectStatus, java.util.Date subjectStatusApplyDate,
-		java.util.Date consentAgreeDate, long expGroupId,
-		java.util.Date applyDate) {
+		long subjectId, long userId, String userName, int status,
+		String serialId, String name, int subjectStatus,
+		java.util.Date consentAgreeDate) {
 
 		_subjectLocalService.UpdateSubject(
-			subjectId, status, statusByUserId, statusByUserName, statusDate,
-			serialId, name, subjectStatus, subjectStatusApplyDate,
-			consentAgreeDate, expGroupId, applyDate);
+			subjectId, userId, userName, status, serialId, name, subjectStatus,
+			consentAgreeDate);
 	}
 
 	/**

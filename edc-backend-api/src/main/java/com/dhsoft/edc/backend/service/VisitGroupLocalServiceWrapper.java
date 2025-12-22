@@ -257,6 +257,13 @@ public class VisitGroupLocalServiceWrapper
 	}
 
 	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.VisitGroup>
+		findByExpGroupId(long expGroupId) {
+
+		return _visitGroupLocalService.findByExpGroupId(expGroupId);
+	}
+
+	@Override
 	public java.util.List<com.dhsoft.edc.backend.model.VisitGroup> findByG_P(
 		long groupId, long projectId) {
 

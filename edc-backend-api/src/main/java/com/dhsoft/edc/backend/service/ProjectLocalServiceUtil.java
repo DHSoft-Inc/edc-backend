@@ -260,6 +260,10 @@ public class ProjectLocalServiceUtil {
 		return getService().getProject(projectId);
 	}
 
+	public static List<Project> getProjectByCode(String projectCode) {
+		return getService().getProjectByCode(projectCode);
+	}
+
 	/**
 	 * Returns the project matching the UUID and group.
 	 *

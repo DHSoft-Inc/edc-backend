@@ -46,6 +46,9 @@
     	<finder name="GroupId" return-type="Collection">
     		<finder-column name="groupId" />
     	</finder>
+    	<finder name="Code" return-type="Collection">
+        	<finder-column name="projectCode" />
+      	</finder>
     	
     	<!-- Reference -->
  		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />

@@ -36,6 +36,7 @@ import com.liferay.portal.kernel.util.OrderByComparator;
 
 import java.io.Serializable;
 
+import java.util.Date;
 import java.util.List;
 
 import org.osgi.annotation.versioning.ProviderType;
@@ -86,6 +87,13 @@ public interface MetaCodeLocalService
 	@Transactional(enabled = false)
 	public MetaCode createMetaCode(long metaCodeId);
 
+	public MetaCode CreateMetaCode(
+		long companyId, long groupId, long projectId, long userId,
+		String userName, int status, long statusByUserId,
+		String statusByUserName, Date statusDate, String groupCode, String code,
+		String label, String valueType, String value, Boolean active,
+		Date inactiveDate);
+
 	/**
 	 * Deletes the meta code with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
@@ -99,6 +107,8 @@ public interface MetaCodeLocalService
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	public MetaCode deleteMetaCode(long metaCodeId) throws PortalException;
+
+	public MetaCode DeleteMetaCode(long metaCodeId);
 
 	/**
 	 * Deletes the meta code from the database. Also notifies the appropriate model listeners.
@@ -199,6 +209,13 @@ public interface MetaCodeLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public MetaCode fetchMetaCodeByUuidAndGroupId(String uuid, long groupId);
 
+	public List<MetaCode> findByGroupAndProjectId(long groupId, long projectId);
+
+	public List<MetaCode> findByGroupCode(
+		long groupId, long projectId, String groupCode);
+
+	public MetaCode findByMetaCodeId(long metaCodeId);
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
 
@@ -293,6 +310,12 @@ public interface MetaCodeLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public PersistedModel getPersistedModel(Serializable primaryKeyObj)
 		throws PortalException;
+
+	public void UpdateMetaCode(
+		long metaCodeId, long groupId, long projectId, int status,
+		long statusByUserId, String statusByUserName, Date statusDate,
+		String groupCode, String code, String label, String valueType,
+		String value, Boolean active, Date inactiveDate);
 
 	/**
 	 * Updates the meta code in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.

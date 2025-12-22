@@ -64,11 +64,10 @@ public interface SubjectLocalService
 	 *
 	 * Never modify this interface directly. Add custom service methods to <code>com.dhsoft.edc.backend.service.impl.SubjectLocalServiceImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface. Consume the subject local service via injection or a <code>org.osgi.util.tracker.ServiceTracker</code>. Use {@link SubjectLocalServiceUtil} if injection and service tracking are not available.
 	 */
-	public void AddSubject(
+	public Subject AddSubject(
 		long companyId, long groupId, long projectId, long institutionId,
-		long userId, String userName, int status, long statusByUserId,
-		String statusByUserName, Date statusDate, String serialId, String name,
-		int subjectStatus, Date subjectStatusApplyDate, Date consentAgreeDate);
+		long userId, String userName, int status, String serialId, String name,
+		int subjectStatus, Date consentAgreeDate);
 
 	/**
 	 * Adds the subject to the database. Also notifies the appropriate model listeners.
@@ -112,6 +111,8 @@ public interface SubjectLocalService
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	public Subject deleteSubject(long subjectId) throws PortalException;
+
+	public void DeleteSubject(long subjectId);
 
 	/**
 	 * Deletes the subject from the database. Also notifies the appropriate model listeners.
@@ -206,6 +207,8 @@ public interface SubjectLocalService
 	public Subject fetchSubjectByUuidAndGroupId(String uuid, long groupId);
 
 	public List<Subject> findByInstitution(long InstitutionId);
+
+	public Subject findSubjectId(long subjectId);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
@@ -306,10 +309,8 @@ public interface SubjectLocalService
 	public int getSubjectsCount();
 
 	public void UpdateSubject(
-		long subjectId, int status, long statusByUserId,
-		String statusByUserName, Date statusDate, String serialId, String name,
-		int subjectStatus, Date subjectStatusApplyDate, Date consentAgreeDate,
-		long expGroupId, Date applyDate);
+		long subjectId, long userId, String userName, int status,
+		String serialId, String name, int subjectStatus, Date consentAgreeDate);
 
 	/**
 	 * Updates the subject in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.

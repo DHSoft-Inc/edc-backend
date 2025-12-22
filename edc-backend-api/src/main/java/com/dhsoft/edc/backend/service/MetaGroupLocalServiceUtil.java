@@ -69,6 +69,19 @@ public class MetaGroupLocalServiceUtil {
 		return getService().createMetaGroup(metaGroupId);
 	}
 
+	public static MetaGroup CreateMetaGroup(
+		long companyId, long groupId, long projectId, long userId,
+		String userName, int status, long statusByUserId,
+		String statusByUserName, java.util.Date statusDate, String groupCode,
+		String groupName, String type, Boolean active,
+		java.util.Date inactiveDate) {
+
+		return getService().CreateMetaGroup(
+			companyId, groupId, projectId, userId, userName, status,
+			statusByUserId, statusByUserName, statusDate, groupCode, groupName,
+			type, active, inactiveDate);
+	}
+
 	/**
 	 * Deletes the meta group with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
@@ -84,6 +97,10 @@ public class MetaGroupLocalServiceUtil {
 		throws PortalException {
 
 		return getService().deleteMetaGroup(metaGroupId);
+	}
+
+	public static MetaGroup DeleteMetaGroup(long metaGroupId) {
+		return getService().DeleteMetaGroup(metaGroupId);
 	}
 
 	/**
@@ -202,6 +219,16 @@ public class MetaGroupLocalServiceUtil {
 		String uuid, long groupId) {
 
 		return getService().fetchMetaGroupByUuidAndGroupId(uuid, groupId);
+	}
+
+	public static List<MetaGroup> findByGroupAndProjectId(
+		long groupId, long projectId) {
+
+		return getService().findByGroupAndProjectId(groupId, projectId);
+	}
+
+	public static MetaGroup findByMetaGroupId(long metaGroupId) {
+		return getService().findByMetaGroupId(metaGroupId);
 	}
 
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
@@ -324,6 +351,17 @@ public class MetaGroupLocalServiceUtil {
 		throws PortalException {
 
 		return getService().getPersistedModel(primaryKeyObj);
+	}
+
+	public static void UpdateMetaGroup(
+		long metaGroupId, int status, Long statusByUserId,
+		String statusByUserName, java.util.Date statusDate, String groupCode,
+		String groupName, String type, Boolean active,
+		java.util.Date inactiveDate) {
+
+		getService().UpdateMetaGroup(
+			metaGroupId, status, statusByUserId, statusByUserName, statusDate,
+			groupCode, groupName, type, active, inactiveDate);
 	}
 
 	/**
