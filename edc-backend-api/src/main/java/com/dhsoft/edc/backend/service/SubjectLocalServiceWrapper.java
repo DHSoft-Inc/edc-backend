@@ -388,13 +388,13 @@ public class SubjectLocalServiceWrapper
 
 	@Override
 	public void UpdateSubject(
-		long subjectId, long userId, String userName, int status,
-		String serialId, String name, int subjectStatus,
+		long subjectId, long institutionId, long userId, String userName,
+		int status, String serialId, String name, int subjectStatus,
 		java.util.Date consentAgreeDate) {
 
 		_subjectLocalService.UpdateSubject(
-			subjectId, userId, userName, status, serialId, name, subjectStatus,
-			consentAgreeDate);
+			subjectId, institutionId, userId, userName, status, serialId, name,
+			subjectStatus, consentAgreeDate);
 	}
 
 	/**

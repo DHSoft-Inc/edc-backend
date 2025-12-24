@@ -89,10 +89,8 @@ public interface InstitutionLocalService
 
 	public Institution CreateInstitution(
 		long companyId, long groupId, long projectId, long userId,
-		String userName, int status, long statusByUserId,
-		String statusByUserName, Date statusDate, String code, String name,
-		String enName, int type, String piName, String contactNum, String email,
-		Date irbDate);
+		String userName, int status, String code, String name, String enName,
+		int type, String piName, String contactNum, String email, Date irbDate);
 
 	/**
 	 * Deletes the institution from the database. Also notifies the appropriate model listeners.
@@ -326,9 +324,8 @@ public interface InstitutionLocalService
 	public Institution updateInstitution(Institution institution);
 
 	public void UpdateInstitution(
-		long institutionId, int status, Long statusByUserId,
-		String statusByUserName, Date statusDate, String code, String name,
-		String enName, int type, String piName, String contactNum, String email,
-		Date irbDate);
+		long institutionId, long userId, String userName, int status,
+		String code, String name, String enName, int type, String piName,
+		String contactNum, String email, Date irbDate);
 
 }

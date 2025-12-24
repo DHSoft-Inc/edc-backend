@@ -62,7 +62,7 @@ public class SubjectLocalServiceImpl extends SubjectLocalServiceBaseImpl {
 		return newSubject;
 	}
 	
-	public void UpdateSubject(long subjectId, long userId, String userName, int status, String serialId, String name, int subjectStatus, Date consentAgreeDate) {
+	public void UpdateSubject(long subjectId, long institutionId, long userId, String userName, int status, String serialId, String name, int subjectStatus, Date consentAgreeDate) {
 		try {
 		
 			Date date = new Date();
@@ -70,7 +70,7 @@ public class SubjectLocalServiceImpl extends SubjectLocalServiceBaseImpl {
 			Subject updateSubject= subjectPersistence.findByPrimaryKey(subjectId);
 			int originStatus = updateSubject.getStatus();
 			int originSubjectStatus = updateSubject.getSubjectStatus();
-			
+			updateSubject.setInstitutionId(institutionId);
 			updateSubject.setStatus(status);
 			if(status != originStatus)
 			{
@@ -87,7 +87,7 @@ public class SubjectLocalServiceImpl extends SubjectLocalServiceBaseImpl {
 			
 			subjectPersistence.update(updateSubject);
 		} catch (Exception e) {
-			
+			e.printStackTrace();
 		}
 	}
 	

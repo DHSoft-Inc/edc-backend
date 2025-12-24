@@ -309,8 +309,9 @@ public interface SubjectLocalService
 	public int getSubjectsCount();
 
 	public void UpdateSubject(
-		long subjectId, long userId, String userName, int status,
-		String serialId, String name, int subjectStatus, Date consentAgreeDate);
+		long subjectId, long institutionId, long userId, String userName,
+		int status, String serialId, String name, int subjectStatus,
+		Date consentAgreeDate);
 
 	/**
 	 * Updates the subject in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
