@@ -832,139 +832,41 @@ public interface RandomizationPersistence
 	public int countByUserId(long userId);
 
 	/**
-	 * Returns all the randomizations where expGroupId = &#63;.
+	 * Returns the randomization where expGroupId = &#63; or throws a <code>NoSuchRandomizationException</code> if it could not be found.
 	 *
 	 * @param expGroupId the exp group ID
-	 * @return the matching randomizations
+	 * @return the matching randomization
+	 * @throws NoSuchRandomizationException if a matching randomization could not be found
 	 */
-	public java.util.List<Randomization> findByExpGroupId(long expGroupId);
+	public Randomization findByExpGroupId(long expGroupId)
+		throws NoSuchRandomizationException;
 
 	/**
-	 * Returns a range of all the randomizations where expGroupId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>RandomizationModelImpl</code>.
-	 * </p>
+	 * Returns the randomization where expGroupId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
 	 *
 	 * @param expGroupId the exp group ID
-	 * @param start the lower bound of the range of randomizations
-	 * @param end the upper bound of the range of randomizations (not inclusive)
-	 * @return the range of matching randomizations
+	 * @return the matching randomization, or <code>null</code> if a matching randomization could not be found
 	 */
-	public java.util.List<Randomization> findByExpGroupId(
-		long expGroupId, int start, int end);
+	public Randomization fetchByExpGroupId(long expGroupId);
 
 	/**
-	 * Returns an ordered range of all the randomizations where expGroupId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>RandomizationModelImpl</code>.
-	 * </p>
+	 * Returns the randomization where expGroupId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
 	 *
 	 * @param expGroupId the exp group ID
-	 * @param start the lower bound of the range of randomizations
-	 * @param end the upper bound of the range of randomizations (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the ordered range of matching randomizations
-	 */
-	public java.util.List<Randomization> findByExpGroupId(
-		long expGroupId, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<Randomization>
-			orderByComparator);
-
-	/**
-	 * Returns an ordered range of all the randomizations where expGroupId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>RandomizationModelImpl</code>.
-	 * </p>
-	 *
-	 * @param expGroupId the exp group ID
-	 * @param start the lower bound of the range of randomizations
-	 * @param end the upper bound of the range of randomizations (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @param useFinderCache whether to use the finder cache
-	 * @return the ordered range of matching randomizations
+	 * @return the matching randomization, or <code>null</code> if a matching randomization could not be found
 	 */
-	public java.util.List<Randomization> findByExpGroupId(
-		long expGroupId, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<Randomization>
-			orderByComparator,
-		boolean useFinderCache);
+	public Randomization fetchByExpGroupId(
+		long expGroupId, boolean useFinderCache);
 
 	/**
-	 * Returns the first randomization in the ordered set where expGroupId = &#63;.
+	 * Removes the randomization where expGroupId = &#63; from the database.
 	 *
 	 * @param expGroupId the exp group ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching randomization
-	 * @throws NoSuchRandomizationException if a matching randomization could not be found
+	 * @return the randomization that was removed
 	 */
-	public Randomization findByExpGroupId_First(
-			long expGroupId,
-			com.liferay.portal.kernel.util.OrderByComparator<Randomization>
-				orderByComparator)
+	public Randomization removeByExpGroupId(long expGroupId)
 		throws NoSuchRandomizationException;
-
-	/**
-	 * Returns the first randomization in the ordered set where expGroupId = &#63;.
-	 *
-	 * @param expGroupId the exp group ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching randomization, or <code>null</code> if a matching randomization could not be found
-	 */
-	public Randomization fetchByExpGroupId_First(
-		long expGroupId,
-		com.liferay.portal.kernel.util.OrderByComparator<Randomization>
-			orderByComparator);
-
-	/**
-	 * Returns the last randomization in the ordered set where expGroupId = &#63;.
-	 *
-	 * @param expGroupId the exp group ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching randomization
-	 * @throws NoSuchRandomizationException if a matching randomization could not be found
-	 */
-	public Randomization findByExpGroupId_Last(
-			long expGroupId,
-			com.liferay.portal.kernel.util.OrderByComparator<Randomization>
-				orderByComparator)
-		throws NoSuchRandomizationException;
-
-	/**
-	 * Returns the last randomization in the ordered set where expGroupId = &#63;.
-	 *
-	 * @param expGroupId the exp group ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching randomization, or <code>null</code> if a matching randomization could not be found
-	 */
-	public Randomization fetchByExpGroupId_Last(
-		long expGroupId,
-		com.liferay.portal.kernel.util.OrderByComparator<Randomization>
-			orderByComparator);
-
-	/**
-	 * Returns the randomizations before and after the current randomization in the ordered set where expGroupId = &#63;.
-	 *
-	 * @param randomizationId the primary key of the current randomization
-	 * @param expGroupId the exp group ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the previous, current, and next randomization
-	 * @throws NoSuchRandomizationException if a randomization with the primary key could not be found
-	 */
-	public Randomization[] findByExpGroupId_PrevAndNext(
-			long randomizationId, long expGroupId,
-			com.liferay.portal.kernel.util.OrderByComparator<Randomization>
-				orderByComparator)
-		throws NoSuchRandomizationException;
-
-	/**
-	 * Removes all the randomizations where expGroupId = &#63; from the database.
-	 *
-	 * @param expGroupId the exp group ID
-	 */
-	public void removeByExpGroupId(long expGroupId);
 
 	/**
 	 * Returns the number of randomizations where expGroupId = &#63;.
@@ -973,6 +875,51 @@ public interface RandomizationPersistence
 	 * @return the number of matching randomizations
 	 */
 	public int countByExpGroupId(long expGroupId);
+
+	/**
+	 * Returns the randomization where randomNo = &#63; or throws a <code>NoSuchRandomizationException</code> if it could not be found.
+	 *
+	 * @param randomNo the random no
+	 * @return the matching randomization
+	 * @throws NoSuchRandomizationException if a matching randomization could not be found
+	 */
+	public Randomization findByRandomNo(String randomNo)
+		throws NoSuchRandomizationException;
+
+	/**
+	 * Returns the randomization where randomNo = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	 *
+	 * @param randomNo the random no
+	 * @return the matching randomization, or <code>null</code> if a matching randomization could not be found
+	 */
+	public Randomization fetchByRandomNo(String randomNo);
+
+	/**
+	 * Returns the randomization where randomNo = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 *
+	 * @param randomNo the random no
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the matching randomization, or <code>null</code> if a matching randomization could not be found
+	 */
+	public Randomization fetchByRandomNo(
+		String randomNo, boolean useFinderCache);
+
+	/**
+	 * Removes the randomization where randomNo = &#63; from the database.
+	 *
+	 * @param randomNo the random no
+	 * @return the randomization that was removed
+	 */
+	public Randomization removeByRandomNo(String randomNo)
+		throws NoSuchRandomizationException;
+
+	/**
+	 * Returns the number of randomizations where randomNo = &#63;.
+	 *
+	 * @param randomNo the random no
+	 * @return the number of matching randomizations
+	 */
+	public int countByRandomNo(String randomNo);
 
 	/**
 	 * Caches the randomization in the entity cache if it is enabled.

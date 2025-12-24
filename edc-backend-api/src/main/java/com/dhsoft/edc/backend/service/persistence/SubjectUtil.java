@@ -1545,6 +1545,174 @@ public class SubjectUtil {
 	}
 
 	/**
+	 * Returns all the subjects where randomNo = &#63;.
+	 *
+	 * @param randomNo the random no
+	 * @return the matching subjects
+	 */
+	public static List<Subject> findByRandomNo(String randomNo) {
+		return getPersistence().findByRandomNo(randomNo);
+	}
+
+	/**
+	 * Returns a range of all the subjects where randomNo = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>SubjectModelImpl</code>.
+	 * </p>
+	 *
+	 * @param randomNo the random no
+	 * @param start the lower bound of the range of subjects
+	 * @param end the upper bound of the range of subjects (not inclusive)
+	 * @return the range of matching subjects
+	 */
+	public static List<Subject> findByRandomNo(
+		String randomNo, int start, int end) {
+
+		return getPersistence().findByRandomNo(randomNo, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the subjects where randomNo = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>SubjectModelImpl</code>.
+	 * </p>
+	 *
+	 * @param randomNo the random no
+	 * @param start the lower bound of the range of subjects
+	 * @param end the upper bound of the range of subjects (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching subjects
+	 */
+	public static List<Subject> findByRandomNo(
+		String randomNo, int start, int end,
+		OrderByComparator<Subject> orderByComparator) {
+
+		return getPersistence().findByRandomNo(
+			randomNo, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the subjects where randomNo = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>SubjectModelImpl</code>.
+	 * </p>
+	 *
+	 * @param randomNo the random no
+	 * @param start the lower bound of the range of subjects
+	 * @param end the upper bound of the range of subjects (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching subjects
+	 */
+	public static List<Subject> findByRandomNo(
+		String randomNo, int start, int end,
+		OrderByComparator<Subject> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByRandomNo(
+			randomNo, start, end, orderByComparator, useFinderCache);
+	}
+
+	/**
+	 * Returns the first subject in the ordered set where randomNo = &#63;.
+	 *
+	 * @param randomNo the random no
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching subject
+	 * @throws NoSuchSubjectException if a matching subject could not be found
+	 */
+	public static Subject findByRandomNo_First(
+			String randomNo, OrderByComparator<Subject> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchSubjectException {
+
+		return getPersistence().findByRandomNo_First(
+			randomNo, orderByComparator);
+	}
+
+	/**
+	 * Returns the first subject in the ordered set where randomNo = &#63;.
+	 *
+	 * @param randomNo the random no
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching subject, or <code>null</code> if a matching subject could not be found
+	 */
+	public static Subject fetchByRandomNo_First(
+		String randomNo, OrderByComparator<Subject> orderByComparator) {
+
+		return getPersistence().fetchByRandomNo_First(
+			randomNo, orderByComparator);
+	}
+
+	/**
+	 * Returns the last subject in the ordered set where randomNo = &#63;.
+	 *
+	 * @param randomNo the random no
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching subject
+	 * @throws NoSuchSubjectException if a matching subject could not be found
+	 */
+	public static Subject findByRandomNo_Last(
+			String randomNo, OrderByComparator<Subject> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchSubjectException {
+
+		return getPersistence().findByRandomNo_Last(
+			randomNo, orderByComparator);
+	}
+
+	/**
+	 * Returns the last subject in the ordered set where randomNo = &#63;.
+	 *
+	 * @param randomNo the random no
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching subject, or <code>null</code> if a matching subject could not be found
+	 */
+	public static Subject fetchByRandomNo_Last(
+		String randomNo, OrderByComparator<Subject> orderByComparator) {
+
+		return getPersistence().fetchByRandomNo_Last(
+			randomNo, orderByComparator);
+	}
+
+	/**
+	 * Returns the subjects before and after the current subject in the ordered set where randomNo = &#63;.
+	 *
+	 * @param subjectId the primary key of the current subject
+	 * @param randomNo the random no
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next subject
+	 * @throws NoSuchSubjectException if a subject with the primary key could not be found
+	 */
+	public static Subject[] findByRandomNo_PrevAndNext(
+			long subjectId, String randomNo,
+			OrderByComparator<Subject> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchSubjectException {
+
+		return getPersistence().findByRandomNo_PrevAndNext(
+			subjectId, randomNo, orderByComparator);
+	}
+
+	/**
+	 * Removes all the subjects where randomNo = &#63; from the database.
+	 *
+	 * @param randomNo the random no
+	 */
+	public static void removeByRandomNo(String randomNo) {
+		getPersistence().removeByRandomNo(randomNo);
+	}
+
+	/**
+	 * Returns the number of subjects where randomNo = &#63;.
+	 *
+	 * @param randomNo the random no
+	 * @return the number of matching subjects
+	 */
+	public static int countByRandomNo(String randomNo) {
+		return getPersistence().countByRandomNo(randomNo);
+	}
+
+	/**
 	 * Caches the subject in the entity cache if it is enabled.
 	 *
 	 * @param subject the subject

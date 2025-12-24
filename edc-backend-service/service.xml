@@ -437,6 +437,10 @@
         <finder name="ExpGroupId" return-type="Collection">
     		<finder-column name="expGroupId" />
     	</finder>  
+    	
+    	<finder name="RandomNo" return-type="Collection">
+           <finder-column name="randomNo" />
+        </finder>
 
         <!-- Reference -->
  		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
@@ -706,9 +710,13 @@
     		<finder-column name="userId" />
     	</finder>        
         
-        <finder name="ExpGroupId" return-type="Collection">
-    		<finder-column name="expGroupId" />
-    	</finder>       
+        <finder name="ExpGroupId" return-type="Randomization">
+          <finder-column name="expGroupId" />
+       </finder>
+       
+       <finder name="RandomNo" return-type="Randomization">
+          <finder-column name="randomNo" />
+       </finder>      
                         
         <!-- Reference -->
  		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
