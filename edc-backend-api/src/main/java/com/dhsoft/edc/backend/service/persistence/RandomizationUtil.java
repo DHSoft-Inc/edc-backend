@@ -1110,61 +1110,78 @@ public class RandomizationUtil {
 	}
 
 	/**
-	 * Returns the randomization where randomNo = &#63; or throws a <code>NoSuchRandomizationException</code> if it could not be found.
+	 * Returns the randomization where groupId = &#63; and projectId = &#63; and randomNo = &#63; or throws a <code>NoSuchRandomizationException</code> if it could not be found.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @return the matching randomization
 	 * @throws NoSuchRandomizationException if a matching randomization could not be found
 	 */
-	public static Randomization findByRandomNo(String randomNo)
+	public static Randomization findByG_P_R(
+			long groupId, long projectId, String randomNo)
 		throws com.dhsoft.edc.backend.exception.NoSuchRandomizationException {
 
-		return getPersistence().findByRandomNo(randomNo);
+		return getPersistence().findByG_P_R(groupId, projectId, randomNo);
 	}
 
 	/**
-	 * Returns the randomization where randomNo = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	 * Returns the randomization where groupId = &#63; and projectId = &#63; and randomNo = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @return the matching randomization, or <code>null</code> if a matching randomization could not be found
 	 */
-	public static Randomization fetchByRandomNo(String randomNo) {
-		return getPersistence().fetchByRandomNo(randomNo);
+	public static Randomization fetchByG_P_R(
+		long groupId, long projectId, String randomNo) {
+
+		return getPersistence().fetchByG_P_R(groupId, projectId, randomNo);
 	}
 
 	/**
-	 * Returns the randomization where randomNo = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 * Returns the randomization where groupId = &#63; and projectId = &#63; and randomNo = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the matching randomization, or <code>null</code> if a matching randomization could not be found
 	 */
-	public static Randomization fetchByRandomNo(
-		String randomNo, boolean useFinderCache) {
+	public static Randomization fetchByG_P_R(
+		long groupId, long projectId, String randomNo, boolean useFinderCache) {
 
-		return getPersistence().fetchByRandomNo(randomNo, useFinderCache);
+		return getPersistence().fetchByG_P_R(
+			groupId, projectId, randomNo, useFinderCache);
 	}
 
 	/**
-	 * Removes the randomization where randomNo = &#63; from the database.
+	 * Removes the randomization where groupId = &#63; and projectId = &#63; and randomNo = &#63; from the database.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @return the randomization that was removed
 	 */
-	public static Randomization removeByRandomNo(String randomNo)
+	public static Randomization removeByG_P_R(
+			long groupId, long projectId, String randomNo)
 		throws com.dhsoft.edc.backend.exception.NoSuchRandomizationException {
 
-		return getPersistence().removeByRandomNo(randomNo);
+		return getPersistence().removeByG_P_R(groupId, projectId, randomNo);
 	}
 
 	/**
-	 * Returns the number of randomizations where randomNo = &#63;.
+	 * Returns the number of randomizations where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @return the number of matching randomizations
 	 */
-	public static int countByRandomNo(String randomNo) {
-		return getPersistence().countByRandomNo(randomNo);
+	public static int countByG_P_R(
+		long groupId, long projectId, String randomNo) {
+
+		return getPersistence().countByG_P_R(groupId, projectId, randomNo);
 	}
 
 	/**

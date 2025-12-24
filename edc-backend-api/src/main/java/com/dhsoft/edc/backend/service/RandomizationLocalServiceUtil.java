@@ -223,12 +223,21 @@ public class RandomizationLocalServiceUtil {
 		return getService().findByExpGroupId(expGroupId);
 	}
 
-	public static Randomization findByRandomizationId(long randomizationId) {
-		return getService().findByRandomizationId(randomizationId);
+	public static List<Randomization> findByGroupAndProject(
+		long groupId, long projectId) {
+
+		return getService().findByGroupAndProject(groupId, projectId);
 	}
 
-	public static Randomization findByRandomNo(String randomNo) {
-		return getService().findByRandomNo(randomNo);
+	public static Randomization findByGroupAndProjectAndRandomNo(
+		long groupId, long projectId, String randomNo) {
+
+		return getService().findByGroupAndProjectAndRandomNo(
+			groupId, projectId, randomNo);
+	}
+
+	public static Randomization findByRandomizationId(long randomizationId) {
+		return getService().findByRandomizationId(randomizationId);
 	}
 
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery

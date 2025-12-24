@@ -877,49 +877,62 @@ public interface RandomizationPersistence
 	public int countByExpGroupId(long expGroupId);
 
 	/**
-	 * Returns the randomization where randomNo = &#63; or throws a <code>NoSuchRandomizationException</code> if it could not be found.
+	 * Returns the randomization where groupId = &#63; and projectId = &#63; and randomNo = &#63; or throws a <code>NoSuchRandomizationException</code> if it could not be found.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @return the matching randomization
 	 * @throws NoSuchRandomizationException if a matching randomization could not be found
 	 */
-	public Randomization findByRandomNo(String randomNo)
+	public Randomization findByG_P_R(
+			long groupId, long projectId, String randomNo)
 		throws NoSuchRandomizationException;
 
 	/**
-	 * Returns the randomization where randomNo = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	 * Returns the randomization where groupId = &#63; and projectId = &#63; and randomNo = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @return the matching randomization, or <code>null</code> if a matching randomization could not be found
 	 */
-	public Randomization fetchByRandomNo(String randomNo);
+	public Randomization fetchByG_P_R(
+		long groupId, long projectId, String randomNo);
 
 	/**
-	 * Returns the randomization where randomNo = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 * Returns the randomization where groupId = &#63; and projectId = &#63; and randomNo = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the matching randomization, or <code>null</code> if a matching randomization could not be found
 	 */
-	public Randomization fetchByRandomNo(
-		String randomNo, boolean useFinderCache);
+	public Randomization fetchByG_P_R(
+		long groupId, long projectId, String randomNo, boolean useFinderCache);
 
 	/**
-	 * Removes the randomization where randomNo = &#63; from the database.
+	 * Removes the randomization where groupId = &#63; and projectId = &#63; and randomNo = &#63; from the database.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @return the randomization that was removed
 	 */
-	public Randomization removeByRandomNo(String randomNo)
+	public Randomization removeByG_P_R(
+			long groupId, long projectId, String randomNo)
 		throws NoSuchRandomizationException;
 
 	/**
-	 * Returns the number of randomizations where randomNo = &#63;.
+	 * Returns the number of randomizations where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @return the number of matching randomizations
 	 */
-	public int countByRandomNo(String randomNo);
+	public int countByG_P_R(long groupId, long projectId, String randomNo);
 
 	/**
 	 * Caches the randomization in the entity cache if it is enabled.

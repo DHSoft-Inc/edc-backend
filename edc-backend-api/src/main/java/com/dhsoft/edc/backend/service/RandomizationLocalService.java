@@ -209,9 +209,13 @@ public interface RandomizationLocalService
 
 	public Randomization findByExpGroupId(long expGroupId);
 
-	public Randomization findByRandomizationId(long randomizationId);
+	public List<Randomization> findByGroupAndProject(
+		long groupId, long projectId);
 
-	public Randomization findByRandomNo(String randomNo);
+	public Randomization findByGroupAndProjectAndRandomNo(
+		long groupId, long projectId, String randomNo);
+
+	public Randomization findByRandomizationId(long randomizationId);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();

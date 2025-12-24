@@ -230,6 +230,15 @@ public class SubjectLocalServiceWrapper
 
 	@Override
 	public java.util.List<com.dhsoft.edc.backend.model.Subject>
+		findByGroupAndProjectAndRandomNo(
+			long groupId, long projectId, String randomNo) {
+
+		return _subjectLocalService.findByGroupAndProjectAndRandomNo(
+			groupId, projectId, randomNo);
+	}
+
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.Subject>
 		findByInstitution(long InstitutionId) {
 
 		return _subjectLocalService.findByInstitution(InstitutionId);

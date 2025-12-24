@@ -15,12 +15,15 @@
 package com.dhsoft.edc.backend.service.impl;
 
 import com.dhsoft.edc.backend.model.Randomization;
+import com.dhsoft.edc.backend.model.Subject;
 import com.dhsoft.edc.backend.service.RandomizationLocalServiceUtil;
+import com.dhsoft.edc.backend.service.SubjectLocalServiceUtil;
 import com.dhsoft.edc.backend.service.base.RandomizationLocalServiceBaseImpl;
 import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
 import com.liferay.portal.aop.AopService;
 
 import java.util.Date;
+import java.util.List;
 
 import org.osgi.service.component.annotations.Component;
 
@@ -79,6 +82,11 @@ public class RandomizationLocalServiceImpl
 	
 	public void DeleteRandomization(long randomizationId) {
 		Randomization deleteRandomization = RandomizationLocalServiceUtil.findByRandomizationId(randomizationId);
+		List<Subject> cascadeSubjectList = SubjectLocalServiceUtil.findByGroupAndProjectAndRandomNo(deleteRandomization.getGroupId(), deleteRandomization.getProjectId(), deleteRandomization.getRandomNo());
+		for (Subject cascadeSubject : cascadeSubjectList) {
+			cascadeSubject.setRandomNo(null);
+			subjectPersistence.update(cascadeSubject);
+		}
 		randomizationPersistence.remove(deleteRandomization);
 	}
 	
@@ -92,11 +100,10 @@ public class RandomizationLocalServiceImpl
 		}
 	}
 	
-	public Randomization findByRandomNo(String randomNo) {
+	public Randomization findByGroupAndProjectAndRandomNo(long groupId, long projectId, String randomNo) {
 		try {
-			return randomizationPersistence.findByRandomNo(randomNo);
+			return randomizationPersistence.findByG_P_R(groupId, projectId, randomNo);
 		} catch (Exception e) {
-			e.printStackTrace();
 			return null;
 		}
 	}
@@ -104,6 +111,15 @@ public class RandomizationLocalServiceImpl
 	public Randomization findByExpGroupId(long expGroupId) {
 		try {
 			return randomizationPersistence.findByExpGroupId(expGroupId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public List<Randomization> findByGroupAndProject(long groupId, long projectId) {
+		try {
+			return randomizationPersistence.findByG_P(groupId, projectId);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

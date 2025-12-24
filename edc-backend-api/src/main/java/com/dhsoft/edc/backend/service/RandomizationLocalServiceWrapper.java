@@ -247,18 +247,28 @@ public class RandomizationLocalServiceWrapper
 	}
 
 	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.Randomization>
+		findByGroupAndProject(long groupId, long projectId) {
+
+		return _randomizationLocalService.findByGroupAndProject(
+			groupId, projectId);
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.Randomization
+		findByGroupAndProjectAndRandomNo(
+			long groupId, long projectId, String randomNo) {
+
+		return _randomizationLocalService.findByGroupAndProjectAndRandomNo(
+			groupId, projectId, randomNo);
+	}
+
+	@Override
 	public com.dhsoft.edc.backend.model.Randomization findByRandomizationId(
 		long randomizationId) {
 
 		return _randomizationLocalService.findByRandomizationId(
 			randomizationId);
-	}
-
-	@Override
-	public com.dhsoft.edc.backend.model.Randomization findByRandomNo(
-		String randomNo) {
-
-		return _randomizationLocalService.findByRandomNo(randomNo);
 	}
 
 	@Override
