@@ -44,6 +44,15 @@ public class RandomizationLocalServiceUtil {
 	 *
 	 * Never modify this class directly. Add custom service methods to <code>com.dhsoft.edc.backend.service.impl.RandomizationLocalServiceImpl</code> and rerun ServiceBuilder to regenerate this class.
 	 */
+	public static void AddRandomization(
+		long companyId, long groupId, long projectId, long userId,
+		String userName, int status, String randomNo, int useStatus,
+		int sourceType, String criteria, long expGroupId) {
+
+		getService().AddRandomization(
+			companyId, groupId, projectId, userId, userName, status, randomNo,
+			useStatus, sourceType, criteria, expGroupId);
+	}
 
 	/**
 	 * Adds the randomization to the database. Also notifies the appropriate model listeners.
@@ -94,6 +103,10 @@ public class RandomizationLocalServiceUtil {
 		throws PortalException {
 
 		return getService().deleteRandomization(randomizationId);
+	}
+
+	public static void DeleteRandomization(long randomizationId) {
+		getService().DeleteRandomization(randomizationId);
 	}
 
 	/**
@@ -204,6 +217,18 @@ public class RandomizationLocalServiceUtil {
 		String uuid, long groupId) {
 
 		return getService().fetchRandomizationByUuidAndGroupId(uuid, groupId);
+	}
+
+	public static Randomization findByExpGroupId(long expGroupId) {
+		return getService().findByExpGroupId(expGroupId);
+	}
+
+	public static Randomization findByRandomizationId(long randomizationId) {
+		return getService().findByRandomizationId(randomizationId);
+	}
+
+	public static Randomization findByRandomNo(String randomNo) {
+		return getService().findByRandomNo(randomNo);
 	}
 
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
@@ -327,6 +352,16 @@ public class RandomizationLocalServiceUtil {
 	 */
 	public static int getRandomizationsCount() {
 		return getService().getRandomizationsCount();
+	}
+
+	public static void UpdateRandomization(
+		long randomizationId, long userId, String userName, int status,
+		String randomNo, int useStatus, int sourceType, String criteria,
+		long expGroupId) {
+
+		getService().UpdateRandomization(
+			randomizationId, userId, userName, status, randomNo, useStatus,
+			sourceType, criteria, expGroupId);
 	}
 
 	/**

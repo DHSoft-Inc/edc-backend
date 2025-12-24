@@ -150,11 +150,13 @@ public class SubjectModelImpl
 
 	public static final long PROJECTID_COLUMN_BITMASK = 16L;
 
-	public static final long USERID_COLUMN_BITMASK = 32L;
+	public static final long RANDOMNO_COLUMN_BITMASK = 32L;
 
-	public static final long UUID_COLUMN_BITMASK = 64L;
+	public static final long USERID_COLUMN_BITMASK = 64L;
 
-	public static final long SUBJECTID_COLUMN_BITMASK = 128L;
+	public static final long UUID_COLUMN_BITMASK = 128L;
+
+	public static final long SUBJECTID_COLUMN_BITMASK = 256L;
 
 	public static void setEntityCacheEnabled(boolean entityCacheEnabled) {
 		_entityCacheEnabled = entityCacheEnabled;
@@ -713,7 +715,17 @@ public class SubjectModelImpl
 
 	@Override
 	public void setRandomNo(String randomNo) {
+		_columnBitmask |= RANDOMNO_COLUMN_BITMASK;
+
+		if (_originalRandomNo == null) {
+			_originalRandomNo = _randomNo;
+		}
+
 		_randomNo = randomNo;
+	}
+
+	public String getOriginalRandomNo() {
+		return GetterUtil.getString(_originalRandomNo);
 	}
 
 	@JSON
@@ -1172,6 +1184,8 @@ public class SubjectModelImpl
 
 		_setModifiedDate = false;
 
+		_originalRandomNo = _randomNo;
+
 		_originalExpGroupId = _expGroupId;
 
 		_setOriginalExpGroupId = false;
@@ -1429,6 +1443,7 @@ public class SubjectModelImpl
 	private Date _statusDate;
 	private String _serialId;
 	private String _randomNo;
+	private String _originalRandomNo;
 	private String _name;
 	private int _subjectStatus;
 	private Date _subjectStatusApplyDate;

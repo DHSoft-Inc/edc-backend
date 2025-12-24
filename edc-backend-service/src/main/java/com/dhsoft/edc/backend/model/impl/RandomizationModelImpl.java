@@ -141,11 +141,13 @@ public class RandomizationModelImpl
 
 	public static final long PROJECTID_COLUMN_BITMASK = 8L;
 
-	public static final long USERID_COLUMN_BITMASK = 16L;
+	public static final long RANDOMNO_COLUMN_BITMASK = 16L;
 
-	public static final long UUID_COLUMN_BITMASK = 32L;
+	public static final long USERID_COLUMN_BITMASK = 32L;
 
-	public static final long RANDOMIZATIONID_COLUMN_BITMASK = 64L;
+	public static final long UUID_COLUMN_BITMASK = 64L;
+
+	public static final long RANDOMIZATIONID_COLUMN_BITMASK = 128L;
 
 	public static void setEntityCacheEnabled(boolean entityCacheEnabled) {
 		_entityCacheEnabled = entityCacheEnabled;
@@ -664,7 +666,17 @@ public class RandomizationModelImpl
 
 	@Override
 	public void setRandomNo(String randomNo) {
+		_columnBitmask |= RANDOMNO_COLUMN_BITMASK;
+
+		if (_originalRandomNo == null) {
+			_originalRandomNo = _randomNo;
+		}
+
 		_randomNo = randomNo;
+	}
+
+	public String getOriginalRandomNo() {
+		return GetterUtil.getString(_originalRandomNo);
 	}
 
 	@JSON
@@ -1093,6 +1105,8 @@ public class RandomizationModelImpl
 
 		_setModifiedDate = false;
 
+		_originalRandomNo = _randomNo;
+
 		_originalExpGroupId = _expGroupId;
 
 		_setOriginalExpGroupId = false;
@@ -1311,6 +1325,7 @@ public class RandomizationModelImpl
 	private String _statusByUserName;
 	private Date _statusDate;
 	private String _randomNo;
+	private String _originalRandomNo;
 	private int _useStatus;
 	private int _sourceType;
 	private String _criteria;

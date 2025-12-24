@@ -68,6 +68,7 @@ create unique index IX_CA509343 on EDC_QueryLink (uuid_[$COLUMN_LENGTH:75$], gro
 create index IX_918521BC on EDC_Randomization (companyId);
 create index IX_1E94333D on EDC_Randomization (expGroupId);
 create index IX_9B9F2AC6 on EDC_Randomization (groupId, projectId);
+create index IX_77E8DBC4 on EDC_Randomization (randomNo[$COLUMN_LENGTH:75$]);
 create index IX_501D4326 on EDC_Randomization (userId);
 create index IX_4A52B5E0 on EDC_Randomization (uuid_[$COLUMN_LENGTH:75$], companyId);
 create unique index IX_FACF3462 on EDC_Randomization (uuid_[$COLUMN_LENGTH:75$], groupId);
@@ -82,6 +83,7 @@ create index IX_13B962A8 on EDC_Subject (expGroupId);
 create index IX_24BFBF31 on EDC_Subject (groupId, projectId);
 create index IX_E951312C on EDC_Subject (institutionId);
 create index IX_24DF398D on EDC_Subject (projectId);
+create index IX_E8D8E9EF on EDC_Subject (randomNo[$COLUMN_LENGTH:75$]);
 create index IX_B80E011 on EDC_Subject (userId);
 create index IX_70D3690B on EDC_Subject (uuid_[$COLUMN_LENGTH:75$], companyId);
 create unique index IX_71A8B64D on EDC_Subject (uuid_[$COLUMN_LENGTH:75$], groupId);

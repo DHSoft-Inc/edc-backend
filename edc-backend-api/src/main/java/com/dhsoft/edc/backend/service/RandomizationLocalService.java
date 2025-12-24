@@ -63,6 +63,10 @@ public interface RandomizationLocalService
 	 *
 	 * Never modify this interface directly. Add custom service methods to <code>com.dhsoft.edc.backend.service.impl.RandomizationLocalServiceImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface. Consume the randomization local service via injection or a <code>org.osgi.util.tracker.ServiceTracker</code>. Use {@link RandomizationLocalServiceUtil} if injection and service tracking are not available.
 	 */
+	public void AddRandomization(
+		long companyId, long groupId, long projectId, long userId,
+		String userName, int status, String randomNo, int useStatus,
+		int sourceType, String criteria, long expGroupId);
 
 	/**
 	 * Adds the randomization to the database. Also notifies the appropriate model listeners.
@@ -107,6 +111,8 @@ public interface RandomizationLocalService
 	@Indexable(type = IndexableType.DELETE)
 	public Randomization deleteRandomization(long randomizationId)
 		throws PortalException;
+
+	public void DeleteRandomization(long randomizationId);
 
 	/**
 	 * Deletes the randomization from the database. Also notifies the appropriate model listeners.
@@ -200,6 +206,12 @@ public interface RandomizationLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Randomization fetchRandomizationByUuidAndGroupId(
 		String uuid, long groupId);
+
+	public Randomization findByExpGroupId(long expGroupId);
+
+	public Randomization findByRandomizationId(long randomizationId);
+
+	public Randomization findByRandomNo(String randomNo);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
@@ -297,6 +309,11 @@ public interface RandomizationLocalService
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public int getRandomizationsCount();
+
+	public void UpdateRandomization(
+		long randomizationId, long userId, String userName, int status,
+		String randomNo, int useStatus, int sourceType, String criteria,
+		long expGroupId);
 
 	/**
 	 * Updates the randomization in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.

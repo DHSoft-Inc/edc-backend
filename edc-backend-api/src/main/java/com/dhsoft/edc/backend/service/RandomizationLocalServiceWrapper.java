@@ -33,6 +33,17 @@ public class RandomizationLocalServiceWrapper
 		_randomizationLocalService = randomizationLocalService;
 	}
 
+	@Override
+	public void AddRandomization(
+		long companyId, long groupId, long projectId, long userId,
+		String userName, int status, String randomNo, int useStatus,
+		int sourceType, String criteria, long expGroupId) {
+
+		_randomizationLocalService.AddRandomization(
+			companyId, groupId, projectId, userId, userName, status, randomNo,
+			useStatus, sourceType, criteria, expGroupId);
+	}
+
 	/**
 	 * Adds the randomization to the database. Also notifies the appropriate model listeners.
 	 *
@@ -91,6 +102,11 @@ public class RandomizationLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _randomizationLocalService.deleteRandomization(randomizationId);
+	}
+
+	@Override
+	public void DeleteRandomization(long randomizationId) {
+		_randomizationLocalService.DeleteRandomization(randomizationId);
 	}
 
 	/**
@@ -221,6 +237,28 @@ public class RandomizationLocalServiceWrapper
 
 		return _randomizationLocalService.fetchRandomizationByUuidAndGroupId(
 			uuid, groupId);
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.Randomization findByExpGroupId(
+		long expGroupId) {
+
+		return _randomizationLocalService.findByExpGroupId(expGroupId);
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.Randomization findByRandomizationId(
+		long randomizationId) {
+
+		return _randomizationLocalService.findByRandomizationId(
+			randomizationId);
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.Randomization findByRandomNo(
+		String randomNo) {
+
+		return _randomizationLocalService.findByRandomNo(randomNo);
 	}
 
 	@Override
@@ -363,6 +401,17 @@ public class RandomizationLocalServiceWrapper
 	@Override
 	public int getRandomizationsCount() {
 		return _randomizationLocalService.getRandomizationsCount();
+	}
+
+	@Override
+	public void UpdateRandomization(
+		long randomizationId, long userId, String userName, int status,
+		String randomNo, int useStatus, int sourceType, String criteria,
+		long expGroupId) {
+
+		_randomizationLocalService.UpdateRandomization(
+			randomizationId, userId, userName, status, randomNo, useStatus,
+			sourceType, criteria, expGroupId);
 	}
 
 	/**
