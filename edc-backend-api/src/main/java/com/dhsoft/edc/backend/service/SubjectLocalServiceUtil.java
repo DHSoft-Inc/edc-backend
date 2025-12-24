@@ -347,13 +347,13 @@ public class SubjectLocalServiceUtil {
 	}
 
 	public static void UpdateSubject(
-		long subjectId, long userId, String userName, int status,
-		String serialId, String name, int subjectStatus,
+		long subjectId, long institutionId, long userId, String userName,
+		int status, String serialId, String name, int subjectStatus,
 		java.util.Date consentAgreeDate) {
 
 		getService().UpdateSubject(
-			subjectId, userId, userName, status, serialId, name, subjectStatus,
-			consentAgreeDate);
+			subjectId, institutionId, userId, userName, status, serialId, name,
+			subjectStatus, consentAgreeDate);
 	}
 
 	/**
