@@ -211,6 +211,9 @@ public interface MetaGroupLocalService
 	public List<MetaGroup> findByGroupAndProjectId(
 		long groupId, long projectId);
 
+	public List<MetaGroup> findByMetaGroupCode(
+		long groupId, long projectId, String groupCode);
+
 	public MetaGroup findByMetaGroupId(long metaGroupId);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)

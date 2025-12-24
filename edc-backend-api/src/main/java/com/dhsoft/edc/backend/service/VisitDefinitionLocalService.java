@@ -78,7 +78,7 @@ public interface VisitDefinitionLocalService
 	public VisitDefinition addVisitDefinition(VisitDefinition visitDefinition);
 
 	/**
-	 * ADD: VisitDefinition 생성
+	 * ADD: VisitDefinition �깮�꽦
 	 */
 	public VisitDefinition addVisitDefinitionForGroup(
 			long companyId, long groupId, long userId, String userName,
@@ -220,10 +220,6 @@ public interface VisitDefinitionLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
 
-	/**
-	 * GET: 실험군 ID로 visitDefinition 가져오기
-	 * experimentalGroupId → expCode → visitDefinitionCode
-	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<VisitDefinition> getByExperimentalGroup(
 			long experimentalGroupId)

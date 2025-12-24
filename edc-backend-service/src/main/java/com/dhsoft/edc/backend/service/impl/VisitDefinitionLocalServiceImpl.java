@@ -26,10 +26,7 @@ import org.osgi.service.component.annotations.Reference;
 	    @Reference
 	    private ExperimentalGroupLocalService _experimentalGroupLocalService;
 
-	    /**
-	     * GET: 실험군 ID로 visitDefinition 가져오기
-	     * experimentalGroupId → expCode → visitDefinitionCode
-	     */
+
 	    public List<VisitDefinition> getByExperimentalGroup(long experimentalGroupId)
 	            throws PortalException {
 
@@ -42,7 +39,7 @@ import org.osgi.service.component.annotations.Reference;
 	    }
 
 	    /**
-	     * ADD: VisitDefinition 생성
+	     * ADD: VisitDefinition �깮�꽦
 	     */
 	    public VisitDefinition addVisitDefinitionForGroup(
 	            long companyId,
@@ -81,11 +78,11 @@ import org.osgi.service.component.annotations.Reference;
 	        vd.setStatusByUserName(userName);
 	        vd.setStatusDate(now);
 
-	        // 핵심 매핑
+
 	        vd.setVisitDefinitionCode(expGroup.getExpCode());
 	        vd.setVisitGroupId(experimentalGroupId);
 
-	        // 엔티티 데이터
+
 	        vd.setName(name);
 	        vd.setAnchorType(anchorType);
 	        vd.setOffset(offset);
@@ -135,7 +132,7 @@ import org.osgi.service.component.annotations.Reference;
 	            visitDefinitionPersistence.fetchByPrimaryKey(visitDefinitionId);
 
 	        vd.setName(name);
-	        vd.setAnchorType(anchorType);   // 🔥 이 줄이 꼭 있어야 함
+	        vd.setAnchorType(anchorType); 
 	        vd.setOffset(offset);
 	        vd.setWindowMinus(windowMinus);
 	        vd.setWindowPlus(windowPlus);
@@ -154,7 +151,7 @@ import org.osgi.service.component.annotations.Reference;
 	    }
 	    
 	    public List<VisitDefinition> getByVisitGroupId(long visitGroupId) {
-	        // service.xml 에 finder name="VisitGroupId" 있으니까 아래 메소드가 자동 생성됨
+	 
 	        return visitDefinitionPersistence.findByVisitGroupId(visitGroupId);
 	    }
 	    

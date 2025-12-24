@@ -62,7 +62,7 @@ public class VisitDefinitionLocalServiceUtil {
 	}
 
 	/**
-	 * ADD: VisitDefinition 생성
+	 * ADD: VisitDefinition �깮�꽦
 	 */
 	public static VisitDefinition addVisitDefinitionForGroup(
 			long companyId, long groupId, long userId, String userName,
@@ -240,10 +240,6 @@ public class VisitDefinitionLocalServiceUtil {
 		return getService().getActionableDynamicQuery();
 	}
 
-	/**
-	 * GET: 실험군 ID로 visitDefinition 가져오기
-	 * experimentalGroupId → expCode → visitDefinitionCode
-	 */
 	public static List<VisitDefinition> getByExperimentalGroup(
 			long experimentalGroupId)
 		throws PortalException {

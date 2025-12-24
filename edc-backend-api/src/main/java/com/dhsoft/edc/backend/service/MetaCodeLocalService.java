@@ -214,6 +214,9 @@ public interface MetaCodeLocalService
 	public List<MetaCode> findByGroupCode(
 		long groupId, long projectId, String groupCode);
 
+	public List<MetaCode> findByGroupCodeAndCode(
+		long groupId, long projectId, String groupCode, String code);
+
 	public MetaCode findByMetaCodeId(long metaCodeId);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)

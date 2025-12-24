@@ -251,6 +251,14 @@ public class MetaGroupLocalServiceWrapper
 	}
 
 	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.MetaGroup>
+		findByMetaGroupCode(long groupId, long projectId, String groupCode) {
+
+		return _metaGroupLocalService.findByMetaGroupCode(
+			groupId, projectId, groupCode);
+	}
+
+	@Override
 	public com.dhsoft.edc.backend.model.MetaGroup findByMetaGroupId(
 		long metaGroupId) {
 

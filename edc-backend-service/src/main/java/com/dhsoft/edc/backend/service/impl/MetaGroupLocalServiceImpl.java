@@ -125,4 +125,11 @@ public class MetaGroupLocalServiceImpl extends MetaGroupLocalServiceBaseImpl {
 		}
 	}
 	
+	public List<MetaGroup> findByMetaGroupCode (long groupId, long projectId, String groupCode) {
+		try {
+			return metaGroupPersistence.findByG_P_G(groupId, projectId, groupCode);
+		} catch (Exception e) {
+			return null;
+		}
+	}
 }

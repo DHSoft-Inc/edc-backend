@@ -227,6 +227,12 @@ public class MetaGroupLocalServiceUtil {
 		return getService().findByGroupAndProjectId(groupId, projectId);
 	}
 
+	public static List<MetaGroup> findByMetaGroupCode(
+		long groupId, long projectId, String groupCode) {
+
+		return getService().findByMetaGroupCode(groupId, projectId, groupCode);
+	}
+
 	public static MetaGroup findByMetaGroupId(long metaGroupId) {
 		return getService().findByMetaGroupId(metaGroupId);
 	}

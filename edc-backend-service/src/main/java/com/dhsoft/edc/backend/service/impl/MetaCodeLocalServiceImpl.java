@@ -130,4 +130,12 @@ public class MetaCodeLocalServiceImpl extends MetaCodeLocalServiceBaseImpl {
 		}
 	}
 	
+	public List<MetaCode> findByGroupCodeAndCode (long groupId, long projectId, String groupCode, String code) {
+		try {
+			return metaCodePersistence.findByG_P_G_C(groupId, projectId, groupCode, code);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
 }

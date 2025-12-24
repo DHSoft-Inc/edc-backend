@@ -51,7 +51,7 @@ public class VisitDefinitionLocalServiceWrapper
 	}
 
 	/**
-	 * ADD: VisitDefinition 생성
+	 * ADD: VisitDefinition �깮�꽦
 	 */
 	@Override
 	public com.dhsoft.edc.backend.model.VisitDefinition
@@ -263,10 +263,6 @@ public class VisitDefinitionLocalServiceWrapper
 		return _visitDefinitionLocalService.getActionableDynamicQuery();
 	}
 
-	/**
-	 * GET: 실험군 ID로 visitDefinition 가져오기
-	 * experimentalGroupId → expCode → visitDefinitionCode
-	 */
 	@Override
 	public java.util.List<com.dhsoft.edc.backend.model.VisitDefinition>
 			getByExperimentalGroup(long experimentalGroupId)

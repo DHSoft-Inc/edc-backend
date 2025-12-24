@@ -233,6 +233,13 @@ public class MetaCodeLocalServiceUtil {
 		return getService().findByGroupCode(groupId, projectId, groupCode);
 	}
 
+	public static List<MetaCode> findByGroupCodeAndCode(
+		long groupId, long projectId, String groupCode, String code) {
+
+		return getService().findByGroupCodeAndCode(
+			groupId, projectId, groupCode, code);
+	}
+
 	public static MetaCode findByMetaCodeId(long metaCodeId) {
 		return getService().findByMetaCodeId(metaCodeId);
 	}
