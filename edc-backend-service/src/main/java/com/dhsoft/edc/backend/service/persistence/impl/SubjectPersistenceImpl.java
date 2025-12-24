@@ -4498,46 +4498,57 @@ public class SubjectPersistenceImpl
 	private static final String _FINDER_COLUMN_EXPGROUPID_EXPGROUPID_2 =
 		"subject.expGroupId = ?";
 
-	private FinderPath _finderPathWithPaginationFindByRandomNo;
-	private FinderPath _finderPathWithoutPaginationFindByRandomNo;
-	private FinderPath _finderPathCountByRandomNo;
+	private FinderPath _finderPathWithPaginationFindByG_P_R;
+	private FinderPath _finderPathWithoutPaginationFindByG_P_R;
+	private FinderPath _finderPathCountByG_P_R;
 
 	/**
-	 * Returns all the subjects where randomNo = &#63;.
+	 * Returns all the subjects where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @return the matching subjects
 	 */
 	@Override
-	public List<Subject> findByRandomNo(String randomNo) {
-		return findByRandomNo(
-			randomNo, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+	public List<Subject> findByG_P_R(
+		long groupId, long projectId, String randomNo) {
+
+		return findByG_P_R(
+			groupId, projectId, randomNo, QueryUtil.ALL_POS, QueryUtil.ALL_POS,
+			null);
 	}
 
 	/**
-	 * Returns a range of all the subjects where randomNo = &#63;.
+	 * Returns a range of all the subjects where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>SubjectModelImpl</code>.
 	 * </p>
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @param start the lower bound of the range of subjects
 	 * @param end the upper bound of the range of subjects (not inclusive)
 	 * @return the range of matching subjects
 	 */
 	@Override
-	public List<Subject> findByRandomNo(String randomNo, int start, int end) {
-		return findByRandomNo(randomNo, start, end, null);
+	public List<Subject> findByG_P_R(
+		long groupId, long projectId, String randomNo, int start, int end) {
+
+		return findByG_P_R(groupId, projectId, randomNo, start, end, null);
 	}
 
 	/**
-	 * Returns an ordered range of all the subjects where randomNo = &#63;.
+	 * Returns an ordered range of all the subjects where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>SubjectModelImpl</code>.
 	 * </p>
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @param start the lower bound of the range of subjects
 	 * @param end the upper bound of the range of subjects (not inclusive)
@@ -4545,20 +4556,23 @@ public class SubjectPersistenceImpl
 	 * @return the ordered range of matching subjects
 	 */
 	@Override
-	public List<Subject> findByRandomNo(
-		String randomNo, int start, int end,
+	public List<Subject> findByG_P_R(
+		long groupId, long projectId, String randomNo, int start, int end,
 		OrderByComparator<Subject> orderByComparator) {
 
-		return findByRandomNo(randomNo, start, end, orderByComparator, true);
+		return findByG_P_R(
+			groupId, projectId, randomNo, start, end, orderByComparator, true);
 	}
 
 	/**
-	 * Returns an ordered range of all the subjects where randomNo = &#63;.
+	 * Returns an ordered range of all the subjects where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>SubjectModelImpl</code>.
 	 * </p>
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @param start the lower bound of the range of subjects
 	 * @param end the upper bound of the range of subjects (not inclusive)
@@ -4567,8 +4581,8 @@ public class SubjectPersistenceImpl
 	 * @return the ordered range of matching subjects
 	 */
 	@Override
-	public List<Subject> findByRandomNo(
-		String randomNo, int start, int end,
+	public List<Subject> findByG_P_R(
+		long groupId, long projectId, String randomNo, int start, int end,
 		OrderByComparator<Subject> orderByComparator, boolean useFinderCache) {
 
 		randomNo = Objects.toString(randomNo, "");
@@ -4580,13 +4594,15 @@ public class SubjectPersistenceImpl
 			(orderByComparator == null)) {
 
 			if (useFinderCache) {
-				finderPath = _finderPathWithoutPaginationFindByRandomNo;
-				finderArgs = new Object[] {randomNo};
+				finderPath = _finderPathWithoutPaginationFindByG_P_R;
+				finderArgs = new Object[] {groupId, projectId, randomNo};
 			}
 		}
 		else if (useFinderCache) {
-			finderPath = _finderPathWithPaginationFindByRandomNo;
-			finderArgs = new Object[] {randomNo, start, end, orderByComparator};
+			finderPath = _finderPathWithPaginationFindByG_P_R;
+			finderArgs = new Object[] {
+				groupId, projectId, randomNo, start, end, orderByComparator
+			};
 		}
 
 		List<Subject> list = null;
@@ -4597,7 +4613,10 @@ public class SubjectPersistenceImpl
 
 			if ((list != null) && !list.isEmpty()) {
 				for (Subject subject : list) {
-					if (!randomNo.equals(subject.getRandomNo())) {
+					if ((groupId != subject.getGroupId()) ||
+						(projectId != subject.getProjectId()) ||
+						!randomNo.equals(subject.getRandomNo())) {
+
 						list = null;
 
 						break;
@@ -4611,23 +4630,27 @@ public class SubjectPersistenceImpl
 
 			if (orderByComparator != null) {
 				sb = new StringBundler(
-					3 + (orderByComparator.getOrderByFields().length * 2));
+					5 + (orderByComparator.getOrderByFields().length * 2));
 			}
 			else {
-				sb = new StringBundler(3);
+				sb = new StringBundler(5);
 			}
 
 			sb.append(_SQL_SELECT_SUBJECT_WHERE);
 
+			sb.append(_FINDER_COLUMN_G_P_R_GROUPID_2);
+
+			sb.append(_FINDER_COLUMN_G_P_R_PROJECTID_2);
+
 			boolean bindRandomNo = false;
 
 			if (randomNo.isEmpty()) {
-				sb.append(_FINDER_COLUMN_RANDOMNO_RANDOMNO_3);
+				sb.append(_FINDER_COLUMN_G_P_R_RANDOMNO_3);
 			}
 			else {
 				bindRandomNo = true;
 
-				sb.append(_FINDER_COLUMN_RANDOMNO_RANDOMNO_2);
+				sb.append(_FINDER_COLUMN_G_P_R_RANDOMNO_2);
 			}
 
 			if (orderByComparator != null) {
@@ -4648,6 +4671,10 @@ public class SubjectPersistenceImpl
 				Query query = session.createQuery(sql);
 
 				QueryPos queryPos = QueryPos.getInstance(query);
+
+				queryPos.add(groupId);
+
+				queryPos.add(projectId);
 
 				if (bindRandomNo) {
 					queryPos.add(randomNo);
@@ -4678,29 +4705,39 @@ public class SubjectPersistenceImpl
 	}
 
 	/**
-	 * Returns the first subject in the ordered set where randomNo = &#63;.
+	 * Returns the first subject in the ordered set where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching subject
 	 * @throws NoSuchSubjectException if a matching subject could not be found
 	 */
 	@Override
-	public Subject findByRandomNo_First(
-			String randomNo, OrderByComparator<Subject> orderByComparator)
+	public Subject findByG_P_R_First(
+			long groupId, long projectId, String randomNo,
+			OrderByComparator<Subject> orderByComparator)
 		throws NoSuchSubjectException {
 
-		Subject subject = fetchByRandomNo_First(randomNo, orderByComparator);
+		Subject subject = fetchByG_P_R_First(
+			groupId, projectId, randomNo, orderByComparator);
 
 		if (subject != null) {
 			return subject;
 		}
 
-		StringBundler sb = new StringBundler(4);
+		StringBundler sb = new StringBundler(8);
 
 		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-		sb.append("randomNo=");
+		sb.append("groupId=");
+		sb.append(groupId);
+
+		sb.append(", projectId=");
+		sb.append(projectId);
+
+		sb.append(", randomNo=");
 		sb.append(randomNo);
 
 		sb.append("}");
@@ -4709,17 +4746,21 @@ public class SubjectPersistenceImpl
 	}
 
 	/**
-	 * Returns the first subject in the ordered set where randomNo = &#63;.
+	 * Returns the first subject in the ordered set where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching subject, or <code>null</code> if a matching subject could not be found
 	 */
 	@Override
-	public Subject fetchByRandomNo_First(
-		String randomNo, OrderByComparator<Subject> orderByComparator) {
+	public Subject fetchByG_P_R_First(
+		long groupId, long projectId, String randomNo,
+		OrderByComparator<Subject> orderByComparator) {
 
-		List<Subject> list = findByRandomNo(randomNo, 0, 1, orderByComparator);
+		List<Subject> list = findByG_P_R(
+			groupId, projectId, randomNo, 0, 1, orderByComparator);
 
 		if (!list.isEmpty()) {
 			return list.get(0);
@@ -4729,29 +4770,39 @@ public class SubjectPersistenceImpl
 	}
 
 	/**
-	 * Returns the last subject in the ordered set where randomNo = &#63;.
+	 * Returns the last subject in the ordered set where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching subject
 	 * @throws NoSuchSubjectException if a matching subject could not be found
 	 */
 	@Override
-	public Subject findByRandomNo_Last(
-			String randomNo, OrderByComparator<Subject> orderByComparator)
+	public Subject findByG_P_R_Last(
+			long groupId, long projectId, String randomNo,
+			OrderByComparator<Subject> orderByComparator)
 		throws NoSuchSubjectException {
 
-		Subject subject = fetchByRandomNo_Last(randomNo, orderByComparator);
+		Subject subject = fetchByG_P_R_Last(
+			groupId, projectId, randomNo, orderByComparator);
 
 		if (subject != null) {
 			return subject;
 		}
 
-		StringBundler sb = new StringBundler(4);
+		StringBundler sb = new StringBundler(8);
 
 		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-		sb.append("randomNo=");
+		sb.append("groupId=");
+		sb.append(groupId);
+
+		sb.append(", projectId=");
+		sb.append(projectId);
+
+		sb.append(", randomNo=");
 		sb.append(randomNo);
 
 		sb.append("}");
@@ -4760,24 +4811,27 @@ public class SubjectPersistenceImpl
 	}
 
 	/**
-	 * Returns the last subject in the ordered set where randomNo = &#63;.
+	 * Returns the last subject in the ordered set where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching subject, or <code>null</code> if a matching subject could not be found
 	 */
 	@Override
-	public Subject fetchByRandomNo_Last(
-		String randomNo, OrderByComparator<Subject> orderByComparator) {
+	public Subject fetchByG_P_R_Last(
+		long groupId, long projectId, String randomNo,
+		OrderByComparator<Subject> orderByComparator) {
 
-		int count = countByRandomNo(randomNo);
+		int count = countByG_P_R(groupId, projectId, randomNo);
 
 		if (count == 0) {
 			return null;
 		}
 
-		List<Subject> list = findByRandomNo(
-			randomNo, count - 1, count, orderByComparator);
+		List<Subject> list = findByG_P_R(
+			groupId, projectId, randomNo, count - 1, count, orderByComparator);
 
 		if (!list.isEmpty()) {
 			return list.get(0);
@@ -4787,17 +4841,19 @@ public class SubjectPersistenceImpl
 	}
 
 	/**
-	 * Returns the subjects before and after the current subject in the ordered set where randomNo = &#63;.
+	 * Returns the subjects before and after the current subject in the ordered set where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
 	 *
 	 * @param subjectId the primary key of the current subject
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next subject
 	 * @throws NoSuchSubjectException if a subject with the primary key could not be found
 	 */
 	@Override
-	public Subject[] findByRandomNo_PrevAndNext(
-			long subjectId, String randomNo,
+	public Subject[] findByG_P_R_PrevAndNext(
+			long subjectId, long groupId, long projectId, String randomNo,
 			OrderByComparator<Subject> orderByComparator)
 		throws NoSuchSubjectException {
 
@@ -4812,13 +4868,15 @@ public class SubjectPersistenceImpl
 
 			Subject[] array = new SubjectImpl[3];
 
-			array[0] = getByRandomNo_PrevAndNext(
-				session, subject, randomNo, orderByComparator, true);
+			array[0] = getByG_P_R_PrevAndNext(
+				session, subject, groupId, projectId, randomNo,
+				orderByComparator, true);
 
 			array[1] = subject;
 
-			array[2] = getByRandomNo_PrevAndNext(
-				session, subject, randomNo, orderByComparator, false);
+			array[2] = getByG_P_R_PrevAndNext(
+				session, subject, groupId, projectId, randomNo,
+				orderByComparator, false);
 
 			return array;
 		}
@@ -4830,32 +4888,37 @@ public class SubjectPersistenceImpl
 		}
 	}
 
-	protected Subject getByRandomNo_PrevAndNext(
-		Session session, Subject subject, String randomNo,
-		OrderByComparator<Subject> orderByComparator, boolean previous) {
+	protected Subject getByG_P_R_PrevAndNext(
+		Session session, Subject subject, long groupId, long projectId,
+		String randomNo, OrderByComparator<Subject> orderByComparator,
+		boolean previous) {
 
 		StringBundler sb = null;
 
 		if (orderByComparator != null) {
 			sb = new StringBundler(
-				4 + (orderByComparator.getOrderByConditionFields().length * 3) +
+				6 + (orderByComparator.getOrderByConditionFields().length * 3) +
 					(orderByComparator.getOrderByFields().length * 3));
 		}
 		else {
-			sb = new StringBundler(3);
+			sb = new StringBundler(5);
 		}
 
 		sb.append(_SQL_SELECT_SUBJECT_WHERE);
 
+		sb.append(_FINDER_COLUMN_G_P_R_GROUPID_2);
+
+		sb.append(_FINDER_COLUMN_G_P_R_PROJECTID_2);
+
 		boolean bindRandomNo = false;
 
 		if (randomNo.isEmpty()) {
-			sb.append(_FINDER_COLUMN_RANDOMNO_RANDOMNO_3);
+			sb.append(_FINDER_COLUMN_G_P_R_RANDOMNO_3);
 		}
 		else {
 			bindRandomNo = true;
 
-			sb.append(_FINDER_COLUMN_RANDOMNO_RANDOMNO_2);
+			sb.append(_FINDER_COLUMN_G_P_R_RANDOMNO_2);
 		}
 
 		if (orderByComparator != null) {
@@ -4927,6 +4990,10 @@ public class SubjectPersistenceImpl
 
 		QueryPos queryPos = QueryPos.getInstance(query);
 
+		queryPos.add(groupId);
+
+		queryPos.add(projectId);
+
 		if (bindRandomNo) {
 			queryPos.add(randomNo);
 		}
@@ -4950,50 +5017,59 @@ public class SubjectPersistenceImpl
 	}
 
 	/**
-	 * Removes all the subjects where randomNo = &#63; from the database.
+	 * Removes all the subjects where groupId = &#63; and projectId = &#63; and randomNo = &#63; from the database.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 */
 	@Override
-	public void removeByRandomNo(String randomNo) {
+	public void removeByG_P_R(long groupId, long projectId, String randomNo) {
 		for (Subject subject :
-				findByRandomNo(
-					randomNo, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
+				findByG_P_R(
+					groupId, projectId, randomNo, QueryUtil.ALL_POS,
+					QueryUtil.ALL_POS, null)) {
 
 			remove(subject);
 		}
 	}
 
 	/**
-	 * Returns the number of subjects where randomNo = &#63;.
+	 * Returns the number of subjects where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @return the number of matching subjects
 	 */
 	@Override
-	public int countByRandomNo(String randomNo) {
+	public int countByG_P_R(long groupId, long projectId, String randomNo) {
 		randomNo = Objects.toString(randomNo, "");
 
-		FinderPath finderPath = _finderPathCountByRandomNo;
+		FinderPath finderPath = _finderPathCountByG_P_R;
 
-		Object[] finderArgs = new Object[] {randomNo};
+		Object[] finderArgs = new Object[] {groupId, projectId, randomNo};
 
 		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
 
 		if (count == null) {
-			StringBundler sb = new StringBundler(2);
+			StringBundler sb = new StringBundler(4);
 
 			sb.append(_SQL_COUNT_SUBJECT_WHERE);
+
+			sb.append(_FINDER_COLUMN_G_P_R_GROUPID_2);
+
+			sb.append(_FINDER_COLUMN_G_P_R_PROJECTID_2);
 
 			boolean bindRandomNo = false;
 
 			if (randomNo.isEmpty()) {
-				sb.append(_FINDER_COLUMN_RANDOMNO_RANDOMNO_3);
+				sb.append(_FINDER_COLUMN_G_P_R_RANDOMNO_3);
 			}
 			else {
 				bindRandomNo = true;
 
-				sb.append(_FINDER_COLUMN_RANDOMNO_RANDOMNO_2);
+				sb.append(_FINDER_COLUMN_G_P_R_RANDOMNO_2);
 			}
 
 			String sql = sb.toString();
@@ -5006,6 +5082,10 @@ public class SubjectPersistenceImpl
 				Query query = session.createQuery(sql);
 
 				QueryPos queryPos = QueryPos.getInstance(query);
+
+				queryPos.add(groupId);
+
+				queryPos.add(projectId);
 
 				if (bindRandomNo) {
 					queryPos.add(randomNo);
@@ -5028,10 +5108,16 @@ public class SubjectPersistenceImpl
 		return count.intValue();
 	}
 
-	private static final String _FINDER_COLUMN_RANDOMNO_RANDOMNO_2 =
+	private static final String _FINDER_COLUMN_G_P_R_GROUPID_2 =
+		"subject.groupId = ? AND ";
+
+	private static final String _FINDER_COLUMN_G_P_R_PROJECTID_2 =
+		"subject.projectId = ? AND ";
+
+	private static final String _FINDER_COLUMN_G_P_R_RANDOMNO_2 =
 		"subject.randomNo = ?";
 
-	private static final String _FINDER_COLUMN_RANDOMNO_RANDOMNO_3 =
+	private static final String _FINDER_COLUMN_G_P_R_RANDOMNO_3 =
 		"(subject.randomNo IS NULL OR subject.randomNo = '')";
 
 	public SubjectPersistenceImpl() {
@@ -5423,11 +5509,14 @@ public class SubjectPersistenceImpl
 			finderCache.removeResult(
 				_finderPathWithoutPaginationFindByExpGroupId, args);
 
-			args = new Object[] {subjectModelImpl.getRandomNo()};
+			args = new Object[] {
+				subjectModelImpl.getGroupId(), subjectModelImpl.getProjectId(),
+				subjectModelImpl.getRandomNo()
+			};
 
-			finderCache.removeResult(_finderPathCountByRandomNo, args);
+			finderCache.removeResult(_finderPathCountByG_P_R, args);
 			finderCache.removeResult(
-				_finderPathWithoutPaginationFindByRandomNo, args);
+				_finderPathWithoutPaginationFindByG_P_R, args);
 
 			finderCache.removeResult(_finderPathCountAll, FINDER_ARGS_EMPTY);
 			finderCache.removeResult(
@@ -5594,22 +5683,28 @@ public class SubjectPersistenceImpl
 			}
 
 			if ((subjectModelImpl.getColumnBitmask() &
-				 _finderPathWithoutPaginationFindByRandomNo.
-					 getColumnBitmask()) != 0) {
+				 _finderPathWithoutPaginationFindByG_P_R.getColumnBitmask()) !=
+					 0) {
 
 				Object[] args = new Object[] {
+					subjectModelImpl.getOriginalGroupId(),
+					subjectModelImpl.getOriginalProjectId(),
 					subjectModelImpl.getOriginalRandomNo()
 				};
 
-				finderCache.removeResult(_finderPathCountByRandomNo, args);
+				finderCache.removeResult(_finderPathCountByG_P_R, args);
 				finderCache.removeResult(
-					_finderPathWithoutPaginationFindByRandomNo, args);
+					_finderPathWithoutPaginationFindByG_P_R, args);
 
-				args = new Object[] {subjectModelImpl.getRandomNo()};
+				args = new Object[] {
+					subjectModelImpl.getGroupId(),
+					subjectModelImpl.getProjectId(),
+					subjectModelImpl.getRandomNo()
+				};
 
-				finderCache.removeResult(_finderPathCountByRandomNo, args);
+				finderCache.removeResult(_finderPathCountByG_P_R, args);
 				finderCache.removeResult(
-					_finderPathWithoutPaginationFindByRandomNo, args);
+					_finderPathWithoutPaginationFindByG_P_R, args);
 			}
 		}
 
@@ -6079,24 +6174,33 @@ public class SubjectPersistenceImpl
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByExpGroupId",
 			new String[] {Long.class.getName()});
 
-		_finderPathWithPaginationFindByRandomNo = new FinderPath(
+		_finderPathWithPaginationFindByG_P_R = new FinderPath(
 			entityCacheEnabled, finderCacheEnabled, SubjectImpl.class,
-			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByRandomNo",
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByG_P_R",
 			new String[] {
+				Long.class.getName(), Long.class.getName(),
 				String.class.getName(), Integer.class.getName(),
 				Integer.class.getName(), OrderByComparator.class.getName()
 			});
 
-		_finderPathWithoutPaginationFindByRandomNo = new FinderPath(
+		_finderPathWithoutPaginationFindByG_P_R = new FinderPath(
 			entityCacheEnabled, finderCacheEnabled, SubjectImpl.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByRandomNo",
-			new String[] {String.class.getName()},
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByG_P_R",
+			new String[] {
+				Long.class.getName(), Long.class.getName(),
+				String.class.getName()
+			},
+			SubjectModelImpl.GROUPID_COLUMN_BITMASK |
+			SubjectModelImpl.PROJECTID_COLUMN_BITMASK |
 			SubjectModelImpl.RANDOMNO_COLUMN_BITMASK);
 
-		_finderPathCountByRandomNo = new FinderPath(
+		_finderPathCountByG_P_R = new FinderPath(
 			entityCacheEnabled, finderCacheEnabled, Long.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByRandomNo",
-			new String[] {String.class.getName()});
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByG_P_R",
+			new String[] {
+				Long.class.getName(), Long.class.getName(),
+				String.class.getName()
+			});
 
 		_setSubjectUtilPersistence(this);
 	}

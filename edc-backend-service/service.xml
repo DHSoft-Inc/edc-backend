@@ -418,8 +418,8 @@
         
     	
        <finder name="G_P" return-type="Collection">
-        	<finder-column name="groupId"></finder-column>
-        	<finder-column name="projectId"></finder-column>
+        	<finder-column name="groupId"/>
+        	<finder-column name="projectId"/>
         </finder>        
         
         <finder name="ProjectId" return-type="Collection">
@@ -438,8 +438,10 @@
     		<finder-column name="expGroupId" />
     	</finder>  
     	
-    	<finder name="RandomNo" return-type="Collection">
-           <finder-column name="randomNo" />
+    	<finder name="G_P_R" return-type="Collection">
+			<finder-column name="groupId"/>
+        	<finder-column name="projectId"/>
+			<finder-column name="randomNo" />
         </finder>
 
         <!-- Reference -->
@@ -702,8 +704,8 @@
     	</finder>
          	
        	<finder name="G_P" return-type="Collection">
-        	<finder-column name="groupId"></finder-column>
-        	<finder-column name="projectId"></finder-column>
+        	<finder-column name="groupId"/>
+        	<finder-column name="projectId"/>
         </finder>     
         
        	<finder name="UserId" return-type="Collection">
@@ -711,11 +713,13 @@
     	</finder>        
         
         <finder name="ExpGroupId" return-type="Randomization">
-          <finder-column name="expGroupId" />
+			<finder-column name="expGroupId" />
        </finder>
        
-       <finder name="RandomNo" return-type="Randomization">
-          <finder-column name="randomNo" />
+       <finder name="G_P_R" return-type="Randomization">
+			<finder-column name="groupId"/>
+			<finder-column name="projectId"/>
+			<finder-column name="randomNo" />
        </finder>      
                         
         <!-- Reference -->

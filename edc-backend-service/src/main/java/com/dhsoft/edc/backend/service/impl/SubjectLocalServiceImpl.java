@@ -108,6 +108,9 @@ public class SubjectLocalServiceImpl extends SubjectLocalServiceBaseImpl {
 		}
 	}
 	
+	public List<Subject> findByGroupAndProjectAndRandomNo (long groupId, long projectId, String randomNo) {
+		return subjectPersistence.findByG_P_R(groupId, projectId, randomNo);
+	}
 	
 	public List<Subject> findByInstitution (long InstitutionId) {
 		

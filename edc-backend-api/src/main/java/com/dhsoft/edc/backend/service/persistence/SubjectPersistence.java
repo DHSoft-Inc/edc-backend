@@ -1257,53 +1257,62 @@ public interface SubjectPersistence extends BasePersistence<Subject> {
 	public int countByExpGroupId(long expGroupId);
 
 	/**
-	 * Returns all the subjects where randomNo = &#63;.
+	 * Returns all the subjects where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @return the matching subjects
 	 */
-	public java.util.List<Subject> findByRandomNo(String randomNo);
+	public java.util.List<Subject> findByG_P_R(
+		long groupId, long projectId, String randomNo);
 
 	/**
-	 * Returns a range of all the subjects where randomNo = &#63;.
+	 * Returns a range of all the subjects where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>SubjectModelImpl</code>.
 	 * </p>
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @param start the lower bound of the range of subjects
 	 * @param end the upper bound of the range of subjects (not inclusive)
 	 * @return the range of matching subjects
 	 */
-	public java.util.List<Subject> findByRandomNo(
-		String randomNo, int start, int end);
+	public java.util.List<Subject> findByG_P_R(
+		long groupId, long projectId, String randomNo, int start, int end);
 
 	/**
-	 * Returns an ordered range of all the subjects where randomNo = &#63;.
+	 * Returns an ordered range of all the subjects where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>SubjectModelImpl</code>.
 	 * </p>
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @param start the lower bound of the range of subjects
 	 * @param end the upper bound of the range of subjects (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching subjects
 	 */
-	public java.util.List<Subject> findByRandomNo(
-		String randomNo, int start, int end,
+	public java.util.List<Subject> findByG_P_R(
+		long groupId, long projectId, String randomNo, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<Subject>
 			orderByComparator);
 
 	/**
-	 * Returns an ordered range of all the subjects where randomNo = &#63;.
+	 * Returns an ordered range of all the subjects where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>SubjectModelImpl</code>.
 	 * </p>
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @param start the lower bound of the range of subjects
 	 * @param end the upper bound of the range of subjects (not inclusive)
@@ -1311,93 +1320,107 @@ public interface SubjectPersistence extends BasePersistence<Subject> {
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching subjects
 	 */
-	public java.util.List<Subject> findByRandomNo(
-		String randomNo, int start, int end,
+	public java.util.List<Subject> findByG_P_R(
+		long groupId, long projectId, String randomNo, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<Subject>
 			orderByComparator,
 		boolean useFinderCache);
 
 	/**
-	 * Returns the first subject in the ordered set where randomNo = &#63;.
+	 * Returns the first subject in the ordered set where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching subject
 	 * @throws NoSuchSubjectException if a matching subject could not be found
 	 */
-	public Subject findByRandomNo_First(
-			String randomNo,
+	public Subject findByG_P_R_First(
+			long groupId, long projectId, String randomNo,
 			com.liferay.portal.kernel.util.OrderByComparator<Subject>
 				orderByComparator)
 		throws NoSuchSubjectException;
 
 	/**
-	 * Returns the first subject in the ordered set where randomNo = &#63;.
+	 * Returns the first subject in the ordered set where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching subject, or <code>null</code> if a matching subject could not be found
 	 */
-	public Subject fetchByRandomNo_First(
-		String randomNo,
+	public Subject fetchByG_P_R_First(
+		long groupId, long projectId, String randomNo,
 		com.liferay.portal.kernel.util.OrderByComparator<Subject>
 			orderByComparator);
 
 	/**
-	 * Returns the last subject in the ordered set where randomNo = &#63;.
+	 * Returns the last subject in the ordered set where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching subject
 	 * @throws NoSuchSubjectException if a matching subject could not be found
 	 */
-	public Subject findByRandomNo_Last(
-			String randomNo,
+	public Subject findByG_P_R_Last(
+			long groupId, long projectId, String randomNo,
 			com.liferay.portal.kernel.util.OrderByComparator<Subject>
 				orderByComparator)
 		throws NoSuchSubjectException;
 
 	/**
-	 * Returns the last subject in the ordered set where randomNo = &#63;.
+	 * Returns the last subject in the ordered set where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching subject, or <code>null</code> if a matching subject could not be found
 	 */
-	public Subject fetchByRandomNo_Last(
-		String randomNo,
+	public Subject fetchByG_P_R_Last(
+		long groupId, long projectId, String randomNo,
 		com.liferay.portal.kernel.util.OrderByComparator<Subject>
 			orderByComparator);
 
 	/**
-	 * Returns the subjects before and after the current subject in the ordered set where randomNo = &#63;.
+	 * Returns the subjects before and after the current subject in the ordered set where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
 	 *
 	 * @param subjectId the primary key of the current subject
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next subject
 	 * @throws NoSuchSubjectException if a subject with the primary key could not be found
 	 */
-	public Subject[] findByRandomNo_PrevAndNext(
-			long subjectId, String randomNo,
+	public Subject[] findByG_P_R_PrevAndNext(
+			long subjectId, long groupId, long projectId, String randomNo,
 			com.liferay.portal.kernel.util.OrderByComparator<Subject>
 				orderByComparator)
 		throws NoSuchSubjectException;
 
 	/**
-	 * Removes all the subjects where randomNo = &#63; from the database.
+	 * Removes all the subjects where groupId = &#63; and projectId = &#63; and randomNo = &#63; from the database.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 */
-	public void removeByRandomNo(String randomNo);
+	public void removeByG_P_R(long groupId, long projectId, String randomNo);
 
 	/**
-	 * Returns the number of subjects where randomNo = &#63;.
+	 * Returns the number of subjects where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @return the number of matching subjects
 	 */
-	public int countByRandomNo(String randomNo);
+	public int countByG_P_R(long groupId, long projectId, String randomNo);
 
 	/**
 	 * Caches the subject in the entity cache if it is enabled.

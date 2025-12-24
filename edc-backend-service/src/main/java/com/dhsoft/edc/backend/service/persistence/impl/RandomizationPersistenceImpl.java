@@ -3247,28 +3247,38 @@ public class RandomizationPersistenceImpl
 	private static final String _FINDER_COLUMN_EXPGROUPID_EXPGROUPID_2 =
 		"randomization.expGroupId = ?";
 
-	private FinderPath _finderPathFetchByRandomNo;
-	private FinderPath _finderPathCountByRandomNo;
+	private FinderPath _finderPathFetchByG_P_R;
+	private FinderPath _finderPathCountByG_P_R;
 
 	/**
-	 * Returns the randomization where randomNo = &#63; or throws a <code>NoSuchRandomizationException</code> if it could not be found.
+	 * Returns the randomization where groupId = &#63; and projectId = &#63; and randomNo = &#63; or throws a <code>NoSuchRandomizationException</code> if it could not be found.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @return the matching randomization
 	 * @throws NoSuchRandomizationException if a matching randomization could not be found
 	 */
 	@Override
-	public Randomization findByRandomNo(String randomNo)
+	public Randomization findByG_P_R(
+			long groupId, long projectId, String randomNo)
 		throws NoSuchRandomizationException {
 
-		Randomization randomization = fetchByRandomNo(randomNo);
+		Randomization randomization = fetchByG_P_R(
+			groupId, projectId, randomNo);
 
 		if (randomization == null) {
-			StringBundler sb = new StringBundler(4);
+			StringBundler sb = new StringBundler(8);
 
 			sb.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-			sb.append("randomNo=");
+			sb.append("groupId=");
+			sb.append(groupId);
+
+			sb.append(", projectId=");
+			sb.append(projectId);
+
+			sb.append(", randomNo=");
 			sb.append(randomNo);
 
 			sb.append("}");
@@ -3284,64 +3294,77 @@ public class RandomizationPersistenceImpl
 	}
 
 	/**
-	 * Returns the randomization where randomNo = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	 * Returns the randomization where groupId = &#63; and projectId = &#63; and randomNo = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @return the matching randomization, or <code>null</code> if a matching randomization could not be found
 	 */
 	@Override
-	public Randomization fetchByRandomNo(String randomNo) {
-		return fetchByRandomNo(randomNo, true);
+	public Randomization fetchByG_P_R(
+		long groupId, long projectId, String randomNo) {
+
+		return fetchByG_P_R(groupId, projectId, randomNo, true);
 	}
 
 	/**
-	 * Returns the randomization where randomNo = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 * Returns the randomization where groupId = &#63; and projectId = &#63; and randomNo = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the matching randomization, or <code>null</code> if a matching randomization could not be found
 	 */
 	@Override
-	public Randomization fetchByRandomNo(
-		String randomNo, boolean useFinderCache) {
+	public Randomization fetchByG_P_R(
+		long groupId, long projectId, String randomNo, boolean useFinderCache) {
 
 		randomNo = Objects.toString(randomNo, "");
 
 		Object[] finderArgs = null;
 
 		if (useFinderCache) {
-			finderArgs = new Object[] {randomNo};
+			finderArgs = new Object[] {groupId, projectId, randomNo};
 		}
 
 		Object result = null;
 
 		if (useFinderCache) {
 			result = finderCache.getResult(
-				_finderPathFetchByRandomNo, finderArgs, this);
+				_finderPathFetchByG_P_R, finderArgs, this);
 		}
 
 		if (result instanceof Randomization) {
 			Randomization randomization = (Randomization)result;
 
-			if (!Objects.equals(randomNo, randomization.getRandomNo())) {
+			if ((groupId != randomization.getGroupId()) ||
+				(projectId != randomization.getProjectId()) ||
+				!Objects.equals(randomNo, randomization.getRandomNo())) {
+
 				result = null;
 			}
 		}
 
 		if (result == null) {
-			StringBundler sb = new StringBundler(3);
+			StringBundler sb = new StringBundler(5);
 
 			sb.append(_SQL_SELECT_RANDOMIZATION_WHERE);
+
+			sb.append(_FINDER_COLUMN_G_P_R_GROUPID_2);
+
+			sb.append(_FINDER_COLUMN_G_P_R_PROJECTID_2);
 
 			boolean bindRandomNo = false;
 
 			if (randomNo.isEmpty()) {
-				sb.append(_FINDER_COLUMN_RANDOMNO_RANDOMNO_3);
+				sb.append(_FINDER_COLUMN_G_P_R_RANDOMNO_3);
 			}
 			else {
 				bindRandomNo = true;
 
-				sb.append(_FINDER_COLUMN_RANDOMNO_RANDOMNO_2);
+				sb.append(_FINDER_COLUMN_G_P_R_RANDOMNO_2);
 			}
 
 			String sql = sb.toString();
@@ -3355,6 +3378,10 @@ public class RandomizationPersistenceImpl
 
 				QueryPos queryPos = QueryPos.getInstance(query);
 
+				queryPos.add(groupId);
+
+				queryPos.add(projectId);
+
 				if (bindRandomNo) {
 					queryPos.add(randomNo);
 				}
@@ -3364,7 +3391,7 @@ public class RandomizationPersistenceImpl
 				if (list.isEmpty()) {
 					if (useFinderCache) {
 						finderCache.putResult(
-							_finderPathFetchByRandomNo, finderArgs, list);
+							_finderPathFetchByG_P_R, finderArgs, list);
 					}
 				}
 				else {
@@ -3373,11 +3400,13 @@ public class RandomizationPersistenceImpl
 
 						if (_log.isWarnEnabled()) {
 							if (!useFinderCache) {
-								finderArgs = new Object[] {randomNo};
+								finderArgs = new Object[] {
+									groupId, projectId, randomNo
+								};
 							}
 
 							_log.warn(
-								"RandomizationPersistenceImpl.fetchByRandomNo(String, boolean) with parameters (" +
+								"RandomizationPersistenceImpl.fetchByG_P_R(long, long, String, boolean) with parameters (" +
 									StringUtil.merge(finderArgs) +
 										") yields a result set with more than 1 result. This violates the logical unique restriction. There is no order guarantee on which result is returned by this finder.");
 						}
@@ -3393,7 +3422,7 @@ public class RandomizationPersistenceImpl
 			catch (Exception exception) {
 				if (useFinderCache) {
 					finderCache.removeResult(
-						_finderPathFetchByRandomNo, finderArgs);
+						_finderPathFetchByG_P_R, finderArgs);
 				}
 
 				throw processException(exception);
@@ -3412,50 +3441,59 @@ public class RandomizationPersistenceImpl
 	}
 
 	/**
-	 * Removes the randomization where randomNo = &#63; from the database.
+	 * Removes the randomization where groupId = &#63; and projectId = &#63; and randomNo = &#63; from the database.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @return the randomization that was removed
 	 */
 	@Override
-	public Randomization removeByRandomNo(String randomNo)
+	public Randomization removeByG_P_R(
+			long groupId, long projectId, String randomNo)
 		throws NoSuchRandomizationException {
 
-		Randomization randomization = findByRandomNo(randomNo);
+		Randomization randomization = findByG_P_R(groupId, projectId, randomNo);
 
 		return remove(randomization);
 	}
 
 	/**
-	 * Returns the number of randomizations where randomNo = &#63;.
+	 * Returns the number of randomizations where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param randomNo the random no
 	 * @return the number of matching randomizations
 	 */
 	@Override
-	public int countByRandomNo(String randomNo) {
+	public int countByG_P_R(long groupId, long projectId, String randomNo) {
 		randomNo = Objects.toString(randomNo, "");
 
-		FinderPath finderPath = _finderPathCountByRandomNo;
+		FinderPath finderPath = _finderPathCountByG_P_R;
 
-		Object[] finderArgs = new Object[] {randomNo};
+		Object[] finderArgs = new Object[] {groupId, projectId, randomNo};
 
 		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
 
 		if (count == null) {
-			StringBundler sb = new StringBundler(2);
+			StringBundler sb = new StringBundler(4);
 
 			sb.append(_SQL_COUNT_RANDOMIZATION_WHERE);
+
+			sb.append(_FINDER_COLUMN_G_P_R_GROUPID_2);
+
+			sb.append(_FINDER_COLUMN_G_P_R_PROJECTID_2);
 
 			boolean bindRandomNo = false;
 
 			if (randomNo.isEmpty()) {
-				sb.append(_FINDER_COLUMN_RANDOMNO_RANDOMNO_3);
+				sb.append(_FINDER_COLUMN_G_P_R_RANDOMNO_3);
 			}
 			else {
 				bindRandomNo = true;
 
-				sb.append(_FINDER_COLUMN_RANDOMNO_RANDOMNO_2);
+				sb.append(_FINDER_COLUMN_G_P_R_RANDOMNO_2);
 			}
 
 			String sql = sb.toString();
@@ -3468,6 +3506,10 @@ public class RandomizationPersistenceImpl
 				Query query = session.createQuery(sql);
 
 				QueryPos queryPos = QueryPos.getInstance(query);
+
+				queryPos.add(groupId);
+
+				queryPos.add(projectId);
 
 				if (bindRandomNo) {
 					queryPos.add(randomNo);
@@ -3490,10 +3532,16 @@ public class RandomizationPersistenceImpl
 		return count.intValue();
 	}
 
-	private static final String _FINDER_COLUMN_RANDOMNO_RANDOMNO_2 =
+	private static final String _FINDER_COLUMN_G_P_R_GROUPID_2 =
+		"randomization.groupId = ? AND ";
+
+	private static final String _FINDER_COLUMN_G_P_R_PROJECTID_2 =
+		"randomization.projectId = ? AND ";
+
+	private static final String _FINDER_COLUMN_G_P_R_RANDOMNO_2 =
 		"randomization.randomNo = ?";
 
-	private static final String _FINDER_COLUMN_RANDOMNO_RANDOMNO_3 =
+	private static final String _FINDER_COLUMN_G_P_R_RANDOMNO_3 =
 		"(randomization.randomNo IS NULL OR randomization.randomNo = '')";
 
 	public RandomizationPersistenceImpl() {
@@ -3530,8 +3578,12 @@ public class RandomizationPersistenceImpl
 			new Object[] {randomization.getExpGroupId()}, randomization);
 
 		finderCache.putResult(
-			_finderPathFetchByRandomNo,
-			new Object[] {randomization.getRandomNo()}, randomization);
+			_finderPathFetchByG_P_R,
+			new Object[] {
+				randomization.getGroupId(), randomization.getProjectId(),
+				randomization.getRandomNo()
+			},
+			randomization);
 
 		randomization.resetOriginalValues();
 	}
@@ -3646,12 +3698,16 @@ public class RandomizationPersistenceImpl
 		finderCache.putResult(
 			_finderPathFetchByExpGroupId, args, randomizationModelImpl, false);
 
-		args = new Object[] {randomizationModelImpl.getRandomNo()};
+		args = new Object[] {
+			randomizationModelImpl.getGroupId(),
+			randomizationModelImpl.getProjectId(),
+			randomizationModelImpl.getRandomNo()
+		};
 
 		finderCache.putResult(
-			_finderPathCountByRandomNo, args, Long.valueOf(1), false);
+			_finderPathCountByG_P_R, args, Long.valueOf(1), false);
 		finderCache.putResult(
-			_finderPathFetchByRandomNo, args, randomizationModelImpl, false);
+			_finderPathFetchByG_P_R, args, randomizationModelImpl, false);
 	}
 
 	protected void clearUniqueFindersCache(
@@ -3700,21 +3756,27 @@ public class RandomizationPersistenceImpl
 		}
 
 		if (clearCurrent) {
-			Object[] args = new Object[] {randomizationModelImpl.getRandomNo()};
+			Object[] args = new Object[] {
+				randomizationModelImpl.getGroupId(),
+				randomizationModelImpl.getProjectId(),
+				randomizationModelImpl.getRandomNo()
+			};
 
-			finderCache.removeResult(_finderPathCountByRandomNo, args);
-			finderCache.removeResult(_finderPathFetchByRandomNo, args);
+			finderCache.removeResult(_finderPathCountByG_P_R, args);
+			finderCache.removeResult(_finderPathFetchByG_P_R, args);
 		}
 
 		if ((randomizationModelImpl.getColumnBitmask() &
-			 _finderPathFetchByRandomNo.getColumnBitmask()) != 0) {
+			 _finderPathFetchByG_P_R.getColumnBitmask()) != 0) {
 
 			Object[] args = new Object[] {
+				randomizationModelImpl.getOriginalGroupId(),
+				randomizationModelImpl.getOriginalProjectId(),
 				randomizationModelImpl.getOriginalRandomNo()
 			};
 
-			finderCache.removeResult(_finderPathCountByRandomNo, args);
-			finderCache.removeResult(_finderPathFetchByRandomNo, args);
+			finderCache.removeResult(_finderPathCountByG_P_R, args);
+			finderCache.removeResult(_finderPathFetchByG_P_R, args);
 		}
 	}
 
@@ -4472,16 +4534,24 @@ public class RandomizationPersistenceImpl
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByExpGroupId",
 			new String[] {Long.class.getName()});
 
-		_finderPathFetchByRandomNo = new FinderPath(
+		_finderPathFetchByG_P_R = new FinderPath(
 			entityCacheEnabled, finderCacheEnabled, RandomizationImpl.class,
-			FINDER_CLASS_NAME_ENTITY, "fetchByRandomNo",
-			new String[] {String.class.getName()},
+			FINDER_CLASS_NAME_ENTITY, "fetchByG_P_R",
+			new String[] {
+				Long.class.getName(), Long.class.getName(),
+				String.class.getName()
+			},
+			RandomizationModelImpl.GROUPID_COLUMN_BITMASK |
+			RandomizationModelImpl.PROJECTID_COLUMN_BITMASK |
 			RandomizationModelImpl.RANDOMNO_COLUMN_BITMASK);
 
-		_finderPathCountByRandomNo = new FinderPath(
+		_finderPathCountByG_P_R = new FinderPath(
 			entityCacheEnabled, finderCacheEnabled, Long.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByRandomNo",
-			new String[] {String.class.getName()});
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByG_P_R",
+			new String[] {
+				Long.class.getName(), Long.class.getName(),
+				String.class.getName()
+			});
 
 		_setRandomizationUtilPersistence(this);
 	}
