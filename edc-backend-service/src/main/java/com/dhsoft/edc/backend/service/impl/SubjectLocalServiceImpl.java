@@ -33,7 +33,7 @@ import org.osgi.service.component.annotations.Component;
 )
 public class SubjectLocalServiceImpl extends SubjectLocalServiceBaseImpl {
 	
-	public Subject AddSubject(long companyId, long groupId, long projectId, long institutionId, long userId, String userName, int status, String serialId, String name, int subjectStatus, Date consentAgreeDate) {
+	public Subject AddSubject(long companyId, long groupId, long projectId, long institutionId, long userId, String userName, int status, String serialId, String name, int subjectStatus, String randomNo, long expGroupId, Date consentAgreeDate) {
 		long subjectId = CounterLocalServiceUtil.increment("Subject");
 		
 		Date date = new Date();
@@ -52,6 +52,8 @@ public class SubjectLocalServiceImpl extends SubjectLocalServiceBaseImpl {
 		newSubject.setSerialId(serialId);
 		newSubject.setName(name);
 		newSubject.setSubjectStatus(subjectStatus);
+		newSubject.setRandomNo(randomNo);
+		newSubject.setExpGroupId(expGroupId);
 		newSubject.setSubjectStatusApplyDate(date);
 		newSubject.setConsentAgreeDate(consentAgreeDate);
 		newSubject.setCreateDate(date);
@@ -62,7 +64,7 @@ public class SubjectLocalServiceImpl extends SubjectLocalServiceBaseImpl {
 		return newSubject;
 	}
 	
-	public void UpdateSubject(long subjectId, long institutionId, long userId, String userName, int status, String serialId, String name, int subjectStatus, Date consentAgreeDate) {
+	public void UpdateSubject(long subjectId, long institutionId, long userId, String userName, int status, String serialId, String name, int subjectStatus, String randomNo, long expGroupId, Date consentAgreeDate) {
 		try {
 		
 			Date date = new Date();
@@ -82,6 +84,8 @@ public class SubjectLocalServiceImpl extends SubjectLocalServiceBaseImpl {
 			updateSubject.setName(name);
 			updateSubject.setSubjectStatus(subjectStatus);
 			if (subjectStatus != originSubjectStatus) { updateSubject.setSubjectStatusApplyDate(date); }
+			updateSubject.setRandomNo(randomNo);
+			updateSubject.setExpGroupId(expGroupId);
 			updateSubject.setConsentAgreeDate(consentAgreeDate);
 			updateSubject.setModifiedDate(date);
 			
