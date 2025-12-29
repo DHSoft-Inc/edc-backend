@@ -217,7 +217,7 @@ public class SubjectLocalServiceUtil {
 		return getService().fetchSubjectByUuidAndGroupId(uuid, groupId);
 	}
 
-	public static List<Subject> findByGroupAndProjectAndRandomNo(
+	public static Subject findByGroupAndProjectAndRandomNo(
 		long groupId, long projectId, String randomNo) {
 
 		return getService().findByGroupAndProjectAndRandomNo(
