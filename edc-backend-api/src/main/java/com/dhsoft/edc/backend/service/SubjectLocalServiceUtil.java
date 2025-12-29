@@ -47,11 +47,13 @@ public class SubjectLocalServiceUtil {
 	public static Subject AddSubject(
 		long companyId, long groupId, long projectId, long institutionId,
 		long userId, String userName, int status, String serialId, String name,
-		int subjectStatus, java.util.Date consentAgreeDate) {
+		int subjectStatus, String randomNo, long expGroupId,
+		java.util.Date consentAgreeDate) {
 
 		return getService().AddSubject(
 			companyId, groupId, projectId, institutionId, userId, userName,
-			status, serialId, name, subjectStatus, consentAgreeDate);
+			status, serialId, name, subjectStatus, randomNo, expGroupId,
+			consentAgreeDate);
 	}
 
 	/**
@@ -356,11 +358,11 @@ public class SubjectLocalServiceUtil {
 	public static void UpdateSubject(
 		long subjectId, long institutionId, long userId, String userName,
 		int status, String serialId, String name, int subjectStatus,
-		java.util.Date consentAgreeDate) {
+		String randomNo, long expGroupId, java.util.Date consentAgreeDate) {
 
 		getService().UpdateSubject(
 			subjectId, institutionId, userId, userName, status, serialId, name,
-			subjectStatus, consentAgreeDate);
+			subjectStatus, randomNo, expGroupId, consentAgreeDate);
 	}
 
 	/**

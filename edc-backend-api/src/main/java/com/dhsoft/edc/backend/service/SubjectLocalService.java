@@ -67,7 +67,8 @@ public interface SubjectLocalService
 	public Subject AddSubject(
 		long companyId, long groupId, long projectId, long institutionId,
 		long userId, String userName, int status, String serialId, String name,
-		int subjectStatus, Date consentAgreeDate);
+		int subjectStatus, String randomNo, long expGroupId,
+		Date consentAgreeDate);
 
 	/**
 	 * Adds the subject to the database. Also notifies the appropriate model listeners.
@@ -314,7 +315,7 @@ public interface SubjectLocalService
 	public void UpdateSubject(
 		long subjectId, long institutionId, long userId, String userName,
 		int status, String serialId, String name, int subjectStatus,
-		Date consentAgreeDate);
+		String randomNo, long expGroupId, Date consentAgreeDate);
 
 	/**
 	 * Updates the subject in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
