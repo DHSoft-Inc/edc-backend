@@ -1545,191 +1545,64 @@ public class SubjectUtil {
 	}
 
 	/**
-	 * Returns all the subjects where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
+	 * Returns the subject where groupId = &#63; and projectId = &#63; and randomNo = &#63; or throws a <code>NoSuchSubjectException</code> if it could not be found.
 	 *
 	 * @param groupId the group ID
 	 * @param projectId the project ID
 	 * @param randomNo the random no
-	 * @return the matching subjects
+	 * @return the matching subject
+	 * @throws NoSuchSubjectException if a matching subject could not be found
 	 */
-	public static List<Subject> findByG_P_R(
-		long groupId, long projectId, String randomNo) {
+	public static Subject findByG_P_R(
+			long groupId, long projectId, String randomNo)
+		throws com.dhsoft.edc.backend.exception.NoSuchSubjectException {
 
 		return getPersistence().findByG_P_R(groupId, projectId, randomNo);
 	}
 
 	/**
-	 * Returns a range of all the subjects where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>SubjectModelImpl</code>.
-	 * </p>
+	 * Returns the subject where groupId = &#63; and projectId = &#63; and randomNo = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
 	 *
 	 * @param groupId the group ID
 	 * @param projectId the project ID
 	 * @param randomNo the random no
-	 * @param start the lower bound of the range of subjects
-	 * @param end the upper bound of the range of subjects (not inclusive)
-	 * @return the range of matching subjects
+	 * @return the matching subject, or <code>null</code> if a matching subject could not be found
 	 */
-	public static List<Subject> findByG_P_R(
-		long groupId, long projectId, String randomNo, int start, int end) {
-
-		return getPersistence().findByG_P_R(
-			groupId, projectId, randomNo, start, end);
-	}
-
-	/**
-	 * Returns an ordered range of all the subjects where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>SubjectModelImpl</code>.
-	 * </p>
-	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
-	 * @param randomNo the random no
-	 * @param start the lower bound of the range of subjects
-	 * @param end the upper bound of the range of subjects (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the ordered range of matching subjects
-	 */
-	public static List<Subject> findByG_P_R(
-		long groupId, long projectId, String randomNo, int start, int end,
-		OrderByComparator<Subject> orderByComparator) {
-
-		return getPersistence().findByG_P_R(
-			groupId, projectId, randomNo, start, end, orderByComparator);
-	}
-
-	/**
-	 * Returns an ordered range of all the subjects where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>SubjectModelImpl</code>.
-	 * </p>
-	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
-	 * @param randomNo the random no
-	 * @param start the lower bound of the range of subjects
-	 * @param end the upper bound of the range of subjects (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @param useFinderCache whether to use the finder cache
-	 * @return the ordered range of matching subjects
-	 */
-	public static List<Subject> findByG_P_R(
-		long groupId, long projectId, String randomNo, int start, int end,
-		OrderByComparator<Subject> orderByComparator, boolean useFinderCache) {
-
-		return getPersistence().findByG_P_R(
-			groupId, projectId, randomNo, start, end, orderByComparator,
-			useFinderCache);
-	}
-
-	/**
-	 * Returns the first subject in the ordered set where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
-	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
-	 * @param randomNo the random no
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching subject
-	 * @throws NoSuchSubjectException if a matching subject could not be found
-	 */
-	public static Subject findByG_P_R_First(
-			long groupId, long projectId, String randomNo,
-			OrderByComparator<Subject> orderByComparator)
-		throws com.dhsoft.edc.backend.exception.NoSuchSubjectException {
-
-		return getPersistence().findByG_P_R_First(
-			groupId, projectId, randomNo, orderByComparator);
-	}
-
-	/**
-	 * Returns the first subject in the ordered set where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
-	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
-	 * @param randomNo the random no
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching subject, or <code>null</code> if a matching subject could not be found
-	 */
-	public static Subject fetchByG_P_R_First(
-		long groupId, long projectId, String randomNo,
-		OrderByComparator<Subject> orderByComparator) {
-
-		return getPersistence().fetchByG_P_R_First(
-			groupId, projectId, randomNo, orderByComparator);
-	}
-
-	/**
-	 * Returns the last subject in the ordered set where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
-	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
-	 * @param randomNo the random no
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching subject
-	 * @throws NoSuchSubjectException if a matching subject could not be found
-	 */
-	public static Subject findByG_P_R_Last(
-			long groupId, long projectId, String randomNo,
-			OrderByComparator<Subject> orderByComparator)
-		throws com.dhsoft.edc.backend.exception.NoSuchSubjectException {
-
-		return getPersistence().findByG_P_R_Last(
-			groupId, projectId, randomNo, orderByComparator);
-	}
-
-	/**
-	 * Returns the last subject in the ordered set where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
-	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
-	 * @param randomNo the random no
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching subject, or <code>null</code> if a matching subject could not be found
-	 */
-	public static Subject fetchByG_P_R_Last(
-		long groupId, long projectId, String randomNo,
-		OrderByComparator<Subject> orderByComparator) {
-
-		return getPersistence().fetchByG_P_R_Last(
-			groupId, projectId, randomNo, orderByComparator);
-	}
-
-	/**
-	 * Returns the subjects before and after the current subject in the ordered set where groupId = &#63; and projectId = &#63; and randomNo = &#63;.
-	 *
-	 * @param subjectId the primary key of the current subject
-	 * @param groupId the group ID
-	 * @param projectId the project ID
-	 * @param randomNo the random no
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the previous, current, and next subject
-	 * @throws NoSuchSubjectException if a subject with the primary key could not be found
-	 */
-	public static Subject[] findByG_P_R_PrevAndNext(
-			long subjectId, long groupId, long projectId, String randomNo,
-			OrderByComparator<Subject> orderByComparator)
-		throws com.dhsoft.edc.backend.exception.NoSuchSubjectException {
-
-		return getPersistence().findByG_P_R_PrevAndNext(
-			subjectId, groupId, projectId, randomNo, orderByComparator);
-	}
-
-	/**
-	 * Removes all the subjects where groupId = &#63; and projectId = &#63; and randomNo = &#63; from the database.
-	 *
-	 * @param groupId the group ID
-	 * @param projectId the project ID
-	 * @param randomNo the random no
-	 */
-	public static void removeByG_P_R(
+	public static Subject fetchByG_P_R(
 		long groupId, long projectId, String randomNo) {
 
-		getPersistence().removeByG_P_R(groupId, projectId, randomNo);
+		return getPersistence().fetchByG_P_R(groupId, projectId, randomNo);
+	}
+
+	/**
+	 * Returns the subject where groupId = &#63; and projectId = &#63; and randomNo = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param randomNo the random no
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the matching subject, or <code>null</code> if a matching subject could not be found
+	 */
+	public static Subject fetchByG_P_R(
+		long groupId, long projectId, String randomNo, boolean useFinderCache) {
+
+		return getPersistence().fetchByG_P_R(
+			groupId, projectId, randomNo, useFinderCache);
+	}
+
+	/**
+	 * Removes the subject where groupId = &#63; and projectId = &#63; and randomNo = &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param randomNo the random no
+	 * @return the subject that was removed
+	 */
+	public static Subject removeByG_P_R(
+			long groupId, long projectId, String randomNo)
+		throws com.dhsoft.edc.backend.exception.NoSuchSubjectException {
+
+		return getPersistence().removeByG_P_R(groupId, projectId, randomNo);
 	}
 
 	/**

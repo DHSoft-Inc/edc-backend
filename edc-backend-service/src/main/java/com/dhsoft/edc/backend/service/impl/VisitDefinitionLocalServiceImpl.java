@@ -22,6 +22,10 @@ import org.osgi.service.component.annotations.Reference;
 	)
 	public class VisitDefinitionLocalServiceImpl
 	        extends VisitDefinitionLocalServiceBaseImpl {
+	
+		@Reference
+		private com.dhsoft.edc.backend.service.VisitGroupLocalService _visitGroupLocalService;
+	
 
 	    @Reference
 	    private ExperimentalGroupLocalService _experimentalGroupLocalService;
@@ -37,6 +41,70 @@ import org.osgi.service.component.annotations.Reference;
 
 	        return visitDefinitionPersistence.findByVisitDefinitionCode(expCode);
 	    }
+	    
+	    public VisitDefinition addVisitDefinitionForVisitGroup(
+	            long companyId,
+	            long groupId,
+	            long userId,
+	            String userName,
+	            long visitGroupId,
+	            String name,
+	            String anchorType,
+	            int offset,
+	            int windowMinus,
+	            int windowPlus
+	    ) throws PortalException {
+
+	        com.dhsoft.edc.backend.model.VisitGroup vg =
+	                _visitGroupLocalService.getVisitGroup(visitGroupId);
+
+	        String code = vg.getVisitGroupCode();
+
+	        // ✅ (4) 중복 방지: visitDefinitionCode 전역 유니크 전제
+	        if (visitDefinitionPersistence.countByVisitDefinitionCode(code) > 0) {
+	            throw new PortalException("visitDefinitionCode already exists: " + code);
+	        }
+
+	        long visitDefinitionId = CounterLocalServiceUtil.increment(VisitDefinition.class.getName());
+	        Date now = new Date();
+
+	        VisitDefinition vd = visitDefinitionPersistence.create(visitDefinitionId);
+
+	        vd.setCompanyId(companyId);
+	        vd.setGroupId(groupId);
+	        vd.setProjectId(vg.getProjectId());
+	        vd.setUserId(userId);
+	        vd.setUserName(userName);
+	        vd.setCreateDate(now);
+	        vd.setModifiedDate(now);
+
+	        vd.setStatus(WorkflowConstants.STATUS_APPROVED);
+	        vd.setStatusByUserId(userId);
+	        vd.setStatusByUserName(userName);
+	        vd.setStatusDate(now);
+
+	        // ✅ 핵심: VisitGroupCode → VisitDefinitionCode
+	        vd.setVisitDefinitionCode(code);
+
+	        // ✅ visitGroupId 컬럼엔 진짜 visitGroupId 넣기
+	        vd.setVisitGroupId(visitGroupId);
+
+	        vd.setName(name);
+	        vd.setAnchorType(anchorType);
+	        vd.setOffset(offset);
+	        vd.setWindowMinus(windowMinus);
+	        vd.setWindowPlus(windowPlus);
+
+	        // type은 cycle용이라 그대로 두거나 기존 룰대로 세팅
+	        // (현재 기존 add는 type=0으로 고정인데, 그 의미가 cycle이면 여기서도 동일하게 유지)
+	        vd.setType(0);
+
+	        vd.setRepeatCount(0);
+	        vd.setVisitCRFId(0);
+
+	        return visitDefinitionPersistence.update(vd);
+	    }
+
 
 	    /**
 	     * ADD: VisitDefinition �깮�꽦
@@ -78,8 +146,15 @@ import org.osgi.service.component.annotations.Reference;
 	        vd.setStatusByUserName(userName);
 	        vd.setStatusDate(now);
 
+	        
+	        String code = expGroup.getExpCode();
+	        if (visitDefinitionPersistence.countByVisitDefinitionCode(code) > 0) {
+	            throw new PortalException("visitDefinitionCode already exists: " + code);
+	        }
+	        vd.setVisitDefinitionCode(code);
 
-	        vd.setVisitDefinitionCode(expGroup.getExpCode());
+
+	        //vd.setVisitDefinitionCode(expGroup.getExpCode());
 	        vd.setVisitGroupId(experimentalGroupId);
 
 
@@ -154,6 +229,17 @@ import org.osgi.service.component.annotations.Reference;
 	 
 	        return visitDefinitionPersistence.findByVisitGroupId(visitGroupId);
 	    }
+	    
+	    public List<VisitDefinition> getByVisitGroup(long visitGroupId) throws PortalException {
+
+	        com.dhsoft.edc.backend.model.VisitGroup vg =
+	                _visitGroupLocalService.getVisitGroup(visitGroupId);
+
+	        String visitGroupCode = vg.getVisitGroupCode();
+
+	        return visitDefinitionPersistence.findByVisitDefinitionCode(visitGroupCode);
+	    }
+
 	    
 	    public List<VisitDefinition> getByVisitDefinitionCode(String visitDefinitionCode) {
 	        return visitDefinitionPersistence.findByVisitDefinitionCode(visitDefinitionCode);

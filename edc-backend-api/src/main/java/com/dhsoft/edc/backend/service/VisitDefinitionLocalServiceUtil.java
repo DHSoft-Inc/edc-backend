@@ -75,6 +75,17 @@ public class VisitDefinitionLocalServiceUtil {
 			anchorType, offset, windowMinus, windowPlus);
 	}
 
+	public static VisitDefinition addVisitDefinitionForVisitGroup(
+			long companyId, long groupId, long userId, String userName,
+			long visitGroupId, String name, String anchorType, int offset,
+			int windowMinus, int windowPlus)
+		throws PortalException {
+
+		return getService().addVisitDefinitionForVisitGroup(
+			companyId, groupId, userId, userName, visitGroupId, name,
+			anchorType, offset, windowMinus, windowPlus);
+	}
+
 	/**
 	 * Creates a new visit definition with the primary key. Does not add the visit definition to the database.
 	 *
@@ -251,6 +262,12 @@ public class VisitDefinitionLocalServiceUtil {
 		String visitDefinitionCode) {
 
 		return getService().getByVisitDefinitionCode(visitDefinitionCode);
+	}
+
+	public static List<VisitDefinition> getByVisitGroup(long visitGroupId)
+		throws PortalException {
+
+		return getService().getByVisitGroup(visitGroupId);
 	}
 
 	public static List<VisitDefinition> getByVisitGroupId(long visitGroupId) {

@@ -66,6 +66,19 @@ public class VisitDefinitionLocalServiceWrapper
 			anchorType, offset, windowMinus, windowPlus);
 	}
 
+	@Override
+	public com.dhsoft.edc.backend.model.VisitDefinition
+			addVisitDefinitionForVisitGroup(
+				long companyId, long groupId, long userId, String userName,
+				long visitGroupId, String name, String anchorType, int offset,
+				int windowMinus, int windowPlus)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _visitDefinitionLocalService.addVisitDefinitionForVisitGroup(
+			companyId, groupId, userId, userName, visitGroupId, name,
+			anchorType, offset, windowMinus, windowPlus);
+	}
+
 	/**
 	 * Creates a new visit definition with the primary key. Does not add the visit definition to the database.
 	 *
@@ -278,6 +291,14 @@ public class VisitDefinitionLocalServiceWrapper
 
 		return _visitDefinitionLocalService.getByVisitDefinitionCode(
 			visitDefinitionCode);
+	}
+
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.VisitDefinition>
+			getByVisitGroup(long visitGroupId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _visitDefinitionLocalService.getByVisitGroup(visitGroupId);
 	}
 
 	@Override

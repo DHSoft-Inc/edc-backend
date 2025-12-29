@@ -86,6 +86,12 @@ public interface VisitDefinitionLocalService
 			int offset, int windowMinus, int windowPlus)
 		throws PortalException;
 
+	public VisitDefinition addVisitDefinitionForVisitGroup(
+			long companyId, long groupId, long userId, String userName,
+			long visitGroupId, String name, String anchorType, int offset,
+			int windowMinus, int windowPlus)
+		throws PortalException;
+
 	/**
 	 * Creates a new visit definition with the primary key. Does not add the visit definition to the database.
 	 *
@@ -228,6 +234,10 @@ public interface VisitDefinitionLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<VisitDefinition> getByVisitDefinitionCode(
 		String visitDefinitionCode);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<VisitDefinition> getByVisitGroup(long visitGroupId)
+		throws PortalException;
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<VisitDefinition> getByVisitGroupId(long visitGroupId);

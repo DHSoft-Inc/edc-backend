@@ -231,7 +231,7 @@ public class SubjectLocalServiceWrapper
 	}
 
 	@Override
-	public java.util.List<com.dhsoft.edc.backend.model.Subject>
+	public com.dhsoft.edc.backend.model.Subject
 		findByGroupAndProjectAndRandomNo(
 			long groupId, long projectId, String randomNo) {
 

@@ -207,7 +207,7 @@ public interface SubjectLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Subject fetchSubjectByUuidAndGroupId(String uuid, long groupId);
 
-	public List<Subject> findByGroupAndProjectAndRandomNo(
+	public Subject findByGroupAndProjectAndRandomNo(
 		long groupId, long projectId, String randomNo);
 
 	public List<Subject> findByInstitution(long InstitutionId);

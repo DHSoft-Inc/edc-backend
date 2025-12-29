@@ -80,16 +80,15 @@ public class RandomizationLocalServiceImpl
 		randomizationPersistence.update(updateRandomization);
 	}
 	
-	public void DeleteRandomization(long randomizationId) {
-		Randomization deleteRandomization = RandomizationLocalServiceUtil.findByRandomizationId(randomizationId);
-		List<Subject> cascadeSubjectList = SubjectLocalServiceUtil.findByGroupAndProjectAndRandomNo(deleteRandomization.getGroupId(), deleteRandomization.getProjectId(), deleteRandomization.getRandomNo());
-		for (Subject cascadeSubject : cascadeSubjectList) {
-			cascadeSubject.setRandomNo(null);
-			subjectPersistence.update(cascadeSubject);
-		}
-		randomizationPersistence.remove(deleteRandomization);
-	}
-	
+	   public void DeleteRandomization(long randomizationId) {
+		      Randomization deleteRandomization = RandomizationLocalServiceUtil.findByRandomizationId(randomizationId);
+		      Subject cascadeSubject = SubjectLocalServiceUtil.findByGroupAndProjectAndRandomNo(deleteRandomization.getGroupId(), deleteRandomization.getProjectId(), deleteRandomization.getRandomNo());
+		      if(cascadeSubject != null) {
+		         cascadeSubject.setRandomNo(null);
+		         subjectPersistence.update(cascadeSubject);
+		      }
+		      randomizationPersistence.remove(deleteRandomization);
+		   }
 	
 	public Randomization findByRandomizationId(long randomizationId) {
 		try {
