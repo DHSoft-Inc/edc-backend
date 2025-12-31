@@ -442,6 +442,16 @@ public class RandomizationLocalServiceWrapper
 	}
 
 	@Override
+	public void UpdateStatusToNotUse(long randomizationId) {
+		_randomizationLocalService.UpdateStatusToNotUse(randomizationId);
+	}
+
+	@Override
+	public void UpdateStatusToUse(long randomizationId) {
+		_randomizationLocalService.UpdateStatusToUse(randomizationId);
+	}
+
+	@Override
 	public RandomizationLocalService getWrappedService() {
 		return _randomizationLocalService;
 	}

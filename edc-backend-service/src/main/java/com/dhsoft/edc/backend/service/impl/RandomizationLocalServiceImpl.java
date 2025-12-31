@@ -80,15 +80,31 @@ public class RandomizationLocalServiceImpl
 		randomizationPersistence.update(updateRandomization);
 	}
 	
-	   public void DeleteRandomization(long randomizationId) {
-		      Randomization deleteRandomization = RandomizationLocalServiceUtil.findByRandomizationId(randomizationId);
-		      Subject cascadeSubject = SubjectLocalServiceUtil.findByGroupAndProjectAndRandomNo(deleteRandomization.getGroupId(), deleteRandomization.getProjectId(), deleteRandomization.getRandomNo());
-		      if(cascadeSubject != null) {
-		         cascadeSubject.setRandomNo(null);
-		         subjectPersistence.update(cascadeSubject);
-		      }
-		      randomizationPersistence.remove(deleteRandomization);
-		   }
+	public void UpdateStatusToUse(long randomizationId) {
+		Randomization updateRandomization = RandomizationLocalServiceUtil.findByRandomizationId(randomizationId);
+		Date date = new Date();
+		updateRandomization.setUseStatus(1);
+		updateRandomization.setModifiedDate(date);
+		randomizationPersistence.update(updateRandomization);
+	}
+	
+	public void UpdateStatusToNotUse(long randomizationId) {
+		Randomization updateRandomization = RandomizationLocalServiceUtil.findByRandomizationId(randomizationId);
+		Date date = new Date();
+		updateRandomization.setUseStatus(0);
+		updateRandomization.setModifiedDate(date);
+		randomizationPersistence.update(updateRandomization);
+	}
+	
+	public void DeleteRandomization(long randomizationId) {
+	      Randomization deleteRandomization = RandomizationLocalServiceUtil.findByRandomizationId(randomizationId);
+	      Subject cascadeSubject = SubjectLocalServiceUtil.findByGroupAndProjectAndRandomNo(deleteRandomization.getGroupId(), deleteRandomization.getProjectId(), deleteRandomization.getRandomNo());
+	      if(cascadeSubject != null) {
+	         cascadeSubject.setRandomNo(null);
+	         subjectPersistence.update(cascadeSubject);
+	      }
+	      randomizationPersistence.remove(deleteRandomization);
+	}
 	
 	public Randomization findByRandomizationId(long randomizationId) {
 		try {

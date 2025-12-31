@@ -332,4 +332,8 @@ public interface RandomizationLocalService
 	@Indexable(type = IndexableType.REINDEX)
 	public Randomization updateRandomization(Randomization randomization);
 
+	public void UpdateStatusToNotUse(long randomizationId);
+
+	public void UpdateStatusToUse(long randomizationId);
+
 }

@@ -389,6 +389,14 @@ public class RandomizationLocalServiceUtil {
 		return getService().updateRandomization(randomization);
 	}
 
+	public static void UpdateStatusToNotUse(long randomizationId) {
+		getService().UpdateStatusToNotUse(randomizationId);
+	}
+
+	public static void UpdateStatusToUse(long randomizationId) {
+		getService().UpdateStatusToUse(randomizationId);
+	}
+
 	public static RandomizationLocalService getService() {
 		return _service;
 	}
