@@ -14,7 +14,9 @@
 
 package com.dhsoft.edc.backend.service.impl;
 
+import com.dhsoft.edc.backend.model.Randomization;
 import com.dhsoft.edc.backend.model.Subject;
+import com.dhsoft.edc.backend.service.RandomizationLocalServiceUtil;
 import com.dhsoft.edc.backend.service.base.SubjectLocalServiceBaseImpl;
 import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
 import com.liferay.portal.aop.AopService;
@@ -52,6 +54,10 @@ public class SubjectLocalServiceImpl extends SubjectLocalServiceBaseImpl {
 		newSubject.setSerialId(serialId);
 		newSubject.setName(name);
 		newSubject.setSubjectStatus(subjectStatus);
+		if(!randomNo.equals(null)) {
+			Randomization newRand = RandomizationLocalServiceUtil.findByGroupAndProjectAndRandomNo(groupId, projectId, randomNo);
+			RandomizationLocalServiceUtil.UpdateStatusToUse(newRand.getRandomizationId());
+		}
 		newSubject.setRandomNo(randomNo);
 		newSubject.setExpGroupId(expGroupId);
 		newSubject.setSubjectStatusApplyDate(date);
@@ -84,6 +90,25 @@ public class SubjectLocalServiceImpl extends SubjectLocalServiceBaseImpl {
 			updateSubject.setName(name);
 			updateSubject.setSubjectStatus(subjectStatus);
 			if (subjectStatus != originSubjectStatus) { updateSubject.setSubjectStatusApplyDate(date); }
+			
+			if (updateSubject.getRandomNo() != null) {
+			    Randomization originRand =
+			        RandomizationLocalServiceUtil.findByGroupAndProjectAndRandomNo(updateSubject.getGroupId(), updateSubject.getProjectId(), updateSubject.getRandomNo());
+
+			    if (originRand != null) {
+			        RandomizationLocalServiceUtil.UpdateStatusToNotUse(originRand.getRandomizationId());
+			    }
+			}
+
+			if (randomNo != null) {
+			    Randomization newRand =
+			        RandomizationLocalServiceUtil.findByGroupAndProjectAndRandomNo(updateSubject.getGroupId(), updateSubject.getProjectId(), randomNo);
+
+			    if (newRand != null) {
+			        RandomizationLocalServiceUtil.UpdateStatusToUse(newRand.getRandomizationId());
+			    }
+			}
+			
 			updateSubject.setRandomNo(randomNo);
 			updateSubject.setExpGroupId(expGroupId);
 			updateSubject.setConsentAgreeDate(consentAgreeDate);
