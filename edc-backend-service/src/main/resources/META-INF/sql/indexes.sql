@@ -81,6 +81,7 @@ create index IX_86797FFD on EDC_Researcher (uuid_[$COLUMN_LENGTH:75$], companyId
 create index IX_3E96D8F1 on EDC_Subject (companyId);
 create index IX_13B962A8 on EDC_Subject (expGroupId);
 create index IX_CFB31C9 on EDC_Subject (groupId, projectId, randomNo[$COLUMN_LENGTH:75$]);
+create index IX_E265DB54 on EDC_Subject (groupId, projectId, serialId[$COLUMN_LENGTH:75$]);
 create index IX_E951312C on EDC_Subject (institutionId);
 create index IX_24DF398D on EDC_Subject (projectId);
 create index IX_E8D8E9EF on EDC_Subject (randomNo[$COLUMN_LENGTH:75$]);

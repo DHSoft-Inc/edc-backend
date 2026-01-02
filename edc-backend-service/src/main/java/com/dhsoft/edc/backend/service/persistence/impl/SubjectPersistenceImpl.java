@@ -4792,6 +4792,298 @@ public class SubjectPersistenceImpl
 	private static final String _FINDER_COLUMN_G_P_R_RANDOMNO_3 =
 		"(subject.randomNo IS NULL OR subject.randomNo = '')";
 
+	private FinderPath _finderPathFetchByG_P_S;
+	private FinderPath _finderPathCountByG_P_S;
+
+	/**
+	 * Returns the subject where groupId = &#63; and projectId = &#63; and serialId = &#63; or throws a <code>NoSuchSubjectException</code> if it could not be found.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param serialId the serial ID
+	 * @return the matching subject
+	 * @throws NoSuchSubjectException if a matching subject could not be found
+	 */
+	@Override
+	public Subject findByG_P_S(long groupId, long projectId, String serialId)
+		throws NoSuchSubjectException {
+
+		Subject subject = fetchByG_P_S(groupId, projectId, serialId);
+
+		if (subject == null) {
+			StringBundler sb = new StringBundler(8);
+
+			sb.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+			sb.append("groupId=");
+			sb.append(groupId);
+
+			sb.append(", projectId=");
+			sb.append(projectId);
+
+			sb.append(", serialId=");
+			sb.append(serialId);
+
+			sb.append("}");
+
+			if (_log.isDebugEnabled()) {
+				_log.debug(sb.toString());
+			}
+
+			throw new NoSuchSubjectException(sb.toString());
+		}
+
+		return subject;
+	}
+
+	/**
+	 * Returns the subject where groupId = &#63; and projectId = &#63; and serialId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param serialId the serial ID
+	 * @return the matching subject, or <code>null</code> if a matching subject could not be found
+	 */
+	@Override
+	public Subject fetchByG_P_S(long groupId, long projectId, String serialId) {
+		return fetchByG_P_S(groupId, projectId, serialId, true);
+	}
+
+	/**
+	 * Returns the subject where groupId = &#63; and projectId = &#63; and serialId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param serialId the serial ID
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the matching subject, or <code>null</code> if a matching subject could not be found
+	 */
+	@Override
+	public Subject fetchByG_P_S(
+		long groupId, long projectId, String serialId, boolean useFinderCache) {
+
+		serialId = Objects.toString(serialId, "");
+
+		Object[] finderArgs = null;
+
+		if (useFinderCache) {
+			finderArgs = new Object[] {groupId, projectId, serialId};
+		}
+
+		Object result = null;
+
+		if (useFinderCache) {
+			result = finderCache.getResult(
+				_finderPathFetchByG_P_S, finderArgs, this);
+		}
+
+		if (result instanceof Subject) {
+			Subject subject = (Subject)result;
+
+			if ((groupId != subject.getGroupId()) ||
+				(projectId != subject.getProjectId()) ||
+				!Objects.equals(serialId, subject.getSerialId())) {
+
+				result = null;
+			}
+		}
+
+		if (result == null) {
+			StringBundler sb = new StringBundler(5);
+
+			sb.append(_SQL_SELECT_SUBJECT_WHERE);
+
+			sb.append(_FINDER_COLUMN_G_P_S_GROUPID_2);
+
+			sb.append(_FINDER_COLUMN_G_P_S_PROJECTID_2);
+
+			boolean bindSerialId = false;
+
+			if (serialId.isEmpty()) {
+				sb.append(_FINDER_COLUMN_G_P_S_SERIALID_3);
+			}
+			else {
+				bindSerialId = true;
+
+				sb.append(_FINDER_COLUMN_G_P_S_SERIALID_2);
+			}
+
+			String sql = sb.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query query = session.createQuery(sql);
+
+				QueryPos queryPos = QueryPos.getInstance(query);
+
+				queryPos.add(groupId);
+
+				queryPos.add(projectId);
+
+				if (bindSerialId) {
+					queryPos.add(serialId);
+				}
+
+				List<Subject> list = query.list();
+
+				if (list.isEmpty()) {
+					if (useFinderCache) {
+						finderCache.putResult(
+							_finderPathFetchByG_P_S, finderArgs, list);
+					}
+				}
+				else {
+					if (list.size() > 1) {
+						Collections.sort(list, Collections.reverseOrder());
+
+						if (_log.isWarnEnabled()) {
+							if (!useFinderCache) {
+								finderArgs = new Object[] {
+									groupId, projectId, serialId
+								};
+							}
+
+							_log.warn(
+								"SubjectPersistenceImpl.fetchByG_P_S(long, long, String, boolean) with parameters (" +
+									StringUtil.merge(finderArgs) +
+										") yields a result set with more than 1 result. This violates the logical unique restriction. There is no order guarantee on which result is returned by this finder.");
+						}
+					}
+
+					Subject subject = list.get(0);
+
+					result = subject;
+
+					cacheResult(subject);
+				}
+			}
+			catch (Exception exception) {
+				if (useFinderCache) {
+					finderCache.removeResult(
+						_finderPathFetchByG_P_S, finderArgs);
+				}
+
+				throw processException(exception);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		if (result instanceof List<?>) {
+			return null;
+		}
+		else {
+			return (Subject)result;
+		}
+	}
+
+	/**
+	 * Removes the subject where groupId = &#63; and projectId = &#63; and serialId = &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param serialId the serial ID
+	 * @return the subject that was removed
+	 */
+	@Override
+	public Subject removeByG_P_S(long groupId, long projectId, String serialId)
+		throws NoSuchSubjectException {
+
+		Subject subject = findByG_P_S(groupId, projectId, serialId);
+
+		return remove(subject);
+	}
+
+	/**
+	 * Returns the number of subjects where groupId = &#63; and projectId = &#63; and serialId = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param serialId the serial ID
+	 * @return the number of matching subjects
+	 */
+	@Override
+	public int countByG_P_S(long groupId, long projectId, String serialId) {
+		serialId = Objects.toString(serialId, "");
+
+		FinderPath finderPath = _finderPathCountByG_P_S;
+
+		Object[] finderArgs = new Object[] {groupId, projectId, serialId};
+
+		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
+
+		if (count == null) {
+			StringBundler sb = new StringBundler(4);
+
+			sb.append(_SQL_COUNT_SUBJECT_WHERE);
+
+			sb.append(_FINDER_COLUMN_G_P_S_GROUPID_2);
+
+			sb.append(_FINDER_COLUMN_G_P_S_PROJECTID_2);
+
+			boolean bindSerialId = false;
+
+			if (serialId.isEmpty()) {
+				sb.append(_FINDER_COLUMN_G_P_S_SERIALID_3);
+			}
+			else {
+				bindSerialId = true;
+
+				sb.append(_FINDER_COLUMN_G_P_S_SERIALID_2);
+			}
+
+			String sql = sb.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query query = session.createQuery(sql);
+
+				QueryPos queryPos = QueryPos.getInstance(query);
+
+				queryPos.add(groupId);
+
+				queryPos.add(projectId);
+
+				if (bindSerialId) {
+					queryPos.add(serialId);
+				}
+
+				count = (Long)query.uniqueResult();
+
+				finderCache.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception exception) {
+				finderCache.removeResult(finderPath, finderArgs);
+
+				throw processException(exception);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String _FINDER_COLUMN_G_P_S_GROUPID_2 =
+		"subject.groupId = ? AND ";
+
+	private static final String _FINDER_COLUMN_G_P_S_PROJECTID_2 =
+		"subject.projectId = ? AND ";
+
+	private static final String _FINDER_COLUMN_G_P_S_SERIALID_2 =
+		"subject.serialId = ?";
+
+	private static final String _FINDER_COLUMN_G_P_S_SERIALID_3 =
+		"(subject.serialId IS NULL OR subject.serialId = '')";
+
 	public SubjectPersistenceImpl() {
 		Map<String, String> dbColumnNames = new HashMap<String, String>();
 
@@ -4825,6 +5117,14 @@ public class SubjectPersistenceImpl
 			new Object[] {
 				subject.getGroupId(), subject.getProjectId(),
 				subject.getRandomNo()
+			},
+			subject);
+
+		finderCache.putResult(
+			_finderPathFetchByG_P_S,
+			new Object[] {
+				subject.getGroupId(), subject.getProjectId(),
+				subject.getSerialId()
 			},
 			subject);
 
@@ -4937,6 +5237,16 @@ public class SubjectPersistenceImpl
 			_finderPathCountByG_P_R, args, Long.valueOf(1), false);
 		finderCache.putResult(
 			_finderPathFetchByG_P_R, args, subjectModelImpl, false);
+
+		args = new Object[] {
+			subjectModelImpl.getGroupId(), subjectModelImpl.getProjectId(),
+			subjectModelImpl.getSerialId()
+		};
+
+		finderCache.putResult(
+			_finderPathCountByG_P_S, args, Long.valueOf(1), false);
+		finderCache.putResult(
+			_finderPathFetchByG_P_S, args, subjectModelImpl, false);
 	}
 
 	protected void clearUniqueFindersCache(
@@ -4984,6 +5294,29 @@ public class SubjectPersistenceImpl
 
 			finderCache.removeResult(_finderPathCountByG_P_R, args);
 			finderCache.removeResult(_finderPathFetchByG_P_R, args);
+		}
+
+		if (clearCurrent) {
+			Object[] args = new Object[] {
+				subjectModelImpl.getGroupId(), subjectModelImpl.getProjectId(),
+				subjectModelImpl.getSerialId()
+			};
+
+			finderCache.removeResult(_finderPathCountByG_P_S, args);
+			finderCache.removeResult(_finderPathFetchByG_P_S, args);
+		}
+
+		if ((subjectModelImpl.getColumnBitmask() &
+			 _finderPathFetchByG_P_S.getColumnBitmask()) != 0) {
+
+			Object[] args = new Object[] {
+				subjectModelImpl.getOriginalGroupId(),
+				subjectModelImpl.getOriginalProjectId(),
+				subjectModelImpl.getOriginalSerialId()
+			};
+
+			finderCache.removeResult(_finderPathCountByG_P_S, args);
+			finderCache.removeResult(_finderPathFetchByG_P_S, args);
 		}
 	}
 
@@ -5867,6 +6200,25 @@ public class SubjectPersistenceImpl
 		_finderPathCountByG_P_R = new FinderPath(
 			entityCacheEnabled, finderCacheEnabled, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByG_P_R",
+			new String[] {
+				Long.class.getName(), Long.class.getName(),
+				String.class.getName()
+			});
+
+		_finderPathFetchByG_P_S = new FinderPath(
+			entityCacheEnabled, finderCacheEnabled, SubjectImpl.class,
+			FINDER_CLASS_NAME_ENTITY, "fetchByG_P_S",
+			new String[] {
+				Long.class.getName(), Long.class.getName(),
+				String.class.getName()
+			},
+			SubjectModelImpl.GROUPID_COLUMN_BITMASK |
+			SubjectModelImpl.PROJECTID_COLUMN_BITMASK |
+			SubjectModelImpl.SERIALID_COLUMN_BITMASK);
+
+		_finderPathCountByG_P_S = new FinderPath(
+			entityCacheEnabled, finderCacheEnabled, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByG_P_S",
 			new String[] {
 				Long.class.getName(), Long.class.getName(),
 				String.class.getName()

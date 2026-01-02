@@ -224,6 +224,13 @@ public class SubjectLocalServiceUtil {
 			groupId, projectId, randomNo);
 	}
 
+	public static Subject findByGroupAndProjectAndSerialId(
+		long groupId, long projectId, String serialId) {
+
+		return getService().findByGroupAndProjectAndSerialId(
+			groupId, projectId, serialId);
+	}
+
 	public static List<Subject> findByInstitution(long InstitutionId) {
 		return getService().findByInstitution(InstitutionId);
 	}
