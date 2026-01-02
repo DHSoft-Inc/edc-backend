@@ -137,13 +137,21 @@ public class SubjectLocalServiceImpl extends SubjectLocalServiceBaseImpl {
 		}
 	}
 	
-   public Subject findByGroupAndProjectAndRandomNo (long groupId, long projectId, String randomNo) {
-	      try {
-	         return subjectPersistence.findByG_P_R(groupId, projectId, randomNo);
-	      } catch (Exception e) {
-	         return null;
-	      }
-	   }
+	public Subject findByGroupAndProjectAndRandomNo (long groupId, long projectId, String randomNo) {
+		try {
+			return subjectPersistence.findByG_P_R(groupId, projectId, randomNo);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	public Subject findByGroupAndProjectAndSerialId (long groupId, long projectId, String serialId) {
+		try {
+			return subjectPersistence.findByG_P_S(groupId, projectId, serialId);
+		} catch (Exception e) {
+			return null;
+		}
+	}
 	
 	public List<Subject> findByInstitution (long InstitutionId) {
 		

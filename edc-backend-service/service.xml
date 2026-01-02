@@ -438,10 +438,16 @@
     		<finder-column name="expGroupId" />
     	</finder>  
     	
-       <finder name="G_P_R" return-type="Subject">
-         <finder-column name="groupId"/>
-           <finder-column name="projectId"/>
-         <finder-column name="randomNo" />
+       	<finder name="G_P_R" return-type="Subject">
+         	<finder-column name="groupId"/>
+           	<finder-column name="projectId"/>
+         	<finder-column name="randomNo" />
+        </finder>
+        
+		<finder name="G_P_S" return-type="Subject">
+         	<finder-column name="groupId"/>
+           	<finder-column name="projectId"/>
+         	<finder-column name="serialId" />
         </finder>
 
         <!-- Reference -->

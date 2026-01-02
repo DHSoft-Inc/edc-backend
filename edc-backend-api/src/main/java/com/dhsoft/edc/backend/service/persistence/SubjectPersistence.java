@@ -1312,6 +1312,61 @@ public interface SubjectPersistence extends BasePersistence<Subject> {
 	public int countByG_P_R(long groupId, long projectId, String randomNo);
 
 	/**
+	 * Returns the subject where groupId = &#63; and projectId = &#63; and serialId = &#63; or throws a <code>NoSuchSubjectException</code> if it could not be found.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param serialId the serial ID
+	 * @return the matching subject
+	 * @throws NoSuchSubjectException if a matching subject could not be found
+	 */
+	public Subject findByG_P_S(long groupId, long projectId, String serialId)
+		throws NoSuchSubjectException;
+
+	/**
+	 * Returns the subject where groupId = &#63; and projectId = &#63; and serialId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param serialId the serial ID
+	 * @return the matching subject, or <code>null</code> if a matching subject could not be found
+	 */
+	public Subject fetchByG_P_S(long groupId, long projectId, String serialId);
+
+	/**
+	 * Returns the subject where groupId = &#63; and projectId = &#63; and serialId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param serialId the serial ID
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the matching subject, or <code>null</code> if a matching subject could not be found
+	 */
+	public Subject fetchByG_P_S(
+		long groupId, long projectId, String serialId, boolean useFinderCache);
+
+	/**
+	 * Removes the subject where groupId = &#63; and projectId = &#63; and serialId = &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param serialId the serial ID
+	 * @return the subject that was removed
+	 */
+	public Subject removeByG_P_S(long groupId, long projectId, String serialId)
+		throws NoSuchSubjectException;
+
+	/**
+	 * Returns the number of subjects where groupId = &#63; and projectId = &#63; and serialId = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param serialId the serial ID
+	 * @return the number of matching subjects
+	 */
+	public int countByG_P_S(long groupId, long projectId, String serialId);
+
+	/**
 	 * Caches the subject in the entity cache if it is enabled.
 	 *
 	 * @param subject the subject

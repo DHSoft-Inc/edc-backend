@@ -1620,6 +1620,81 @@ public class SubjectUtil {
 	}
 
 	/**
+	 * Returns the subject where groupId = &#63; and projectId = &#63; and serialId = &#63; or throws a <code>NoSuchSubjectException</code> if it could not be found.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param serialId the serial ID
+	 * @return the matching subject
+	 * @throws NoSuchSubjectException if a matching subject could not be found
+	 */
+	public static Subject findByG_P_S(
+			long groupId, long projectId, String serialId)
+		throws com.dhsoft.edc.backend.exception.NoSuchSubjectException {
+
+		return getPersistence().findByG_P_S(groupId, projectId, serialId);
+	}
+
+	/**
+	 * Returns the subject where groupId = &#63; and projectId = &#63; and serialId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param serialId the serial ID
+	 * @return the matching subject, or <code>null</code> if a matching subject could not be found
+	 */
+	public static Subject fetchByG_P_S(
+		long groupId, long projectId, String serialId) {
+
+		return getPersistence().fetchByG_P_S(groupId, projectId, serialId);
+	}
+
+	/**
+	 * Returns the subject where groupId = &#63; and projectId = &#63; and serialId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param serialId the serial ID
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the matching subject, or <code>null</code> if a matching subject could not be found
+	 */
+	public static Subject fetchByG_P_S(
+		long groupId, long projectId, String serialId, boolean useFinderCache) {
+
+		return getPersistence().fetchByG_P_S(
+			groupId, projectId, serialId, useFinderCache);
+	}
+
+	/**
+	 * Removes the subject where groupId = &#63; and projectId = &#63; and serialId = &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param serialId the serial ID
+	 * @return the subject that was removed
+	 */
+	public static Subject removeByG_P_S(
+			long groupId, long projectId, String serialId)
+		throws com.dhsoft.edc.backend.exception.NoSuchSubjectException {
+
+		return getPersistence().removeByG_P_S(groupId, projectId, serialId);
+	}
+
+	/**
+	 * Returns the number of subjects where groupId = &#63; and projectId = &#63; and serialId = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param serialId the serial ID
+	 * @return the number of matching subjects
+	 */
+	public static int countByG_P_S(
+		long groupId, long projectId, String serialId) {
+
+		return getPersistence().countByG_P_S(groupId, projectId, serialId);
+	}
+
+	/**
 	 * Caches the subject in the entity cache if it is enabled.
 	 *
 	 * @param subject the subject

@@ -210,6 +210,9 @@ public interface SubjectLocalService
 	public Subject findByGroupAndProjectAndRandomNo(
 		long groupId, long projectId, String randomNo);
 
+	public Subject findByGroupAndProjectAndSerialId(
+		long groupId, long projectId, String serialId);
+
 	public List<Subject> findByInstitution(long InstitutionId);
 
 	public Subject findSubjectId(long subjectId);
