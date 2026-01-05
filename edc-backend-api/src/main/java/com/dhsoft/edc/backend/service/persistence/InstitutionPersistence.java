@@ -544,6 +544,61 @@ public interface InstitutionPersistence extends BasePersistence<Institution> {
 	public int countByG_P(long groupId, long projectId);
 
 	/**
+	 * Returns the institution where groupId = &#63; and projectId = &#63; and code = &#63; or throws a <code>NoSuchInstitutionException</code> if it could not be found.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param code the code
+	 * @return the matching institution
+	 * @throws NoSuchInstitutionException if a matching institution could not be found
+	 */
+	public Institution findByG_P_C(long groupId, long projectId, String code)
+		throws NoSuchInstitutionException;
+
+	/**
+	 * Returns the institution where groupId = &#63; and projectId = &#63; and code = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param code the code
+	 * @return the matching institution, or <code>null</code> if a matching institution could not be found
+	 */
+	public Institution fetchByG_P_C(long groupId, long projectId, String code);
+
+	/**
+	 * Returns the institution where groupId = &#63; and projectId = &#63; and code = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param code the code
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the matching institution, or <code>null</code> if a matching institution could not be found
+	 */
+	public Institution fetchByG_P_C(
+		long groupId, long projectId, String code, boolean useFinderCache);
+
+	/**
+	 * Removes the institution where groupId = &#63; and projectId = &#63; and code = &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param code the code
+	 * @return the institution that was removed
+	 */
+	public Institution removeByG_P_C(long groupId, long projectId, String code)
+		throws NoSuchInstitutionException;
+
+	/**
+	 * Returns the number of institutions where groupId = &#63; and projectId = &#63; and code = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param code the code
+	 * @return the number of matching institutions
+	 */
+	public int countByG_P_C(long groupId, long projectId, String code);
+
+	/**
 	 * Returns all the institutions where companyId = &#63;.
 	 *
 	 * @param companyId the company ID

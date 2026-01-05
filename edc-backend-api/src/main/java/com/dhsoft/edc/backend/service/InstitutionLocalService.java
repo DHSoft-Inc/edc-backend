@@ -209,6 +209,9 @@ public interface InstitutionLocalService
 	public Institution fetchInstitutionByUuidAndGroupId(
 		String uuid, long groupId);
 
+	public Institution findByGroupAndProjectAndCode(
+		long groupId, long projectId, String code);
+
 	public List<Institution> findByGroupAndProjectId(
 		long groupId, long projectId);
 

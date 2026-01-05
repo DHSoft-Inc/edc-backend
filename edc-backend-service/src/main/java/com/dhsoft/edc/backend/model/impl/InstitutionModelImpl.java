@@ -138,17 +138,19 @@ public class InstitutionModelImpl
 
 	public static final String TX_MANAGER = "liferayTransactionManager";
 
-	public static final long COMPANYID_COLUMN_BITMASK = 1L;
+	public static final long CODE_COLUMN_BITMASK = 1L;
 
-	public static final long GROUPID_COLUMN_BITMASK = 2L;
+	public static final long COMPANYID_COLUMN_BITMASK = 2L;
 
-	public static final long PROJECTID_COLUMN_BITMASK = 4L;
+	public static final long GROUPID_COLUMN_BITMASK = 4L;
 
-	public static final long USERID_COLUMN_BITMASK = 8L;
+	public static final long PROJECTID_COLUMN_BITMASK = 8L;
 
-	public static final long UUID_COLUMN_BITMASK = 16L;
+	public static final long USERID_COLUMN_BITMASK = 16L;
 
-	public static final long INSTITUTIONID_COLUMN_BITMASK = 32L;
+	public static final long UUID_COLUMN_BITMASK = 32L;
+
+	public static final long INSTITUTIONID_COLUMN_BITMASK = 64L;
 
 	public static void setEntityCacheEnabled(boolean entityCacheEnabled) {
 		_entityCacheEnabled = entityCacheEnabled;
@@ -667,7 +669,17 @@ public class InstitutionModelImpl
 
 	@Override
 	public void setCode(String code) {
+		_columnBitmask |= CODE_COLUMN_BITMASK;
+
+		if (_originalCode == null) {
+			_originalCode = _code;
+		}
+
 		_code = code;
+	}
+
+	public String getOriginalCode() {
+		return GetterUtil.getString(_originalCode);
 	}
 
 	@JSON
@@ -1140,6 +1152,8 @@ public class InstitutionModelImpl
 
 		_setModifiedDate = false;
 
+		_originalCode = _code;
+
 		_columnBitmask = 0;
 	}
 
@@ -1391,6 +1405,7 @@ public class InstitutionModelImpl
 	private String _statusByUserName;
 	private Date _statusDate;
 	private String _code;
+	private String _originalCode;
 	private String _name;
 	private String _enName;
 	private int _type;

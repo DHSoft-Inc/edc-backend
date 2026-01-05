@@ -112,7 +112,6 @@ public class InstitutionLocalServiceImpl extends InstitutionLocalServiceBaseImpl
 		}
 	}
 	
-	
 	public Institution findByInstitutionId (long institutionId) {
 		try {
 			return institutionPersistence.findByPrimaryKey(institutionId);
@@ -124,6 +123,14 @@ public class InstitutionLocalServiceImpl extends InstitutionLocalServiceBaseImpl
 	public List<Institution> findByGroupAndProjectId (long groupId, long projectId) {
 		try {
 			return institutionPersistence.findByG_P(groupId, projectId);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	public Institution findByGroupAndProjectAndCode(long groupId, long projectId, String code) {
+		try {
+			return institutionPersistence.findByG_P_C(groupId, projectId, code);
 		} catch (Exception e) {
 			return null;
 		}

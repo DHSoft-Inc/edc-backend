@@ -242,6 +242,15 @@ public class InstitutionLocalServiceWrapper
 	}
 
 	@Override
+	public com.dhsoft.edc.backend.model.Institution
+		findByGroupAndProjectAndCode(
+			long groupId, long projectId, String code) {
+
+		return _institutionLocalService.findByGroupAndProjectAndCode(
+			groupId, projectId, code);
+	}
+
+	@Override
 	public java.util.List<com.dhsoft.edc.backend.model.Institution>
 		findByGroupAndProjectId(long groupId, long projectId) {
 
