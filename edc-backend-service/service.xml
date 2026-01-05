@@ -245,6 +245,12 @@
         	<finder-column name="projectId"></finder-column>
         </finder>
         
+        <finder name="G_P_C" return-type="Institution">
+        	<finder-column name="groupId"></finder-column>
+        	<finder-column name="projectId"></finder-column>
+        	<finder-column name="code"></finder-column>
+        </finder>
+        
         <finder name="CompanyId" return-type="Collection">
     		<finder-column name="companyId" />
     	</finder>

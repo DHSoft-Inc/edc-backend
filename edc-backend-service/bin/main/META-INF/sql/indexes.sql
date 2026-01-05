@@ -21,7 +21,7 @@ create index IX_50461664 on EDC_InstanceLink (uuid_[$COLUMN_LENGTH:75$], company
 create unique index IX_68E5E6 on EDC_InstanceLink (uuid_[$COLUMN_LENGTH:75$], groupId);
 
 create index IX_911E5665 on EDC_Institution (companyId);
-create index IX_479C243D on EDC_Institution (groupId, projectId);
+create index IX_9C0BF765 on EDC_Institution (groupId, projectId, code_[$COLUMN_LENGTH:75$]);
 create index IX_FA63771D on EDC_Institution (userId);
 create index IX_8D5DA117 on EDC_Institution (uuid_[$COLUMN_LENGTH:75$], companyId);
 create unique index IX_AF398159 on EDC_Institution (uuid_[$COLUMN_LENGTH:75$], groupId);

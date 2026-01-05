@@ -219,6 +219,13 @@ public class InstitutionLocalServiceUtil {
 		return getService().fetchInstitutionByUuidAndGroupId(uuid, groupId);
 	}
 
+	public static Institution findByGroupAndProjectAndCode(
+		long groupId, long projectId, String code) {
+
+		return getService().findByGroupAndProjectAndCode(
+			groupId, projectId, code);
+	}
+
 	public static List<Institution> findByGroupAndProjectId(
 		long groupId, long projectId) {
 

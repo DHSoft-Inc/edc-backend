@@ -716,6 +716,79 @@ public class InstitutionUtil {
 	}
 
 	/**
+	 * Returns the institution where groupId = &#63; and projectId = &#63; and code = &#63; or throws a <code>NoSuchInstitutionException</code> if it could not be found.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param code the code
+	 * @return the matching institution
+	 * @throws NoSuchInstitutionException if a matching institution could not be found
+	 */
+	public static Institution findByG_P_C(
+			long groupId, long projectId, String code)
+		throws com.dhsoft.edc.backend.exception.NoSuchInstitutionException {
+
+		return getPersistence().findByG_P_C(groupId, projectId, code);
+	}
+
+	/**
+	 * Returns the institution where groupId = &#63; and projectId = &#63; and code = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param code the code
+	 * @return the matching institution, or <code>null</code> if a matching institution could not be found
+	 */
+	public static Institution fetchByG_P_C(
+		long groupId, long projectId, String code) {
+
+		return getPersistence().fetchByG_P_C(groupId, projectId, code);
+	}
+
+	/**
+	 * Returns the institution where groupId = &#63; and projectId = &#63; and code = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param code the code
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the matching institution, or <code>null</code> if a matching institution could not be found
+	 */
+	public static Institution fetchByG_P_C(
+		long groupId, long projectId, String code, boolean useFinderCache) {
+
+		return getPersistence().fetchByG_P_C(
+			groupId, projectId, code, useFinderCache);
+	}
+
+	/**
+	 * Removes the institution where groupId = &#63; and projectId = &#63; and code = &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param code the code
+	 * @return the institution that was removed
+	 */
+	public static Institution removeByG_P_C(
+			long groupId, long projectId, String code)
+		throws com.dhsoft.edc.backend.exception.NoSuchInstitutionException {
+
+		return getPersistence().removeByG_P_C(groupId, projectId, code);
+	}
+
+	/**
+	 * Returns the number of institutions where groupId = &#63; and projectId = &#63; and code = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param code the code
+	 * @return the number of matching institutions
+	 */
+	public static int countByG_P_C(long groupId, long projectId, String code) {
+		return getPersistence().countByG_P_C(groupId, projectId, code);
+	}
+
+	/**
 	 * Returns all the institutions where companyId = &#63;.
 	 *
 	 * @param companyId the company ID
