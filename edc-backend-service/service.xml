@@ -655,7 +655,13 @@
     		<finder-column name="companyId" />
     	</finder>
          	
-       	<finder name="G_P" return-type="Collection">
+       	<finder name="G_P_E" return-type="ExperimentalGroup">
+        	<finder-column name="groupId"></finder-column>
+        	<finder-column name="projectId"></finder-column>
+        	<finder-column name="expCode"></finder-column>
+        </finder>     
+        
+        <finder name="G_P" return-type="Collection">
         	<finder-column name="groupId"></finder-column>
         	<finder-column name="projectId"></finder-column>
         </finder>     

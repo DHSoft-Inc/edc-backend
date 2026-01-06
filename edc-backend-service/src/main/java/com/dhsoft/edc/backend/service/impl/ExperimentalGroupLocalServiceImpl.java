@@ -44,6 +44,14 @@ public class ExperimentalGroupLocalServiceImpl
 	       return experimentalGroupPersistence.findByG_P(groupId, projectId);
 	   }
 	   
+	   public ExperimentalGroup getByGroupAndProjectAndExpcode(long groupId, long projectId, String expcode) {
+			try {
+				return experimentalGroupPersistence.findByG_P_E(groupId, projectId, expcode);
+			} catch (Exception e) {
+				return null;
+			}
+	   }
+	   
 	   public List<ExperimentalGroup> getByGroupId(long groupId) {
 	       return experimentalGroupPersistence.findByGroupId(groupId);
 	   }

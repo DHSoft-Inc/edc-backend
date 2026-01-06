@@ -66,6 +66,59 @@ public class SubjectVisitDefinitionLocalServiceImpl
 		subjectVisitDefinitionPersistence.update(svd);
 	}
 	
+	public void addSubjectVisitDefinitionWithId(
+		    long subjectVisitDefinitionId,  // ✅ 0이면 신규발급, 0 아니면 그 id 사용
+		    long companyId, long groupId, long projectId, long visitGroupId, long subjectId,
+		    long userId, String userName,
+		    int status, long statusByUserId, String statusByUserName, Date statusDate,
+		    String parentCode, String visitDefinitionCode, String name, String order, String extCode,
+		    String anchorType, int offset, int windowMinus, int windowPlus, int type, int repeatCount,
+		    long visitCRFId
+		) {
+		    Date now = new Date();
+
+		    long id = subjectVisitDefinitionId;
+		    if (id <= 0) {
+		        id = counterLocalService.increment("subjectVisitDefinition");
+		    }
+
+		    SubjectVisitDefinition svd = subjectVisitDefinitionPersistence.create(id);
+
+		    svd.setCompanyId(companyId);
+		    svd.setGroupId(groupId);
+		    svd.setProjectId(projectId);
+		    svd.setVisitGroupId(visitGroupId);
+		    svd.setSubjectId(subjectId);
+		    svd.setUserId(userId);
+		    svd.setUserName(userName);
+
+		    svd.setStatus(status);
+		    svd.setStatusByUserId(statusByUserId);
+		    svd.setStatusByUserName(statusByUserName);
+		    svd.setStatusDate(statusDate);
+
+		    svd.setParentCode(parentCode);
+		    svd.setVisitDefinitionCode(visitDefinitionCode);
+		    svd.setName(name);
+		    svd.setOrder(order);
+		    svd.setExtCode(extCode);
+
+		    svd.setAnchorType(anchorType);
+		    svd.setOffset(offset);
+		    svd.setWindowMinus(windowMinus);
+		    svd.setWindowPlus(windowPlus);
+
+		    svd.setType(type);
+		    svd.setRepeatCount(repeatCount);
+		    svd.setVisitCRFId(visitCRFId);
+
+		    svd.setCreateDate(now);
+		    svd.setModifiedDate(now);
+
+		    subjectVisitDefinitionPersistence.update(svd);
+		}
+
+	
 	public SubjectVisitDefinition deleteSubjectVisitDefinition(long subjectVisitDefinitionId) {
 		try {
 			SubjectVisitDefinition svd = subjectVisitDefinitionPersistence.findByPrimaryKey(subjectVisitDefinitionId);

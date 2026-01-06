@@ -135,15 +135,17 @@ public class ExperimentalGroupModelImpl
 
 	public static final long COMPANYID_COLUMN_BITMASK = 1L;
 
-	public static final long GROUPID_COLUMN_BITMASK = 2L;
+	public static final long EXPCODE_COLUMN_BITMASK = 2L;
 
-	public static final long PROJECTID_COLUMN_BITMASK = 4L;
+	public static final long GROUPID_COLUMN_BITMASK = 4L;
 
-	public static final long USERID_COLUMN_BITMASK = 8L;
+	public static final long PROJECTID_COLUMN_BITMASK = 8L;
 
-	public static final long UUID_COLUMN_BITMASK = 16L;
+	public static final long USERID_COLUMN_BITMASK = 16L;
 
-	public static final long EXPERIMENTALGROUPID_COLUMN_BITMASK = 32L;
+	public static final long UUID_COLUMN_BITMASK = 32L;
+
+	public static final long EXPERIMENTALGROUPID_COLUMN_BITMASK = 64L;
 
 	public static void setEntityCacheEnabled(boolean entityCacheEnabled) {
 		_entityCacheEnabled = entityCacheEnabled;
@@ -676,7 +678,17 @@ public class ExperimentalGroupModelImpl
 
 	@Override
 	public void setExpCode(String expCode) {
+		_columnBitmask |= EXPCODE_COLUMN_BITMASK;
+
+		if (_originalExpCode == null) {
+			_originalExpCode = _expCode;
+		}
+
 		_expCode = expCode;
+	}
+
+	public String getOriginalExpCode() {
+		return GetterUtil.getString(_originalExpCode);
 	}
 
 	@JSON
@@ -1087,6 +1099,8 @@ public class ExperimentalGroupModelImpl
 
 		_setModifiedDate = false;
 
+		_originalExpCode = _expCode;
+
 		_columnBitmask = 0;
 	}
 
@@ -1307,6 +1321,7 @@ public class ExperimentalGroupModelImpl
 	private String _statusByUserName;
 	private Date _statusDate;
 	private String _expCode;
+	private String _originalExpCode;
 	private String _name;
 	private String _description;
 	private int _type;

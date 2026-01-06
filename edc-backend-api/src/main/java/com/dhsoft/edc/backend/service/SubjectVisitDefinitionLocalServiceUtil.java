@@ -76,6 +76,23 @@ public class SubjectVisitDefinitionLocalServiceUtil {
 		return getService().addSubjectVisitDefinition(subjectVisitDefinition);
 	}
 
+	public static void addSubjectVisitDefinitionWithId(
+		long subjectVisitDefinitionId, long companyId, long groupId,
+		long projectId, long visitGroupId, long subjectId, long userId,
+		String userName, int status, long statusByUserId,
+		String statusByUserName, java.util.Date statusDate, String parentCode,
+		String visitDefinitionCode, String name, String order, String extCode,
+		String anchorType, int offset, int windowMinus, int windowPlus,
+		int type, int repeatCount, long visitCRFId) {
+
+		getService().addSubjectVisitDefinitionWithId(
+			subjectVisitDefinitionId, companyId, groupId, projectId,
+			visitGroupId, subjectId, userId, userName, status, statusByUserId,
+			statusByUserName, statusDate, parentCode, visitDefinitionCode, name,
+			order, extCode, anchorType, offset, windowMinus, windowPlus, type,
+			repeatCount, visitCRFId);
+	}
+
 	/**
 	 * Creates a new subject visit definition with the primary key. Does not add the subject visit definition to the database.
 	 *

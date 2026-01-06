@@ -232,6 +232,13 @@ public class ExperimentalGroupLocalServiceUtil {
 		return getService().getByGroupAndProject(groupId, projectId);
 	}
 
+	public static ExperimentalGroup getByGroupAndProjectAndExpcode(
+		long groupId, long projectId, String expcode) {
+
+		return getService().getByGroupAndProjectAndExpcode(
+			groupId, projectId, expcode);
+	}
+
 	public static List<ExperimentalGroup> getByGroupId(long groupId) {
 		return getService().getByGroupId(groupId);
 	}
