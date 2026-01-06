@@ -17,6 +17,9 @@ package com.dhsoft.edc.backend.service.base;
 import com.dhsoft.edc.backend.model.Randomization;
 import com.dhsoft.edc.backend.service.RandomizationLocalService;
 import com.dhsoft.edc.backend.service.RandomizationLocalServiceUtil;
+import com.dhsoft.edc.backend.service.persistence.AssignAuditPersistence;
+import com.dhsoft.edc.backend.service.persistence.AssignInstitutionRolePersistence;
+import com.dhsoft.edc.backend.service.persistence.AssignProjectScopePersistence;
 import com.dhsoft.edc.backend.service.persistence.ExperimentalGroupPersistence;
 import com.dhsoft.edc.backend.service.persistence.InstResearcherPersistence;
 import com.dhsoft.edc.backend.service.persistence.InstanceLinkPersistence;
@@ -624,6 +627,15 @@ public abstract class RandomizationLocalServiceBaseImpl
 			throw new RuntimeException(reflectiveOperationException);
 		}
 	}
+
+	@Reference
+	protected AssignAuditPersistence assignAuditPersistence;
+
+	@Reference
+	protected AssignInstitutionRolePersistence assignInstitutionRolePersistence;
+
+	@Reference
+	protected AssignProjectScopePersistence assignProjectScopePersistence;
 
 	@Reference
 	protected ExperimentalGroupPersistence experimentalGroupPersistence;
