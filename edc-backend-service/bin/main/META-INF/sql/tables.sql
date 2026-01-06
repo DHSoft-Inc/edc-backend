@@ -1,3 +1,52 @@
+create table EDC_AssignAudit (
+	uuid_ VARCHAR(75) null,
+	auditId LONG not null primary key,
+	companyId LONG,
+	institutionId LONG,
+	researcherId LONG,
+	projectId LONG,
+	action VARCHAR(75) null,
+	targetUserId LONG,
+	roleOrScope VARCHAR(75) null,
+	payload VARCHAR(75) null,
+	actorUserId LONG,
+	actorUserName VARCHAR(75) null,
+	createDate DATE null
+);
+
+create table EDC_AssignInstitutionRole (
+	uuid_ VARCHAR(75) null,
+	institutionRoleId LONG not null primary key,
+	companyId LONG,
+	groupId LONG,
+	institutionId LONG,
+	researcherId LONG,
+	targetUserId LONG,
+	roleName VARCHAR(75) null,
+	active_ BOOLEAN,
+	createDate DATE null,
+	modifiedDate DATE null,
+	createdBy LONG,
+	modifiedBy LONG
+);
+
+create table EDC_AssignProjectScope (
+	uuid_ VARCHAR(75) null,
+	projectScopeId LONG not null primary key,
+	companyId LONG,
+	groupId LONG,
+	institutionId LONG,
+	researcherId LONG,
+	projectId LONG,
+	targetUserId LONG,
+	scopeRole VARCHAR(75) null,
+	active_ BOOLEAN,
+	createDate DATE null,
+	modifiedDate DATE null,
+	createdBy LONG,
+	modifiedBy LONG
+);
+
 create table EDC_ExperimentalGroup (
 	uuid_ VARCHAR(75) null,
 	experimentalGroupId LONG not null primary key,

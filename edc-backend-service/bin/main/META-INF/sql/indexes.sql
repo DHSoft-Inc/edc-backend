@@ -1,3 +1,15 @@
+create index IX_A61BB898 on EDC_AssignAudit (institutionId, projectId);
+create index IX_E66EA18B on EDC_AssignAudit (uuid_[$COLUMN_LENGTH:75$], companyId);
+
+create unique index IX_CA76EF99 on EDC_AssignInstitutionRole (institutionId, targetUserId, roleName[$COLUMN_LENGTH:75$]);
+create index IX_9D8510FE on EDC_AssignInstitutionRole (uuid_[$COLUMN_LENGTH:75$], companyId);
+create unique index IX_8E79BF00 on EDC_AssignInstitutionRole (uuid_[$COLUMN_LENGTH:75$], groupId);
+
+create unique index IX_28514683 on EDC_AssignProjectScope (institutionId, projectId, targetUserId, scopeRole[$COLUMN_LENGTH:75$]);
+create index IX_B320CA4E on EDC_AssignProjectScope (targetUserId, projectId);
+create index IX_12BBDBF on EDC_AssignProjectScope (uuid_[$COLUMN_LENGTH:75$], companyId);
+create unique index IX_CDB6A801 on EDC_AssignProjectScope (uuid_[$COLUMN_LENGTH:75$], groupId);
+
 create index IX_809167C6 on EDC_ExperimentalGroup (companyId);
 create index IX_30E1EDDE on EDC_ExperimentalGroup (groupId, projectId, expCode[$COLUMN_LENGTH:75$]);
 create index IX_EA53C95C on EDC_ExperimentalGroup (userId);
