@@ -1,5 +1,5 @@
 create index IX_809167C6 on EDC_ExperimentalGroup (companyId);
-create index IX_79E00FFC on EDC_ExperimentalGroup (groupId, projectId);
+create index IX_30E1EDDE on EDC_ExperimentalGroup (groupId, projectId, expCode[$COLUMN_LENGTH:75$]);
 create index IX_EA53C95C on EDC_ExperimentalGroup (userId);
 create index IX_36D77096 on EDC_ExperimentalGroup (uuid_[$COLUMN_LENGTH:75$], companyId);
 create unique index IX_178F2498 on EDC_ExperimentalGroup (uuid_[$COLUMN_LENGTH:75$], groupId);

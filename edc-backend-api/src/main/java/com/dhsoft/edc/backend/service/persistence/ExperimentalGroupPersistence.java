@@ -534,6 +534,64 @@ public interface ExperimentalGroupPersistence
 	public int countByCompanyId(long companyId);
 
 	/**
+	 * Returns the experimental group where groupId = &#63; and projectId = &#63; and expCode = &#63; or throws a <code>NoSuchExperimentalGroupException</code> if it could not be found.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param expCode the exp code
+	 * @return the matching experimental group
+	 * @throws NoSuchExperimentalGroupException if a matching experimental group could not be found
+	 */
+	public ExperimentalGroup findByG_P_E(
+			long groupId, long projectId, String expCode)
+		throws NoSuchExperimentalGroupException;
+
+	/**
+	 * Returns the experimental group where groupId = &#63; and projectId = &#63; and expCode = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param expCode the exp code
+	 * @return the matching experimental group, or <code>null</code> if a matching experimental group could not be found
+	 */
+	public ExperimentalGroup fetchByG_P_E(
+		long groupId, long projectId, String expCode);
+
+	/**
+	 * Returns the experimental group where groupId = &#63; and projectId = &#63; and expCode = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param expCode the exp code
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the matching experimental group, or <code>null</code> if a matching experimental group could not be found
+	 */
+	public ExperimentalGroup fetchByG_P_E(
+		long groupId, long projectId, String expCode, boolean useFinderCache);
+
+	/**
+	 * Removes the experimental group where groupId = &#63; and projectId = &#63; and expCode = &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param expCode the exp code
+	 * @return the experimental group that was removed
+	 */
+	public ExperimentalGroup removeByG_P_E(
+			long groupId, long projectId, String expCode)
+		throws NoSuchExperimentalGroupException;
+
+	/**
+	 * Returns the number of experimental groups where groupId = &#63; and projectId = &#63; and expCode = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param expCode the exp code
+	 * @return the number of matching experimental groups
+	 */
+	public int countByG_P_E(long groupId, long projectId, String expCode);
+
+	/**
 	 * Returns all the experimental groups where groupId = &#63; and projectId = &#63;.
 	 *
 	 * @param groupId the group ID
