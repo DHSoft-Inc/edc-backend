@@ -214,6 +214,10 @@ public interface ExperimentalGroupLocalService
 		long groupId, long projectId);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public ExperimentalGroup getByGroupAndProjectAndExpcode(
+		long groupId, long projectId, String expcode);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<ExperimentalGroup> getByGroupId(long groupId);
 
 	/**

@@ -254,6 +254,15 @@ public class ExperimentalGroupLocalServiceWrapper
 	}
 
 	@Override
+	public com.dhsoft.edc.backend.model.ExperimentalGroup
+		getByGroupAndProjectAndExpcode(
+			long groupId, long projectId, String expcode) {
+
+		return _experimentalGroupLocalService.getByGroupAndProjectAndExpcode(
+			groupId, projectId, expcode);
+	}
+
+	@Override
 	public java.util.List<com.dhsoft.edc.backend.model.ExperimentalGroup>
 		getByGroupId(long groupId) {
 
