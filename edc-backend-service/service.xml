@@ -5,122 +5,197 @@
     <namespace>EDC</namespace>
 
 
-  	<!-- =========================================================
-       AssignInstitutionRole
-       - 기관(ed_institution) 단위 Role 배정
-       ========================================================= -->
-	<entity name="AssignInstitutionRole" local-service="true" remote-service="true" uuid="true" uuid-accessor="true" trash-enabled="true">
-	    <column name="institutionRoleId" type="long" primary="true" />
+	<entity name="EdcPermissionRole"
+	        local-service="true"
+	        remote-service="true"
+	        uuid="true"
+	        uuid-accessor="true"
+	        trash-enabled="true">
+	
+	    <column name="permissionRoleId" type="long" primary="true" />
 	    <column name="companyId" type="long" />
 	    <column name="groupId" type="long" />
-	    <column name="institutionId" type="long" />
-   	    <column name="researcherId" type="long"/>
-	    <column name="targetUserId" type="long" />
+	    <column name="projectId" type="long" />
+	    <column name="actorGroup" type="long" />
+	    <column name="actorId" type="long" />
 	    <column name="roleName" type="String" />
 	    <column name="active" type="boolean" />
+	    <column name="fromDate" type="Date" />
+	    <column name="toDate" type="Date" />
 	    <column name="createDate" type="Date" />
 	    <column name="modifiedDate" type="Date" />
 	    <column name="createdBy" type="long" />
 	    <column name="modifiedBy" type="long" />
-	    
+	
 	    <order by="asc">
-	      <order-column name="roleName" />
-	      <order-column name="targetUserId" />
+	        <order-column name="roleName" />
+	        <order-column name="actorId" />
 	    </order>
-	    
+	
 	    <!-- list / filter -->
-	    <finder name="Institution" return-type="Collection">
-	      <finder-column name="institutionId" />
-	    </finder>	    
-	    
-	    <finder name="InstitutionAndUser" return-type="Collection">
-	      <finder-column name="institutionId" />
-	      <finder-column name="targetUserId" />
-	    </finder>    
-	    
-        <finder name="InstitutionUserRole" unique="true" return-type="AssignInstitutionRole">
-	      <finder-column name="institutionId" />
-	      <finder-column name="targetUserId" />
-	      <finder-column name="roleName" />
-	    </finder>	    
-    </entity>
-    
-    <!-- =========================================================
-       AssignProjectScope
-       - 기관+프로젝트 단위 접근범위/담당범위
-       - scopeRole: VIEW / EDIT / SDV 등 확장 가능
-       ========================================================= -->
-   <entity name="AssignProjectScope" local-service="true" remote-service="false" uuid="true">
-    <column name="projectScopeId" type="long" primary="true" />
-    <column name="companyId" type="long" />
-    <column name="groupId" type="long" />
-    <column name="institutionId" type="long" />
-    <column name="researcherId" type="long"/>
-    <column name="projectId" type="long" />
-    <column name="targetUserId" type="long" />
-    <column name="scopeRole" type="String" />
-    <column name="active" type="boolean" />
-    <column name="createDate" type="Date" />
-    <column name="modifiedDate" type="Date" />
-    <column name="createdBy" type="long" />
-    <column name="modifiedBy" type="long" />
-    
-    <order by="asc">
-      <order-column name="scopeRole" />
-      <order-column name="targetUserId" />
-    </order>
+	    <finder name="EdcProjectRole" return-type="Collection">
+	        <finder-column name="projectId" />
+	    </finder>
+	
+	    <finder name="EdcActorGroupRole" return-type="Collection">
+	        <finder-column name="projectId" />
+	        <finder-column name="actorGroup" />
+	    </finder>
+	
+	    <finder name="EdcActorRole" return-type="Collection">
+	        <finder-column name="projectId" />
+	        <finder-column name="actorGroup" />
+	        <finder-column name="actorId" />
+	    </finder>
+	
+	    <finder name="EdcPermissionRole"
+	            return-type="EdcPermissionRole"
+	            unique="true">
+	        <finder-column name="projectId" />
+	        <finder-column name="actorGroup" />
+	        <finder-column name="actorId" />
+	        <finder-column name="roleName" />
+	    </finder>
+	
+	</entity>
+	
+	<!-- =========================================================
+	EdcPermissionScope
+	- 모듈 + 타스크 단위 action 범위
+	========================================================= -->
+	<entity name="EdcPermissionScope"
+	        local-service="true"
+	        remote-service="false"
+	        uuid="true">
+	
+	    <column name="permissionScopeId" type="long" primary="true" />
+	    <column name="companyId" type="long" />
+	    <column name="groupId" type="long" />
+	    <column name="projectId" type="long" />
+	    <column name="moduleName" type="String" />
+	    <column name="taskKey" type="String" />
+	    <column name="roleName" type="String" />
+	    <column name="scopeRole" type="String" />
+	    <column name="active" type="boolean" />
+	    <column name="fromDate" type="Date" />
+	    <column name="toDate" type="Date" />
+	    <column name="createDate" type="Date" />
+	    <column name="modifiedDate" type="Date" />
+	    <column name="createdBy" type="long" />
+	    <column name="modifiedBy" type="long" />
+	
+	    <order by="asc">
+	        <order-column name="moduleName" />
+	        <order-column name="taskKey" />
+	        <order-column name="roleName" />
+	        <order-column name="scopeRole" />
+	    </order>
+	
+	    <finder name="EdcProjectScope" return-type="Collection">
+	        <finder-column name="projectId" />
+	    </finder>
+	
+	    <finder name="EdcModuleScope" return-type="Collection">
+	        <finder-column name="projectId" />
+	        <finder-column name="moduleName" />
+	    </finder>
+	
+	    <finder name="EdcTaskScope" return-type="Collection">
+	        <finder-column name="projectId" />
+	        <finder-column name="moduleName" />
+	        <finder-column name="taskKey" />
+	    </finder>
+	
+	    <finder name="EdcPermissionScope"
+	            unique="true"
+	            return-type="EdcPermissionScope">
+	        <finder-column name="projectId" />
+	        <finder-column name="moduleName" />
+	        <finder-column name="taskKey" />
+	        <finder-column name="scopeRole" />
+	    </finder>
+	
+	</entity>
+	
+	<!-- =========================================================
+	EdcPermissionRoleAudit
+	- 감사 로그 (누가 누구에게 Role을 언제)
+	========================================================= -->
+	<entity name="EdcPermissionRoleAudit"
+	        local-service="true"
+	        remote-service="false"
+	        uuid="true">
+	
+	    <column name="auditRoleId" type="long" primary="true" />
+	    <column name="companyId" type="long" />
+	    <column name="groupId" type="long" />
+	    <column name="projectId" type="long" />
+	    <column name="actorGroup" type="long" />
+	    <column name="actorId" type="long" />
+	    <column name="crudType" type="String" />
+	    <column name="fromRole" type="String" />
+	    <column name="toRole" type="String" />
+	    <column name="fromActive" type="String" />
+	    <column name="toActive" type="String" />
+	    <column name="remarks" type="String" />
+	    <column name="createDate" type="Date" />
+	    <column name="userId" type="long" />
+	    <column name="userName" type="String" />
+	
+	    <order by="desc">
+	        <order-column name="createDate" />
+	    </order>
+	
+	    <finder name="ActorGroupRole" return-type="Collection">
+	        <finder-column name="actorGroup" />
+	    </finder>
+	
+	    <finder name="ActorRole" return-type="Collection">
+	        <finder-column name="actorId" />
+	    </finder>
+	
+	</entity>
+	
+	<!-- =========================================================
+	EdcPermissionScopeAudit
+	- 감사 로그 (누가 어떤 Module / Task에 Scope을 언제)
+	========================================================= -->
+	<entity name="EdcPermissionScopeAudit"
+	        local-service="true"
+	        remote-service="false"
+	        uuid="true">
+	
+	    <column name="auditScopeId" type="long" primary="true" />
+	    <column name="companyId" type="long" />
+	    <column name="groupId" type="long" />
+	    <column name="projectId" type="long" />
+	    <column name="roleName" type="String" />
+	    <column name="moduleName" type="String" />
+	    <column name="taskKey" type="String" />
+	    <column name="fromScope" type="String" />
+	    <column name="toScope" type="String" />
+	    <column name="fromActive" type="String" />
+	    <column name="toActive" type="String" />
+	    <column name="remarks" type="String" />
+	    <column name="createDate" type="Date" />
+	    <column name="userId" type="long" />
+	    <column name="userName" type="String" />
+	
+	    <order by="desc">
+	        <order-column name="createDate" />
+	    </order>
+	
+	    <finder name="RoleNameScope" return-type="Collection">
+	        <finder-column name="roleName" />
+	    </finder>
+	
+	    <finder name="ModuleTaskScope" return-type="Collection">
+	        <finder-column name="moduleName" />
+	        <finder-column name="taskKey" />
+	    </finder>
+	
+	</entity>
 
-    <finder name="InstitutionProject" return-type="Collection">
-      <finder-column name="institutionId" />
-      <finder-column name="projectId" />
-    </finder>
-
-    <finder name="UserProject" return-type="Collection">
-      <finder-column name="targetUserId" />
-      <finder-column name="projectId" />
-    </finder>
-
-    <finder name="UniqueScope" unique="true" return-type="AssignProjectScope">
-      <finder-column name="institutionId" />
-      <finder-column name="projectId" />
-      <finder-column name="targetUserId" />
-      <finder-column name="scopeRole" />
-    </finder>
-
-   </entity>
-
-   <!-- =========================================================
-       AssignAudit
-       - 감사 로그(누가 누구에게 무엇을 언제)
-       ========================================================= -->
-   <entity name="AssignAudit" local-service="true" remote-service="false" uuid="true">
-    <column name="auditId" type="long" primary="true" />
-    <column name="companyId" type="long" />
-    <column name="institutionId" type="long" />
-    <column name="researcherId" type="long"/>
-    <column name="projectId" type="long" />
-    <column name="action" type="String" />
-    <column name="targetUserId" type="long" />
-    <column name="roleOrScope" type="String" />
-    <column name="payload" type="String" />
-    <column name="actorUserId" type="long" />
-    <column name="actorUserName" type="String" />
-    <column name="createDate" type="Date" />
-    
-    <order by="desc">
-      <order-column name="createDate" />
-    </order>
-
-    <finder name="Institution" return-type="Collection">
-      <finder-column name="institutionId" />
-    </finder>
-
-    <finder name="InstitutionProject" return-type="Collection">
-      <finder-column name="institutionId" />
-      <finder-column name="projectId" />
-    </finder>
-
-   </entity>  
     
     
     <entity name="Project" local-service="true" remote-service="true" uuid="true" uuid-accessor="true" trash-enabled="true">

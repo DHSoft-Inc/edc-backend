@@ -1,51 +1,76 @@
 <?xml version="1.0"?>
 
 <model-hints>
-	<model name="com.dhsoft.edc.backend.model.AssignAudit">
+	<model name="com.dhsoft.edc.backend.model.EdcPermissionRole">
 		<field name="uuid" type="String" />
-		<field name="auditId" type="long" />
-		<field name="companyId" type="long" />
-		<field name="institutionId" type="long" />
-		<field name="researcherId" type="long" />
-		<field name="projectId" type="long" />
-		<field name="action" type="String" />
-		<field name="targetUserId" type="long" />
-		<field name="roleOrScope" type="String" />
-		<field name="payload" type="String" />
-		<field name="actorUserId" type="long" />
-		<field name="actorUserName" type="String" />
-		<field name="createDate" type="Date" />
-	</model>
-	<model name="com.dhsoft.edc.backend.model.AssignInstitutionRole">
-		<field name="uuid" type="String" />
-		<field name="institutionRoleId" type="long" />
+		<field name="permissionRoleId" type="long" />
 		<field name="companyId" type="long" />
 		<field name="groupId" type="long" />
-		<field name="institutionId" type="long" />
-		<field name="researcherId" type="long" />
-		<field name="targetUserId" type="long" />
+		<field name="projectId" type="long" />
+		<field name="actorGroup" type="long" />
+		<field name="actorId" type="long" />
 		<field name="roleName" type="String" />
 		<field name="active" type="boolean" />
+		<field name="fromDate" type="Date" />
+		<field name="toDate" type="Date" />
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
 		<field name="createdBy" type="long" />
 		<field name="modifiedBy" type="long" />
 	</model>
-	<model name="com.dhsoft.edc.backend.model.AssignProjectScope">
+	<model name="com.dhsoft.edc.backend.model.EdcPermissionRoleAudit">
 		<field name="uuid" type="String" />
-		<field name="projectScopeId" type="long" />
+		<field name="auditRoleId" type="long" />
 		<field name="companyId" type="long" />
 		<field name="groupId" type="long" />
-		<field name="institutionId" type="long" />
-		<field name="researcherId" type="long" />
 		<field name="projectId" type="long" />
-		<field name="targetUserId" type="long" />
+		<field name="actorGroup" type="long" />
+		<field name="actorId" type="long" />
+		<field name="crudType" type="String" />
+		<field name="fromRole" type="String" />
+		<field name="toRole" type="String" />
+		<field name="fromActive" type="String" />
+		<field name="toActive" type="String" />
+		<field name="remarks" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+	</model>
+	<model name="com.dhsoft.edc.backend.model.EdcPermissionScope">
+		<field name="uuid" type="String" />
+		<field name="permissionScopeId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="projectId" type="long" />
+		<field name="moduleName" type="String" />
+		<field name="taskKey" type="String" />
+		<field name="roleName" type="String" />
 		<field name="scopeRole" type="String" />
 		<field name="active" type="boolean" />
+		<field name="fromDate" type="Date" />
+		<field name="toDate" type="Date" />
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
 		<field name="createdBy" type="long" />
 		<field name="modifiedBy" type="long" />
+	</model>
+	<model name="com.dhsoft.edc.backend.model.EdcPermissionScopeAudit">
+		<field name="uuid" type="String" />
+		<field name="auditScopeId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="projectId" type="long" />
+		<field name="roleName" type="String" />
+		<field name="moduleName" type="String" />
+		<field name="taskKey" type="String" />
+		<field name="fromScope" type="String" />
+		<field name="toScope" type="String" />
+		<field name="fromActive" type="String" />
+		<field name="toActive" type="String" />
+		<field name="remarks" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
 	</model>
 	<model name="com.dhsoft.edc.backend.model.ExperimentalGroup">
 		<field name="uuid" type="String" />

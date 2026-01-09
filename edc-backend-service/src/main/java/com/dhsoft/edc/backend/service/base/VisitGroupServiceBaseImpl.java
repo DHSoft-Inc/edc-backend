@@ -17,9 +17,10 @@ package com.dhsoft.edc.backend.service.base;
 import com.dhsoft.edc.backend.model.VisitGroup;
 import com.dhsoft.edc.backend.service.VisitGroupService;
 import com.dhsoft.edc.backend.service.VisitGroupServiceUtil;
-import com.dhsoft.edc.backend.service.persistence.AssignAuditPersistence;
-import com.dhsoft.edc.backend.service.persistence.AssignInstitutionRolePersistence;
-import com.dhsoft.edc.backend.service.persistence.AssignProjectScopePersistence;
+import com.dhsoft.edc.backend.service.persistence.EdcPermissionRoleAuditPersistence;
+import com.dhsoft.edc.backend.service.persistence.EdcPermissionRolePersistence;
+import com.dhsoft.edc.backend.service.persistence.EdcPermissionScopeAuditPersistence;
+import com.dhsoft.edc.backend.service.persistence.EdcPermissionScopePersistence;
 import com.dhsoft.edc.backend.service.persistence.ExperimentalGroupPersistence;
 import com.dhsoft.edc.backend.service.persistence.InstResearcherPersistence;
 import com.dhsoft.edc.backend.service.persistence.InstanceLinkPersistence;
@@ -149,13 +150,18 @@ public abstract class VisitGroupServiceBaseImpl
 	}
 
 	@Reference
-	protected AssignAuditPersistence assignAuditPersistence;
+	protected EdcPermissionRolePersistence edcPermissionRolePersistence;
 
 	@Reference
-	protected AssignInstitutionRolePersistence assignInstitutionRolePersistence;
+	protected EdcPermissionRoleAuditPersistence
+		edcPermissionRoleAuditPersistence;
 
 	@Reference
-	protected AssignProjectScopePersistence assignProjectScopePersistence;
+	protected EdcPermissionScopePersistence edcPermissionScopePersistence;
+
+	@Reference
+	protected EdcPermissionScopeAuditPersistence
+		edcPermissionScopeAuditPersistence;
 
 	@Reference
 	protected ExperimentalGroupPersistence experimentalGroupPersistence;

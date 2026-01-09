@@ -47,6 +47,81 @@ create table EDC_AssignProjectScope (
 	modifiedBy LONG
 );
 
+create table EDC_EdcPermissionRole (
+	uuid_ VARCHAR(75) null,
+	permissionRoleId LONG not null primary key,
+	companyId LONG,
+	groupId LONG,
+	projectId LONG,
+	actorGroup LONG,
+	actorId LONG,
+	roleName VARCHAR(75) null,
+	active_ BOOLEAN,
+	fromDate DATE null,
+	toDate DATE null,
+	createDate DATE null,
+	modifiedDate DATE null,
+	createdBy LONG,
+	modifiedBy LONG
+);
+
+create table EDC_EdcPermissionRoleAudit (
+	uuid_ VARCHAR(75) null,
+	auditRoleId LONG not null primary key,
+	companyId LONG,
+	groupId LONG,
+	projectId LONG,
+	actorGroup LONG,
+	actorId LONG,
+	crudType VARCHAR(75) null,
+	fromRole VARCHAR(75) null,
+	toRole VARCHAR(75) null,
+	fromActive VARCHAR(75) null,
+	toActive VARCHAR(75) null,
+	remarks VARCHAR(75) null,
+	createDate DATE null,
+	userId LONG,
+	userName VARCHAR(75) null
+);
+
+create table EDC_EdcPermissionScope (
+	uuid_ VARCHAR(75) null,
+	permissionScopeId LONG not null primary key,
+	companyId LONG,
+	groupId LONG,
+	projectId LONG,
+	moduleName VARCHAR(75) null,
+	taskKey VARCHAR(75) null,
+	roleName VARCHAR(75) null,
+	scopeRole VARCHAR(75) null,
+	active_ BOOLEAN,
+	fromDate DATE null,
+	toDate DATE null,
+	createDate DATE null,
+	modifiedDate DATE null,
+	createdBy LONG,
+	modifiedBy LONG
+);
+
+create table EDC_EdcPermissionScopeAudit (
+	uuid_ VARCHAR(75) null,
+	auditScopeId LONG not null primary key,
+	companyId LONG,
+	groupId LONG,
+	projectId LONG,
+	roleName VARCHAR(75) null,
+	moduleName VARCHAR(75) null,
+	taskKey VARCHAR(75) null,
+	fromScope VARCHAR(75) null,
+	toScope VARCHAR(75) null,
+	fromActive VARCHAR(75) null,
+	toActive VARCHAR(75) null,
+	remarks VARCHAR(75) null,
+	createDate DATE null,
+	userId LONG,
+	userName VARCHAR(75) null
+);
+
 create table EDC_ExperimentalGroup (
 	uuid_ VARCHAR(75) null,
 	experimentalGroupId LONG not null primary key,

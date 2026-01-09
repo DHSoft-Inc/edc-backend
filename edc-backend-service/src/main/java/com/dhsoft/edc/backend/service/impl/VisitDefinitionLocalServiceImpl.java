@@ -60,11 +60,6 @@ import org.osgi.service.component.annotations.Reference;
 
 	        String code = vg.getVisitGroupCode();
 
-	        // ✅ (4) 중복 방지: visitDefinitionCode 전역 유니크 전제
-	        if (visitDefinitionPersistence.countByVisitDefinitionCode(code) > 0) {
-	            throw new PortalException("visitDefinitionCode already exists: " + code);
-	        }
-
 	        long visitDefinitionId = CounterLocalServiceUtil.increment(VisitDefinition.class.getName());
 	        Date now = new Date();
 
@@ -148,9 +143,6 @@ import org.osgi.service.component.annotations.Reference;
 
 	        
 	        String code = expGroup.getExpCode();
-	        if (visitDefinitionPersistence.countByVisitDefinitionCode(code) > 0) {
-	            throw new PortalException("visitDefinitionCode already exists: " + code);
-	        }
 	        vd.setVisitDefinitionCode(code);
 
 
