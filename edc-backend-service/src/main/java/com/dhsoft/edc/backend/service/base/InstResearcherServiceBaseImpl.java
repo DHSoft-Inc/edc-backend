@@ -17,6 +17,7 @@ package com.dhsoft.edc.backend.service.base;
 import com.dhsoft.edc.backend.model.InstResearcher;
 import com.dhsoft.edc.backend.service.InstResearcherService;
 import com.dhsoft.edc.backend.service.InstResearcherServiceUtil;
+import com.dhsoft.edc.backend.service.persistence.EdcLockPersistence;
 import com.dhsoft.edc.backend.service.persistence.EdcPermissionRoleAuditPersistence;
 import com.dhsoft.edc.backend.service.persistence.EdcPermissionRolePersistence;
 import com.dhsoft.edc.backend.service.persistence.EdcPermissionScopeAuditPersistence;
@@ -150,6 +151,9 @@ public abstract class InstResearcherServiceBaseImpl
 			throw new RuntimeException(reflectiveOperationException);
 		}
 	}
+
+	@Reference
+	protected EdcLockPersistence edcLockPersistence;
 
 	@Reference
 	protected EdcPermissionRolePersistence edcPermissionRolePersistence;

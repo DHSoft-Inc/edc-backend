@@ -16,12 +16,14 @@ package com.dhsoft.edc.backend.model.impl;
 
 import com.dhsoft.edc.backend.model.EdcPermissionScope;
 import com.dhsoft.edc.backend.model.EdcPermissionScopeModel;
+import com.dhsoft.edc.backend.model.EdcPermissionScopeSoap;
 
 import com.liferay.expando.kernel.model.ExpandoBridge;
 import com.liferay.expando.kernel.util.ExpandoBridgeFactoryUtil;
 import com.liferay.exportimport.kernel.lar.StagedModelType;
 import com.liferay.petra.string.StringBundler;
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
+import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.kernel.model.CacheModel;
 import com.liferay.portal.kernel.model.ModelWrapper;
 import com.liferay.portal.kernel.model.impl.BaseModelImpl;
@@ -38,10 +40,12 @@ import java.lang.reflect.InvocationHandler;
 import java.sql.Blob;
 import java.sql.Types;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
@@ -57,6 +61,7 @@ import java.util.function.Function;
  * @see EdcPermissionScopeImpl
  * @generated
  */
+@JSON(strict = true)
 public class EdcPermissionScopeModelImpl
 	extends BaseModelImpl<EdcPermissionScope>
 	implements EdcPermissionScopeModel {
@@ -127,13 +132,13 @@ public class EdcPermissionScopeModelImpl
 
 	public static final long PROJECTID_COLUMN_BITMASK = 8L;
 
-	public static final long SCOPEROLE_COLUMN_BITMASK = 16L;
+	public static final long ROLENAME_COLUMN_BITMASK = 16L;
 
-	public static final long TASKKEY_COLUMN_BITMASK = 32L;
+	public static final long SCOPEROLE_COLUMN_BITMASK = 32L;
 
-	public static final long UUID_COLUMN_BITMASK = 64L;
+	public static final long TASKKEY_COLUMN_BITMASK = 64L;
 
-	public static final long ROLENAME_COLUMN_BITMASK = 128L;
+	public static final long UUID_COLUMN_BITMASK = 128L;
 
 	public static void setEntityCacheEnabled(boolean entityCacheEnabled) {
 		_entityCacheEnabled = entityCacheEnabled;
@@ -141,6 +146,62 @@ public class EdcPermissionScopeModelImpl
 
 	public static void setFinderCacheEnabled(boolean finderCacheEnabled) {
 		_finderCacheEnabled = finderCacheEnabled;
+	}
+
+	/**
+	 * Converts the soap model instance into a normal model instance.
+	 *
+	 * @param soapModel the soap model instance to convert
+	 * @return the normal model instance
+	 */
+	public static EdcPermissionScope toModel(EdcPermissionScopeSoap soapModel) {
+		if (soapModel == null) {
+			return null;
+		}
+
+		EdcPermissionScope model = new EdcPermissionScopeImpl();
+
+		model.setUuid(soapModel.getUuid());
+		model.setPermissionScopeId(soapModel.getPermissionScopeId());
+		model.setCompanyId(soapModel.getCompanyId());
+		model.setGroupId(soapModel.getGroupId());
+		model.setProjectId(soapModel.getProjectId());
+		model.setModuleName(soapModel.getModuleName());
+		model.setTaskKey(soapModel.getTaskKey());
+		model.setRoleName(soapModel.getRoleName());
+		model.setScopeRole(soapModel.getScopeRole());
+		model.setActive(soapModel.isActive());
+		model.setFromDate(soapModel.getFromDate());
+		model.setToDate(soapModel.getToDate());
+		model.setCreateDate(soapModel.getCreateDate());
+		model.setModifiedDate(soapModel.getModifiedDate());
+		model.setCreatedBy(soapModel.getCreatedBy());
+		model.setModifiedBy(soapModel.getModifiedBy());
+
+		return model;
+	}
+
+	/**
+	 * Converts the soap model instances into normal model instances.
+	 *
+	 * @param soapModels the soap model instances to convert
+	 * @return the normal model instances
+	 */
+	public static List<EdcPermissionScope> toModels(
+		EdcPermissionScopeSoap[] soapModels) {
+
+		if (soapModels == null) {
+			return null;
+		}
+
+		List<EdcPermissionScope> models = new ArrayList<EdcPermissionScope>(
+			soapModels.length);
+
+		for (EdcPermissionScopeSoap soapModel : soapModels) {
+			models.add(toModel(soapModel));
+		}
+
+		return models;
 	}
 
 	public EdcPermissionScopeModelImpl() {
@@ -343,6 +404,7 @@ public class EdcPermissionScopeModelImpl
 			(Map)attributeSetterBiConsumers);
 	}
 
+	@JSON
 	@Override
 	public String getUuid() {
 		if (_uuid == null) {
@@ -368,6 +430,7 @@ public class EdcPermissionScopeModelImpl
 		return GetterUtil.getString(_originalUuid);
 	}
 
+	@JSON
 	@Override
 	public long getPermissionScopeId() {
 		return _permissionScopeId;
@@ -378,6 +441,7 @@ public class EdcPermissionScopeModelImpl
 		_permissionScopeId = permissionScopeId;
 	}
 
+	@JSON
 	@Override
 	public long getCompanyId() {
 		return _companyId;
@@ -400,6 +464,7 @@ public class EdcPermissionScopeModelImpl
 		return _originalCompanyId;
 	}
 
+	@JSON
 	@Override
 	public long getGroupId() {
 		return _groupId;
@@ -422,6 +487,7 @@ public class EdcPermissionScopeModelImpl
 		return _originalGroupId;
 	}
 
+	@JSON
 	@Override
 	public long getProjectId() {
 		return _projectId;
@@ -444,6 +510,7 @@ public class EdcPermissionScopeModelImpl
 		return _originalProjectId;
 	}
 
+	@JSON
 	@Override
 	public String getModuleName() {
 		if (_moduleName == null) {
@@ -469,6 +536,7 @@ public class EdcPermissionScopeModelImpl
 		return GetterUtil.getString(_originalModuleName);
 	}
 
+	@JSON
 	@Override
 	public String getTaskKey() {
 		if (_taskKey == null) {
@@ -494,6 +562,7 @@ public class EdcPermissionScopeModelImpl
 		return GetterUtil.getString(_originalTaskKey);
 	}
 
+	@JSON
 	@Override
 	public String getRoleName() {
 		if (_roleName == null) {
@@ -508,9 +577,18 @@ public class EdcPermissionScopeModelImpl
 	public void setRoleName(String roleName) {
 		_columnBitmask = -1L;
 
+		if (_originalRoleName == null) {
+			_originalRoleName = _roleName;
+		}
+
 		_roleName = roleName;
 	}
 
+	public String getOriginalRoleName() {
+		return GetterUtil.getString(_originalRoleName);
+	}
+
+	@JSON
 	@Override
 	public String getScopeRole() {
 		if (_scopeRole == null) {
@@ -536,11 +614,13 @@ public class EdcPermissionScopeModelImpl
 		return GetterUtil.getString(_originalScopeRole);
 	}
 
+	@JSON
 	@Override
 	public boolean getActive() {
 		return _active;
 	}
 
+	@JSON
 	@Override
 	public boolean isActive() {
 		return _active;
@@ -551,6 +631,7 @@ public class EdcPermissionScopeModelImpl
 		_active = active;
 	}
 
+	@JSON
 	@Override
 	public Date getFromDate() {
 		return _fromDate;
@@ -561,6 +642,7 @@ public class EdcPermissionScopeModelImpl
 		_fromDate = fromDate;
 	}
 
+	@JSON
 	@Override
 	public Date getToDate() {
 		return _toDate;
@@ -571,6 +653,7 @@ public class EdcPermissionScopeModelImpl
 		_toDate = toDate;
 	}
 
+	@JSON
 	@Override
 	public Date getCreateDate() {
 		return _createDate;
@@ -581,6 +664,7 @@ public class EdcPermissionScopeModelImpl
 		_createDate = createDate;
 	}
 
+	@JSON
 	@Override
 	public Date getModifiedDate() {
 		return _modifiedDate;
@@ -597,6 +681,7 @@ public class EdcPermissionScopeModelImpl
 		_modifiedDate = modifiedDate;
 	}
 
+	@JSON
 	@Override
 	public long getCreatedBy() {
 		return _createdBy;
@@ -607,6 +692,7 @@ public class EdcPermissionScopeModelImpl
 		_createdBy = createdBy;
 	}
 
+	@JSON
 	@Override
 	public long getModifiedBy() {
 		return _modifiedBy;
@@ -770,6 +856,8 @@ public class EdcPermissionScopeModelImpl
 		_originalModuleName = _moduleName;
 
 		_originalTaskKey = _taskKey;
+
+		_originalRoleName = _roleName;
 
 		_originalScopeRole = _scopeRole;
 
@@ -986,6 +1074,7 @@ public class EdcPermissionScopeModelImpl
 	private String _taskKey;
 	private String _originalTaskKey;
 	private String _roleName;
+	private String _originalRoleName;
 	private String _scopeRole;
 	private String _originalScopeRole;
 	private boolean _active;

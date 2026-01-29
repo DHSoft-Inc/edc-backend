@@ -17,6 +17,7 @@ package com.dhsoft.edc.backend.service.base;
 import com.dhsoft.edc.backend.model.VisitDefinition;
 import com.dhsoft.edc.backend.service.VisitDefinitionService;
 import com.dhsoft.edc.backend.service.VisitDefinitionServiceUtil;
+import com.dhsoft.edc.backend.service.persistence.EdcLockPersistence;
 import com.dhsoft.edc.backend.service.persistence.EdcPermissionRoleAuditPersistence;
 import com.dhsoft.edc.backend.service.persistence.EdcPermissionRolePersistence;
 import com.dhsoft.edc.backend.service.persistence.EdcPermissionScopeAuditPersistence;
@@ -150,6 +151,9 @@ public abstract class VisitDefinitionServiceBaseImpl
 			throw new RuntimeException(reflectiveOperationException);
 		}
 	}
+
+	@Reference
+	protected EdcLockPersistence edcLockPersistence;
 
 	@Reference
 	protected EdcPermissionRolePersistence edcPermissionRolePersistence;

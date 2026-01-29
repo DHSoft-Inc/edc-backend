@@ -78,10 +78,10 @@ import org.osgi.service.component.annotations.Reference;
 	        vd.setStatusByUserName(userName);
 	        vd.setStatusDate(now);
 
-	        // ✅ 핵심: VisitGroupCode → VisitDefinitionCode
+
 	        vd.setVisitDefinitionCode(code);
 
-	        // ✅ visitGroupId 컬럼엔 진짜 visitGroupId 넣기
+
 	        vd.setVisitGroupId(visitGroupId);
 
 	        vd.setName(name);
@@ -90,8 +90,7 @@ import org.osgi.service.component.annotations.Reference;
 	        vd.setWindowMinus(windowMinus);
 	        vd.setWindowPlus(windowPlus);
 
-	        // type은 cycle용이라 그대로 두거나 기존 룰대로 세팅
-	        // (현재 기존 add는 type=0으로 고정인데, 그 의미가 cycle이면 여기서도 동일하게 유지)
+
 	        vd.setType(0);
 
 	        vd.setRepeatCount(0);
@@ -146,7 +145,7 @@ import org.osgi.service.component.annotations.Reference;
 	        vd.setVisitDefinitionCode(code);
 
 
-	        //vd.setVisitDefinitionCode(expGroup.getExpCode());
+
 	        vd.setVisitGroupId(experimentalGroupId);
 
 
@@ -163,9 +162,7 @@ import org.osgi.service.component.annotations.Reference;
 	        return visitDefinitionPersistence.update(vd);
 	    }
 
-	    /**
-	     * UPDATE
-	     */
+
 	    public VisitDefinition updateVisitDefinitionBasic(
 	            long visitDefinitionId,
 	            String name,
@@ -208,9 +205,7 @@ import org.osgi.service.component.annotations.Reference;
 	        return visitDefinitionPersistence.update(vd);
 	    }
 
-	    /**
-	     * DELETE
-	     */
+
 	    public VisitDefinition deleteVisitDefinitionById(long visitDefinitionId)
 	            throws PortalException {
 

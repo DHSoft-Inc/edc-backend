@@ -17,6 +17,7 @@ package com.dhsoft.edc.backend.service.base;
 import com.dhsoft.edc.backend.model.EdcPermissionRole;
 import com.dhsoft.edc.backend.service.EdcPermissionRoleService;
 import com.dhsoft.edc.backend.service.EdcPermissionRoleServiceUtil;
+import com.dhsoft.edc.backend.service.persistence.EdcLockPersistence;
 import com.dhsoft.edc.backend.service.persistence.EdcPermissionRoleAuditPersistence;
 import com.dhsoft.edc.backend.service.persistence.EdcPermissionRolePersistence;
 import com.dhsoft.edc.backend.service.persistence.EdcPermissionScopeAuditPersistence;
@@ -151,6 +152,9 @@ public abstract class EdcPermissionRoleServiceBaseImpl
 			throw new RuntimeException(reflectiveOperationException);
 		}
 	}
+
+	@Reference
+	protected EdcLockPersistence edcLockPersistence;
 
 	@Reference
 	protected com.dhsoft.edc.backend.service.EdcPermissionRoleLocalService

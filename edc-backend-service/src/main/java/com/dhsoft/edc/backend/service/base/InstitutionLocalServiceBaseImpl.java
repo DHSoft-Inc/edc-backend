@@ -17,6 +17,7 @@ package com.dhsoft.edc.backend.service.base;
 import com.dhsoft.edc.backend.model.Institution;
 import com.dhsoft.edc.backend.service.InstitutionLocalService;
 import com.dhsoft.edc.backend.service.InstitutionLocalServiceUtil;
+import com.dhsoft.edc.backend.service.persistence.EdcLockPersistence;
 import com.dhsoft.edc.backend.service.persistence.EdcPermissionRoleAuditPersistence;
 import com.dhsoft.edc.backend.service.persistence.EdcPermissionRolePersistence;
 import com.dhsoft.edc.backend.service.persistence.EdcPermissionScopeAuditPersistence;
@@ -627,6 +628,9 @@ public abstract class InstitutionLocalServiceBaseImpl
 			throw new RuntimeException(reflectiveOperationException);
 		}
 	}
+
+	@Reference
+	protected EdcLockPersistence edcLockPersistence;
 
 	@Reference
 	protected EdcPermissionRolePersistence edcPermissionRolePersistence;

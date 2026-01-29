@@ -143,9 +143,6 @@ public class VisitDefinitionLocalServiceWrapper
 			visitDefinition);
 	}
 
-	/**
-	 * DELETE
-	 */
 	@Override
 	public com.dhsoft.edc.backend.model.VisitDefinition
 			deleteVisitDefinitionById(long visitDefinitionId)
@@ -464,9 +461,6 @@ public class VisitDefinitionLocalServiceWrapper
 			visitDefinition);
 	}
 
-	/**
-	 * UPDATE
-	 */
 	@Override
 	public com.dhsoft.edc.backend.model.VisitDefinition
 			updateVisitDefinitionBasic(

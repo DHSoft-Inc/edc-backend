@@ -32,11 +32,6 @@ public class VisitGroupLocalServiceWrapper
 		_visitGroupLocalService = visitGroupLocalService;
 	}
 
-	/**
-	 * ✅ 긴 버전 addVisitGroup (VisitEvent 스타일)
-	 * 실제 create + set + persistence.update 수행.
-	 * (ServiceBuilder Util에서 요구하는 시그니처와 동일하게 유지)
-	 */
 	@Override
 	public com.dhsoft.edc.backend.model.VisitGroup addVisitGroup(
 		long companyId, long groupId, long projectId, long userId,
@@ -51,11 +46,6 @@ public class VisitGroupLocalServiceWrapper
 			visitGroupCode, name, description, activeStatus, activeDate);
 	}
 
-	/**
-	 * ✅ (방법 A) 짧은 버전 addVisitGroup
-	 * ResourceCommand에서 편하게 쓰기 위한 오버로드.
-	 * status / statusBy / statusDate / activeDate는 기본값으로 채움.
-	 */
 	@Override
 	public com.dhsoft.edc.backend.model.VisitGroup addVisitGroup(
 		long companyId, long groupId, long projectId, long userId,

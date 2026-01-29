@@ -66,9 +66,9 @@ public interface VisitEventLocalService
 	 */
 	public void addVisitEvent(
 		long companyId, long groupId, long projectId, long institutionId,
-		long subjectId, long visitDefinitionId, int status, long statusByUserId,
-		String statusByUserName, Date statusDate, String anchorType,
-		Date anchorDate, int offset, Date planDate);
+		long subjectId, long subjectVisitDefinitionId, int status,
+		long statusByUserId, String statusByUserName, Date statusDate,
+		String anchorType, Date anchorDate, int offset, Date planDate);
 
 	/**
 	 * Adds the visit event to the database. Also notifies the appropriate model listeners.
@@ -209,6 +209,13 @@ public interface VisitEventLocalService
 
 	public List<VisitEvent> findBySubjectId(long subjectId);
 
+	public List<VisitEvent> findBySubjectIdAndSubjectVisitDefinitionId(
+		long subjectId, long subjectVisitDefinitionId);
+
+	/**
+	 * ✅ 기존 이름도 유지(호환)
+	 * (실제로는 VD가 아니라 SVD ID지만, persistence finder 이름이 S_VD라 그대로 둠)
+	 */
 	public List<VisitEvent> findBySubjectIdAndVisitDefinitionId(
 		long subjectId, long visitDefinitionId);
 
@@ -307,9 +314,17 @@ public interface VisitEventLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public int getVisitEventsCount();
 
+	/**
+	 * ✅ 기존 시그니처 유지(호환):
+	 * 이제부터 이 visitDefinitionId 파라미터는 "svdId"로 간주한다.
+	 */
 	public VisitEvent saveOrUpdateVisitEvent(
 		long subjectId, long visitDefinitionId, String anchorType, int offset,
 		Date anchorDate, Date planDate);
+
+	public VisitEvent saveOrUpdateVisitEventBySvdId(
+		long subjectId, long subjectVisitDefinitionId, String anchorType,
+		int offset, Date anchorDate, Date planDate);
 
 	public void updateCRFData(long visitEventId, long structuredDataId);
 

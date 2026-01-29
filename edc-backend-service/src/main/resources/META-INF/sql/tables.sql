@@ -47,6 +47,22 @@ create table EDC_AssignProjectScope (
 	modifiedBy LONG
 );
 
+create table EDC_EdcLock (
+	uuid_ VARCHAR(75) null,
+	lockId LONG not null primary key,
+	companyId LONG,
+	groupId LONG,
+	projectId LONG,
+	classNameId LONG,
+	classPK LONG,
+	lockType VARCHAR(75) null,
+	userId LONG,
+	userName VARCHAR(75) null,
+	createDate DATE null,
+	modifiedDate DATE null,
+	comment_ VARCHAR(75) null
+);
+
 create table EDC_EdcPermissionRole (
 	uuid_ VARCHAR(75) null,
 	permissionRoleId LONG not null primary key,

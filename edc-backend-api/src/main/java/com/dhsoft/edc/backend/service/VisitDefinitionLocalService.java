@@ -137,9 +137,6 @@ public interface VisitDefinitionLocalService
 	public VisitDefinition deleteVisitDefinition(
 		VisitDefinition visitDefinition);
 
-	/**
-	 * DELETE
-	 */
 	public VisitDefinition deleteVisitDefinitionById(long visitDefinitionId)
 		throws PortalException;
 
@@ -350,9 +347,6 @@ public interface VisitDefinitionLocalService
 	public VisitDefinition updateVisitDefinition(
 		VisitDefinition visitDefinition);
 
-	/**
-	 * UPDATE
-	 */
 	public VisitDefinition updateVisitDefinitionBasic(
 			long visitDefinitionId, String name, String anchorType, int offset,
 			int windowMinus, int windowPlus)
