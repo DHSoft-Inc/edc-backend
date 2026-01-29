@@ -19,11 +19,7 @@ import org.osgi.service.component.annotations.Component;
 )
 public class VisitEventLocalServiceImpl extends VisitEventLocalServiceBaseImpl {
 
-    /**
-     * ✅ 정책 변경:
-     * VisitEvent.visitDefinitionId 컬럼에는 "VisitDefinitionId"가 아니라
-     * "SubjectVisitDefinitionId"를 저장한다.
-     */
+
     private VisitEvent createNewEvent(long subjectId, long subjectVisitDefinitionId) {
 
         long id = CounterLocalServiceUtil.increment();
@@ -31,7 +27,7 @@ public class VisitEventLocalServiceImpl extends VisitEventLocalServiceBaseImpl {
 
         v.setSubjectId(subjectId);
 
-        // ✅ 여기: 컬럼명은 visitDefinitionId지만, 저장값은 SVD ID
+
         v.setVisitDefinitionId(subjectVisitDefinitionId);
 
         Date now = new Date();
@@ -68,7 +64,6 @@ public class VisitEventLocalServiceImpl extends VisitEventLocalServiceBaseImpl {
 
         v.setSubjectId(subjectId);
 
-        // ✅ 컬럼명은 visitDefinitionId지만, 저장값은 SVD ID
         v.setVisitDefinitionId(subjectVisitDefinitionId);
 
         v.setStatus(status);
@@ -87,7 +82,7 @@ public class VisitEventLocalServiceImpl extends VisitEventLocalServiceBaseImpl {
         visitEventPersistence.update(v);
     }
 
-    // When subject visit, update VisitEvent
+
     public void updateEventDate(long visitEventId, Date eventDate, String deviationStatus) {
         try {
             Date modifiedDate = new Date();
@@ -101,7 +96,7 @@ public class VisitEventLocalServiceImpl extends VisitEventLocalServiceBaseImpl {
         }
     }
 
-    // When CRF Save, update VisitEvent
+
     public void updateCRFData(long visitEventId, long structuredDataId) {
         try {
             VisitEvent v = visitEventPersistence.findByPrimaryKey(visitEventId);
@@ -127,14 +122,13 @@ public class VisitEventLocalServiceImpl extends VisitEventLocalServiceBaseImpl {
                 rootJson.put("links", linksArray);
             }
 
-            // ⚠️ (참고) 기존 코드가 instanceLinkObj를 실제로 set 안 하고 있었음
-            // v.setInstanceLinkObj(rootJson.toString());
+
 
             v.setModifiedDate(modifiedDate);
             visitEventPersistence.update(v);
 
         } catch (Exception e) {
-            // 필요하면 로그
+
         }
     }
 
@@ -148,9 +142,7 @@ public class VisitEventLocalServiceImpl extends VisitEventLocalServiceBaseImpl {
         }
     }
 
-    // =========================================================
-    // ✅ 신규: subjectVisitDefinitionId 기준 업서트
-    // =========================================================
+
     public VisitEvent saveOrUpdateVisitEventBySvdId(
         long subjectId,
         long subjectVisitDefinitionId,
@@ -180,10 +172,7 @@ public class VisitEventLocalServiceImpl extends VisitEventLocalServiceBaseImpl {
         return visitEventPersistence.update(event);
     }
 
-    /**
-     * ✅ 기존 시그니처 유지(호환):
-     * 이제부터 이 visitDefinitionId 파라미터는 "svdId"로 간주한다.
-     */
+
     public VisitEvent saveOrUpdateVisitEvent(
         long subjectId,
         long visitDefinitionId,
@@ -203,9 +192,7 @@ public class VisitEventLocalServiceImpl extends VisitEventLocalServiceBaseImpl {
         );
     }
 
-    // =========================================================
-    // ✅ Finder (컬럼명은 VD지만 값은 SVD ID)
-    // =========================================================
+
     public List<VisitEvent> findBySubjectIdAndSubjectVisitDefinitionId(
         long subjectId,
         long subjectVisitDefinitionId
@@ -213,10 +200,7 @@ public class VisitEventLocalServiceImpl extends VisitEventLocalServiceBaseImpl {
         return visitEventPersistence.findByS_VD(subjectId, subjectVisitDefinitionId);
     }
 
-    /**
-     * ✅ 기존 이름도 유지(호환)
-     * (실제로는 VD가 아니라 SVD ID지만, persistence finder 이름이 S_VD라 그대로 둠)
-     */
+
     public List<VisitEvent> findBySubjectIdAndVisitDefinitionId(long subjectId, long visitDefinitionId) {
         return visitEventPersistence.findByS_VD(subjectId, visitDefinitionId);
     }
