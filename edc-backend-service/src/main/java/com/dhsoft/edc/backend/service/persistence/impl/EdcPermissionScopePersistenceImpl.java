@@ -2597,24 +2597,25 @@ public class EdcPermissionScopePersistenceImpl
 	private FinderPath _finderPathCountByEdcTaskScope;
 
 	/**
-	 * Returns all the edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63;.
+	 * Returns all the edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63;.
 	 *
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @return the matching edc permission scopes
 	 */
 	@Override
 	public List<EdcPermissionScope> findByEdcTaskScope(
-		long projectId, String moduleName, String taskKey) {
+		long projectId, String moduleName, String taskKey, String roleName) {
 
 		return findByEdcTaskScope(
-			projectId, moduleName, taskKey, QueryUtil.ALL_POS,
+			projectId, moduleName, taskKey, roleName, QueryUtil.ALL_POS,
 			QueryUtil.ALL_POS, null);
 	}
 
 	/**
-	 * Returns a range of all the edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63;.
+	 * Returns a range of all the edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>EdcPermissionScopeModelImpl</code>.
@@ -2623,20 +2624,22 @@ public class EdcPermissionScopePersistenceImpl
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param start the lower bound of the range of edc permission scopes
 	 * @param end the upper bound of the range of edc permission scopes (not inclusive)
 	 * @return the range of matching edc permission scopes
 	 */
 	@Override
 	public List<EdcPermissionScope> findByEdcTaskScope(
-		long projectId, String moduleName, String taskKey, int start, int end) {
+		long projectId, String moduleName, String taskKey, String roleName,
+		int start, int end) {
 
 		return findByEdcTaskScope(
-			projectId, moduleName, taskKey, start, end, null);
+			projectId, moduleName, taskKey, roleName, start, end, null);
 	}
 
 	/**
-	 * Returns an ordered range of all the edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63;.
+	 * Returns an ordered range of all the edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>EdcPermissionScopeModelImpl</code>.
@@ -2645,6 +2648,7 @@ public class EdcPermissionScopePersistenceImpl
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param start the lower bound of the range of edc permission scopes
 	 * @param end the upper bound of the range of edc permission scopes (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
@@ -2652,16 +2656,17 @@ public class EdcPermissionScopePersistenceImpl
 	 */
 	@Override
 	public List<EdcPermissionScope> findByEdcTaskScope(
-		long projectId, String moduleName, String taskKey, int start, int end,
+		long projectId, String moduleName, String taskKey, String roleName,
+		int start, int end,
 		OrderByComparator<EdcPermissionScope> orderByComparator) {
 
 		return findByEdcTaskScope(
-			projectId, moduleName, taskKey, start, end, orderByComparator,
-			true);
+			projectId, moduleName, taskKey, roleName, start, end,
+			orderByComparator, true);
 	}
 
 	/**
-	 * Returns an ordered range of all the edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63;.
+	 * Returns an ordered range of all the edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>EdcPermissionScopeModelImpl</code>.
@@ -2670,6 +2675,7 @@ public class EdcPermissionScopePersistenceImpl
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param start the lower bound of the range of edc permission scopes
 	 * @param end the upper bound of the range of edc permission scopes (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
@@ -2678,12 +2684,14 @@ public class EdcPermissionScopePersistenceImpl
 	 */
 	@Override
 	public List<EdcPermissionScope> findByEdcTaskScope(
-		long projectId, String moduleName, String taskKey, int start, int end,
+		long projectId, String moduleName, String taskKey, String roleName,
+		int start, int end,
 		OrderByComparator<EdcPermissionScope> orderByComparator,
 		boolean useFinderCache) {
 
 		moduleName = Objects.toString(moduleName, "");
 		taskKey = Objects.toString(taskKey, "");
+		roleName = Objects.toString(roleName, "");
 
 		FinderPath finderPath = null;
 		Object[] finderArgs = null;
@@ -2693,13 +2701,16 @@ public class EdcPermissionScopePersistenceImpl
 
 			if (useFinderCache) {
 				finderPath = _finderPathWithoutPaginationFindByEdcTaskScope;
-				finderArgs = new Object[] {projectId, moduleName, taskKey};
+				finderArgs = new Object[] {
+					projectId, moduleName, taskKey, roleName
+				};
 			}
 		}
 		else if (useFinderCache) {
 			finderPath = _finderPathWithPaginationFindByEdcTaskScope;
 			finderArgs = new Object[] {
-				projectId, moduleName, taskKey, start, end, orderByComparator
+				projectId, moduleName, taskKey, roleName, start, end,
+				orderByComparator
 			};
 		}
 
@@ -2714,7 +2725,8 @@ public class EdcPermissionScopePersistenceImpl
 					if ((projectId != edcPermissionScope.getProjectId()) ||
 						!moduleName.equals(
 							edcPermissionScope.getModuleName()) ||
-						!taskKey.equals(edcPermissionScope.getTaskKey())) {
+						!taskKey.equals(edcPermissionScope.getTaskKey()) ||
+						!roleName.equals(edcPermissionScope.getRoleName())) {
 
 						list = null;
 
@@ -2729,10 +2741,10 @@ public class EdcPermissionScopePersistenceImpl
 
 			if (orderByComparator != null) {
 				sb = new StringBundler(
-					5 + (orderByComparator.getOrderByFields().length * 2));
+					6 + (orderByComparator.getOrderByFields().length * 2));
 			}
 			else {
-				sb = new StringBundler(5);
+				sb = new StringBundler(6);
 			}
 
 			sb.append(_SQL_SELECT_EDCPERMISSIONSCOPE_WHERE);
@@ -2759,6 +2771,17 @@ public class EdcPermissionScopePersistenceImpl
 				bindTaskKey = true;
 
 				sb.append(_FINDER_COLUMN_EDCTASKSCOPE_TASKKEY_2);
+			}
+
+			boolean bindRoleName = false;
+
+			if (roleName.isEmpty()) {
+				sb.append(_FINDER_COLUMN_EDCTASKSCOPE_ROLENAME_3);
+			}
+			else {
+				bindRoleName = true;
+
+				sb.append(_FINDER_COLUMN_EDCTASKSCOPE_ROLENAME_2);
 			}
 
 			if (orderByComparator != null) {
@@ -2790,6 +2813,10 @@ public class EdcPermissionScopePersistenceImpl
 					queryPos.add(taskKey);
 				}
 
+				if (bindRoleName) {
+					queryPos.add(roleName);
+				}
+
 				list = (List<EdcPermissionScope>)QueryUtil.list(
 					query, getDialect(), start, end);
 
@@ -2815,29 +2842,30 @@ public class EdcPermissionScopePersistenceImpl
 	}
 
 	/**
-	 * Returns the first edc permission scope in the ordered set where projectId = &#63; and moduleName = &#63; and taskKey = &#63;.
+	 * Returns the first edc permission scope in the ordered set where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63;.
 	 *
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching edc permission scope
 	 * @throws NoSuchEdcPermissionScopeException if a matching edc permission scope could not be found
 	 */
 	@Override
 	public EdcPermissionScope findByEdcTaskScope_First(
-			long projectId, String moduleName, String taskKey,
+			long projectId, String moduleName, String taskKey, String roleName,
 			OrderByComparator<EdcPermissionScope> orderByComparator)
 		throws NoSuchEdcPermissionScopeException {
 
 		EdcPermissionScope edcPermissionScope = fetchByEdcTaskScope_First(
-			projectId, moduleName, taskKey, orderByComparator);
+			projectId, moduleName, taskKey, roleName, orderByComparator);
 
 		if (edcPermissionScope != null) {
 			return edcPermissionScope;
 		}
 
-		StringBundler sb = new StringBundler(8);
+		StringBundler sb = new StringBundler(10);
 
 		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
 
@@ -2850,27 +2878,31 @@ public class EdcPermissionScopePersistenceImpl
 		sb.append(", taskKey=");
 		sb.append(taskKey);
 
+		sb.append(", roleName=");
+		sb.append(roleName);
+
 		sb.append("}");
 
 		throw new NoSuchEdcPermissionScopeException(sb.toString());
 	}
 
 	/**
-	 * Returns the first edc permission scope in the ordered set where projectId = &#63; and moduleName = &#63; and taskKey = &#63;.
+	 * Returns the first edc permission scope in the ordered set where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63;.
 	 *
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching edc permission scope, or <code>null</code> if a matching edc permission scope could not be found
 	 */
 	@Override
 	public EdcPermissionScope fetchByEdcTaskScope_First(
-		long projectId, String moduleName, String taskKey,
+		long projectId, String moduleName, String taskKey, String roleName,
 		OrderByComparator<EdcPermissionScope> orderByComparator) {
 
 		List<EdcPermissionScope> list = findByEdcTaskScope(
-			projectId, moduleName, taskKey, 0, 1, orderByComparator);
+			projectId, moduleName, taskKey, roleName, 0, 1, orderByComparator);
 
 		if (!list.isEmpty()) {
 			return list.get(0);
@@ -2880,29 +2912,30 @@ public class EdcPermissionScopePersistenceImpl
 	}
 
 	/**
-	 * Returns the last edc permission scope in the ordered set where projectId = &#63; and moduleName = &#63; and taskKey = &#63;.
+	 * Returns the last edc permission scope in the ordered set where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63;.
 	 *
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching edc permission scope
 	 * @throws NoSuchEdcPermissionScopeException if a matching edc permission scope could not be found
 	 */
 	@Override
 	public EdcPermissionScope findByEdcTaskScope_Last(
-			long projectId, String moduleName, String taskKey,
+			long projectId, String moduleName, String taskKey, String roleName,
 			OrderByComparator<EdcPermissionScope> orderByComparator)
 		throws NoSuchEdcPermissionScopeException {
 
 		EdcPermissionScope edcPermissionScope = fetchByEdcTaskScope_Last(
-			projectId, moduleName, taskKey, orderByComparator);
+			projectId, moduleName, taskKey, roleName, orderByComparator);
 
 		if (edcPermissionScope != null) {
 			return edcPermissionScope;
 		}
 
-		StringBundler sb = new StringBundler(8);
+		StringBundler sb = new StringBundler(10);
 
 		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
 
@@ -2915,33 +2948,38 @@ public class EdcPermissionScopePersistenceImpl
 		sb.append(", taskKey=");
 		sb.append(taskKey);
 
+		sb.append(", roleName=");
+		sb.append(roleName);
+
 		sb.append("}");
 
 		throw new NoSuchEdcPermissionScopeException(sb.toString());
 	}
 
 	/**
-	 * Returns the last edc permission scope in the ordered set where projectId = &#63; and moduleName = &#63; and taskKey = &#63;.
+	 * Returns the last edc permission scope in the ordered set where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63;.
 	 *
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching edc permission scope, or <code>null</code> if a matching edc permission scope could not be found
 	 */
 	@Override
 	public EdcPermissionScope fetchByEdcTaskScope_Last(
-		long projectId, String moduleName, String taskKey,
+		long projectId, String moduleName, String taskKey, String roleName,
 		OrderByComparator<EdcPermissionScope> orderByComparator) {
 
-		int count = countByEdcTaskScope(projectId, moduleName, taskKey);
+		int count = countByEdcTaskScope(
+			projectId, moduleName, taskKey, roleName);
 
 		if (count == 0) {
 			return null;
 		}
 
 		List<EdcPermissionScope> list = findByEdcTaskScope(
-			projectId, moduleName, taskKey, count - 1, count,
+			projectId, moduleName, taskKey, roleName, count - 1, count,
 			orderByComparator);
 
 		if (!list.isEmpty()) {
@@ -2952,12 +2990,13 @@ public class EdcPermissionScopePersistenceImpl
 	}
 
 	/**
-	 * Returns the edc permission scopes before and after the current edc permission scope in the ordered set where projectId = &#63; and moduleName = &#63; and taskKey = &#63;.
+	 * Returns the edc permission scopes before and after the current edc permission scope in the ordered set where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63;.
 	 *
 	 * @param permissionScopeId the primary key of the current edc permission scope
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next edc permission scope
 	 * @throws NoSuchEdcPermissionScopeException if a edc permission scope with the primary key could not be found
@@ -2965,12 +3004,13 @@ public class EdcPermissionScopePersistenceImpl
 	@Override
 	public EdcPermissionScope[] findByEdcTaskScope_PrevAndNext(
 			long permissionScopeId, long projectId, String moduleName,
-			String taskKey,
+			String taskKey, String roleName,
 			OrderByComparator<EdcPermissionScope> orderByComparator)
 		throws NoSuchEdcPermissionScopeException {
 
 		moduleName = Objects.toString(moduleName, "");
 		taskKey = Objects.toString(taskKey, "");
+		roleName = Objects.toString(roleName, "");
 
 		EdcPermissionScope edcPermissionScope = findByPrimaryKey(
 			permissionScopeId);
@@ -2984,13 +3024,13 @@ public class EdcPermissionScopePersistenceImpl
 
 			array[0] = getByEdcTaskScope_PrevAndNext(
 				session, edcPermissionScope, projectId, moduleName, taskKey,
-				orderByComparator, true);
+				roleName, orderByComparator, true);
 
 			array[1] = edcPermissionScope;
 
 			array[2] = getByEdcTaskScope_PrevAndNext(
 				session, edcPermissionScope, projectId, moduleName, taskKey,
-				orderByComparator, false);
+				roleName, orderByComparator, false);
 
 			return array;
 		}
@@ -3004,7 +3044,7 @@ public class EdcPermissionScopePersistenceImpl
 
 	protected EdcPermissionScope getByEdcTaskScope_PrevAndNext(
 		Session session, EdcPermissionScope edcPermissionScope, long projectId,
-		String moduleName, String taskKey,
+		String moduleName, String taskKey, String roleName,
 		OrderByComparator<EdcPermissionScope> orderByComparator,
 		boolean previous) {
 
@@ -3012,11 +3052,11 @@ public class EdcPermissionScopePersistenceImpl
 
 		if (orderByComparator != null) {
 			sb = new StringBundler(
-				6 + (orderByComparator.getOrderByConditionFields().length * 3) +
+				7 + (orderByComparator.getOrderByConditionFields().length * 3) +
 					(orderByComparator.getOrderByFields().length * 3));
 		}
 		else {
-			sb = new StringBundler(5);
+			sb = new StringBundler(6);
 		}
 
 		sb.append(_SQL_SELECT_EDCPERMISSIONSCOPE_WHERE);
@@ -3043,6 +3083,17 @@ public class EdcPermissionScopePersistenceImpl
 			bindTaskKey = true;
 
 			sb.append(_FINDER_COLUMN_EDCTASKSCOPE_TASKKEY_2);
+		}
+
+		boolean bindRoleName = false;
+
+		if (roleName.isEmpty()) {
+			sb.append(_FINDER_COLUMN_EDCTASKSCOPE_ROLENAME_3);
+		}
+		else {
+			bindRoleName = true;
+
+			sb.append(_FINDER_COLUMN_EDCTASKSCOPE_ROLENAME_2);
 		}
 
 		if (orderByComparator != null) {
@@ -3124,6 +3175,10 @@ public class EdcPermissionScopePersistenceImpl
 			queryPos.add(taskKey);
 		}
 
+		if (bindRoleName) {
+			queryPos.add(roleName);
+		}
+
 		if (orderByComparator != null) {
 			for (Object orderByConditionValue :
 					orderByComparator.getOrderByConditionValues(
@@ -3144,19 +3199,20 @@ public class EdcPermissionScopePersistenceImpl
 	}
 
 	/**
-	 * Removes all the edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63; from the database.
+	 * Removes all the edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63; from the database.
 	 *
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 */
 	@Override
 	public void removeByEdcTaskScope(
-		long projectId, String moduleName, String taskKey) {
+		long projectId, String moduleName, String taskKey, String roleName) {
 
 		for (EdcPermissionScope edcPermissionScope :
 				findByEdcTaskScope(
-					projectId, moduleName, taskKey, QueryUtil.ALL_POS,
+					projectId, moduleName, taskKey, roleName, QueryUtil.ALL_POS,
 					QueryUtil.ALL_POS, null)) {
 
 			remove(edcPermissionScope);
@@ -3164,28 +3220,32 @@ public class EdcPermissionScopePersistenceImpl
 	}
 
 	/**
-	 * Returns the number of edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63;.
+	 * Returns the number of edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63;.
 	 *
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @return the number of matching edc permission scopes
 	 */
 	@Override
 	public int countByEdcTaskScope(
-		long projectId, String moduleName, String taskKey) {
+		long projectId, String moduleName, String taskKey, String roleName) {
 
 		moduleName = Objects.toString(moduleName, "");
 		taskKey = Objects.toString(taskKey, "");
+		roleName = Objects.toString(roleName, "");
 
 		FinderPath finderPath = _finderPathCountByEdcTaskScope;
 
-		Object[] finderArgs = new Object[] {projectId, moduleName, taskKey};
+		Object[] finderArgs = new Object[] {
+			projectId, moduleName, taskKey, roleName
+		};
 
 		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
 
 		if (count == null) {
-			StringBundler sb = new StringBundler(4);
+			StringBundler sb = new StringBundler(5);
 
 			sb.append(_SQL_COUNT_EDCPERMISSIONSCOPE_WHERE);
 
@@ -3213,6 +3273,17 @@ public class EdcPermissionScopePersistenceImpl
 				sb.append(_FINDER_COLUMN_EDCTASKSCOPE_TASKKEY_2);
 			}
 
+			boolean bindRoleName = false;
+
+			if (roleName.isEmpty()) {
+				sb.append(_FINDER_COLUMN_EDCTASKSCOPE_ROLENAME_3);
+			}
+			else {
+				bindRoleName = true;
+
+				sb.append(_FINDER_COLUMN_EDCTASKSCOPE_ROLENAME_2);
+			}
+
 			String sql = sb.toString();
 
 			Session session = null;
@@ -3232,6 +3303,10 @@ public class EdcPermissionScopePersistenceImpl
 
 				if (bindTaskKey) {
 					queryPos.add(taskKey);
+				}
+
+				if (bindRoleName) {
+					queryPos.add(roleName);
 				}
 
 				count = (Long)query.uniqueResult();
@@ -3261,34 +3336,42 @@ public class EdcPermissionScopePersistenceImpl
 		"(edcPermissionScope.moduleName IS NULL OR edcPermissionScope.moduleName = '') AND ";
 
 	private static final String _FINDER_COLUMN_EDCTASKSCOPE_TASKKEY_2 =
-		"edcPermissionScope.taskKey = ?";
+		"edcPermissionScope.taskKey = ? AND ";
 
 	private static final String _FINDER_COLUMN_EDCTASKSCOPE_TASKKEY_3 =
-		"(edcPermissionScope.taskKey IS NULL OR edcPermissionScope.taskKey = '')";
+		"(edcPermissionScope.taskKey IS NULL OR edcPermissionScope.taskKey = '') AND ";
+
+	private static final String _FINDER_COLUMN_EDCTASKSCOPE_ROLENAME_2 =
+		"edcPermissionScope.roleName = ?";
+
+	private static final String _FINDER_COLUMN_EDCTASKSCOPE_ROLENAME_3 =
+		"(edcPermissionScope.roleName IS NULL OR edcPermissionScope.roleName = '')";
 
 	private FinderPath _finderPathFetchByEdcPermissionScope;
 	private FinderPath _finderPathCountByEdcPermissionScope;
 
 	/**
-	 * Returns the edc permission scope where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and scopeRole = &#63; or throws a <code>NoSuchEdcPermissionScopeException</code> if it could not be found.
+	 * Returns the edc permission scope where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63; and scopeRole = &#63; or throws a <code>NoSuchEdcPermissionScopeException</code> if it could not be found.
 	 *
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param scopeRole the scope role
 	 * @return the matching edc permission scope
 	 * @throws NoSuchEdcPermissionScopeException if a matching edc permission scope could not be found
 	 */
 	@Override
 	public EdcPermissionScope findByEdcPermissionScope(
-			long projectId, String moduleName, String taskKey, String scopeRole)
+			long projectId, String moduleName, String taskKey, String roleName,
+			String scopeRole)
 		throws NoSuchEdcPermissionScopeException {
 
 		EdcPermissionScope edcPermissionScope = fetchByEdcPermissionScope(
-			projectId, moduleName, taskKey, scopeRole);
+			projectId, moduleName, taskKey, roleName, scopeRole);
 
 		if (edcPermissionScope == null) {
-			StringBundler sb = new StringBundler(10);
+			StringBundler sb = new StringBundler(12);
 
 			sb.append(_NO_SUCH_ENTITY_WITH_KEY);
 
@@ -3300,6 +3383,9 @@ public class EdcPermissionScopePersistenceImpl
 
 			sb.append(", taskKey=");
 			sb.append(taskKey);
+
+			sb.append(", roleName=");
+			sb.append(roleName);
 
 			sb.append(", scopeRole=");
 			sb.append(scopeRole);
@@ -3317,46 +3403,50 @@ public class EdcPermissionScopePersistenceImpl
 	}
 
 	/**
-	 * Returns the edc permission scope where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and scopeRole = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	 * Returns the edc permission scope where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63; and scopeRole = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
 	 *
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param scopeRole the scope role
 	 * @return the matching edc permission scope, or <code>null</code> if a matching edc permission scope could not be found
 	 */
 	@Override
 	public EdcPermissionScope fetchByEdcPermissionScope(
-		long projectId, String moduleName, String taskKey, String scopeRole) {
+		long projectId, String moduleName, String taskKey, String roleName,
+		String scopeRole) {
 
 		return fetchByEdcPermissionScope(
-			projectId, moduleName, taskKey, scopeRole, true);
+			projectId, moduleName, taskKey, roleName, scopeRole, true);
 	}
 
 	/**
-	 * Returns the edc permission scope where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and scopeRole = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 * Returns the edc permission scope where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63; and scopeRole = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
 	 *
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param scopeRole the scope role
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the matching edc permission scope, or <code>null</code> if a matching edc permission scope could not be found
 	 */
 	@Override
 	public EdcPermissionScope fetchByEdcPermissionScope(
-		long projectId, String moduleName, String taskKey, String scopeRole,
-		boolean useFinderCache) {
+		long projectId, String moduleName, String taskKey, String roleName,
+		String scopeRole, boolean useFinderCache) {
 
 		moduleName = Objects.toString(moduleName, "");
 		taskKey = Objects.toString(taskKey, "");
+		roleName = Objects.toString(roleName, "");
 		scopeRole = Objects.toString(scopeRole, "");
 
 		Object[] finderArgs = null;
 
 		if (useFinderCache) {
 			finderArgs = new Object[] {
-				projectId, moduleName, taskKey, scopeRole
+				projectId, moduleName, taskKey, roleName, scopeRole
 			};
 		}
 
@@ -3374,6 +3464,7 @@ public class EdcPermissionScopePersistenceImpl
 				!Objects.equals(
 					moduleName, edcPermissionScope.getModuleName()) ||
 				!Objects.equals(taskKey, edcPermissionScope.getTaskKey()) ||
+				!Objects.equals(roleName, edcPermissionScope.getRoleName()) ||
 				!Objects.equals(scopeRole, edcPermissionScope.getScopeRole())) {
 
 				result = null;
@@ -3381,7 +3472,7 @@ public class EdcPermissionScopePersistenceImpl
 		}
 
 		if (result == null) {
-			StringBundler sb = new StringBundler(6);
+			StringBundler sb = new StringBundler(7);
 
 			sb.append(_SQL_SELECT_EDCPERMISSIONSCOPE_WHERE);
 
@@ -3407,6 +3498,17 @@ public class EdcPermissionScopePersistenceImpl
 				bindTaskKey = true;
 
 				sb.append(_FINDER_COLUMN_EDCPERMISSIONSCOPE_TASKKEY_2);
+			}
+
+			boolean bindRoleName = false;
+
+			if (roleName.isEmpty()) {
+				sb.append(_FINDER_COLUMN_EDCPERMISSIONSCOPE_ROLENAME_3);
+			}
+			else {
+				bindRoleName = true;
+
+				sb.append(_FINDER_COLUMN_EDCPERMISSIONSCOPE_ROLENAME_2);
 			}
 
 			boolean bindScopeRole = false;
@@ -3439,6 +3541,10 @@ public class EdcPermissionScopePersistenceImpl
 
 				if (bindTaskKey) {
 					queryPos.add(taskKey);
+				}
+
+				if (bindRoleName) {
+					queryPos.add(roleName);
 				}
 
 				if (bindScopeRole) {
@@ -3484,52 +3590,57 @@ public class EdcPermissionScopePersistenceImpl
 	}
 
 	/**
-	 * Removes the edc permission scope where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and scopeRole = &#63; from the database.
+	 * Removes the edc permission scope where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63; and scopeRole = &#63; from the database.
 	 *
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param scopeRole the scope role
 	 * @return the edc permission scope that was removed
 	 */
 	@Override
 	public EdcPermissionScope removeByEdcPermissionScope(
-			long projectId, String moduleName, String taskKey, String scopeRole)
+			long projectId, String moduleName, String taskKey, String roleName,
+			String scopeRole)
 		throws NoSuchEdcPermissionScopeException {
 
 		EdcPermissionScope edcPermissionScope = findByEdcPermissionScope(
-			projectId, moduleName, taskKey, scopeRole);
+			projectId, moduleName, taskKey, roleName, scopeRole);
 
 		return remove(edcPermissionScope);
 	}
 
 	/**
-	 * Returns the number of edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and scopeRole = &#63;.
+	 * Returns the number of edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63; and scopeRole = &#63;.
 	 *
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param scopeRole the scope role
 	 * @return the number of matching edc permission scopes
 	 */
 	@Override
 	public int countByEdcPermissionScope(
-		long projectId, String moduleName, String taskKey, String scopeRole) {
+		long projectId, String moduleName, String taskKey, String roleName,
+		String scopeRole) {
 
 		moduleName = Objects.toString(moduleName, "");
 		taskKey = Objects.toString(taskKey, "");
+		roleName = Objects.toString(roleName, "");
 		scopeRole = Objects.toString(scopeRole, "");
 
 		FinderPath finderPath = _finderPathCountByEdcPermissionScope;
 
 		Object[] finderArgs = new Object[] {
-			projectId, moduleName, taskKey, scopeRole
+			projectId, moduleName, taskKey, roleName, scopeRole
 		};
 
 		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
 
 		if (count == null) {
-			StringBundler sb = new StringBundler(5);
+			StringBundler sb = new StringBundler(6);
 
 			sb.append(_SQL_COUNT_EDCPERMISSIONSCOPE_WHERE);
 
@@ -3555,6 +3666,17 @@ public class EdcPermissionScopePersistenceImpl
 				bindTaskKey = true;
 
 				sb.append(_FINDER_COLUMN_EDCPERMISSIONSCOPE_TASKKEY_2);
+			}
+
+			boolean bindRoleName = false;
+
+			if (roleName.isEmpty()) {
+				sb.append(_FINDER_COLUMN_EDCPERMISSIONSCOPE_ROLENAME_3);
+			}
+			else {
+				bindRoleName = true;
+
+				sb.append(_FINDER_COLUMN_EDCPERMISSIONSCOPE_ROLENAME_2);
 			}
 
 			boolean bindScopeRole = false;
@@ -3587,6 +3709,10 @@ public class EdcPermissionScopePersistenceImpl
 
 				if (bindTaskKey) {
 					queryPos.add(taskKey);
+				}
+
+				if (bindRoleName) {
+					queryPos.add(roleName);
 				}
 
 				if (bindScopeRole) {
@@ -3624,6 +3750,12 @@ public class EdcPermissionScopePersistenceImpl
 
 	private static final String _FINDER_COLUMN_EDCPERMISSIONSCOPE_TASKKEY_3 =
 		"(edcPermissionScope.taskKey IS NULL OR edcPermissionScope.taskKey = '') AND ";
+
+	private static final String _FINDER_COLUMN_EDCPERMISSIONSCOPE_ROLENAME_2 =
+		"edcPermissionScope.roleName = ? AND ";
+
+	private static final String _FINDER_COLUMN_EDCPERMISSIONSCOPE_ROLENAME_3 =
+		"(edcPermissionScope.roleName IS NULL OR edcPermissionScope.roleName = '') AND ";
 
 	private static final String _FINDER_COLUMN_EDCPERMISSIONSCOPE_SCOPEROLE_2 =
 		"edcPermissionScope.scopeRole = ?";
@@ -3669,6 +3801,7 @@ public class EdcPermissionScopePersistenceImpl
 				edcPermissionScope.getProjectId(),
 				edcPermissionScope.getModuleName(),
 				edcPermissionScope.getTaskKey(),
+				edcPermissionScope.getRoleName(),
 				edcPermissionScope.getScopeRole()
 			},
 			edcPermissionScope);
@@ -3785,6 +3918,7 @@ public class EdcPermissionScopePersistenceImpl
 			edcPermissionScopeModelImpl.getProjectId(),
 			edcPermissionScopeModelImpl.getModuleName(),
 			edcPermissionScopeModelImpl.getTaskKey(),
+			edcPermissionScopeModelImpl.getRoleName(),
 			edcPermissionScopeModelImpl.getScopeRole()
 		};
 
@@ -3826,6 +3960,7 @@ public class EdcPermissionScopePersistenceImpl
 				edcPermissionScopeModelImpl.getProjectId(),
 				edcPermissionScopeModelImpl.getModuleName(),
 				edcPermissionScopeModelImpl.getTaskKey(),
+				edcPermissionScopeModelImpl.getRoleName(),
 				edcPermissionScopeModelImpl.getScopeRole()
 			};
 
@@ -3842,6 +3977,7 @@ public class EdcPermissionScopePersistenceImpl
 				edcPermissionScopeModelImpl.getOriginalProjectId(),
 				edcPermissionScopeModelImpl.getOriginalModuleName(),
 				edcPermissionScopeModelImpl.getOriginalTaskKey(),
+				edcPermissionScopeModelImpl.getOriginalRoleName(),
 				edcPermissionScopeModelImpl.getOriginalScopeRole()
 			};
 
@@ -4083,7 +4219,8 @@ public class EdcPermissionScopePersistenceImpl
 			args = new Object[] {
 				edcPermissionScopeModelImpl.getProjectId(),
 				edcPermissionScopeModelImpl.getModuleName(),
-				edcPermissionScopeModelImpl.getTaskKey()
+				edcPermissionScopeModelImpl.getTaskKey(),
+				edcPermissionScopeModelImpl.getRoleName()
 			};
 
 			finderCache.removeResult(_finderPathCountByEdcTaskScope, args);
@@ -4192,7 +4329,8 @@ public class EdcPermissionScopePersistenceImpl
 				Object[] args = new Object[] {
 					edcPermissionScopeModelImpl.getOriginalProjectId(),
 					edcPermissionScopeModelImpl.getOriginalModuleName(),
-					edcPermissionScopeModelImpl.getOriginalTaskKey()
+					edcPermissionScopeModelImpl.getOriginalTaskKey(),
+					edcPermissionScopeModelImpl.getOriginalRoleName()
 				};
 
 				finderCache.removeResult(_finderPathCountByEdcTaskScope, args);
@@ -4202,7 +4340,8 @@ public class EdcPermissionScopePersistenceImpl
 				args = new Object[] {
 					edcPermissionScopeModelImpl.getProjectId(),
 					edcPermissionScopeModelImpl.getModuleName(),
-					edcPermissionScopeModelImpl.getTaskKey()
+					edcPermissionScopeModelImpl.getTaskKey(),
+					edcPermissionScopeModelImpl.getRoleName()
 				};
 
 				finderCache.removeResult(_finderPathCountByEdcTaskScope, args);
@@ -4636,8 +4775,9 @@ public class EdcPermissionScopePersistenceImpl
 			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByEdcTaskScope",
 			new String[] {
 				Long.class.getName(), String.class.getName(),
-				String.class.getName(), Integer.class.getName(),
-				Integer.class.getName(), OrderByComparator.class.getName()
+				String.class.getName(), String.class.getName(),
+				Integer.class.getName(), Integer.class.getName(),
+				OrderByComparator.class.getName()
 			});
 
 		_finderPathWithoutPaginationFindByEdcTaskScope = new FinderPath(
@@ -4646,7 +4786,7 @@ public class EdcPermissionScopePersistenceImpl
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByEdcTaskScope",
 			new String[] {
 				Long.class.getName(), String.class.getName(),
-				String.class.getName()
+				String.class.getName(), String.class.getName()
 			},
 			EdcPermissionScopeModelImpl.PROJECTID_COLUMN_BITMASK |
 			EdcPermissionScopeModelImpl.MODULENAME_COLUMN_BITMASK |
@@ -4659,7 +4799,7 @@ public class EdcPermissionScopePersistenceImpl
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByEdcTaskScope",
 			new String[] {
 				Long.class.getName(), String.class.getName(),
-				String.class.getName()
+				String.class.getName(), String.class.getName()
 			});
 
 		_finderPathFetchByEdcPermissionScope = new FinderPath(
@@ -4668,11 +4808,13 @@ public class EdcPermissionScopePersistenceImpl
 			"fetchByEdcPermissionScope",
 			new String[] {
 				Long.class.getName(), String.class.getName(),
-				String.class.getName(), String.class.getName()
+				String.class.getName(), String.class.getName(),
+				String.class.getName()
 			},
 			EdcPermissionScopeModelImpl.PROJECTID_COLUMN_BITMASK |
 			EdcPermissionScopeModelImpl.MODULENAME_COLUMN_BITMASK |
 			EdcPermissionScopeModelImpl.TASKKEY_COLUMN_BITMASK |
+			EdcPermissionScopeModelImpl.ROLENAME_COLUMN_BITMASK |
 			EdcPermissionScopeModelImpl.SCOPEROLE_COLUMN_BITMASK);
 
 		_finderPathCountByEdcPermissionScope = new FinderPath(
@@ -4681,7 +4823,8 @@ public class EdcPermissionScopePersistenceImpl
 			"countByEdcPermissionScope",
 			new String[] {
 				Long.class.getName(), String.class.getName(),
-				String.class.getName(), String.class.getName()
+				String.class.getName(), String.class.getName(),
+				String.class.getName()
 			});
 
 		_setEdcPermissionScopeUtilPersistence(this);

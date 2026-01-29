@@ -21,7 +21,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * This class is used by SOAP remote services.
+ * This class is used by SOAP remote services, specifically {@link com.dhsoft.edc.backend.service.http.EdcPermissionScopeServiceSoap}.
  *
  * @author Brian Wing Shun Chan
  * @generated

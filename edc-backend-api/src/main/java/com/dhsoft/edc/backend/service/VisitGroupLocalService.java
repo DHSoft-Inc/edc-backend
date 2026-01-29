@@ -65,12 +65,6 @@ public interface VisitGroupLocalService
 	 *
 	 * Never modify this interface directly. Add custom service methods to <code>com.dhsoft.edc.backend.service.impl.VisitGroupLocalServiceImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface. Consume the visit group local service via injection or a <code>org.osgi.util.tracker.ServiceTracker</code>. Use {@link VisitGroupLocalServiceUtil} if injection and service tracking are not available.
 	 */
-
-	/**
-	 * ✅ 긴 버전 addVisitGroup (VisitEvent 스타일)
-	 * 실제 create + set + persistence.update 수행.
-	 * (ServiceBuilder Util에서 요구하는 시그니처와 동일하게 유지)
-	 */
 	public VisitGroup addVisitGroup(
 		long companyId, long groupId, long projectId, long userId,
 		String userName, int status, long statusByUserId,
@@ -78,11 +72,6 @@ public interface VisitGroupLocalService
 		String visitGroupCode, String name, String description,
 		int activeStatus, Date activeDate);
 
-	/**
-	 * ✅ (방법 A) 짧은 버전 addVisitGroup
-	 * ResourceCommand에서 편하게 쓰기 위한 오버로드.
-	 * status / statusBy / statusDate / activeDate는 기본값으로 채움.
-	 */
 	public VisitGroup addVisitGroup(
 		long companyId, long groupId, long projectId, long userId,
 		String userName, long expGroupId, String visitGroupCode, String name,

@@ -690,18 +690,19 @@ public interface EdcPermissionScopePersistence
 	public int countByEdcModuleScope(long projectId, String moduleName);
 
 	/**
-	 * Returns all the edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63;.
+	 * Returns all the edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63;.
 	 *
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @return the matching edc permission scopes
 	 */
 	public java.util.List<EdcPermissionScope> findByEdcTaskScope(
-		long projectId, String moduleName, String taskKey);
+		long projectId, String moduleName, String taskKey, String roleName);
 
 	/**
-	 * Returns a range of all the edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63;.
+	 * Returns a range of all the edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>EdcPermissionScopeModelImpl</code>.
@@ -710,15 +711,17 @@ public interface EdcPermissionScopePersistence
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param start the lower bound of the range of edc permission scopes
 	 * @param end the upper bound of the range of edc permission scopes (not inclusive)
 	 * @return the range of matching edc permission scopes
 	 */
 	public java.util.List<EdcPermissionScope> findByEdcTaskScope(
-		long projectId, String moduleName, String taskKey, int start, int end);
+		long projectId, String moduleName, String taskKey, String roleName,
+		int start, int end);
 
 	/**
-	 * Returns an ordered range of all the edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63;.
+	 * Returns an ordered range of all the edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>EdcPermissionScopeModelImpl</code>.
@@ -727,18 +730,20 @@ public interface EdcPermissionScopePersistence
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param start the lower bound of the range of edc permission scopes
 	 * @param end the upper bound of the range of edc permission scopes (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching edc permission scopes
 	 */
 	public java.util.List<EdcPermissionScope> findByEdcTaskScope(
-		long projectId, String moduleName, String taskKey, int start, int end,
+		long projectId, String moduleName, String taskKey, String roleName,
+		int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<EdcPermissionScope>
 			orderByComparator);
 
 	/**
-	 * Returns an ordered range of all the edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63;.
+	 * Returns an ordered range of all the edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>EdcPermissionScopeModelImpl</code>.
@@ -747,6 +752,7 @@ public interface EdcPermissionScopePersistence
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param start the lower bound of the range of edc permission scopes
 	 * @param end the upper bound of the range of edc permission scopes (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
@@ -754,174 +760,191 @@ public interface EdcPermissionScopePersistence
 	 * @return the ordered range of matching edc permission scopes
 	 */
 	public java.util.List<EdcPermissionScope> findByEdcTaskScope(
-		long projectId, String moduleName, String taskKey, int start, int end,
+		long projectId, String moduleName, String taskKey, String roleName,
+		int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<EdcPermissionScope>
 			orderByComparator,
 		boolean useFinderCache);
 
 	/**
-	 * Returns the first edc permission scope in the ordered set where projectId = &#63; and moduleName = &#63; and taskKey = &#63;.
+	 * Returns the first edc permission scope in the ordered set where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63;.
 	 *
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching edc permission scope
 	 * @throws NoSuchEdcPermissionScopeException if a matching edc permission scope could not be found
 	 */
 	public EdcPermissionScope findByEdcTaskScope_First(
-			long projectId, String moduleName, String taskKey,
+			long projectId, String moduleName, String taskKey, String roleName,
 			com.liferay.portal.kernel.util.OrderByComparator<EdcPermissionScope>
 				orderByComparator)
 		throws NoSuchEdcPermissionScopeException;
 
 	/**
-	 * Returns the first edc permission scope in the ordered set where projectId = &#63; and moduleName = &#63; and taskKey = &#63;.
+	 * Returns the first edc permission scope in the ordered set where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63;.
 	 *
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching edc permission scope, or <code>null</code> if a matching edc permission scope could not be found
 	 */
 	public EdcPermissionScope fetchByEdcTaskScope_First(
-		long projectId, String moduleName, String taskKey,
+		long projectId, String moduleName, String taskKey, String roleName,
 		com.liferay.portal.kernel.util.OrderByComparator<EdcPermissionScope>
 			orderByComparator);
 
 	/**
-	 * Returns the last edc permission scope in the ordered set where projectId = &#63; and moduleName = &#63; and taskKey = &#63;.
+	 * Returns the last edc permission scope in the ordered set where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63;.
 	 *
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching edc permission scope
 	 * @throws NoSuchEdcPermissionScopeException if a matching edc permission scope could not be found
 	 */
 	public EdcPermissionScope findByEdcTaskScope_Last(
-			long projectId, String moduleName, String taskKey,
+			long projectId, String moduleName, String taskKey, String roleName,
 			com.liferay.portal.kernel.util.OrderByComparator<EdcPermissionScope>
 				orderByComparator)
 		throws NoSuchEdcPermissionScopeException;
 
 	/**
-	 * Returns the last edc permission scope in the ordered set where projectId = &#63; and moduleName = &#63; and taskKey = &#63;.
+	 * Returns the last edc permission scope in the ordered set where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63;.
 	 *
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching edc permission scope, or <code>null</code> if a matching edc permission scope could not be found
 	 */
 	public EdcPermissionScope fetchByEdcTaskScope_Last(
-		long projectId, String moduleName, String taskKey,
+		long projectId, String moduleName, String taskKey, String roleName,
 		com.liferay.portal.kernel.util.OrderByComparator<EdcPermissionScope>
 			orderByComparator);
 
 	/**
-	 * Returns the edc permission scopes before and after the current edc permission scope in the ordered set where projectId = &#63; and moduleName = &#63; and taskKey = &#63;.
+	 * Returns the edc permission scopes before and after the current edc permission scope in the ordered set where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63;.
 	 *
 	 * @param permissionScopeId the primary key of the current edc permission scope
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next edc permission scope
 	 * @throws NoSuchEdcPermissionScopeException if a edc permission scope with the primary key could not be found
 	 */
 	public EdcPermissionScope[] findByEdcTaskScope_PrevAndNext(
 			long permissionScopeId, long projectId, String moduleName,
-			String taskKey,
+			String taskKey, String roleName,
 			com.liferay.portal.kernel.util.OrderByComparator<EdcPermissionScope>
 				orderByComparator)
 		throws NoSuchEdcPermissionScopeException;
 
 	/**
-	 * Removes all the edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63; from the database.
+	 * Removes all the edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63; from the database.
 	 *
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 */
 	public void removeByEdcTaskScope(
-		long projectId, String moduleName, String taskKey);
+		long projectId, String moduleName, String taskKey, String roleName);
 
 	/**
-	 * Returns the number of edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63;.
+	 * Returns the number of edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63;.
 	 *
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @return the number of matching edc permission scopes
 	 */
 	public int countByEdcTaskScope(
-		long projectId, String moduleName, String taskKey);
+		long projectId, String moduleName, String taskKey, String roleName);
 
 	/**
-	 * Returns the edc permission scope where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and scopeRole = &#63; or throws a <code>NoSuchEdcPermissionScopeException</code> if it could not be found.
+	 * Returns the edc permission scope where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63; and scopeRole = &#63; or throws a <code>NoSuchEdcPermissionScopeException</code> if it could not be found.
 	 *
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param scopeRole the scope role
 	 * @return the matching edc permission scope
 	 * @throws NoSuchEdcPermissionScopeException if a matching edc permission scope could not be found
 	 */
 	public EdcPermissionScope findByEdcPermissionScope(
-			long projectId, String moduleName, String taskKey, String scopeRole)
+			long projectId, String moduleName, String taskKey, String roleName,
+			String scopeRole)
 		throws NoSuchEdcPermissionScopeException;
 
 	/**
-	 * Returns the edc permission scope where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and scopeRole = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	 * Returns the edc permission scope where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63; and scopeRole = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
 	 *
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param scopeRole the scope role
 	 * @return the matching edc permission scope, or <code>null</code> if a matching edc permission scope could not be found
 	 */
 	public EdcPermissionScope fetchByEdcPermissionScope(
-		long projectId, String moduleName, String taskKey, String scopeRole);
+		long projectId, String moduleName, String taskKey, String roleName,
+		String scopeRole);
 
 	/**
-	 * Returns the edc permission scope where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and scopeRole = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 * Returns the edc permission scope where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63; and scopeRole = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
 	 *
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param scopeRole the scope role
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the matching edc permission scope, or <code>null</code> if a matching edc permission scope could not be found
 	 */
 	public EdcPermissionScope fetchByEdcPermissionScope(
-		long projectId, String moduleName, String taskKey, String scopeRole,
-		boolean useFinderCache);
+		long projectId, String moduleName, String taskKey, String roleName,
+		String scopeRole, boolean useFinderCache);
 
 	/**
-	 * Removes the edc permission scope where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and scopeRole = &#63; from the database.
+	 * Removes the edc permission scope where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63; and scopeRole = &#63; from the database.
 	 *
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param scopeRole the scope role
 	 * @return the edc permission scope that was removed
 	 */
 	public EdcPermissionScope removeByEdcPermissionScope(
-			long projectId, String moduleName, String taskKey, String scopeRole)
+			long projectId, String moduleName, String taskKey, String roleName,
+			String scopeRole)
 		throws NoSuchEdcPermissionScopeException;
 
 	/**
-	 * Returns the number of edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and scopeRole = &#63;.
+	 * Returns the number of edc permission scopes where projectId = &#63; and moduleName = &#63; and taskKey = &#63; and roleName = &#63; and scopeRole = &#63;.
 	 *
 	 * @param projectId the project ID
 	 * @param moduleName the module name
 	 * @param taskKey the task key
+	 * @param roleName the role name
 	 * @param scopeRole the scope role
 	 * @return the number of matching edc permission scopes
 	 */
 	public int countByEdcPermissionScope(
-		long projectId, String moduleName, String taskKey, String scopeRole);
+		long projectId, String moduleName, String taskKey, String roleName,
+		String scopeRole);
 
 	/**
 	 * Caches the edc permission scope in the entity cache if it is enabled.

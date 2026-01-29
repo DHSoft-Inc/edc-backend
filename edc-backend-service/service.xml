@@ -65,7 +65,7 @@
 	========================================================= -->
 	<entity name="EdcPermissionScope"
 	        local-service="true"
-	        remote-service="false"
+	        remote-service="true"
 	        uuid="true">
 	
 	    <column name="permissionScopeId" type="long" primary="true" />
@@ -104,6 +104,7 @@
 	        <finder-column name="projectId" />
 	        <finder-column name="moduleName" />
 	        <finder-column name="taskKey" />
+	        <finder-column name="roleName" />	        
 	    </finder>
 	
 	    <finder name="EdcPermissionScope"
@@ -112,6 +113,7 @@
 	        <finder-column name="projectId" />
 	        <finder-column name="moduleName" />
 	        <finder-column name="taskKey" />
+	        <finder-column name="roleName" />	
 	        <finder-column name="scopeRole" />
 	    </finder>
 	
@@ -195,6 +197,36 @@
 	    </finder>
 	
 	</entity>
+	
+	
+	<entity name="EdcLock" local-service="true" remote-service="false" uuid="true">
+	    <column name="lockId" type="long" primary="true" />
+	
+	    <column name="companyId" type="long" />
+	    <column name="groupId" type="long" />
+	    <column name="projectId" type="long" />
+	
+	    <column name="classNameId" type="long" />
+	    <column name="classPK" type="long" />
+	
+	    <column name="lockType" type="String" />
+	
+	    <column name="userId" type="long" />
+	    <column name="userName" type="String" />
+	
+	    <column name="createDate" type="Date" />
+	    <column name="modifiedDate" type="Date" />
+	
+	    <column name="comment" type="String" />
+	
+	    <finder name="P_C_C_T" return-type="Collection">
+	        <finder-column name="projectId" />
+	        <finder-column name="classNameId" />
+	        <finder-column name="classPK" />
+	        <finder-column name="lockType" />
+	    </finder>
+	</entity>
+	
 
     
     

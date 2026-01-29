@@ -35,13 +35,14 @@ public class VisitEventLocalServiceWrapper
 	@Override
 	public void addVisitEvent(
 		long companyId, long groupId, long projectId, long institutionId,
-		long subjectId, long visitDefinitionId, int status, long statusByUserId,
-		String statusByUserName, java.util.Date statusDate, String anchorType,
-		java.util.Date anchorDate, int offset, java.util.Date planDate) {
+		long subjectId, long subjectVisitDefinitionId, int status,
+		long statusByUserId, String statusByUserName, java.util.Date statusDate,
+		String anchorType, java.util.Date anchorDate, int offset,
+		java.util.Date planDate) {
 
 		_visitEventLocalService.addVisitEvent(
 			companyId, groupId, projectId, institutionId, subjectId,
-			visitDefinitionId, status, statusByUserId, statusByUserName,
+			subjectVisitDefinitionId, status, statusByUserId, statusByUserName,
 			statusDate, anchorType, anchorDate, offset, planDate);
 	}
 
@@ -243,6 +244,20 @@ public class VisitEventLocalServiceWrapper
 
 	@Override
 	public java.util.List<com.dhsoft.edc.backend.model.VisitEvent>
+		findBySubjectIdAndSubjectVisitDefinitionId(
+			long subjectId, long subjectVisitDefinitionId) {
+
+		return _visitEventLocalService.
+			findBySubjectIdAndSubjectVisitDefinitionId(
+				subjectId, subjectVisitDefinitionId);
+	}
+
+	/**
+	 * ✅ 기존 이름도 유지(호환)
+	 * (실제로는 VD가 아니라 SVD ID지만, persistence finder 이름이 S_VD라 그대로 둠)
+	 */
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.VisitEvent>
 		findBySubjectIdAndVisitDefinitionId(
 			long subjectId, long visitDefinitionId) {
 
@@ -391,6 +406,10 @@ public class VisitEventLocalServiceWrapper
 		return _visitEventLocalService.getVisitEventsCount();
 	}
 
+	/**
+	 * ✅ 기존 시그니처 유지(호환):
+	 * 이제부터 이 visitDefinitionId 파라미터는 "svdId"로 간주한다.
+	 */
 	@Override
 	public com.dhsoft.edc.backend.model.VisitEvent saveOrUpdateVisitEvent(
 		long subjectId, long visitDefinitionId, String anchorType, int offset,
@@ -398,6 +417,17 @@ public class VisitEventLocalServiceWrapper
 
 		return _visitEventLocalService.saveOrUpdateVisitEvent(
 			subjectId, visitDefinitionId, anchorType, offset, anchorDate,
+			planDate);
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.VisitEvent
+		saveOrUpdateVisitEventBySvdId(
+			long subjectId, long subjectVisitDefinitionId, String anchorType,
+			int offset, java.util.Date anchorDate, java.util.Date planDate) {
+
+		return _visitEventLocalService.saveOrUpdateVisitEventBySvdId(
+			subjectId, subjectVisitDefinitionId, anchorType, offset, anchorDate,
 			planDate);
 	}
 

@@ -10,6 +10,10 @@ create index IX_B320CA4E on EDC_AssignProjectScope (targetUserId, projectId);
 create index IX_12BBDBF on EDC_AssignProjectScope (uuid_[$COLUMN_LENGTH:75$], companyId);
 create unique index IX_CDB6A801 on EDC_AssignProjectScope (uuid_[$COLUMN_LENGTH:75$], groupId);
 
+create index IX_F36B4178 on EDC_EdcLock (projectId, classNameId, classPK, lockType[$COLUMN_LENGTH:75$]);
+create index IX_9F86E34E on EDC_EdcLock (uuid_[$COLUMN_LENGTH:75$], companyId);
+create unique index IX_446BE550 on EDC_EdcLock (uuid_[$COLUMN_LENGTH:75$], groupId);
+
 create unique index IX_2A329B47 on EDC_EdcPermissionRole (projectId, actorGroup, actorId, roleName[$COLUMN_LENGTH:75$]);
 create index IX_597148C8 on EDC_EdcPermissionRole (uuid_[$COLUMN_LENGTH:75$], companyId);
 create unique index IX_2EC5614A on EDC_EdcPermissionRole (uuid_[$COLUMN_LENGTH:75$], groupId);
@@ -19,6 +23,7 @@ create index IX_85E8F90D on EDC_EdcPermissionRoleAudit (actorId);
 create index IX_D82120A7 on EDC_EdcPermissionRoleAudit (uuid_[$COLUMN_LENGTH:75$], companyId);
 create unique index IX_70F7A4E9 on EDC_EdcPermissionRoleAudit (uuid_[$COLUMN_LENGTH:75$], groupId);
 
+create index IX_49083F32 on EDC_EdcPermissionScope (projectId, moduleName[$COLUMN_LENGTH:75$], taskKey[$COLUMN_LENGTH:75$], roleName[$COLUMN_LENGTH:75$]);
 create unique index IX_D424255D on EDC_EdcPermissionScope (projectId, moduleName[$COLUMN_LENGTH:75$], taskKey[$COLUMN_LENGTH:75$], scopeRole[$COLUMN_LENGTH:75$]);
 create index IX_1D64D076 on EDC_EdcPermissionScope (uuid_[$COLUMN_LENGTH:75$], companyId);
 create unique index IX_77B2FC78 on EDC_EdcPermissionScope (uuid_[$COLUMN_LENGTH:75$], groupId);

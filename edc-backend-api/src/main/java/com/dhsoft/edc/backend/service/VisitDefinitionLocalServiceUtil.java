@@ -141,9 +141,6 @@ public class VisitDefinitionLocalServiceUtil {
 		return getService().deleteVisitDefinition(visitDefinition);
 	}
 
-	/**
-	 * DELETE
-	 */
 	public static VisitDefinition deleteVisitDefinitionById(
 			long visitDefinitionId)
 		throws PortalException {
@@ -409,9 +406,6 @@ public class VisitDefinitionLocalServiceUtil {
 		return getService().updateVisitDefinition(visitDefinition);
 	}
 
-	/**
-	 * UPDATE
-	 */
 	public static VisitDefinition updateVisitDefinitionBasic(
 			long visitDefinitionId, String name, String anchorType, int offset,
 			int windowMinus, int windowPlus)
