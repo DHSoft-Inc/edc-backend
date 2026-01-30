@@ -21,6 +21,9 @@ import com.dhsoft.edc.backend.service.SubjectLocalServiceUtil;
 import com.dhsoft.edc.backend.service.base.RandomizationLocalServiceBaseImpl;
 import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
 import com.liferay.portal.aop.AopService;
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.json.JSONObject;
+import com.liferay.portal.kernel.transaction.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -105,6 +108,47 @@ public class RandomizationLocalServiceImpl
 	      }
 	      randomizationPersistence.remove(deleteRandomization);
 	}
+	
+	@Transactional(rollbackFor = Exception.class)
+	public int AddRandomizationByExcel (long companyId, long groupId, long projectId, long userId, String userName, List<JSONObject> normalized) throws PortalException {
+		Date date = new Date();
+		int count = 0;
+		for (JSONObject n : normalized) {
+			
+			String randomNo = n.getString("randomNo");
+			int rowNo = n.getInt("rowNo");
+			int status = n.getInt("status");
+			int useStatus = n.getInt("useStatus");
+			String criteria = n.isNull("criteria") ? null : n.getString("criteria");
+			long expGroupId = n.getLong("expGroupId");
+			int sourceType = 0;
+			try {
+				long randomizationId = CounterLocalServiceUtil.increment("randomizationId");
+				Randomization newRandomization = randomizationPersistence.create(randomizationId);
+				newRandomization.setCompanyId(companyId);
+				newRandomization.setGroupId(groupId);
+				newRandomization.setProjectId(projectId);
+				newRandomization.setUserId(userId);
+				newRandomization.setUserName(userName);
+				newRandomization.setCreateDate(date);
+				newRandomization.setModifiedDate(date);
+				newRandomization.setRandomNo(randomNo);
+				newRandomization.setStatus(status);
+				newRandomization.setStatusByUserId(userId);
+				newRandomization.setStatusByUserName(userName);
+				newRandomization.setStatusDate(date);
+				newRandomization.setUseStatus(useStatus);
+				newRandomization.setSourceType(sourceType);
+				newRandomization.setCriteria(criteria);
+				newRandomization.setExpGroupId(expGroupId);
+				randomizationPersistence.update(newRandomization);
+				count++;
+			} catch (Exception e) {
+				throw new PortalException("rowNo=" + rowNo + ", randomNo=" + randomNo + " Error in Save: " + e.getMessage(), e);
+			}
+		}
+		return count;
+	} 
 	
 	public Randomization findByRandomizationId(long randomizationId) {
 		try {
