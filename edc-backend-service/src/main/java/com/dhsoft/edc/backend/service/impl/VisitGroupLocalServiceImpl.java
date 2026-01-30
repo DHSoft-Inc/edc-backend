@@ -60,7 +60,6 @@ public class VisitGroupLocalServiceImpl extends VisitGroupLocalServiceBaseImpl {
 	       VisitGroup vg = visitGroupPersistence.fetchByPrimaryKey(visitGroupId);
 
 	       if (vg == null) {
-	           // 이미 삭제됐거나 없는 경우 → 그냥 null 리턴
 	           return null;
 	       }
 
@@ -75,11 +74,6 @@ public class VisitGroupLocalServiceImpl extends VisitGroupLocalServiceBaseImpl {
 	        return visitGroupPersistence.findByUserId(expGroupId);
 	    }
 
-	    /**
-	     * ✅ (방법 A) 짧은 버전 addVisitGroup
-	     * ResourceCommand에서 편하게 쓰기 위한 오버로드.
-	     * status / statusBy / statusDate / activeDate는 기본값으로 채움.
-	     */
 	    public VisitGroup addVisitGroup(
 	            long companyId,
 	            long groupId,
@@ -94,7 +88,6 @@ public class VisitGroupLocalServiceImpl extends VisitGroupLocalServiceBaseImpl {
 	    ) {
 	        Date now = new Date();
 
-	        // 기본 status 값은 네 프로젝트 규칙에 맞게 조정 가능
 	        int status = 0;
 
 	        return addVisitGroup(
@@ -116,11 +109,6 @@ public class VisitGroupLocalServiceImpl extends VisitGroupLocalServiceBaseImpl {
 	        );
 	    }
 
-	    /**
-	     * ✅ 긴 버전 addVisitGroup (VisitEvent 스타일)
-	     * 실제 create + set + persistence.update 수행.
-	     * (ServiceBuilder Util에서 요구하는 시그니처와 동일하게 유지)
-	     */
 	    public VisitGroup addVisitGroup(
 	            long companyId,
 	            long groupId,
@@ -140,7 +128,6 @@ public class VisitGroupLocalServiceImpl extends VisitGroupLocalServiceBaseImpl {
 	    ) {
 	        Date now = new Date();
 
-	        // ✅ PK 생성 (네 스타일 유지)
 	        long visitGroupId = counterLocalService.increment("visitGroup");
 
 	        VisitGroup vg = visitGroupPersistence.create(visitGroupId);
@@ -168,7 +155,6 @@ public class VisitGroupLocalServiceImpl extends VisitGroupLocalServiceBaseImpl {
 	        vg.setDescription(description);
 	        vg.setActiveStatus(activeStatus);
 
-	        // activeDate는 null이면 now로
 	        vg.setActiveDate(activeDate != null ? activeDate : now);
 
 	        return visitGroupPersistence.update(vg);

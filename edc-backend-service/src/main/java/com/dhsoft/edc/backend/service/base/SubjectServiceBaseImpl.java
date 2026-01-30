@@ -17,6 +17,7 @@ package com.dhsoft.edc.backend.service.base;
 import com.dhsoft.edc.backend.model.Subject;
 import com.dhsoft.edc.backend.service.SubjectService;
 import com.dhsoft.edc.backend.service.SubjectServiceUtil;
+import com.dhsoft.edc.backend.service.persistence.ApprovalRequestPersistence;
 import com.dhsoft.edc.backend.service.persistence.AssignAuditPersistence;
 import com.dhsoft.edc.backend.service.persistence.AssignInstitutionRolePersistence;
 import com.dhsoft.edc.backend.service.persistence.AssignProjectScopePersistence;
@@ -146,6 +147,9 @@ public abstract class SubjectServiceBaseImpl
 			throw new RuntimeException(reflectiveOperationException);
 		}
 	}
+
+	@Reference
+	protected ApprovalRequestPersistence approvalRequestPersistence;
 
 	@Reference
 	protected AssignAuditPersistence assignAuditPersistence;

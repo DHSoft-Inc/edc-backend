@@ -17,6 +17,7 @@ package com.dhsoft.edc.backend.service.base;
 import com.dhsoft.edc.backend.model.MetaCode;
 import com.dhsoft.edc.backend.service.MetaCodeService;
 import com.dhsoft.edc.backend.service.MetaCodeServiceUtil;
+import com.dhsoft.edc.backend.service.persistence.ApprovalRequestPersistence;
 import com.dhsoft.edc.backend.service.persistence.AssignAuditPersistence;
 import com.dhsoft.edc.backend.service.persistence.AssignInstitutionRolePersistence;
 import com.dhsoft.edc.backend.service.persistence.AssignProjectScopePersistence;
@@ -147,6 +148,9 @@ public abstract class MetaCodeServiceBaseImpl
 			throw new RuntimeException(reflectiveOperationException);
 		}
 	}
+
+	@Reference
+	protected ApprovalRequestPersistence approvalRequestPersistence;
 
 	@Reference
 	protected AssignAuditPersistence assignAuditPersistence;

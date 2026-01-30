@@ -73,11 +73,12 @@ public class InstitutionLocalServiceUtil {
 		long companyId, long groupId, long projectId, long userId,
 		String userName, int status, String code, String name, String enName,
 		int type, String piName, String contactNum, String email,
-		java.util.Date irbDate) {
+		java.util.Date irbDate,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext) {
 
 		return getService().CreateInstitution(
 			companyId, groupId, projectId, userId, userName, status, code, name,
-			enName, type, piName, contactNum, email, irbDate);
+			enName, type, piName, contactNum, email, irbDate, serviceContext);
 	}
 
 	/**
@@ -358,6 +359,19 @@ public class InstitutionLocalServiceUtil {
 		return getService().getPersistedModel(primaryKeyObj);
 	}
 
+	public static Institution requestUpdateInstitution(
+			long companyId, long groupId, long institutionId, long userId,
+			String userName, String code, String name, String enName, int type,
+			String piName, String contactNum, String email,
+			java.util.Date irbDate,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws PortalException {
+
+		return getService().requestUpdateInstitution(
+			companyId, groupId, institutionId, userId, userName, code, name,
+			enName, type, piName, contactNum, email, irbDate, serviceContext);
+	}
+
 	/**
 	 * Updates the institution in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
 	 *
@@ -380,6 +394,15 @@ public class InstitutionLocalServiceUtil {
 		getService().UpdateInstitution(
 			institutionId, userId, userName, status, code, name, enName, type,
 			piName, contactNum, email, irbDate);
+	}
+
+	public static Institution updateStatus(
+			long userId, long institutionId, int status,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws PortalException {
+
+		return getService().updateStatus(
+			userId, institutionId, status, serviceContext);
 	}
 
 	public static InstitutionLocalService getService() {

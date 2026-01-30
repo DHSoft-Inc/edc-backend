@@ -60,7 +60,6 @@ import org.osgi.service.component.annotations.Reference;
 
 	        String code = vg.getVisitGroupCode();
 
-	        // ✅ (4) 중복 방지: visitDefinitionCode 전역 유니크 전제
 	        if (visitDefinitionPersistence.countByVisitDefinitionCode(code) > 0) {
 	            throw new PortalException("visitDefinitionCode already exists: " + code);
 	        }
@@ -83,10 +82,8 @@ import org.osgi.service.component.annotations.Reference;
 	        vd.setStatusByUserName(userName);
 	        vd.setStatusDate(now);
 
-	        // ✅ 핵심: VisitGroupCode → VisitDefinitionCode
 	        vd.setVisitDefinitionCode(code);
 
-	        // ✅ visitGroupId 컬럼엔 진짜 visitGroupId 넣기
 	        vd.setVisitGroupId(visitGroupId);
 
 	        vd.setName(name);
@@ -95,8 +92,6 @@ import org.osgi.service.component.annotations.Reference;
 	        vd.setWindowMinus(windowMinus);
 	        vd.setWindowPlus(windowPlus);
 
-	        // type은 cycle용이라 그대로 두거나 기존 룰대로 세팅
-	        // (현재 기존 add는 type=0으로 고정인데, 그 의미가 cycle이면 여기서도 동일하게 유지)
 	        vd.setType(0);
 
 	        vd.setRepeatCount(0);
@@ -105,10 +100,6 @@ import org.osgi.service.component.annotations.Reference;
 	        return visitDefinitionPersistence.update(vd);
 	    }
 
-
-	    /**
-	     * ADD: VisitDefinition �깮�꽦
-	     */
 	    public VisitDefinition addVisitDefinitionForGroup(
 	            long companyId,
 	            long groupId,

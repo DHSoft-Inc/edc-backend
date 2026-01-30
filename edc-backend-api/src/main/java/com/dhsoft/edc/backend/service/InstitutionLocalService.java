@@ -29,6 +29,7 @@ import com.liferay.portal.kernel.search.Indexable;
 import com.liferay.portal.kernel.search.IndexableType;
 import com.liferay.portal.kernel.service.BaseLocalService;
 import com.liferay.portal.kernel.service.PersistedModelLocalService;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.transaction.Isolation;
 import com.liferay.portal.kernel.transaction.Propagation;
 import com.liferay.portal.kernel.transaction.Transactional;
@@ -90,7 +91,8 @@ public interface InstitutionLocalService
 	public Institution CreateInstitution(
 		long companyId, long groupId, long projectId, long userId,
 		String userName, int status, String code, String name, String enName,
-		int type, String piName, String contactNum, String email, Date irbDate);
+		int type, String piName, String contactNum, String email, Date irbDate,
+		ServiceContext serviceContext);
 
 	/**
 	 * Deletes the institution from the database. Also notifies the appropriate model listeners.
@@ -313,6 +315,13 @@ public interface InstitutionLocalService
 	public PersistedModel getPersistedModel(Serializable primaryKeyObj)
 		throws PortalException;
 
+	public Institution requestUpdateInstitution(
+			long companyId, long groupId, long institutionId, long userId,
+			String userName, String code, String name, String enName, int type,
+			String piName, String contactNum, String email, Date irbDate,
+			ServiceContext serviceContext)
+		throws PortalException;
+
 	/**
 	 * Updates the institution in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
 	 *
@@ -330,5 +339,10 @@ public interface InstitutionLocalService
 		long institutionId, long userId, String userName, int status,
 		String code, String name, String enName, int type, String piName,
 		String contactNum, String email, Date irbDate);
+
+	public Institution updateStatus(
+			long userId, long institutionId, int status,
+			ServiceContext serviceContext)
+		throws PortalException;
 
 }

@@ -1,3 +1,8 @@
+create index IX_31DB1F81 on EDC_ApprovalRequest (groupId, projectId, className[$COLUMN_LENGTH:75$], classPK);
+create index IX_7B2320FC on EDC_ApprovalRequest (groupId, projectId, status, className[$COLUMN_LENGTH:75$]);
+create index IX_9576B1AB on EDC_ApprovalRequest (uuid_[$COLUMN_LENGTH:75$], companyId);
+create unique index IX_29C5A6ED on EDC_ApprovalRequest (uuid_[$COLUMN_LENGTH:75$], groupId);
+
 create index IX_A61BB898 on EDC_AssignAudit (institutionId, projectId);
 create index IX_E66EA18B on EDC_AssignAudit (uuid_[$COLUMN_LENGTH:75$], companyId);
 

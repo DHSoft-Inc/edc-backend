@@ -17,6 +17,7 @@ package com.dhsoft.edc.backend.service.base;
 import com.dhsoft.edc.backend.model.AssignAudit;
 import com.dhsoft.edc.backend.service.AssignAuditLocalService;
 import com.dhsoft.edc.backend.service.AssignAuditLocalServiceUtil;
+import com.dhsoft.edc.backend.service.persistence.ApprovalRequestPersistence;
 import com.dhsoft.edc.backend.service.persistence.AssignAuditPersistence;
 import com.dhsoft.edc.backend.service.persistence.AssignInstitutionRolePersistence;
 import com.dhsoft.edc.backend.service.persistence.AssignProjectScopePersistence;
@@ -475,6 +476,9 @@ public abstract class AssignAuditLocalServiceBaseImpl
 			throw new RuntimeException(reflectiveOperationException);
 		}
 	}
+
+	@Reference
+	protected ApprovalRequestPersistence approvalRequestPersistence;
 
 	protected AssignAuditLocalService assignAuditLocalService;
 

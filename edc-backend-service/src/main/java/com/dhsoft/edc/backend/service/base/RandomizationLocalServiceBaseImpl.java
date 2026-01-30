@@ -17,6 +17,7 @@ package com.dhsoft.edc.backend.service.base;
 import com.dhsoft.edc.backend.model.Randomization;
 import com.dhsoft.edc.backend.service.RandomizationLocalService;
 import com.dhsoft.edc.backend.service.RandomizationLocalServiceUtil;
+import com.dhsoft.edc.backend.service.persistence.ApprovalRequestPersistence;
 import com.dhsoft.edc.backend.service.persistence.AssignAuditPersistence;
 import com.dhsoft.edc.backend.service.persistence.AssignInstitutionRolePersistence;
 import com.dhsoft.edc.backend.service.persistence.AssignProjectScopePersistence;
@@ -627,6 +628,9 @@ public abstract class RandomizationLocalServiceBaseImpl
 			throw new RuntimeException(reflectiveOperationException);
 		}
 	}
+
+	@Reference
+	protected ApprovalRequestPersistence approvalRequestPersistence;
 
 	@Reference
 	protected AssignAuditPersistence assignAuditPersistence;

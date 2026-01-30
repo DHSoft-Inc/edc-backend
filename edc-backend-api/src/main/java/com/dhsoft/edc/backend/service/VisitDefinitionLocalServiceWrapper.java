@@ -50,9 +50,6 @@ public class VisitDefinitionLocalServiceWrapper
 		return _visitDefinitionLocalService.addVisitDefinition(visitDefinition);
 	}
 
-	/**
-	 * ADD: VisitDefinition �깮�꽦
-	 */
 	@Override
 	public com.dhsoft.edc.backend.model.VisitDefinition
 			addVisitDefinitionForGroup(

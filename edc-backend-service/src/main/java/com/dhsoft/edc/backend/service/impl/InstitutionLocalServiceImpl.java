@@ -19,6 +19,13 @@ import com.dhsoft.edc.backend.model.Institution;
 import com.dhsoft.edc.backend.service.base.InstitutionLocalServiceBaseImpl;
 import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
 import com.liferay.portal.aop.AopService;
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.model.User;
+import com.liferay.portal.kernel.service.ServiceContext;
+import com.liferay.portal.kernel.workflow.WorkflowConstants;
+import com.liferay.portal.kernel.workflow.WorkflowHandlerRegistryUtil;
 
 import java.util.Date;
 import java.util.List;
@@ -33,9 +40,10 @@ import org.osgi.service.component.annotations.Component;
 	service = AopService.class
 )
 public class InstitutionLocalServiceImpl extends InstitutionLocalServiceBaseImpl {
+	private static final Log _log = LogFactoryUtil.getLog(InstitutionLocalServiceImpl.class);
 	
 	//Create New Institution: if success, return Institution. else, return null.
-	public Institution CreateInstitution(long companyId, long groupId, long projectId, long userId, String userName, int status, String code, String name, String enName, int type, String piName, String contactNum, String email, Date irbDate) {
+	public Institution CreateInstitution(long companyId, long groupId, long projectId, long userId, String userName, int status, String code, String name, String enName, int type, String piName, String contactNum, String email, Date irbDate, ServiceContext serviceContext) {
 		long institutionId = CounterLocalServiceUtil.increment("institutionId");
 		Date date = new Date();
 		try {
@@ -60,6 +68,31 @@ public class InstitutionLocalServiceImpl extends InstitutionLocalServiceBaseImpl
 			i.setCreateDate(date);
 			i.setModifiedDate(date);
 			institutionPersistence.update(i);
+			
+		    resourceLocalService.addResources(
+		            companyId, groupId, userId,
+		            Institution.class.getName(),
+		            institutionId,
+		            false, true, true
+		        );
+		    
+		    assetEntryLocalService.updateEntry(
+		            userId, groupId,
+		            i.getCreateDate(), i.getModifiedDate(),
+		            Institution.class.getName(),
+		            institutionId,
+		            i.getUuid(),
+		            0,
+		            serviceContext.getAssetCategoryIds(),
+		            serviceContext.getAssetTagNames(),
+		            true, true,
+		            null, null, null, null,
+		            com.liferay.portal.kernel.util.ContentTypes.TEXT,
+		            i.getName(),        // title
+		            null, null, null, null,
+		            0, 0, null
+		        );
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -89,10 +122,92 @@ public class InstitutionLocalServiceImpl extends InstitutionLocalServiceBaseImpl
 			i.setIrbDate(irbDate);
 			i.setModifiedDate(date);
 			institutionPersistence.update(i);
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
+	//Workflow Module
+	public Institution requestUpdateInstitution(long companyId, long groupId, long institutionId, long userId, String userName, String code, String name, String enName, int type, String piName, String contactNum, String email, Date irbDate, ServiceContext serviceContext) throws PortalException {
+
+	    Date now = new Date();
+
+	    Institution i = institutionPersistence.findByPrimaryKey(institutionId);
+
+	    i.setCode(code);
+	    i.setName(name);
+	    i.setEnName(enName);
+	    i.setType(type);
+	    i.setPiName(piName);
+	    i.setContactNum(contactNum);
+	    i.setEmail(email);
+	    i.setIrbDate(irbDate);
+	    i.setModifiedDate(serviceContext.getModifiedDate(now));
+
+	    i.setStatus(WorkflowConstants.STATUS_PENDING);
+	    i.setStatusByUserId(userId);
+	    i.setStatusByUserName(userName);
+	    i.setStatusDate(serviceContext.getModifiedDate(now));
+
+	    institutionPersistence.update(i);
+
+	    resourceLocalService.addResources(
+	            companyId, groupId, userId,
+	            Institution.class.getName(),
+	            institutionId,
+	            false, true, true
+	        );
+	    
+	    assetEntryLocalService.updateEntry(
+	            userId, i.getGroupId(),
+	            i.getCreateDate(), i.getModifiedDate(),
+	            Institution.class.getName(),
+	            i.getInstitutionId(),
+	            i.getUuid(),
+	            0,
+	            serviceContext.getAssetCategoryIds(),
+	            serviceContext.getAssetTagNames(),
+	            true, true,
+	            null, null, null, null,
+	            com.liferay.portal.kernel.util.ContentTypes.TEXT,
+	            i.getName(),
+	            null, null, null, null,
+	            0, 0, null
+	        );
+	    
+	    _log.info("WorkflowHandler Request!");
+	    WorkflowHandlerRegistryUtil.startWorkflowInstance(
+	            i.getCompanyId(),
+	            i.getGroupId(),
+	            userId,
+	            Institution.class.getName(),
+	            i.getPrimaryKey(),
+	            i,
+	            serviceContext
+	        );
+
+	    return i;
+	}
+	
+	//Workflow Module
+	public Institution updateStatus(long userId, long institutionId, int status, ServiceContext serviceContext) throws PortalException {
+
+	    User user = userLocalService.getUser(userId);
+
+	    Institution i = institutionPersistence.findByPrimaryKey(institutionId);
+
+	    i.setStatus(status);
+	    i.setStatusByUserId(userId);
+	    i.setStatusByUserName(user.getFullName());
+	    i.setStatusDate(new Date());
+
+	    institutionPersistence.update(i);
+
+	    return i;
+	}
+	
 	
 	//Delete Institution: if success, return null. else, return Institution.
 	public Institution DeleteInstitution(long institutionId) {

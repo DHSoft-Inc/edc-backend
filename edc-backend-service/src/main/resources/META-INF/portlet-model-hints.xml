@@ -1,6 +1,23 @@
 <?xml version="1.0"?>
 
 <model-hints>
+	<model name="com.dhsoft.edc.backend.model.ApprovalRequest">
+		<field name="uuid" type="String" />
+		<field name="approvalRequestId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="projectId" type="long" />
+		<field name="status" type="int" />
+		<field name="statusByUserId" type="long" />
+		<field name="statusByUserName" type="String" />
+		<field name="statusDate" type="Date" />
+		<field name="requestUserId" type="long" />
+		<field name="requestUserName" type="String" />
+		<field name="requestDate" type="Date" />
+		<field name="targetUsersId" type="String" />
+		<field name="className" type="String" />
+		<field name="classPK" type="long" />
+	</model>
 	<model name="com.dhsoft.edc.backend.model.AssignAudit">
 		<field name="uuid" type="String" />
 		<field name="auditId" type="long" />

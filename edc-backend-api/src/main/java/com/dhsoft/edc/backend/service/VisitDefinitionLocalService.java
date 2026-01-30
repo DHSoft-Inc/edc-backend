@@ -77,9 +77,6 @@ public interface VisitDefinitionLocalService
 	@Indexable(type = IndexableType.REINDEX)
 	public VisitDefinition addVisitDefinition(VisitDefinition visitDefinition);
 
-	/**
-	 * ADD: VisitDefinition �깮�꽦
-	 */
 	public VisitDefinition addVisitDefinitionForGroup(
 			long companyId, long groupId, long userId, String userName,
 			long experimentalGroupId, String name, String anchorType,

@@ -32,6 +32,14 @@ import org.osgi.service.component.annotations.Component;
 )
 public class ProjectLocalServiceImpl extends ProjectLocalServiceBaseImpl {
 
+	public Project findByProjectId(long projectId) {
+		try {
+			return projectPersistence.findByPrimaryKey(projectId);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
    public List<Project> findByGroupId(long groupId) {
        return projectPersistence.findByGroupId(groupId);
    }

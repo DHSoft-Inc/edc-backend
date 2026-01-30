@@ -695,6 +695,79 @@ public class InstitutionUtil {
 	}
 
 	/**
+	 * Returns all the institutions that the user has permission to view where groupId = &#63; and projectId = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @return the matching institutions that the user has permission to view
+	 */
+	public static List<Institution> filterFindByG_P(
+		long groupId, long projectId) {
+
+		return getPersistence().filterFindByG_P(groupId, projectId);
+	}
+
+	/**
+	 * Returns a range of all the institutions that the user has permission to view where groupId = &#63; and projectId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstitutionModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param start the lower bound of the range of institutions
+	 * @param end the upper bound of the range of institutions (not inclusive)
+	 * @return the range of matching institutions that the user has permission to view
+	 */
+	public static List<Institution> filterFindByG_P(
+		long groupId, long projectId, int start, int end) {
+
+		return getPersistence().filterFindByG_P(groupId, projectId, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the institutions that the user has permissions to view where groupId = &#63; and projectId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstitutionModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param start the lower bound of the range of institutions
+	 * @param end the upper bound of the range of institutions (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching institutions that the user has permission to view
+	 */
+	public static List<Institution> filterFindByG_P(
+		long groupId, long projectId, int start, int end,
+		OrderByComparator<Institution> orderByComparator) {
+
+		return getPersistence().filterFindByG_P(
+			groupId, projectId, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns the institutions before and after the current institution in the ordered set of institutions that the user has permission to view where groupId = &#63; and projectId = &#63;.
+	 *
+	 * @param institutionId the primary key of the current institution
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next institution
+	 * @throws NoSuchInstitutionException if a institution with the primary key could not be found
+	 */
+	public static Institution[] filterFindByG_P_PrevAndNext(
+			long institutionId, long groupId, long projectId,
+			OrderByComparator<Institution> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchInstitutionException {
+
+		return getPersistence().filterFindByG_P_PrevAndNext(
+			institutionId, groupId, projectId, orderByComparator);
+	}
+
+	/**
 	 * Removes all the institutions where groupId = &#63; and projectId = &#63; from the database.
 	 *
 	 * @param groupId the group ID
@@ -713,6 +786,17 @@ public class InstitutionUtil {
 	 */
 	public static int countByG_P(long groupId, long projectId) {
 		return getPersistence().countByG_P(groupId, projectId);
+	}
+
+	/**
+	 * Returns the number of institutions that the user has permission to view where groupId = &#63; and projectId = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @return the number of matching institutions that the user has permission to view
+	 */
+	public static int filterCountByG_P(long groupId, long projectId) {
+		return getPersistence().filterCountByG_P(groupId, projectId);
 	}
 
 	/**

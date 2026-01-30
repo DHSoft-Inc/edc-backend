@@ -61,9 +61,6 @@ public class VisitDefinitionLocalServiceUtil {
 		return getService().addVisitDefinition(visitDefinition);
 	}
 
-	/**
-	 * ADD: VisitDefinition �깮�꽦
-	 */
 	public static VisitDefinition addVisitDefinitionForGroup(
 			long companyId, long groupId, long userId, String userName,
 			long experimentalGroupId, String name, String anchorType,

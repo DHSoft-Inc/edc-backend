@@ -67,7 +67,7 @@ public class SubjectVisitDefinitionLocalServiceImpl
 	}
 	
 	public void addSubjectVisitDefinitionWithId(
-		    long subjectVisitDefinitionId,  // ✅ 0이면 신규발급, 0 아니면 그 id 사용
+		    long subjectVisitDefinitionId, 
 		    long companyId, long groupId, long projectId, long visitGroupId, long subjectId,
 		    long userId, String userName,
 		    int status, long statusByUserId, String statusByUserName, Date statusDate,

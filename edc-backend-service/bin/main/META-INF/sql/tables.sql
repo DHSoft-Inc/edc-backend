@@ -1,3 +1,21 @@
+create table EDC_ApprovalRequest (
+	uuid_ VARCHAR(75) null,
+	approvalRequestId LONG not null primary key,
+	groupId LONG,
+	companyId LONG,
+	projectId LONG,
+	status INTEGER,
+	statusByUserId LONG,
+	statusByUserName VARCHAR(75) null,
+	statusDate DATE null,
+	requestUserId LONG,
+	requestUserName VARCHAR(75) null,
+	requestDate DATE null,
+	targetUsersId VARCHAR(75) null,
+	className VARCHAR(75) null,
+	classPK LONG
+);
+
 create table EDC_AssignAudit (
 	uuid_ VARCHAR(75) null,
 	auditId LONG not null primary key,
