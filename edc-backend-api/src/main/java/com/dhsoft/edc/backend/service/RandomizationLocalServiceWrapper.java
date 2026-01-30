@@ -61,6 +61,18 @@ public class RandomizationLocalServiceWrapper
 		return _randomizationLocalService.addRandomization(randomization);
 	}
 
+	@Override
+	public int AddRandomizationByExcel(
+			long companyId, long groupId, long projectId, long userId,
+			String userName,
+			java.util.List<com.liferay.portal.kernel.json.JSONObject>
+				normalized)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _randomizationLocalService.AddRandomizationByExcel(
+			companyId, groupId, projectId, userId, userName, normalized);
+	}
+
 	/**
 	 * Creates a new randomization with the primary key. Does not add the randomization to the database.
 	 *
