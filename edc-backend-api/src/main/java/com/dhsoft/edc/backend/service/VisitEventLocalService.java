@@ -212,10 +212,6 @@ public interface VisitEventLocalService
 	public List<VisitEvent> findBySubjectIdAndSubjectVisitDefinitionId(
 		long subjectId, long subjectVisitDefinitionId);
 
-	/**
-	 * ✅ 기존 이름도 유지(호환)
-	 * (실제로는 VD가 아니라 SVD ID지만, persistence finder 이름이 S_VD라 그대로 둠)
-	 */
 	public List<VisitEvent> findBySubjectIdAndVisitDefinitionId(
 		long subjectId, long visitDefinitionId);
 
@@ -314,10 +310,6 @@ public interface VisitEventLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public int getVisitEventsCount();
 
-	/**
-	 * ✅ 기존 시그니처 유지(호환):
-	 * 이제부터 이 visitDefinitionId 파라미터는 "svdId"로 간주한다.
-	 */
 	public VisitEvent saveOrUpdateVisitEvent(
 		long subjectId, long visitDefinitionId, String anchorType, int offset,
 		Date anchorDate, Date planDate);

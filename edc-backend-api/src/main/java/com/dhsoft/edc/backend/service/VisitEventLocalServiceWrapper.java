@@ -252,10 +252,6 @@ public class VisitEventLocalServiceWrapper
 				subjectId, subjectVisitDefinitionId);
 	}
 
-	/**
-	 * ✅ 기존 이름도 유지(호환)
-	 * (실제로는 VD가 아니라 SVD ID지만, persistence finder 이름이 S_VD라 그대로 둠)
-	 */
 	@Override
 	public java.util.List<com.dhsoft.edc.backend.model.VisitEvent>
 		findBySubjectIdAndVisitDefinitionId(
@@ -406,10 +402,6 @@ public class VisitEventLocalServiceWrapper
 		return _visitEventLocalService.getVisitEventsCount();
 	}
 
-	/**
-	 * ✅ 기존 시그니처 유지(호환):
-	 * 이제부터 이 visitDefinitionId 파라미터는 "svdId"로 간주한다.
-	 */
 	@Override
 	public com.dhsoft.edc.backend.model.VisitEvent saveOrUpdateVisitEvent(
 		long subjectId, long visitDefinitionId, String anchorType, int offset,
