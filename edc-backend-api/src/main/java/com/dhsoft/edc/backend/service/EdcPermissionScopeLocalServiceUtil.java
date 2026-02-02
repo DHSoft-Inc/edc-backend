@@ -73,6 +73,16 @@ public class EdcPermissionScopeLocalServiceUtil {
 		return getService().createEdcPermissionScope(permissionScopeId);
 	}
 
+	public static EdcPermissionScope CreateEdcPermissionScope(
+		long companyId, long groupId, long projectId, String moduleName,
+		String taskKey, String roleName, String scopeRole, Boolean active,
+		java.util.Date fromDate, java.util.Date toDate) {
+
+		return getService().CreateEdcPermissionScope(
+			companyId, groupId, projectId, moduleName, taskKey, roleName,
+			scopeRole, active, fromDate, toDate);
+	}
+
 	/**
 	 * Deletes the edc permission scope from the database. Also notifies the appropriate model listeners.
 	 *
@@ -105,6 +115,12 @@ public class EdcPermissionScopeLocalServiceUtil {
 		throws PortalException {
 
 		return getService().deleteEdcPermissionScope(permissionScopeId);
+	}
+
+	public static EdcPermissionScope DeleteEdcPermissionScope(
+		long permissionScopeId) {
+
+		return getService().DeleteEdcPermissionScope(permissionScopeId);
 	}
 
 	/**
@@ -212,6 +228,39 @@ public class EdcPermissionScopeLocalServiceUtil {
 
 		return getService().fetchEdcPermissionScopeByUuidAndGroupId(
 			uuid, groupId);
+	}
+
+	public static List<EdcPermissionScope> findByEdcModuleScope(
+		long projectId, String moduleName) {
+
+		return getService().findByEdcModuleScope(projectId, moduleName);
+	}
+
+	public static EdcPermissionScope findByEdcPermissionScope(
+		long projectId, String moduleName, String taskKey, String roleName,
+		String scopeRole) {
+
+		return getService().findByEdcPermissionScope(
+			projectId, moduleName, taskKey, roleName, scopeRole);
+	}
+
+	public static List<EdcPermissionScope> findByEdcProjectScope(
+		long projectId) {
+
+		return getService().findByEdcProjectScope(projectId);
+	}
+
+	public static List<EdcPermissionScope> findByEdcTaskScope(
+		long projectId, String moduleName, String taskKey, String roleName) {
+
+		return getService().findByEdcTaskScope(
+			projectId, moduleName, taskKey, roleName);
+	}
+
+	public static EdcPermissionScope findByPermissionScopeId(
+		long permissionScopeId) {
+
+		return getService().findByPermissionScopeId(permissionScopeId);
 	}
 
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
@@ -356,6 +405,16 @@ public class EdcPermissionScopeLocalServiceUtil {
 		EdcPermissionScope edcPermissionScope) {
 
 		return getService().updateEdcPermissionScope(edcPermissionScope);
+	}
+
+	public static void UpdateEdcPermissionScope(
+		long permissionScopeId, String moduleName, String taskKey,
+		String roleName, String scopeRole, Boolean active,
+		java.util.Date fromDate, java.util.Date toDate) {
+
+		getService().UpdateEdcPermissionScope(
+			permissionScopeId, moduleName, taskKey, roleName, scopeRole, active,
+			fromDate, toDate);
 	}
 
 	public static EdcPermissionScopeLocalService getService() {
