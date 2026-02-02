@@ -36,6 +36,7 @@ import com.liferay.portal.kernel.util.OrderByComparator;
 
 import java.io.Serializable;
 
+import java.util.Date;
 import java.util.List;
 
 import org.osgi.annotation.versioning.ProviderType;
@@ -87,6 +88,11 @@ public interface EdcPermissionScopeLocalService
 	@Transactional(enabled = false)
 	public EdcPermissionScope createEdcPermissionScope(long permissionScopeId);
 
+	public EdcPermissionScope CreateEdcPermissionScope(
+		long companyId, long groupId, long projectId, String moduleName,
+		String taskKey, String roleName, String scopeRole, Boolean active,
+		Date fromDate, Date toDate);
+
 	/**
 	 * Deletes the edc permission scope from the database. Also notifies the appropriate model listeners.
 	 *
@@ -115,6 +121,8 @@ public interface EdcPermissionScopeLocalService
 	@Indexable(type = IndexableType.DELETE)
 	public EdcPermissionScope deleteEdcPermissionScope(long permissionScopeId)
 		throws PortalException;
+
+	public EdcPermissionScope DeleteEdcPermissionScope(long permissionScopeId);
 
 	/**
 	 * @throws PortalException
@@ -202,6 +210,20 @@ public interface EdcPermissionScopeLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public EdcPermissionScope fetchEdcPermissionScopeByUuidAndGroupId(
 		String uuid, long groupId);
+
+	public List<EdcPermissionScope> findByEdcModuleScope(
+		long projectId, String moduleName);
+
+	public EdcPermissionScope findByEdcPermissionScope(
+		long projectId, String moduleName, String taskKey, String roleName,
+		String scopeRole);
+
+	public List<EdcPermissionScope> findByEdcProjectScope(long projectId);
+
+	public List<EdcPermissionScope> findByEdcTaskScope(
+		long projectId, String moduleName, String taskKey, String roleName);
+
+	public EdcPermissionScope findByPermissionScopeId(long permissionScopeId);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
@@ -313,5 +335,10 @@ public interface EdcPermissionScopeLocalService
 	@Indexable(type = IndexableType.REINDEX)
 	public EdcPermissionScope updateEdcPermissionScope(
 		EdcPermissionScope edcPermissionScope);
+
+	public void UpdateEdcPermissionScope(
+		long permissionScopeId, String moduleName, String taskKey,
+		String roleName, String scopeRole, Boolean active, Date fromDate,
+		Date toDate);
 
 }

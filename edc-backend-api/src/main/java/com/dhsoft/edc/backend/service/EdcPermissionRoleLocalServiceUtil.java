@@ -73,6 +73,16 @@ public class EdcPermissionRoleLocalServiceUtil {
 		return getService().createEdcPermissionRole(permissionRoleId);
 	}
 
+	public static EdcPermissionRole CreateEdcPermissionRole(
+		long companyId, long groupId, long projectId, long actorGroup,
+		long actorId, String roleName, Boolean active, java.util.Date fromDate,
+		java.util.Date toDate) {
+
+		return getService().CreateEdcPermissionRole(
+			companyId, groupId, projectId, actorGroup, actorId, roleName,
+			active, fromDate, toDate);
+	}
+
 	/**
 	 * Deletes the edc permission role from the database. Also notifies the appropriate model listeners.
 	 *
@@ -105,6 +115,12 @@ public class EdcPermissionRoleLocalServiceUtil {
 		throws PortalException {
 
 		return getService().deleteEdcPermissionRole(permissionRoleId);
+	}
+
+	public static EdcPermissionRole DeleteEdcPermissionRole(
+		long permissionRoleId) {
+
+		return getService().DeleteEdcPermissionRole(permissionRoleId);
 	}
 
 	/**
@@ -212,6 +228,29 @@ public class EdcPermissionRoleLocalServiceUtil {
 
 		return getService().fetchEdcPermissionRoleByUuidAndGroupId(
 			uuid, groupId);
+	}
+
+	public static List<EdcPermissionRole> findByEdcActorRole(
+		long projectId, long actorGroup, long actorId) {
+
+		return getService().findByEdcActorRole(projectId, actorGroup, actorId);
+	}
+
+	public static EdcPermissionRole findByEdcPermissionRole(
+		long projectId, long actorGroup, long actorId, String roleName) {
+
+		return getService().findByEdcPermissionRole(
+			projectId, actorGroup, actorId, roleName);
+	}
+
+	public static List<EdcPermissionRole> findByEdcProjectRole(long projectId) {
+		return getService().findByEdcProjectRole(projectId);
+	}
+
+	public static EdcPermissionRole findByPermissionRoleId(
+		long permissionRoleId) {
+
+		return getService().findByPermissionRoleId(permissionRoleId);
 	}
 
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
@@ -354,6 +393,15 @@ public class EdcPermissionRoleLocalServiceUtil {
 		EdcPermissionRole edcPermissionRole) {
 
 		return getService().updateEdcPermissionRole(edcPermissionRole);
+	}
+
+	public static void UpdateEdcPermissionRole(
+		long permissionRoleId, long actorGroup, long actorId, String roleName,
+		Boolean active, java.util.Date fromDate, java.util.Date toDate) {
+
+		getService().UpdateEdcPermissionRole(
+			permissionRoleId, actorGroup, actorId, roleName, active, fromDate,
+			toDate);
 	}
 
 	public static EdcPermissionRoleLocalService getService() {
