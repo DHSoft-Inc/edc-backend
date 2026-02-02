@@ -68,6 +68,16 @@ public class RandomizationLocalServiceUtil {
 		return getService().addRandomization(randomization);
 	}
 
+	public static int AddRandomizationByExcel(
+			long companyId, long groupId, long projectId, long userId,
+			String userName,
+			List<com.liferay.portal.kernel.json.JSONObject> normalized)
+		throws PortalException {
+
+		return getService().AddRandomizationByExcel(
+			companyId, groupId, projectId, userId, userName, normalized);
+	}
+
 	/**
 	 * Creates a new randomization with the primary key. Does not add the randomization to the database.
 	 *
