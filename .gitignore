@@ -1,3 +1,5 @@
 .gradle/
 build/
 target/
+edc-backend-api/bin/
+edc-backend-service/bin/
