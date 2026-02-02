@@ -220,6 +220,13 @@ public class ProjectLocalServiceWrapper
 	}
 
 	@Override
+	public com.dhsoft.edc.backend.model.Project findByProjectId(
+		long projectId) {
+
+		return _projectLocalService.findByProjectId(projectId);
+	}
+
+	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 

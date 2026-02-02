@@ -201,6 +201,8 @@ public interface ProjectLocalService
 
 	public List<Project> findByGroupId(long groupId);
 
+	public Project findByProjectId(long projectId);
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
 
