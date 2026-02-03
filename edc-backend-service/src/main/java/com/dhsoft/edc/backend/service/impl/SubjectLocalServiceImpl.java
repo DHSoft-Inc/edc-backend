@@ -54,7 +54,7 @@ public class SubjectLocalServiceImpl extends SubjectLocalServiceBaseImpl {
 		newSubject.setSerialId(serialId);
 		newSubject.setName(name);
 		newSubject.setSubjectStatus(subjectStatus);
-		if(!randomNo.equals(null)) {
+		if(randomNo != null) {
 			Randomization newRand = RandomizationLocalServiceUtil.findByGroupAndProjectAndRandomNo(groupId, projectId, randomNo);
 			RandomizationLocalServiceUtil.UpdateStatusToUse(newRand.getRandomizationId());
 		}
