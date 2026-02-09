@@ -79,7 +79,6 @@ public void UpdateEdcPermissionScope(long permissionScopeId,
 		// i.setStatusByUserId(statusByUserId);
 		// i.setStatusByUserName(statusByUserName);
 		// i.setStatusDate(statusDate);
-		
 		i.setModuleName(moduleName);
 		i.setTaskKey(taskKey);
 		i.setRoleName(roleName);
