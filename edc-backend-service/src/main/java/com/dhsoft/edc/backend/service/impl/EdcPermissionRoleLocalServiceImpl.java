@@ -52,6 +52,7 @@ public class EdcPermissionRoleLocalServiceImpl
 			// i.setStatusByUserId(statusByUserId);
 			// i.setStatusByUserName(statusByUserName);
 			// i.setStatusDate(statusDate);
+			
 			i.setActorGroup(actorGroup);
 			i.setActorId(actorId);
 			i.setRoleName(roleName);
@@ -80,6 +81,7 @@ public class EdcPermissionRoleLocalServiceImpl
 			// i.setStatusByUserId(statusByUserId);
 			// i.setStatusByUserName(statusByUserName);
 			// i.setStatusDate(statusDate);
+			
 			i.setActorGroup(actorGroup);
 			i.setActorId(actorId);
 			i.setRoleName(roleName);
