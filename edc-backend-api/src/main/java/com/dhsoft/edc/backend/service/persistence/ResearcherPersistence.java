@@ -780,140 +780,41 @@ public interface ResearcherPersistence extends BasePersistence<Researcher> {
 	public int countByUserId(long userId);
 
 	/**
-	 * Returns all the researchers where researcherUserId = &#63;.
+	 * Returns the researcher where researcherUserId = &#63; or throws a <code>NoSuchResearcherException</code> if it could not be found.
 	 *
 	 * @param researcherUserId the researcher user ID
-	 * @return the matching researchers
+	 * @return the matching researcher
+	 * @throws NoSuchResearcherException if a matching researcher could not be found
 	 */
-	public java.util.List<Researcher> findByResearcherUserId(
-		long researcherUserId);
+	public Researcher findByResearcherUserId(long researcherUserId)
+		throws NoSuchResearcherException;
 
 	/**
-	 * Returns a range of all the researchers where researcherUserId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ResearcherModelImpl</code>.
-	 * </p>
+	 * Returns the researcher where researcherUserId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
 	 *
 	 * @param researcherUserId the researcher user ID
-	 * @param start the lower bound of the range of researchers
-	 * @param end the upper bound of the range of researchers (not inclusive)
-	 * @return the range of matching researchers
+	 * @return the matching researcher, or <code>null</code> if a matching researcher could not be found
 	 */
-	public java.util.List<Researcher> findByResearcherUserId(
-		long researcherUserId, int start, int end);
+	public Researcher fetchByResearcherUserId(long researcherUserId);
 
 	/**
-	 * Returns an ordered range of all the researchers where researcherUserId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ResearcherModelImpl</code>.
-	 * </p>
+	 * Returns the researcher where researcherUserId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
 	 *
 	 * @param researcherUserId the researcher user ID
-	 * @param start the lower bound of the range of researchers
-	 * @param end the upper bound of the range of researchers (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the ordered range of matching researchers
-	 */
-	public java.util.List<Researcher> findByResearcherUserId(
-		long researcherUserId, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<Researcher>
-			orderByComparator);
-
-	/**
-	 * Returns an ordered range of all the researchers where researcherUserId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ResearcherModelImpl</code>.
-	 * </p>
-	 *
-	 * @param researcherUserId the researcher user ID
-	 * @param start the lower bound of the range of researchers
-	 * @param end the upper bound of the range of researchers (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @param useFinderCache whether to use the finder cache
-	 * @return the ordered range of matching researchers
+	 * @return the matching researcher, or <code>null</code> if a matching researcher could not be found
 	 */
-	public java.util.List<Researcher> findByResearcherUserId(
-		long researcherUserId, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<Researcher>
-			orderByComparator,
-		boolean useFinderCache);
+	public Researcher fetchByResearcherUserId(
+		long researcherUserId, boolean useFinderCache);
 
 	/**
-	 * Returns the first researcher in the ordered set where researcherUserId = &#63;.
+	 * Removes the researcher where researcherUserId = &#63; from the database.
 	 *
 	 * @param researcherUserId the researcher user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching researcher
-	 * @throws NoSuchResearcherException if a matching researcher could not be found
+	 * @return the researcher that was removed
 	 */
-	public Researcher findByResearcherUserId_First(
-			long researcherUserId,
-			com.liferay.portal.kernel.util.OrderByComparator<Researcher>
-				orderByComparator)
+	public Researcher removeByResearcherUserId(long researcherUserId)
 		throws NoSuchResearcherException;
-
-	/**
-	 * Returns the first researcher in the ordered set where researcherUserId = &#63;.
-	 *
-	 * @param researcherUserId the researcher user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching researcher, or <code>null</code> if a matching researcher could not be found
-	 */
-	public Researcher fetchByResearcherUserId_First(
-		long researcherUserId,
-		com.liferay.portal.kernel.util.OrderByComparator<Researcher>
-			orderByComparator);
-
-	/**
-	 * Returns the last researcher in the ordered set where researcherUserId = &#63;.
-	 *
-	 * @param researcherUserId the researcher user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching researcher
-	 * @throws NoSuchResearcherException if a matching researcher could not be found
-	 */
-	public Researcher findByResearcherUserId_Last(
-			long researcherUserId,
-			com.liferay.portal.kernel.util.OrderByComparator<Researcher>
-				orderByComparator)
-		throws NoSuchResearcherException;
-
-	/**
-	 * Returns the last researcher in the ordered set where researcherUserId = &#63;.
-	 *
-	 * @param researcherUserId the researcher user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching researcher, or <code>null</code> if a matching researcher could not be found
-	 */
-	public Researcher fetchByResearcherUserId_Last(
-		long researcherUserId,
-		com.liferay.portal.kernel.util.OrderByComparator<Researcher>
-			orderByComparator);
-
-	/**
-	 * Returns the researchers before and after the current researcher in the ordered set where researcherUserId = &#63;.
-	 *
-	 * @param researcherId the primary key of the current researcher
-	 * @param researcherUserId the researcher user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the previous, current, and next researcher
-	 * @throws NoSuchResearcherException if a researcher with the primary key could not be found
-	 */
-	public Researcher[] findByResearcherUserId_PrevAndNext(
-			long researcherId, long researcherUserId,
-			com.liferay.portal.kernel.util.OrderByComparator<Researcher>
-				orderByComparator)
-		throws NoSuchResearcherException;
-
-	/**
-	 * Removes all the researchers where researcherUserId = &#63; from the database.
-	 *
-	 * @param researcherUserId the researcher user ID
-	 */
-	public void removeByResearcherUserId(long researcherUserId);
 
 	/**
 	 * Returns the number of researchers where researcherUserId = &#63;.

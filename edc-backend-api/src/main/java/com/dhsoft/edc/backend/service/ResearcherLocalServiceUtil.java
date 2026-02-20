@@ -256,6 +256,10 @@ public class ResearcherLocalServiceUtil {
 		return getService().getResearcher(researcherId);
 	}
 
+	public static Researcher getResearcherByUserId(long userId) {
+		return getService().getResearcherByUserId(userId);
+	}
+
 	/**
 	 * Returns the researcher with the matching UUID and company.
 	 *

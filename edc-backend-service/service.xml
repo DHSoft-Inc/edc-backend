@@ -496,7 +496,7 @@
         
     </entity>
 
-    <!-- initResearcher -->
+    <!-- instResearcher -->
     <entity name="InstResearcher" local-service="true" remote-service="true" uuid="true" uuid-accessor="true" trash-enabled="true">
 
        	<!-- PK fields -->   
@@ -594,7 +594,7 @@
     		<finder-column name="userId" />
     	</finder>    	
     	
-    	<finder name="ResearcherUserId" return-type="Collection">
+    	<finder name="ResearcherUserId" return-type="Researcher">
     		<finder-column name="researcherUserId" />
     	</finder>
 

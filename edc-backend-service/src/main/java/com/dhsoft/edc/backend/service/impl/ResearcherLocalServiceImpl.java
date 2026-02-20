@@ -14,9 +14,12 @@
 
 package com.dhsoft.edc.backend.service.impl;
 
+import com.dhsoft.edc.backend.model.Researcher;
 import com.dhsoft.edc.backend.service.base.ResearcherLocalServiceBaseImpl;
-
+import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
 import com.liferay.portal.aop.AopService;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 
 import org.osgi.service.component.annotations.Component;
 
@@ -28,4 +31,15 @@ import org.osgi.service.component.annotations.Component;
 	service = AopService.class
 )
 public class ResearcherLocalServiceImpl extends ResearcherLocalServiceBaseImpl {
+	
+	private static final Log _log = LogFactoryUtil.getLog(ResearcherLocalServiceImpl.class);
+	
+	public Researcher getResearcherByUserId(long userId) {
+		try {
+			return researcherPersistence.findByResearcherUserId(userId);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
 }

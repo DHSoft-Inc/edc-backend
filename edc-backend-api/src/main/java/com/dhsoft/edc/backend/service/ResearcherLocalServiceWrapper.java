@@ -281,6 +281,13 @@ public class ResearcherLocalServiceWrapper
 		return _researcherLocalService.getResearcher(researcherId);
 	}
 
+	@Override
+	public com.dhsoft.edc.backend.model.Researcher getResearcherByUserId(
+		long userId) {
+
+		return _researcherLocalService.getResearcherByUserId(userId);
+	}
+
 	/**
 	 * Returns the researcher with the matching UUID and company.
 	 *

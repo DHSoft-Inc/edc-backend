@@ -236,6 +236,9 @@ public interface ResearcherLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Researcher getResearcher(long researcherId) throws PortalException;
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public Researcher getResearcherByUserId(long userId);
+
 	/**
 	 * Returns the researcher with the matching UUID and company.
 	 *
