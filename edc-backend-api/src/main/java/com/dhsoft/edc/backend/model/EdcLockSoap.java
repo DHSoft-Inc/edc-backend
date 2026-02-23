@@ -44,6 +44,8 @@ public class EdcLockSoap implements Serializable {
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setComment(model.getComment());
+		soapModel.setStartDate(model.getStartDate());
+		soapModel.setEndDate(model.getEndDate());
 
 		return soapModel;
 	}
@@ -201,6 +203,22 @@ public class EdcLockSoap implements Serializable {
 		_comment = comment;
 	}
 
+	public Date getStartDate() {
+		return _startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		_startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return _endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		_endDate = endDate;
+	}
+
 	private String _uuid;
 	private long _lockId;
 	private long _companyId;
@@ -214,5 +232,7 @@ public class EdcLockSoap implements Serializable {
 	private Date _createDate;
 	private Date _modifiedDate;
 	private String _comment;
+	private Date _startDate;
+	private Date _endDate;
 
 }

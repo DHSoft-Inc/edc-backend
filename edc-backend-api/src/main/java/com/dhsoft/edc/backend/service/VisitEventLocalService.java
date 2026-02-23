@@ -212,9 +212,6 @@ public interface VisitEventLocalService
 	public List<VisitEvent> findBySubjectIdAndSubjectVisitDefinitionId(
 		long subjectId, long subjectVisitDefinitionId);
 
-	public List<VisitEvent> findBySubjectIdAndVisitDefinitionId(
-		long subjectId, long visitDefinitionId);
-
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
 

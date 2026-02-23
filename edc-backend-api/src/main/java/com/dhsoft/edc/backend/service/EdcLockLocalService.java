@@ -36,6 +36,7 @@ import com.liferay.portal.kernel.util.OrderByComparator;
 
 import java.io.Serializable;
 
+import java.util.Date;
 import java.util.List;
 
 import org.osgi.annotation.versioning.ProviderType;
@@ -81,6 +82,11 @@ public interface EdcLockLocalService
 		long companyId, long groupId, long projectId, long classNameId,
 		long classPK, String lockType, long userId, String userName,
 		String comment);
+
+	public EdcLock addLock(
+		long companyId, long groupId, long projectId, long classNameId,
+		long classPK, String lockType, long userId, String userName,
+		String comment, Date startDate, Date endDate);
 
 	/**
 	 * Creates a new edc lock with the primary key. Does not add the edc lock to the database.
@@ -318,6 +324,11 @@ public interface EdcLockLocalService
 	public EdcLock updateEdcLock(EdcLock edcLock);
 
 	public EdcLock updateLock(long lockId, String lockType, String comment)
+		throws Exception;
+
+	public EdcLock updateLock(
+			long lockId, String lockType, String comment, Date startDate,
+			Date endDate)
 		throws Exception;
 
 }

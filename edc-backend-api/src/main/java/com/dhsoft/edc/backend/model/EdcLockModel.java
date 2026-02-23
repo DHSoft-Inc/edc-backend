@@ -291,4 +291,32 @@ public interface EdcLockModel
 	 */
 	public void setComment(String comment);
 
+	/**
+	 * Returns the start date of this edc lock.
+	 *
+	 * @return the start date of this edc lock
+	 */
+	public Date getStartDate();
+
+	/**
+	 * Sets the start date of this edc lock.
+	 *
+	 * @param startDate the start date of this edc lock
+	 */
+	public void setStartDate(Date startDate);
+
+	/**
+	 * Returns the end date of this edc lock.
+	 *
+	 * @return the end date of this edc lock
+	 */
+	public Date getEndDate();
+
+	/**
+	 * Sets the end date of this edc lock.
+	 *
+	 * @param endDate the end date of this edc lock
+	 */
+	public void setEndDate(Date endDate);
+
 }

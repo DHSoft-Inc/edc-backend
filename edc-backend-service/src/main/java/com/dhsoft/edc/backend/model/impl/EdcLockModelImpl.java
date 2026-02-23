@@ -78,7 +78,8 @@ public class EdcLockModelImpl
 		{"classPK", Types.BIGINT}, {"lockType", Types.VARCHAR},
 		{"userId", Types.BIGINT}, {"userName", Types.VARCHAR},
 		{"createDate", Types.TIMESTAMP}, {"modifiedDate", Types.TIMESTAMP},
-		{"comment_", Types.VARCHAR}
+		{"comment_", Types.VARCHAR}, {"startDate", Types.TIMESTAMP},
+		{"endDate", Types.TIMESTAMP}
 	};
 
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP =
@@ -98,10 +99,12 @@ public class EdcLockModelImpl
 		TABLE_COLUMNS_MAP.put("createDate", Types.TIMESTAMP);
 		TABLE_COLUMNS_MAP.put("modifiedDate", Types.TIMESTAMP);
 		TABLE_COLUMNS_MAP.put("comment_", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("startDate", Types.TIMESTAMP);
+		TABLE_COLUMNS_MAP.put("endDate", Types.TIMESTAMP);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table EDC_EdcLock (uuid_ VARCHAR(75) null,lockId LONG not null primary key,companyId LONG,groupId LONG,projectId LONG,classNameId LONG,classPK LONG,lockType VARCHAR(75) null,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,comment_ VARCHAR(75) null)";
+		"create table EDC_EdcLock (uuid_ VARCHAR(75) null,lockId LONG not null primary key,companyId LONG,groupId LONG,projectId LONG,classNameId LONG,classPK LONG,lockType VARCHAR(75) null,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,comment_ VARCHAR(75) null,startDate DATE null,endDate DATE null)";
 
 	public static final String TABLE_SQL_DROP = "drop table EDC_EdcLock";
 
@@ -278,6 +281,12 @@ public class EdcLockModelImpl
 		attributeGetterFunctions.put("comment", EdcLock::getComment);
 		attributeSetterBiConsumers.put(
 			"comment", (BiConsumer<EdcLock, String>)EdcLock::setComment);
+		attributeGetterFunctions.put("startDate", EdcLock::getStartDate);
+		attributeSetterBiConsumers.put(
+			"startDate", (BiConsumer<EdcLock, Date>)EdcLock::setStartDate);
+		attributeGetterFunctions.put("endDate", EdcLock::getEndDate);
+		attributeSetterBiConsumers.put(
+			"endDate", (BiConsumer<EdcLock, Date>)EdcLock::setEndDate);
 
 		_attributeGetterFunctions = Collections.unmodifiableMap(
 			attributeGetterFunctions);
@@ -558,6 +567,26 @@ public class EdcLockModelImpl
 	}
 
 	@Override
+	public Date getStartDate() {
+		return _startDate;
+	}
+
+	@Override
+	public void setStartDate(Date startDate) {
+		_startDate = startDate;
+	}
+
+	@Override
+	public Date getEndDate() {
+		return _endDate;
+	}
+
+	@Override
+	public void setEndDate(Date endDate) {
+		_endDate = endDate;
+	}
+
+	@Override
 	public StagedModelType getStagedModelType() {
 		return new StagedModelType(
 			PortalUtil.getClassNameId(EdcLock.class.getName()),
@@ -613,6 +642,8 @@ public class EdcLockModelImpl
 		edcLockImpl.setCreateDate(getCreateDate());
 		edcLockImpl.setModifiedDate(getModifiedDate());
 		edcLockImpl.setComment(getComment());
+		edcLockImpl.setStartDate(getStartDate());
+		edcLockImpl.setEndDate(getEndDate());
 
 		edcLockImpl.resetOriginalValues();
 
@@ -770,6 +801,24 @@ public class EdcLockModelImpl
 			edcLockCacheModel.comment = null;
 		}
 
+		Date startDate = getStartDate();
+
+		if (startDate != null) {
+			edcLockCacheModel.startDate = startDate.getTime();
+		}
+		else {
+			edcLockCacheModel.startDate = Long.MIN_VALUE;
+		}
+
+		Date endDate = getEndDate();
+
+		if (endDate != null) {
+			edcLockCacheModel.endDate = endDate.getTime();
+		}
+		else {
+			edcLockCacheModel.endDate = Long.MIN_VALUE;
+		}
+
 		return edcLockCacheModel;
 	}
 
@@ -891,6 +940,8 @@ public class EdcLockModelImpl
 	private Date _modifiedDate;
 	private boolean _setModifiedDate;
 	private String _comment;
+	private Date _startDate;
+	private Date _endDate;
 	private long _columnBitmask;
 	private EdcLock _escapedModel;
 

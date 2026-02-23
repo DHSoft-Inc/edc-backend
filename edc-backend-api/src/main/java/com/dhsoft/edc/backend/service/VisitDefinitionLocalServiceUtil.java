@@ -62,7 +62,7 @@ public class VisitDefinitionLocalServiceUtil {
 	}
 
 	/**
-	 * ADD: VisitDefinition �깮�꽦
+	 * ADD: VisitDefinition 생성 (ExperimentalGroup)
 	 */
 	public static VisitDefinition addVisitDefinitionForGroup(
 			long companyId, long groupId, long userId, String userName,
@@ -417,8 +417,9 @@ public class VisitDefinitionLocalServiceUtil {
 	}
 
 	public static VisitDefinition updateVisitDefinitionFull(
-		long visitDefinitionId, String name, String anchorType, int offset,
-		int windowMinus, int windowPlus) {
+			long visitDefinitionId, String name, String anchorType, int offset,
+			int windowMinus, int windowPlus)
+		throws PortalException {
 
 		return getService().updateVisitDefinitionFull(
 			visitDefinitionId, name, anchorType, offset, windowMinus,

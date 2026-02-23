@@ -56,6 +56,8 @@ public class EdcLockWrapper
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("comment", getComment());
+		attributes.put("startDate", getStartDate());
+		attributes.put("endDate", getEndDate());
 
 		return attributes;
 	}
@@ -139,6 +141,18 @@ public class EdcLockWrapper
 		if (comment != null) {
 			setComment(comment);
 		}
+
+		Date startDate = (Date)attributes.get("startDate");
+
+		if (startDate != null) {
+			setStartDate(startDate);
+		}
+
+		Date endDate = (Date)attributes.get("endDate");
+
+		if (endDate != null) {
+			setEndDate(endDate);
+		}
 	}
 
 	/**
@@ -202,6 +216,16 @@ public class EdcLockWrapper
 	}
 
 	/**
+	 * Returns the end date of this edc lock.
+	 *
+	 * @return the end date of this edc lock
+	 */
+	@Override
+	public Date getEndDate() {
+		return model.getEndDate();
+	}
+
+	/**
 	 * Returns the group ID of this edc lock.
 	 *
 	 * @return the group ID of this edc lock
@@ -259,6 +283,16 @@ public class EdcLockWrapper
 	@Override
 	public long getProjectId() {
 		return model.getProjectId();
+	}
+
+	/**
+	 * Returns the start date of this edc lock.
+	 *
+	 * @return the start date of this edc lock
+	 */
+	@Override
+	public Date getStartDate() {
+		return model.getStartDate();
 	}
 
 	/**
@@ -362,6 +396,16 @@ public class EdcLockWrapper
 	}
 
 	/**
+	 * Sets the end date of this edc lock.
+	 *
+	 * @param endDate the end date of this edc lock
+	 */
+	@Override
+	public void setEndDate(Date endDate) {
+		model.setEndDate(endDate);
+	}
+
+	/**
 	 * Sets the group ID of this edc lock.
 	 *
 	 * @param groupId the group ID of this edc lock
@@ -419,6 +463,16 @@ public class EdcLockWrapper
 	@Override
 	public void setProjectId(long projectId) {
 		model.setProjectId(projectId);
+	}
+
+	/**
+	 * Sets the start date of this edc lock.
+	 *
+	 * @param startDate the start date of this edc lock
+	 */
+	@Override
+	public void setStartDate(Date startDate) {
+		model.setStartDate(startDate);
 	}
 
 	/**

@@ -1,5 +1,6 @@
 package com.dhsoft.edc.backend.service.impl;
 
+import com.dhsoft.edc.backend.model.SubjectVisitDefinition;
 import com.dhsoft.edc.backend.model.VisitEvent;
 import com.dhsoft.edc.backend.service.base.VisitEventLocalServiceBaseImpl;
 import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
@@ -12,22 +13,30 @@ import java.util.Date;
 import java.util.List;
 
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 
 @Component(
     property = "model.class.name=com.dhsoft.edc.backend.model.VisitEvent",
     service = AopService.class
 )
 public class VisitEventLocalServiceImpl extends VisitEventLocalServiceBaseImpl {
+	
+	
+	
 
+    @Reference
+    private com.dhsoft.edc.backend.service.SubjectVisitDefinitionLocalService subjectVisitDefinitionLocalService;
+
+    @Reference
+    private com.dhsoft.edc.backend.service.SubjectLocalService subjectLocalService;
 
     private VisitEvent createNewEvent(long subjectId, long subjectVisitDefinitionId) {
-
-        long id = CounterLocalServiceUtil.increment();
+        long id = counterLocalService.increment("visitEvent"); // ✅ CounterLocalServiceUtil.increment() 말고 일관되게
         VisitEvent v = visitEventPersistence.create(id);
 
         v.setSubjectId(subjectId);
 
-
+        // ✅ 지금 시스템에서는 visitDefinitionId 컬럼에 SVD id 저장 (그대로 유지)
         v.setVisitDefinitionId(subjectVisitDefinitionId);
 
         Date now = new Date();
@@ -36,6 +45,108 @@ public class VisitEventLocalServiceImpl extends VisitEventLocalServiceBaseImpl {
 
         return v;
     }
+
+    public VisitEvent saveOrUpdateVisitEventBySvdId(
+        long subjectId,
+        long subjectVisitDefinitionId,
+        String anchorType,
+        int offset,
+        Date anchorDate,
+        Date planDate
+    ) {
+
+        List<VisitEvent> list =
+            findBySubjectIdAndSubjectVisitDefinitionId(subjectId, subjectVisitDefinitionId);
+
+        VisitEvent event;
+        Date now = new Date();
+
+        if (list == null || list.isEmpty()) {
+            event = createNewEvent(subjectId, subjectVisitDefinitionId);
+        } else {
+            event = list.get(0);
+            event.setModifiedDate(now);
+        }
+
+        // =====================================================
+        // ✅ 필수 컨텍스트 값 채우기 (여기가 핵심)
+        // =====================================================
+        try {
+            SubjectVisitDefinition svd =
+                subjectVisitDefinitionLocalService.getSubjectVisitDefinition(subjectVisitDefinitionId);
+
+            event.setCompanyId(svd.getCompanyId());
+            event.setGroupId(svd.getGroupId());
+            event.setProjectId(svd.getProjectId());
+
+            // institutionId는 SVD에 없으니 Subject에서 가져오기
+            try {
+                com.dhsoft.edc.backend.model.Subject subj = subjectLocalService.getSubject(subjectId);
+                event.setInstitutionId(subj.getInstitutionId());
+            } catch (Exception ignore) {}
+
+            event.setUserId(svd.getUserId());
+            event.setUserName(svd.getUserName());
+
+            // status 관련도 기본 세팅 (원하면 svd status를 따라가게)
+            event.setStatus(svd.getStatus());
+            event.setStatusByUserId(svd.getStatusByUserId());
+            event.setStatusByUserName(svd.getStatusByUserName());
+            event.setStatusDate(svd.getStatusDate());
+
+        } catch (Exception e) {
+            // svd 조회 실패해도 anchor 업데이트는 하되, 최소한 0/null 방지용 기본값 정도는 넣을 수 있음
+            // (필요하면 여기서 fallback 세팅)
+        }
+
+        // =====================================================
+        // anchor/date 저장
+        // =====================================================
+        event.setAnchorType(anchorType);
+        event.setOffset(offset);
+        event.setAnchorDate(anchorDate);
+        event.setPlanDate(planDate);
+
+        // modifiedDate는 항상 갱신
+        event.setModifiedDate(now);
+
+        return visitEventPersistence.update(event);
+    }
+
+    // 기존 saveOrUpdateVisitEvent는 유지 (하지만 이제 “svdId”를 넘겨야 함)
+    public VisitEvent saveOrUpdateVisitEvent(
+        long subjectId,
+        long visitDefinitionId,
+        String anchorType,
+        int offset,
+        Date anchorDate,
+        Date planDate
+    ) {
+        return saveOrUpdateVisitEventBySvdId(
+            subjectId,
+            visitDefinitionId,
+            anchorType,
+            offset,
+            anchorDate,
+            planDate
+        );
+    }
+
+    public List<VisitEvent> findBySubjectIdAndSubjectVisitDefinitionId(
+        long subjectId,
+        long subjectVisitDefinitionId
+    ) {
+        return visitEventPersistence.findByS_VD(subjectId, subjectVisitDefinitionId);
+    }
+
+    public List<VisitEvent> findBySubjectId(long subjectId) {
+        return visitEventPersistence.findBysubjectId(subjectId);
+    }
+	
+	
+	
+// ------------------------------------------------------------------------------------
+
 
     public void addVisitEvent(
         long companyId,
@@ -143,69 +254,11 @@ public class VisitEventLocalServiceImpl extends VisitEventLocalServiceBaseImpl {
     }
 
 
-    public VisitEvent saveOrUpdateVisitEventBySvdId(
-        long subjectId,
-        long subjectVisitDefinitionId,
-        String anchorType,
-        int offset,
-        Date anchorDate,
-        Date planDate
-    ) {
-
-        List<VisitEvent> list =
-            findBySubjectIdAndSubjectVisitDefinitionId(subjectId, subjectVisitDefinitionId);
-
-        VisitEvent event;
-
-        if (list == null || list.isEmpty()) {
-            event = createNewEvent(subjectId, subjectVisitDefinitionId);
-        } else {
-            event = list.get(0);
-            event.setModifiedDate(new Date());
-        }
-
-        event.setAnchorType(anchorType);
-        event.setOffset(offset);
-        event.setAnchorDate(anchorDate);
-        event.setPlanDate(planDate);
-
-        return visitEventPersistence.update(event);
-    }
 
 
-    public VisitEvent saveOrUpdateVisitEvent(
-        long subjectId,
-        long visitDefinitionId,
-        String anchorType,
-        int offset,
-        Date anchorDate,
-        Date planDate
-    ) {
-        // ✅ 내부는 svdId로 처리
-        return saveOrUpdateVisitEventBySvdId(
-            subjectId,
-            visitDefinitionId,
-            anchorType,
-            offset,
-            anchorDate,
-            planDate
-        );
-    }
 
 
-    public List<VisitEvent> findBySubjectIdAndSubjectVisitDefinitionId(
-        long subjectId,
-        long subjectVisitDefinitionId
-    ) {
-        return visitEventPersistence.findByS_VD(subjectId, subjectVisitDefinitionId);
-    }
 
 
-    public List<VisitEvent> findBySubjectIdAndVisitDefinitionId(long subjectId, long visitDefinitionId) {
-        return visitEventPersistence.findByS_VD(subjectId, visitDefinitionId);
-    }
 
-    public List<VisitEvent> findBySubjectId(long subjectId) {
-        return visitEventPersistence.findBysubjectId(subjectId);
-    }
 }
