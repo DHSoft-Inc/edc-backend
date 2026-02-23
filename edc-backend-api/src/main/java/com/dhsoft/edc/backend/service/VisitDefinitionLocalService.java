@@ -78,7 +78,7 @@ public interface VisitDefinitionLocalService
 	public VisitDefinition addVisitDefinition(VisitDefinition visitDefinition);
 
 	/**
-	 * ADD: VisitDefinition �깮�꽦
+	 * ADD: VisitDefinition 생성 (ExperimentalGroup)
 	 */
 	public VisitDefinition addVisitDefinitionForGroup(
 			long companyId, long groupId, long userId, String userName,
@@ -353,7 +353,8 @@ public interface VisitDefinitionLocalService
 		throws PortalException;
 
 	public VisitDefinition updateVisitDefinitionFull(
-		long visitDefinitionId, String name, String anchorType, int offset,
-		int windowMinus, int windowPlus);
+			long visitDefinitionId, String name, String anchorType, int offset,
+			int windowMinus, int windowPlus)
+		throws PortalException;
 
 }

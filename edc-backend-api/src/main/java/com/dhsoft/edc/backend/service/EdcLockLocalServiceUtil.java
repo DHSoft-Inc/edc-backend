@@ -69,6 +69,16 @@ public class EdcLockLocalServiceUtil {
 			userId, userName, comment);
 	}
 
+	public static EdcLock addLock(
+		long companyId, long groupId, long projectId, long classNameId,
+		long classPK, String lockType, long userId, String userName,
+		String comment, java.util.Date startDate, java.util.Date endDate) {
+
+		return getService().addLock(
+			companyId, groupId, projectId, classNameId, classPK, lockType,
+			userId, userName, comment, startDate, endDate);
+	}
+
 	/**
 	 * Creates a new edc lock with the primary key. Does not add the edc lock to the database.
 	 *
@@ -358,6 +368,15 @@ public class EdcLockLocalServiceUtil {
 		throws Exception {
 
 		return getService().updateLock(lockId, lockType, comment);
+	}
+
+	public static EdcLock updateLock(
+			long lockId, String lockType, String comment,
+			java.util.Date startDate, java.util.Date endDate)
+		throws Exception {
+
+		return getService().updateLock(
+			lockId, lockType, comment, startDate, endDate);
 	}
 
 	public static EdcLockLocalService getService() {

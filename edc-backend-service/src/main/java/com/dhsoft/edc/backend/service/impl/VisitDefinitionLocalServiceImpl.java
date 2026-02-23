@@ -1,7 +1,6 @@
 package com.dhsoft.edc.backend.service.impl;
 
 import com.dhsoft.edc.backend.model.ExperimentalGroup;
-import com.dhsoft.edc.backend.model.SubjectVisitDefinition;
 import com.dhsoft.edc.backend.model.VisitDefinition;
 import com.dhsoft.edc.backend.service.ExperimentalGroupLocalService;
 import com.dhsoft.edc.backend.service.base.VisitDefinitionLocalServiceBaseImpl;
@@ -17,219 +16,235 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 @Component(
-	    property = "model.class.name=com.dhsoft.edc.backend.model.VisitDefinition",
-	    service = AopService.class
-	)
-	public class VisitDefinitionLocalServiceImpl
-	        extends VisitDefinitionLocalServiceBaseImpl {
-	
-		@Reference
-		private com.dhsoft.edc.backend.service.VisitGroupLocalService _visitGroupLocalService;
-	
+    property = "model.class.name=com.dhsoft.edc.backend.model.VisitDefinition",
+    service = AopService.class
+)
+public class VisitDefinitionLocalServiceImpl extends VisitDefinitionLocalServiceBaseImpl {
 
-	    @Reference
-	    private ExperimentalGroupLocalService _experimentalGroupLocalService;
+    @Reference
+    private com.dhsoft.edc.backend.service.VisitGroupLocalService _visitGroupLocalService;
 
+    @Reference
+    private ExperimentalGroupLocalService _experimentalGroupLocalService;
 
-	    public List<VisitDefinition> getByExperimentalGroup(long experimentalGroupId)
-	            throws PortalException {
+    // =========================================================
+    // ✅ order 자동증가 계산 (visitGroupId 단위)
+    // =========================================================
+    private int getNextOrderByVisitGroupId(long visitGroupId) {
+        // 네가 이미 만들어둔 finder 사용(제일 깔끔)
+        List<VisitDefinition> list = visitDefinitionPersistence.findByVisitGroupId(visitGroupId);
 
-	        ExperimentalGroup group =
-	                _experimentalGroupLocalService.getExperimentalGroup(experimentalGroupId);
+        int next = 0;
+        for (VisitDefinition vd : list) {
+            int o = vd.getOrder();
+            if (o >= next) next = o + 1;
+        }
+        return next;
+    }
 
-	        String expCode = group.getExpCode();
+    public List<VisitDefinition> getByExperimentalGroup(long experimentalGroupId)
+            throws PortalException {
 
-	        return visitDefinitionPersistence.findByVisitDefinitionCode(expCode);
-	    }
-	    
-	    public VisitDefinition addVisitDefinitionForVisitGroup(
-	            long companyId,
-	            long groupId,
-	            long userId,
-	            String userName,
-	            long visitGroupId,
-	            String name,
-	            String anchorType,
-	            int offset,
-	            int windowMinus,
-	            int windowPlus
-	    ) throws PortalException {
+        ExperimentalGroup group =
+                _experimentalGroupLocalService.getExperimentalGroup(experimentalGroupId);
 
-	        com.dhsoft.edc.backend.model.VisitGroup vg =
-	                _visitGroupLocalService.getVisitGroup(visitGroupId);
+        String expCode = group.getExpCode();
 
-	        String code = vg.getVisitGroupCode();
+        return visitDefinitionPersistence.findByVisitDefinitionCode(expCode);
+    }
 
-	        long visitDefinitionId = CounterLocalServiceUtil.increment(VisitDefinition.class.getName());
-	        Date now = new Date();
+    public VisitDefinition addVisitDefinitionForVisitGroup(
+            long companyId,
+            long groupId,
+            long userId,
+            String userName,
+            long visitGroupId,
+            String name,
+            String anchorType,
+            int offset,
+            int windowMinus,
+            int windowPlus
+    ) throws PortalException {
 
-	        VisitDefinition vd = visitDefinitionPersistence.create(visitDefinitionId);
+        com.dhsoft.edc.backend.model.VisitGroup vg =
+                _visitGroupLocalService.getVisitGroup(visitGroupId);
 
-	        vd.setCompanyId(companyId);
-	        vd.setGroupId(groupId);
-	        vd.setProjectId(vg.getProjectId());
-	        vd.setUserId(userId);
-	        vd.setUserName(userName);
-	        vd.setCreateDate(now);
-	        vd.setModifiedDate(now);
+        String code = vg.getVisitGroupCode();
 
-	        vd.setStatus(WorkflowConstants.STATUS_APPROVED);
-	        vd.setStatusByUserId(userId);
-	        vd.setStatusByUserName(userName);
-	        vd.setStatusDate(now);
+        long visitDefinitionId = CounterLocalServiceUtil.increment(VisitDefinition.class.getName());
+        Date now = new Date();
 
+        VisitDefinition vd = visitDefinitionPersistence.create(visitDefinitionId);
 
-	        vd.setVisitDefinitionCode(code);
+        vd.setCompanyId(companyId);
+        vd.setGroupId(groupId);
+        vd.setProjectId(vg.getProjectId());
+        vd.setUserId(userId);
+        vd.setUserName(userName);
+        vd.setCreateDate(now);
+        vd.setModifiedDate(now);
 
+        vd.setStatus(WorkflowConstants.STATUS_APPROVED);
+        vd.setStatusByUserId(userId);
+        vd.setStatusByUserName(userName);
+        vd.setStatusDate(now);
 
-	        vd.setVisitGroupId(visitGroupId);
+        vd.setVisitDefinitionCode(code);
+        vd.setVisitGroupId(visitGroupId);
 
-	        vd.setName(name);
-	        vd.setAnchorType(anchorType);
-	        vd.setOffset(offset);
-	        vd.setWindowMinus(windowMinus);
-	        vd.setWindowPlus(windowPlus);
+        vd.setName(name);
+        vd.setAnchorType(anchorType);
+        vd.setOffset(offset);
+        vd.setWindowMinus(windowMinus);
+        vd.setWindowPlus(windowPlus);
 
+        vd.setType(0);
+        vd.setRepeatCount(0);
+        vd.setVisitCRFId(0);
 
-	        vd.setType(0);
+        // =========================================================
+        // ✅ NEW: order 자동 증가
+        // =========================================================
+        // (최소 동시성 방어: 같은 visitGroupId에 대해 next 계산 + 세팅을 묶음)
+        synchronized (("VISITDEF_ORDER_VG_" + visitGroupId).intern()) {
+            int nextOrder = getNextOrderByVisitGroupId(visitGroupId);
+            vd.setOrder(nextOrder);
+            return visitDefinitionPersistence.update(vd);
+        }
+    }
 
-	        vd.setRepeatCount(0);
-	        vd.setVisitCRFId(0);
+    /**
+     * ADD: VisitDefinition 생성 (ExperimentalGroup)
+     */
+    public VisitDefinition addVisitDefinitionForGroup(
+            long companyId,
+            long groupId,
+            long userId,
+            String userName,
+            long experimentalGroupId,
+            String name,
+            String anchorType,
+            int offset,
+            int windowMinus,
+            int windowPlus
+    ) throws PortalException {
 
-	        return visitDefinitionPersistence.update(vd);
-	    }
+        ExperimentalGroup expGroup =
+                _experimentalGroupLocalService.getExperimentalGroup(experimentalGroupId);
 
+        long visitDefinitionId = CounterLocalServiceUtil.increment(VisitDefinition.class.getName());
+        Date now = new Date();
 
-	    /**
-	     * ADD: VisitDefinition �깮�꽦
-	     */
-	    public VisitDefinition addVisitDefinitionForGroup(
-	            long companyId,
-	            long groupId,
-	            long userId,
-	            String userName,
-	            long experimentalGroupId,
-	            String name,
-	            String anchorType,
-	            int offset,
-	            int windowMinus,
-	            int windowPlus
-	    ) throws PortalException {
+        VisitDefinition vd = visitDefinitionPersistence.create(visitDefinitionId);
 
-	        ExperimentalGroup expGroup =
-	                _experimentalGroupLocalService.getExperimentalGroup(experimentalGroupId);
+        vd.setCompanyId(companyId);
+        vd.setGroupId(groupId);
+        vd.setProjectId(expGroup.getProjectId());
+        vd.setUserId(userId);
+        vd.setUserName(userName);
+        vd.setCreateDate(now);
+        vd.setModifiedDate(now);
 
-	        long visitDefinitionId = CounterLocalServiceUtil.increment(
-	                VisitDefinition.class.getName()
-	        );
+        vd.setStatus(WorkflowConstants.STATUS_APPROVED);
+        vd.setStatusByUserId(userId);
+        vd.setStatusByUserName(userName);
+        vd.setStatusDate(now);
 
-	        Date now = new Date();
+        String code = expGroup.getExpCode();
+        vd.setVisitDefinitionCode(code);
 
-	        VisitDefinition vd = visitDefinitionPersistence.create(visitDefinitionId);
+        // ⚠️ 기존 네 코드 유지: experimentalGroupId를 visitGroupId 컬럼에 저장 중
+        vd.setVisitGroupId(experimentalGroupId);
 
-	        vd.setCompanyId(companyId);
-	        vd.setGroupId(groupId);
-	        vd.setProjectId(expGroup.getProjectId());
-	        vd.setUserId(userId);
-	        vd.setUserName(userName);
-	        vd.setCreateDate(now);
-	        vd.setModifiedDate(now);
+        vd.setName(name);
+        vd.setAnchorType(anchorType);
+        vd.setOffset(offset);
+        vd.setWindowMinus(windowMinus);
+        vd.setWindowPlus(windowPlus);
 
-	        vd.setStatus(WorkflowConstants.STATUS_APPROVED);
-	        vd.setStatusByUserId(userId);
-	        vd.setStatusByUserName(userName);
-	        vd.setStatusDate(now);
+        vd.setType(0);
+        vd.setRepeatCount(0);
+        vd.setVisitCRFId(0);
 
-	        
-	        String code = expGroup.getExpCode();
-	        vd.setVisitDefinitionCode(code);
+        // =========================================================
+        // ✅ NEW: order 자동 증가
+        // =========================================================
+        // 지금 구조에선 expGroup용도 visitGroupId 컬럼을 expGroupId로 쓰고 있으니 동일 방식으로 계산
+        synchronized (("VISITDEF_ORDER_EXP_" + experimentalGroupId).intern()) {
+            int nextOrder = getNextOrderByVisitGroupId(experimentalGroupId);
+            vd.setOrder(nextOrder);
+            return visitDefinitionPersistence.update(vd);
+        }
+    }
 
+    public VisitDefinition updateVisitDefinitionBasic(
+            long visitDefinitionId,
+            String name,
+            String anchorType,
+            int offset,
+            int windowMinus,
+            int windowPlus
+    ) throws PortalException {
 
+        VisitDefinition vd = visitDefinitionPersistence.findByPrimaryKey(visitDefinitionId);
 
-	        vd.setVisitGroupId(experimentalGroupId);
+        vd.setName(name);
+        vd.setAnchorType(anchorType);
+        vd.setOffset(offset);
+        vd.setWindowMinus(windowMinus);
+        vd.setWindowPlus(windowPlus);
+        vd.setModifiedDate(new Date());
 
+        return visitDefinitionPersistence.update(vd);
+    }
 
-	        vd.setName(name);
-	        vd.setAnchorType(anchorType);
-	        vd.setOffset(offset);
-	        vd.setWindowMinus(windowMinus);
-	        vd.setWindowPlus(windowPlus);
+    public VisitDefinition updateVisitDefinitionFull(
+            long visitDefinitionId,
+            String name,
+            String anchorType,
+            int offset,
+            int windowMinus,
+            int windowPlus
+    ) throws PortalException {
 
-	        vd.setType(0);
-	        vd.setRepeatCount(0);
-	        vd.setVisitCRFId(0);
+        VisitDefinition vd =
+            visitDefinitionPersistence.fetchByPrimaryKey(visitDefinitionId);
 
-	        return visitDefinitionPersistence.update(vd);
-	    }
+        if (vd == null) {
+            throw new PortalException("VisitDefinition not found: " + visitDefinitionId);
+        }
 
+        vd.setName(name);
+        vd.setAnchorType(anchorType);
+        vd.setOffset(offset);
+        vd.setWindowMinus(windowMinus);
+        vd.setWindowPlus(windowPlus);
+        vd.setModifiedDate(new Date());
 
-	    public VisitDefinition updateVisitDefinitionBasic(
-	            long visitDefinitionId,
-	            String name,
-	            String anchorType,
-	            int offset,
-	            int windowMinus,
-	            int windowPlus
-	    ) throws PortalException {
+        return visitDefinitionPersistence.update(vd);
+    }
 
-	        VisitDefinition vd = visitDefinitionPersistence.findByPrimaryKey(visitDefinitionId);
+    public VisitDefinition deleteVisitDefinitionById(long visitDefinitionId)
+            throws PortalException {
 
-	        vd.setName(name);
-	        vd.setAnchorType(anchorType);
-	        vd.setOffset(offset);
-	        vd.setWindowMinus(windowMinus);
-	        vd.setWindowPlus(windowPlus);
-	        vd.setModifiedDate(new Date());
+        return visitDefinitionPersistence.remove(visitDefinitionId);
+    }
 
-	        return visitDefinitionPersistence.update(vd);
-	    }
-	    
-	    public VisitDefinition updateVisitDefinitionFull(
-	            long visitDefinitionId,
-	            String name,
-	            String anchorType,
-	            int offset,
-	            int windowMinus,
-	            int windowPlus) {
+    public List<VisitDefinition> getByVisitGroupId(long visitGroupId) {
+        return visitDefinitionPersistence.findByVisitGroupId(visitGroupId);
+    }
 
-	        VisitDefinition vd =
-	            visitDefinitionPersistence.fetchByPrimaryKey(visitDefinitionId);
+    public List<VisitDefinition> getByVisitGroup(long visitGroupId) throws PortalException {
 
-	        vd.setName(name);
-	        vd.setAnchorType(anchorType); 
-	        vd.setOffset(offset);
-	        vd.setWindowMinus(windowMinus);
-	        vd.setWindowPlus(windowPlus);
-	        vd.setModifiedDate(new Date());
+        com.dhsoft.edc.backend.model.VisitGroup vg =
+                _visitGroupLocalService.getVisitGroup(visitGroupId);
 
-	        return visitDefinitionPersistence.update(vd);
-	    }
+        String visitGroupCode = vg.getVisitGroupCode();
 
+        return visitDefinitionPersistence.findByVisitDefinitionCode(visitGroupCode);
+    }
 
-	    public VisitDefinition deleteVisitDefinitionById(long visitDefinitionId)
-	            throws PortalException {
-
-	        return visitDefinitionPersistence.remove(visitDefinitionId);
-	    }
-	    
-	    public List<VisitDefinition> getByVisitGroupId(long visitGroupId) {
-	 
-	        return visitDefinitionPersistence.findByVisitGroupId(visitGroupId);
-	    }
-	    
-	    public List<VisitDefinition> getByVisitGroup(long visitGroupId) throws PortalException {
-
-	        com.dhsoft.edc.backend.model.VisitGroup vg =
-	                _visitGroupLocalService.getVisitGroup(visitGroupId);
-
-	        String visitGroupCode = vg.getVisitGroupCode();
-
-	        return visitDefinitionPersistence.findByVisitDefinitionCode(visitGroupCode);
-	    }
-
-	    
-	    public List<VisitDefinition> getByVisitDefinitionCode(String visitDefinitionCode) {
-	        return visitDefinitionPersistence.findByVisitDefinitionCode(visitDefinitionCode);
-	    }
-
-	}
+    public List<VisitDefinition> getByVisitDefinitionCode(String visitDefinitionCode) {
+        return visitDefinitionPersistence.findByVisitDefinitionCode(visitDefinitionCode);
+    }
+}

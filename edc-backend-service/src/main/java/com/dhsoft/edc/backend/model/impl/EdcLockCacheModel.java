@@ -61,7 +61,7 @@ public class EdcLockCacheModel implements CacheModel<EdcLock>, Externalizable {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(27);
+		StringBundler sb = new StringBundler(31);
 
 		sb.append("{uuid=");
 		sb.append(uuid);
@@ -89,6 +89,10 @@ public class EdcLockCacheModel implements CacheModel<EdcLock>, Externalizable {
 		sb.append(modifiedDate);
 		sb.append(", comment=");
 		sb.append(comment);
+		sb.append(", startDate=");
+		sb.append(startDate);
+		sb.append(", endDate=");
+		sb.append(endDate);
 		sb.append("}");
 
 		return sb.toString();
@@ -149,6 +153,20 @@ public class EdcLockCacheModel implements CacheModel<EdcLock>, Externalizable {
 			edcLockImpl.setComment(comment);
 		}
 
+		if (startDate == Long.MIN_VALUE) {
+			edcLockImpl.setStartDate(null);
+		}
+		else {
+			edcLockImpl.setStartDate(new Date(startDate));
+		}
+
+		if (endDate == Long.MIN_VALUE) {
+			edcLockImpl.setEndDate(null);
+		}
+		else {
+			edcLockImpl.setEndDate(new Date(endDate));
+		}
+
 		edcLockImpl.resetOriginalValues();
 
 		return edcLockImpl;
@@ -176,6 +194,8 @@ public class EdcLockCacheModel implements CacheModel<EdcLock>, Externalizable {
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
 		comment = objectInput.readUTF();
+		startDate = objectInput.readLong();
+		endDate = objectInput.readLong();
 	}
 
 	@Override
@@ -224,6 +244,9 @@ public class EdcLockCacheModel implements CacheModel<EdcLock>, Externalizable {
 		else {
 			objectOutput.writeUTF(comment);
 		}
+
+		objectOutput.writeLong(startDate);
+		objectOutput.writeLong(endDate);
 	}
 
 	public String uuid;
@@ -239,5 +262,7 @@ public class EdcLockCacheModel implements CacheModel<EdcLock>, Externalizable {
 	public long createDate;
 	public long modifiedDate;
 	public String comment;
+	public long startDate;
+	public long endDate;
 
 }

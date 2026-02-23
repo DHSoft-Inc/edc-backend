@@ -60,7 +60,9 @@ create table EDC_EdcLock (
 	userName VARCHAR(75) null,
 	createDate DATE null,
 	modifiedDate DATE null,
-	comment_ VARCHAR(75) null
+	comment_ VARCHAR(75) null,
+	startDate DATE null,
+	endDate DATE null
 );
 
 create table EDC_EdcPermissionRole (

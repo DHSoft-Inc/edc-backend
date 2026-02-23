@@ -11,6 +11,7 @@ create index IX_12BBDBF on EDC_AssignProjectScope (uuid_[$COLUMN_LENGTH:75$], co
 create unique index IX_CDB6A801 on EDC_AssignProjectScope (uuid_[$COLUMN_LENGTH:75$], groupId);
 
 create index IX_F36B4178 on EDC_EdcLock (projectId, classNameId, classPK, lockType[$COLUMN_LENGTH:75$]);
+create index IX_A04D0E3 on EDC_EdcLock (projectId, lockType[$COLUMN_LENGTH:75$]);
 create index IX_9F86E34E on EDC_EdcLock (uuid_[$COLUMN_LENGTH:75$], companyId);
 create unique index IX_446BE550 on EDC_EdcLock (uuid_[$COLUMN_LENGTH:75$], groupId);
 

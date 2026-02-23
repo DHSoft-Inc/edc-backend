@@ -528,6 +528,189 @@ public class EdcLockUtil {
 	}
 
 	/**
+	 * Returns all the edc locks where projectId = &#63; and lockType = &#63;.
+	 *
+	 * @param projectId the project ID
+	 * @param lockType the lock type
+	 * @return the matching edc locks
+	 */
+	public static List<EdcLock> findByP_T(long projectId, String lockType) {
+		return getPersistence().findByP_T(projectId, lockType);
+	}
+
+	/**
+	 * Returns a range of all the edc locks where projectId = &#63; and lockType = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>EdcLockModelImpl</code>.
+	 * </p>
+	 *
+	 * @param projectId the project ID
+	 * @param lockType the lock type
+	 * @param start the lower bound of the range of edc locks
+	 * @param end the upper bound of the range of edc locks (not inclusive)
+	 * @return the range of matching edc locks
+	 */
+	public static List<EdcLock> findByP_T(
+		long projectId, String lockType, int start, int end) {
+
+		return getPersistence().findByP_T(projectId, lockType, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the edc locks where projectId = &#63; and lockType = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>EdcLockModelImpl</code>.
+	 * </p>
+	 *
+	 * @param projectId the project ID
+	 * @param lockType the lock type
+	 * @param start the lower bound of the range of edc locks
+	 * @param end the upper bound of the range of edc locks (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching edc locks
+	 */
+	public static List<EdcLock> findByP_T(
+		long projectId, String lockType, int start, int end,
+		OrderByComparator<EdcLock> orderByComparator) {
+
+		return getPersistence().findByP_T(
+			projectId, lockType, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the edc locks where projectId = &#63; and lockType = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>EdcLockModelImpl</code>.
+	 * </p>
+	 *
+	 * @param projectId the project ID
+	 * @param lockType the lock type
+	 * @param start the lower bound of the range of edc locks
+	 * @param end the upper bound of the range of edc locks (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching edc locks
+	 */
+	public static List<EdcLock> findByP_T(
+		long projectId, String lockType, int start, int end,
+		OrderByComparator<EdcLock> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByP_T(
+			projectId, lockType, start, end, orderByComparator, useFinderCache);
+	}
+
+	/**
+	 * Returns the first edc lock in the ordered set where projectId = &#63; and lockType = &#63;.
+	 *
+	 * @param projectId the project ID
+	 * @param lockType the lock type
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching edc lock
+	 * @throws NoSuchEdcLockException if a matching edc lock could not be found
+	 */
+	public static EdcLock findByP_T_First(
+			long projectId, String lockType,
+			OrderByComparator<EdcLock> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchEdcLockException {
+
+		return getPersistence().findByP_T_First(
+			projectId, lockType, orderByComparator);
+	}
+
+	/**
+	 * Returns the first edc lock in the ordered set where projectId = &#63; and lockType = &#63;.
+	 *
+	 * @param projectId the project ID
+	 * @param lockType the lock type
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching edc lock, or <code>null</code> if a matching edc lock could not be found
+	 */
+	public static EdcLock fetchByP_T_First(
+		long projectId, String lockType,
+		OrderByComparator<EdcLock> orderByComparator) {
+
+		return getPersistence().fetchByP_T_First(
+			projectId, lockType, orderByComparator);
+	}
+
+	/**
+	 * Returns the last edc lock in the ordered set where projectId = &#63; and lockType = &#63;.
+	 *
+	 * @param projectId the project ID
+	 * @param lockType the lock type
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching edc lock
+	 * @throws NoSuchEdcLockException if a matching edc lock could not be found
+	 */
+	public static EdcLock findByP_T_Last(
+			long projectId, String lockType,
+			OrderByComparator<EdcLock> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchEdcLockException {
+
+		return getPersistence().findByP_T_Last(
+			projectId, lockType, orderByComparator);
+	}
+
+	/**
+	 * Returns the last edc lock in the ordered set where projectId = &#63; and lockType = &#63;.
+	 *
+	 * @param projectId the project ID
+	 * @param lockType the lock type
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching edc lock, or <code>null</code> if a matching edc lock could not be found
+	 */
+	public static EdcLock fetchByP_T_Last(
+		long projectId, String lockType,
+		OrderByComparator<EdcLock> orderByComparator) {
+
+		return getPersistence().fetchByP_T_Last(
+			projectId, lockType, orderByComparator);
+	}
+
+	/**
+	 * Returns the edc locks before and after the current edc lock in the ordered set where projectId = &#63; and lockType = &#63;.
+	 *
+	 * @param lockId the primary key of the current edc lock
+	 * @param projectId the project ID
+	 * @param lockType the lock type
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next edc lock
+	 * @throws NoSuchEdcLockException if a edc lock with the primary key could not be found
+	 */
+	public static EdcLock[] findByP_T_PrevAndNext(
+			long lockId, long projectId, String lockType,
+			OrderByComparator<EdcLock> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchEdcLockException {
+
+		return getPersistence().findByP_T_PrevAndNext(
+			lockId, projectId, lockType, orderByComparator);
+	}
+
+	/**
+	 * Removes all the edc locks where projectId = &#63; and lockType = &#63; from the database.
+	 *
+	 * @param projectId the project ID
+	 * @param lockType the lock type
+	 */
+	public static void removeByP_T(long projectId, String lockType) {
+		getPersistence().removeByP_T(projectId, lockType);
+	}
+
+	/**
+	 * Returns the number of edc locks where projectId = &#63; and lockType = &#63;.
+	 *
+	 * @param projectId the project ID
+	 * @param lockType the lock type
+	 * @return the number of matching edc locks
+	 */
+	public static int countByP_T(long projectId, String lockType) {
+		return getPersistence().countByP_T(projectId, lockType);
+	}
+
+	/**
 	 * Returns all the edc locks where projectId = &#63; and classNameId = &#63; and classPK = &#63; and lockType = &#63;.
 	 *
 	 * @param projectId the project ID
