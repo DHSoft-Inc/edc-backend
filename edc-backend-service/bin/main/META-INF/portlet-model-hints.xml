@@ -161,6 +161,8 @@
 		<field name="modifiedDate" type="Date" />
 		<field name="institutionId" type="long" />
 		<field name="researcherId" type="long" />
+		<field name="officeContact" type="String" />
+		<field name="position" type="String" />
 	</model>
 	<model name="com.dhsoft.edc.backend.model.MetaCode">
 		<field name="uuid" type="String" />
@@ -281,10 +283,6 @@
 		<field name="statusDate" type="Date" />
 		<field name="email" type="String" />
 		<field name="name" type="String" />
-		<field name="isInstitutionManual" type="String" />
-		<field name="institution" type="String" />
-		<field name="officeContact" type="String" />
-		<field name="position" type="String" />
 		<field name="privacyAgree" type="String" />
 		<field name="termOfUseAgree" type="String" />
 		<field name="researcherUserId" type="long" />

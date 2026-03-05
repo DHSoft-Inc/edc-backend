@@ -76,4 +76,6 @@ public interface Researcher extends PersistedModel, ResearcherModel {
 
 		};
 
+	public com.liferay.portal.kernel.json.JSONObject toJSON();
+
 }

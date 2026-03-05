@@ -14,6 +14,7 @@
 
 package com.dhsoft.edc.backend.service;
 
+import com.dhsoft.edc.backend.exception.NoSuchResearcherException;
 import com.dhsoft.edc.backend.model.Researcher;
 
 import com.liferay.exportimport.kernel.lar.PortletDataContext;
@@ -29,6 +30,7 @@ import com.liferay.portal.kernel.search.Indexable;
 import com.liferay.portal.kernel.search.IndexableType;
 import com.liferay.portal.kernel.service.BaseLocalService;
 import com.liferay.portal.kernel.service.PersistedModelLocalService;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.transaction.Isolation;
 import com.liferay.portal.kernel.transaction.Propagation;
 import com.liferay.portal.kernel.transaction.Transactional;
@@ -77,6 +79,28 @@ public interface ResearcherLocalService
 	@Indexable(type = IndexableType.REINDEX)
 	public Researcher addResearcher(Researcher researcher);
 
+	@Indexable(type = IndexableType.REINDEX)
+	@Transactional(rollbackFor = Exception.class)
+	public Researcher addResearcherWithInstitution(
+		long companyId, long groupId, long facebookId, String openId,
+		String languageId, boolean male, String jobTitle, long prefixId,
+		long suffixId, String emailAddress, String password1, String password2,
+		String screenName, String firstName, String lastName, int birthYear,
+		int birthMonth, int birthDay, long projectId, long instId,
+		ServiceContext userServiceContext,
+		ServiceContext researcherServiceContext,
+		ServiceContext instResearcherServiceContext);
+
+	@Indexable(type = IndexableType.REINDEX)
+	@Transactional(rollbackFor = Exception.class)
+	public Researcher addResearcherWithUser(
+		long companyId, long facebookId, String openId, String languageId,
+		boolean male, String jobTitle, long prefixId, long suffixId,
+		String emailAddress, String password1, String password2,
+		String screenName, String firstName, String lastName, int birthYear,
+		int birthMonth, int birthDay, ServiceContext userServiceContext,
+		ServiceContext researcherServiceContext);
+
 	/**
 	 * Creates a new researcher with the primary key. Does not add the researcher to the database.
 	 *
@@ -119,7 +143,12 @@ public interface ResearcherLocalService
 	 * @return the researcher that was removed
 	 */
 	@Indexable(type = IndexableType.DELETE)
+	@Transactional(rollbackFor = Exception.class)
 	public Researcher deleteResearcher(Researcher researcher);
+
+	@Indexable(type = IndexableType.DELETE)
+	@Transactional(rollbackFor = Exception.class)
+	public Researcher deleteResearcherWithUser(long researcherId);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public DynamicQuery dynamicQuery();
@@ -236,6 +265,19 @@ public interface ResearcherLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Researcher getResearcher(long researcherId) throws PortalException;
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Researcher> getResearcherByInst(long instId);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Researcher> getResearcherByProject(long projectId);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Researcher> getResearcherBySite(long siteId);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public Researcher getResearcherByUserId(long researcherUserId)
+		throws NoSuchResearcherException;
+
 	/**
 	 * Returns the researcher with the matching UUID and company.
 	 *
@@ -283,5 +325,22 @@ public interface ResearcherLocalService
 	 */
 	@Indexable(type = IndexableType.REINDEX)
 	public Researcher updateResearcher(Researcher researcher);
+
+	@Indexable(type = IndexableType.REINDEX)
+	@Transactional(rollbackFor = Exception.class)
+	public Researcher updateResearcherWithInstitution(
+		long researcherId, long institutionId, boolean male, String password1,
+		String screenName, String firstName, String lastName, int birthYear,
+		int birthMonth, int birthDay, ServiceContext userServiceContext,
+		ServiceContext researcherServiceContext,
+		ServiceContext instResearcherServiceContext);
+
+	@Indexable(type = IndexableType.REINDEX)
+	@Transactional(rollbackFor = Exception.class)
+	public Researcher updateResearcherWithUser(
+		long researcherId, boolean male, String password1, String screenName,
+		String firstName, String lastName, int birthYear, int birthMonth,
+		int birthDay, ServiceContext userServiceContext,
+		ServiceContext researcherServiceContext);
 
 }

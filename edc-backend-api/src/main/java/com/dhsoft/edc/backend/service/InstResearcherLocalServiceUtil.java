@@ -61,6 +61,15 @@ public class InstResearcherLocalServiceUtil {
 		return getService().addInstResearcher(instResearcher);
 	}
 
+	public static InstResearcher addInstResearcher(
+		long companyId, long groupId, long projectId, long instId,
+		long researcherId,
+		com.liferay.portal.kernel.service.ServiceContext sc) {
+
+		return getService().addInstResearcher(
+			companyId, groupId, projectId, instId, researcherId, sc);
+	}
+
 	/**
 	 * Creates a new inst researcher with the primary key. Does not add the inst researcher to the database.
 	 *
@@ -223,6 +232,20 @@ public class InstResearcherLocalServiceUtil {
 		getActionableDynamicQuery() {
 
 		return getService().getActionableDynamicQuery();
+	}
+
+	public static List<InstResearcher> getByInstId(long groupId, long instId) {
+		return getService().getByInstId(groupId, instId);
+	}
+
+	public static List<InstResearcher> getByProjectId(
+		long groupId, long projectId) {
+
+		return getService().getByProjectId(groupId, projectId);
+	}
+
+	public static List<InstResearcher> getByResearcherIdAll(long researcherId) {
+		return getService().getByResearcherIdAll(researcherId);
 	}
 
 	public static com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery

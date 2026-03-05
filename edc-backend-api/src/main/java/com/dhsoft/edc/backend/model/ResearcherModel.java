@@ -302,66 +302,6 @@ public interface ResearcherModel
 	public void setName(String name);
 
 	/**
-	 * Returns the is institution manual of this researcher.
-	 *
-	 * @return the is institution manual of this researcher
-	 */
-	@AutoEscape
-	public String getIsInstitutionManual();
-
-	/**
-	 * Sets the is institution manual of this researcher.
-	 *
-	 * @param isInstitutionManual the is institution manual of this researcher
-	 */
-	public void setIsInstitutionManual(String isInstitutionManual);
-
-	/**
-	 * Returns the institution of this researcher.
-	 *
-	 * @return the institution of this researcher
-	 */
-	@AutoEscape
-	public String getInstitution();
-
-	/**
-	 * Sets the institution of this researcher.
-	 *
-	 * @param institution the institution of this researcher
-	 */
-	public void setInstitution(String institution);
-
-	/**
-	 * Returns the office contact of this researcher.
-	 *
-	 * @return the office contact of this researcher
-	 */
-	@AutoEscape
-	public String getOfficeContact();
-
-	/**
-	 * Sets the office contact of this researcher.
-	 *
-	 * @param officeContact the office contact of this researcher
-	 */
-	public void setOfficeContact(String officeContact);
-
-	/**
-	 * Returns the position of this researcher.
-	 *
-	 * @return the position of this researcher
-	 */
-	@AutoEscape
-	public String getPosition();
-
-	/**
-	 * Sets the position of this researcher.
-	 *
-	 * @param position the position of this researcher
-	 */
-	public void setPosition(String position);
-
-	/**
 	 * Returns the privacy agree of this researcher.
 	 *
 	 * @return the privacy agree of this researcher
