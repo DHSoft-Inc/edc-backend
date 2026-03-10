@@ -534,6 +534,517 @@ public class InstResearcherUtil {
 	}
 
 	/**
+	 * Returns all the inst researchers where userId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @return the matching inst researchers
+	 */
+	public static List<InstResearcher> findByUserId(long userId) {
+		return getPersistence().findByUserId(userId);
+	}
+
+	/**
+	 * Returns a range of all the inst researchers where userId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
+	 * </p>
+	 *
+	 * @param userId the user ID
+	 * @param start the lower bound of the range of inst researchers
+	 * @param end the upper bound of the range of inst researchers (not inclusive)
+	 * @return the range of matching inst researchers
+	 */
+	public static List<InstResearcher> findByUserId(
+		long userId, int start, int end) {
+
+		return getPersistence().findByUserId(userId, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the inst researchers where userId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
+	 * </p>
+	 *
+	 * @param userId the user ID
+	 * @param start the lower bound of the range of inst researchers
+	 * @param end the upper bound of the range of inst researchers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching inst researchers
+	 */
+	public static List<InstResearcher> findByUserId(
+		long userId, int start, int end,
+		OrderByComparator<InstResearcher> orderByComparator) {
+
+		return getPersistence().findByUserId(
+			userId, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the inst researchers where userId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
+	 * </p>
+	 *
+	 * @param userId the user ID
+	 * @param start the lower bound of the range of inst researchers
+	 * @param end the upper bound of the range of inst researchers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching inst researchers
+	 */
+	public static List<InstResearcher> findByUserId(
+		long userId, int start, int end,
+		OrderByComparator<InstResearcher> orderByComparator,
+		boolean useFinderCache) {
+
+		return getPersistence().findByUserId(
+			userId, start, end, orderByComparator, useFinderCache);
+	}
+
+	/**
+	 * Returns the first inst researcher in the ordered set where userId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching inst researcher
+	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
+	 */
+	public static InstResearcher findByUserId_First(
+			long userId, OrderByComparator<InstResearcher> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
+
+		return getPersistence().findByUserId_First(userId, orderByComparator);
+	}
+
+	/**
+	 * Returns the first inst researcher in the ordered set where userId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
+	 */
+	public static InstResearcher fetchByUserId_First(
+		long userId, OrderByComparator<InstResearcher> orderByComparator) {
+
+		return getPersistence().fetchByUserId_First(userId, orderByComparator);
+	}
+
+	/**
+	 * Returns the last inst researcher in the ordered set where userId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching inst researcher
+	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
+	 */
+	public static InstResearcher findByUserId_Last(
+			long userId, OrderByComparator<InstResearcher> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
+
+		return getPersistence().findByUserId_Last(userId, orderByComparator);
+	}
+
+	/**
+	 * Returns the last inst researcher in the ordered set where userId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
+	 */
+	public static InstResearcher fetchByUserId_Last(
+		long userId, OrderByComparator<InstResearcher> orderByComparator) {
+
+		return getPersistence().fetchByUserId_Last(userId, orderByComparator);
+	}
+
+	/**
+	 * Returns the inst researchers before and after the current inst researcher in the ordered set where userId = &#63;.
+	 *
+	 * @param institutionResearcherId the primary key of the current inst researcher
+	 * @param userId the user ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next inst researcher
+	 * @throws NoSuchInstResearcherException if a inst researcher with the primary key could not be found
+	 */
+	public static InstResearcher[] findByUserId_PrevAndNext(
+			long institutionResearcherId, long userId,
+			OrderByComparator<InstResearcher> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
+
+		return getPersistence().findByUserId_PrevAndNext(
+			institutionResearcherId, userId, orderByComparator);
+	}
+
+	/**
+	 * Removes all the inst researchers where userId = &#63; from the database.
+	 *
+	 * @param userId the user ID
+	 */
+	public static void removeByUserId(long userId) {
+		getPersistence().removeByUserId(userId);
+	}
+
+	/**
+	 * Returns the number of inst researchers where userId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @return the number of matching inst researchers
+	 */
+	public static int countByUserId(long userId) {
+		return getPersistence().countByUserId(userId);
+	}
+
+	/**
+	 * Returns all the inst researchers where researcherId = &#63;.
+	 *
+	 * @param researcherId the researcher ID
+	 * @return the matching inst researchers
+	 */
+	public static List<InstResearcher> findByResearcherId(long researcherId) {
+		return getPersistence().findByResearcherId(researcherId);
+	}
+
+	/**
+	 * Returns a range of all the inst researchers where researcherId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
+	 * </p>
+	 *
+	 * @param researcherId the researcher ID
+	 * @param start the lower bound of the range of inst researchers
+	 * @param end the upper bound of the range of inst researchers (not inclusive)
+	 * @return the range of matching inst researchers
+	 */
+	public static List<InstResearcher> findByResearcherId(
+		long researcherId, int start, int end) {
+
+		return getPersistence().findByResearcherId(researcherId, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the inst researchers where researcherId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
+	 * </p>
+	 *
+	 * @param researcherId the researcher ID
+	 * @param start the lower bound of the range of inst researchers
+	 * @param end the upper bound of the range of inst researchers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching inst researchers
+	 */
+	public static List<InstResearcher> findByResearcherId(
+		long researcherId, int start, int end,
+		OrderByComparator<InstResearcher> orderByComparator) {
+
+		return getPersistence().findByResearcherId(
+			researcherId, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the inst researchers where researcherId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
+	 * </p>
+	 *
+	 * @param researcherId the researcher ID
+	 * @param start the lower bound of the range of inst researchers
+	 * @param end the upper bound of the range of inst researchers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching inst researchers
+	 */
+	public static List<InstResearcher> findByResearcherId(
+		long researcherId, int start, int end,
+		OrderByComparator<InstResearcher> orderByComparator,
+		boolean useFinderCache) {
+
+		return getPersistence().findByResearcherId(
+			researcherId, start, end, orderByComparator, useFinderCache);
+	}
+
+	/**
+	 * Returns the first inst researcher in the ordered set where researcherId = &#63;.
+	 *
+	 * @param researcherId the researcher ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching inst researcher
+	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
+	 */
+	public static InstResearcher findByResearcherId_First(
+			long researcherId,
+			OrderByComparator<InstResearcher> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
+
+		return getPersistence().findByResearcherId_First(
+			researcherId, orderByComparator);
+	}
+
+	/**
+	 * Returns the first inst researcher in the ordered set where researcherId = &#63;.
+	 *
+	 * @param researcherId the researcher ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
+	 */
+	public static InstResearcher fetchByResearcherId_First(
+		long researcherId,
+		OrderByComparator<InstResearcher> orderByComparator) {
+
+		return getPersistence().fetchByResearcherId_First(
+			researcherId, orderByComparator);
+	}
+
+	/**
+	 * Returns the last inst researcher in the ordered set where researcherId = &#63;.
+	 *
+	 * @param researcherId the researcher ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching inst researcher
+	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
+	 */
+	public static InstResearcher findByResearcherId_Last(
+			long researcherId,
+			OrderByComparator<InstResearcher> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
+
+		return getPersistence().findByResearcherId_Last(
+			researcherId, orderByComparator);
+	}
+
+	/**
+	 * Returns the last inst researcher in the ordered set where researcherId = &#63;.
+	 *
+	 * @param researcherId the researcher ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
+	 */
+	public static InstResearcher fetchByResearcherId_Last(
+		long researcherId,
+		OrderByComparator<InstResearcher> orderByComparator) {
+
+		return getPersistence().fetchByResearcherId_Last(
+			researcherId, orderByComparator);
+	}
+
+	/**
+	 * Returns the inst researchers before and after the current inst researcher in the ordered set where researcherId = &#63;.
+	 *
+	 * @param institutionResearcherId the primary key of the current inst researcher
+	 * @param researcherId the researcher ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next inst researcher
+	 * @throws NoSuchInstResearcherException if a inst researcher with the primary key could not be found
+	 */
+	public static InstResearcher[] findByResearcherId_PrevAndNext(
+			long institutionResearcherId, long researcherId,
+			OrderByComparator<InstResearcher> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
+
+		return getPersistence().findByResearcherId_PrevAndNext(
+			institutionResearcherId, researcherId, orderByComparator);
+	}
+
+	/**
+	 * Removes all the inst researchers where researcherId = &#63; from the database.
+	 *
+	 * @param researcherId the researcher ID
+	 */
+	public static void removeByResearcherId(long researcherId) {
+		getPersistence().removeByResearcherId(researcherId);
+	}
+
+	/**
+	 * Returns the number of inst researchers where researcherId = &#63;.
+	 *
+	 * @param researcherId the researcher ID
+	 * @return the number of matching inst researchers
+	 */
+	public static int countByResearcherId(long researcherId) {
+		return getPersistence().countByResearcherId(researcherId);
+	}
+
+	/**
+	 * Returns all the inst researchers where institutionId = &#63;.
+	 *
+	 * @param institutionId the institution ID
+	 * @return the matching inst researchers
+	 */
+	public static List<InstResearcher> findByInstitutionId(long institutionId) {
+		return getPersistence().findByInstitutionId(institutionId);
+	}
+
+	/**
+	 * Returns a range of all the inst researchers where institutionId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
+	 * </p>
+	 *
+	 * @param institutionId the institution ID
+	 * @param start the lower bound of the range of inst researchers
+	 * @param end the upper bound of the range of inst researchers (not inclusive)
+	 * @return the range of matching inst researchers
+	 */
+	public static List<InstResearcher> findByInstitutionId(
+		long institutionId, int start, int end) {
+
+		return getPersistence().findByInstitutionId(institutionId, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the inst researchers where institutionId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
+	 * </p>
+	 *
+	 * @param institutionId the institution ID
+	 * @param start the lower bound of the range of inst researchers
+	 * @param end the upper bound of the range of inst researchers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching inst researchers
+	 */
+	public static List<InstResearcher> findByInstitutionId(
+		long institutionId, int start, int end,
+		OrderByComparator<InstResearcher> orderByComparator) {
+
+		return getPersistence().findByInstitutionId(
+			institutionId, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the inst researchers where institutionId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
+	 * </p>
+	 *
+	 * @param institutionId the institution ID
+	 * @param start the lower bound of the range of inst researchers
+	 * @param end the upper bound of the range of inst researchers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching inst researchers
+	 */
+	public static List<InstResearcher> findByInstitutionId(
+		long institutionId, int start, int end,
+		OrderByComparator<InstResearcher> orderByComparator,
+		boolean useFinderCache) {
+
+		return getPersistence().findByInstitutionId(
+			institutionId, start, end, orderByComparator, useFinderCache);
+	}
+
+	/**
+	 * Returns the first inst researcher in the ordered set where institutionId = &#63;.
+	 *
+	 * @param institutionId the institution ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching inst researcher
+	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
+	 */
+	public static InstResearcher findByInstitutionId_First(
+			long institutionId,
+			OrderByComparator<InstResearcher> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
+
+		return getPersistence().findByInstitutionId_First(
+			institutionId, orderByComparator);
+	}
+
+	/**
+	 * Returns the first inst researcher in the ordered set where institutionId = &#63;.
+	 *
+	 * @param institutionId the institution ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
+	 */
+	public static InstResearcher fetchByInstitutionId_First(
+		long institutionId,
+		OrderByComparator<InstResearcher> orderByComparator) {
+
+		return getPersistence().fetchByInstitutionId_First(
+			institutionId, orderByComparator);
+	}
+
+	/**
+	 * Returns the last inst researcher in the ordered set where institutionId = &#63;.
+	 *
+	 * @param institutionId the institution ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching inst researcher
+	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
+	 */
+	public static InstResearcher findByInstitutionId_Last(
+			long institutionId,
+			OrderByComparator<InstResearcher> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
+
+		return getPersistence().findByInstitutionId_Last(
+			institutionId, orderByComparator);
+	}
+
+	/**
+	 * Returns the last inst researcher in the ordered set where institutionId = &#63;.
+	 *
+	 * @param institutionId the institution ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
+	 */
+	public static InstResearcher fetchByInstitutionId_Last(
+		long institutionId,
+		OrderByComparator<InstResearcher> orderByComparator) {
+
+		return getPersistence().fetchByInstitutionId_Last(
+			institutionId, orderByComparator);
+	}
+
+	/**
+	 * Returns the inst researchers before and after the current inst researcher in the ordered set where institutionId = &#63;.
+	 *
+	 * @param institutionResearcherId the primary key of the current inst researcher
+	 * @param institutionId the institution ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next inst researcher
+	 * @throws NoSuchInstResearcherException if a inst researcher with the primary key could not be found
+	 */
+	public static InstResearcher[] findByInstitutionId_PrevAndNext(
+			long institutionResearcherId, long institutionId,
+			OrderByComparator<InstResearcher> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
+
+		return getPersistence().findByInstitutionId_PrevAndNext(
+			institutionResearcherId, institutionId, orderByComparator);
+	}
+
+	/**
+	 * Removes all the inst researchers where institutionId = &#63; from the database.
+	 *
+	 * @param institutionId the institution ID
+	 */
+	public static void removeByInstitutionId(long institutionId) {
+		getPersistence().removeByInstitutionId(institutionId);
+	}
+
+	/**
+	 * Returns the number of inst researchers where institutionId = &#63;.
+	 *
+	 * @param institutionId the institution ID
+	 * @return the number of matching inst researchers
+	 */
+	public static int countByInstitutionId(long institutionId) {
+		return getPersistence().countByInstitutionId(institutionId);
+	}
+
+	/**
 	 * Returns all the inst researchers where groupId = &#63; and projectId = &#63;.
 	 *
 	 * @param groupId the group ID
@@ -718,395 +1229,446 @@ public class InstResearcherUtil {
 	}
 
 	/**
-	 * Returns all the inst researchers where companyId = &#63;.
+	 * Returns all the inst researchers where groupId = &#63; and institutionId = &#63;.
 	 *
-	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param institutionId the institution ID
 	 * @return the matching inst researchers
 	 */
-	public static List<InstResearcher> findByCompanyId(long companyId) {
-		return getPersistence().findByCompanyId(companyId);
+	public static List<InstResearcher> findByG_I(
+		long groupId, long institutionId) {
+
+		return getPersistence().findByG_I(groupId, institutionId);
 	}
 
 	/**
-	 * Returns a range of all the inst researchers where companyId = &#63;.
+	 * Returns a range of all the inst researchers where groupId = &#63; and institutionId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
 	 * </p>
 	 *
-	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param institutionId the institution ID
 	 * @param start the lower bound of the range of inst researchers
 	 * @param end the upper bound of the range of inst researchers (not inclusive)
 	 * @return the range of matching inst researchers
 	 */
-	public static List<InstResearcher> findByCompanyId(
-		long companyId, int start, int end) {
+	public static List<InstResearcher> findByG_I(
+		long groupId, long institutionId, int start, int end) {
 
-		return getPersistence().findByCompanyId(companyId, start, end);
+		return getPersistence().findByG_I(groupId, institutionId, start, end);
 	}
 
 	/**
-	 * Returns an ordered range of all the inst researchers where companyId = &#63;.
+	 * Returns an ordered range of all the inst researchers where groupId = &#63; and institutionId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
 	 * </p>
 	 *
-	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param institutionId the institution ID
 	 * @param start the lower bound of the range of inst researchers
 	 * @param end the upper bound of the range of inst researchers (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching inst researchers
 	 */
-	public static List<InstResearcher> findByCompanyId(
-		long companyId, int start, int end,
+	public static List<InstResearcher> findByG_I(
+		long groupId, long institutionId, int start, int end,
 		OrderByComparator<InstResearcher> orderByComparator) {
 
-		return getPersistence().findByCompanyId(
-			companyId, start, end, orderByComparator);
+		return getPersistence().findByG_I(
+			groupId, institutionId, start, end, orderByComparator);
 	}
 
 	/**
-	 * Returns an ordered range of all the inst researchers where companyId = &#63;.
+	 * Returns an ordered range of all the inst researchers where groupId = &#63; and institutionId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
 	 * </p>
 	 *
-	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param institutionId the institution ID
 	 * @param start the lower bound of the range of inst researchers
 	 * @param end the upper bound of the range of inst researchers (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching inst researchers
 	 */
-	public static List<InstResearcher> findByCompanyId(
-		long companyId, int start, int end,
+	public static List<InstResearcher> findByG_I(
+		long groupId, long institutionId, int start, int end,
 		OrderByComparator<InstResearcher> orderByComparator,
 		boolean useFinderCache) {
 
-		return getPersistence().findByCompanyId(
-			companyId, start, end, orderByComparator, useFinderCache);
+		return getPersistence().findByG_I(
+			groupId, institutionId, start, end, orderByComparator,
+			useFinderCache);
 	}
 
 	/**
-	 * Returns the first inst researcher in the ordered set where companyId = &#63;.
+	 * Returns the first inst researcher in the ordered set where groupId = &#63; and institutionId = &#63;.
 	 *
-	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param institutionId the institution ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching inst researcher
 	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
 	 */
-	public static InstResearcher findByCompanyId_First(
-			long companyId, OrderByComparator<InstResearcher> orderByComparator)
+	public static InstResearcher findByG_I_First(
+			long groupId, long institutionId,
+			OrderByComparator<InstResearcher> orderByComparator)
 		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
 
-		return getPersistence().findByCompanyId_First(
-			companyId, orderByComparator);
+		return getPersistence().findByG_I_First(
+			groupId, institutionId, orderByComparator);
 	}
 
 	/**
-	 * Returns the first inst researcher in the ordered set where companyId = &#63;.
+	 * Returns the first inst researcher in the ordered set where groupId = &#63; and institutionId = &#63;.
 	 *
-	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param institutionId the institution ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
 	 */
-	public static InstResearcher fetchByCompanyId_First(
-		long companyId, OrderByComparator<InstResearcher> orderByComparator) {
+	public static InstResearcher fetchByG_I_First(
+		long groupId, long institutionId,
+		OrderByComparator<InstResearcher> orderByComparator) {
 
-		return getPersistence().fetchByCompanyId_First(
-			companyId, orderByComparator);
+		return getPersistence().fetchByG_I_First(
+			groupId, institutionId, orderByComparator);
 	}
 
 	/**
-	 * Returns the last inst researcher in the ordered set where companyId = &#63;.
+	 * Returns the last inst researcher in the ordered set where groupId = &#63; and institutionId = &#63;.
 	 *
-	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param institutionId the institution ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching inst researcher
 	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
 	 */
-	public static InstResearcher findByCompanyId_Last(
-			long companyId, OrderByComparator<InstResearcher> orderByComparator)
+	public static InstResearcher findByG_I_Last(
+			long groupId, long institutionId,
+			OrderByComparator<InstResearcher> orderByComparator)
 		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
 
-		return getPersistence().findByCompanyId_Last(
-			companyId, orderByComparator);
+		return getPersistence().findByG_I_Last(
+			groupId, institutionId, orderByComparator);
 	}
 
 	/**
-	 * Returns the last inst researcher in the ordered set where companyId = &#63;.
+	 * Returns the last inst researcher in the ordered set where groupId = &#63; and institutionId = &#63;.
 	 *
-	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param institutionId the institution ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
 	 */
-	public static InstResearcher fetchByCompanyId_Last(
-		long companyId, OrderByComparator<InstResearcher> orderByComparator) {
+	public static InstResearcher fetchByG_I_Last(
+		long groupId, long institutionId,
+		OrderByComparator<InstResearcher> orderByComparator) {
 
-		return getPersistence().fetchByCompanyId_Last(
-			companyId, orderByComparator);
+		return getPersistence().fetchByG_I_Last(
+			groupId, institutionId, orderByComparator);
 	}
 
 	/**
-	 * Returns the inst researchers before and after the current inst researcher in the ordered set where companyId = &#63;.
+	 * Returns the inst researchers before and after the current inst researcher in the ordered set where groupId = &#63; and institutionId = &#63;.
 	 *
 	 * @param institutionResearcherId the primary key of the current inst researcher
-	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param institutionId the institution ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next inst researcher
 	 * @throws NoSuchInstResearcherException if a inst researcher with the primary key could not be found
 	 */
-	public static InstResearcher[] findByCompanyId_PrevAndNext(
-			long institutionResearcherId, long companyId,
+	public static InstResearcher[] findByG_I_PrevAndNext(
+			long institutionResearcherId, long groupId, long institutionId,
 			OrderByComparator<InstResearcher> orderByComparator)
 		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
 
-		return getPersistence().findByCompanyId_PrevAndNext(
-			institutionResearcherId, companyId, orderByComparator);
+		return getPersistence().findByG_I_PrevAndNext(
+			institutionResearcherId, groupId, institutionId, orderByComparator);
 	}
 
 	/**
-	 * Removes all the inst researchers where companyId = &#63; from the database.
+	 * Removes all the inst researchers where groupId = &#63; and institutionId = &#63; from the database.
 	 *
-	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param institutionId the institution ID
 	 */
-	public static void removeByCompanyId(long companyId) {
-		getPersistence().removeByCompanyId(companyId);
+	public static void removeByG_I(long groupId, long institutionId) {
+		getPersistence().removeByG_I(groupId, institutionId);
 	}
 
 	/**
-	 * Returns the number of inst researchers where companyId = &#63;.
+	 * Returns the number of inst researchers where groupId = &#63; and institutionId = &#63;.
 	 *
-	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param institutionId the institution ID
 	 * @return the number of matching inst researchers
 	 */
-	public static int countByCompanyId(long companyId) {
-		return getPersistence().countByCompanyId(companyId);
+	public static int countByG_I(long groupId, long institutionId) {
+		return getPersistence().countByG_I(groupId, institutionId);
 	}
 
 	/**
-	 * Returns all the inst researchers where userId = &#63;.
+	 * Returns all the inst researchers where groupId = &#63; and researcherId = &#63;.
 	 *
-	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param researcherId the researcher ID
 	 * @return the matching inst researchers
 	 */
-	public static List<InstResearcher> findByUserId(long userId) {
-		return getPersistence().findByUserId(userId);
+	public static List<InstResearcher> findByG_R(
+		long groupId, long researcherId) {
+
+		return getPersistence().findByG_R(groupId, researcherId);
 	}
 
 	/**
-	 * Returns a range of all the inst researchers where userId = &#63;.
+	 * Returns a range of all the inst researchers where groupId = &#63; and researcherId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
 	 * </p>
 	 *
-	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param researcherId the researcher ID
 	 * @param start the lower bound of the range of inst researchers
 	 * @param end the upper bound of the range of inst researchers (not inclusive)
 	 * @return the range of matching inst researchers
 	 */
-	public static List<InstResearcher> findByUserId(
-		long userId, int start, int end) {
+	public static List<InstResearcher> findByG_R(
+		long groupId, long researcherId, int start, int end) {
 
-		return getPersistence().findByUserId(userId, start, end);
+		return getPersistence().findByG_R(groupId, researcherId, start, end);
 	}
 
 	/**
-	 * Returns an ordered range of all the inst researchers where userId = &#63;.
+	 * Returns an ordered range of all the inst researchers where groupId = &#63; and researcherId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
 	 * </p>
 	 *
-	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param researcherId the researcher ID
 	 * @param start the lower bound of the range of inst researchers
 	 * @param end the upper bound of the range of inst researchers (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching inst researchers
 	 */
-	public static List<InstResearcher> findByUserId(
-		long userId, int start, int end,
+	public static List<InstResearcher> findByG_R(
+		long groupId, long researcherId, int start, int end,
 		OrderByComparator<InstResearcher> orderByComparator) {
 
-		return getPersistence().findByUserId(
-			userId, start, end, orderByComparator);
+		return getPersistence().findByG_R(
+			groupId, researcherId, start, end, orderByComparator);
 	}
 
 	/**
-	 * Returns an ordered range of all the inst researchers where userId = &#63;.
+	 * Returns an ordered range of all the inst researchers where groupId = &#63; and researcherId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
 	 * </p>
 	 *
-	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param researcherId the researcher ID
 	 * @param start the lower bound of the range of inst researchers
 	 * @param end the upper bound of the range of inst researchers (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching inst researchers
 	 */
-	public static List<InstResearcher> findByUserId(
-		long userId, int start, int end,
+	public static List<InstResearcher> findByG_R(
+		long groupId, long researcherId, int start, int end,
 		OrderByComparator<InstResearcher> orderByComparator,
 		boolean useFinderCache) {
 
-		return getPersistence().findByUserId(
-			userId, start, end, orderByComparator, useFinderCache);
+		return getPersistence().findByG_R(
+			groupId, researcherId, start, end, orderByComparator,
+			useFinderCache);
 	}
 
 	/**
-	 * Returns the first inst researcher in the ordered set where userId = &#63;.
+	 * Returns the first inst researcher in the ordered set where groupId = &#63; and researcherId = &#63;.
 	 *
-	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param researcherId the researcher ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching inst researcher
 	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
 	 */
-	public static InstResearcher findByUserId_First(
-			long userId, OrderByComparator<InstResearcher> orderByComparator)
+	public static InstResearcher findByG_R_First(
+			long groupId, long researcherId,
+			OrderByComparator<InstResearcher> orderByComparator)
 		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
 
-		return getPersistence().findByUserId_First(userId, orderByComparator);
+		return getPersistence().findByG_R_First(
+			groupId, researcherId, orderByComparator);
 	}
 
 	/**
-	 * Returns the first inst researcher in the ordered set where userId = &#63;.
+	 * Returns the first inst researcher in the ordered set where groupId = &#63; and researcherId = &#63;.
 	 *
-	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param researcherId the researcher ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
 	 */
-	public static InstResearcher fetchByUserId_First(
-		long userId, OrderByComparator<InstResearcher> orderByComparator) {
+	public static InstResearcher fetchByG_R_First(
+		long groupId, long researcherId,
+		OrderByComparator<InstResearcher> orderByComparator) {
 
-		return getPersistence().fetchByUserId_First(userId, orderByComparator);
+		return getPersistence().fetchByG_R_First(
+			groupId, researcherId, orderByComparator);
 	}
 
 	/**
-	 * Returns the last inst researcher in the ordered set where userId = &#63;.
+	 * Returns the last inst researcher in the ordered set where groupId = &#63; and researcherId = &#63;.
 	 *
-	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param researcherId the researcher ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching inst researcher
 	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
 	 */
-	public static InstResearcher findByUserId_Last(
-			long userId, OrderByComparator<InstResearcher> orderByComparator)
+	public static InstResearcher findByG_R_Last(
+			long groupId, long researcherId,
+			OrderByComparator<InstResearcher> orderByComparator)
 		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
 
-		return getPersistence().findByUserId_Last(userId, orderByComparator);
+		return getPersistence().findByG_R_Last(
+			groupId, researcherId, orderByComparator);
 	}
 
 	/**
-	 * Returns the last inst researcher in the ordered set where userId = &#63;.
+	 * Returns the last inst researcher in the ordered set where groupId = &#63; and researcherId = &#63;.
 	 *
-	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param researcherId the researcher ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
 	 */
-	public static InstResearcher fetchByUserId_Last(
-		long userId, OrderByComparator<InstResearcher> orderByComparator) {
+	public static InstResearcher fetchByG_R_Last(
+		long groupId, long researcherId,
+		OrderByComparator<InstResearcher> orderByComparator) {
 
-		return getPersistence().fetchByUserId_Last(userId, orderByComparator);
+		return getPersistence().fetchByG_R_Last(
+			groupId, researcherId, orderByComparator);
 	}
 
 	/**
-	 * Returns the inst researchers before and after the current inst researcher in the ordered set where userId = &#63;.
+	 * Returns the inst researchers before and after the current inst researcher in the ordered set where groupId = &#63; and researcherId = &#63;.
 	 *
 	 * @param institutionResearcherId the primary key of the current inst researcher
-	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param researcherId the researcher ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next inst researcher
 	 * @throws NoSuchInstResearcherException if a inst researcher with the primary key could not be found
 	 */
-	public static InstResearcher[] findByUserId_PrevAndNext(
-			long institutionResearcherId, long userId,
+	public static InstResearcher[] findByG_R_PrevAndNext(
+			long institutionResearcherId, long groupId, long researcherId,
 			OrderByComparator<InstResearcher> orderByComparator)
 		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
 
-		return getPersistence().findByUserId_PrevAndNext(
-			institutionResearcherId, userId, orderByComparator);
+		return getPersistence().findByG_R_PrevAndNext(
+			institutionResearcherId, groupId, researcherId, orderByComparator);
 	}
 
 	/**
-	 * Removes all the inst researchers where userId = &#63; from the database.
+	 * Removes all the inst researchers where groupId = &#63; and researcherId = &#63; from the database.
 	 *
-	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param researcherId the researcher ID
 	 */
-	public static void removeByUserId(long userId) {
-		getPersistence().removeByUserId(userId);
+	public static void removeByG_R(long groupId, long researcherId) {
+		getPersistence().removeByG_R(groupId, researcherId);
 	}
 
 	/**
-	 * Returns the number of inst researchers where userId = &#63;.
+	 * Returns the number of inst researchers where groupId = &#63; and researcherId = &#63;.
 	 *
-	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param researcherId the researcher ID
 	 * @return the number of matching inst researchers
 	 */
-	public static int countByUserId(long userId) {
-		return getPersistence().countByUserId(userId);
+	public static int countByG_R(long groupId, long researcherId) {
+		return getPersistence().countByG_R(groupId, researcherId);
 	}
 
 	/**
-	 * Returns all the inst researchers where institutionId = &#63;.
+	 * Returns all the inst researchers where groupId = &#63; and projectId = &#63; and institutionId = &#63;.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param institutionId the institution ID
 	 * @return the matching inst researchers
 	 */
-	public static List<InstResearcher> findByInstitutionId(long institutionId) {
-		return getPersistence().findByInstitutionId(institutionId);
+	public static List<InstResearcher> findByG_P_I(
+		long groupId, long projectId, long institutionId) {
+
+		return getPersistence().findByG_P_I(groupId, projectId, institutionId);
 	}
 
 	/**
-	 * Returns a range of all the inst researchers where institutionId = &#63;.
+	 * Returns a range of all the inst researchers where groupId = &#63; and projectId = &#63; and institutionId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
 	 * </p>
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param institutionId the institution ID
 	 * @param start the lower bound of the range of inst researchers
 	 * @param end the upper bound of the range of inst researchers (not inclusive)
 	 * @return the range of matching inst researchers
 	 */
-	public static List<InstResearcher> findByInstitutionId(
-		long institutionId, int start, int end) {
+	public static List<InstResearcher> findByG_P_I(
+		long groupId, long projectId, long institutionId, int start, int end) {
 
-		return getPersistence().findByInstitutionId(institutionId, start, end);
+		return getPersistence().findByG_P_I(
+			groupId, projectId, institutionId, start, end);
 	}
 
 	/**
-	 * Returns an ordered range of all the inst researchers where institutionId = &#63;.
+	 * Returns an ordered range of all the inst researchers where groupId = &#63; and projectId = &#63; and institutionId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
 	 * </p>
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param institutionId the institution ID
 	 * @param start the lower bound of the range of inst researchers
 	 * @param end the upper bound of the range of inst researchers (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching inst researchers
 	 */
-	public static List<InstResearcher> findByInstitutionId(
-		long institutionId, int start, int end,
+	public static List<InstResearcher> findByG_P_I(
+		long groupId, long projectId, long institutionId, int start, int end,
 		OrderByComparator<InstResearcher> orderByComparator) {
 
-		return getPersistence().findByInstitutionId(
-			institutionId, start, end, orderByComparator);
+		return getPersistence().findByG_P_I(
+			groupId, projectId, institutionId, start, end, orderByComparator);
 	}
 
 	/**
-	 * Returns an ordered range of all the inst researchers where institutionId = &#63;.
+	 * Returns an ordered range of all the inst researchers where groupId = &#63; and projectId = &#63; and institutionId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
 	 * </p>
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param institutionId the institution ID
 	 * @param start the lower bound of the range of inst researchers
 	 * @param end the upper bound of the range of inst researchers (not inclusive)
@@ -1114,277 +1676,259 @@ public class InstResearcherUtil {
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching inst researchers
 	 */
-	public static List<InstResearcher> findByInstitutionId(
-		long institutionId, int start, int end,
+	public static List<InstResearcher> findByG_P_I(
+		long groupId, long projectId, long institutionId, int start, int end,
 		OrderByComparator<InstResearcher> orderByComparator,
 		boolean useFinderCache) {
 
-		return getPersistence().findByInstitutionId(
-			institutionId, start, end, orderByComparator, useFinderCache);
+		return getPersistence().findByG_P_I(
+			groupId, projectId, institutionId, start, end, orderByComparator,
+			useFinderCache);
 	}
 
 	/**
-	 * Returns the first inst researcher in the ordered set where institutionId = &#63;.
+	 * Returns the first inst researcher in the ordered set where groupId = &#63; and projectId = &#63; and institutionId = &#63;.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param institutionId the institution ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching inst researcher
 	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
 	 */
-	public static InstResearcher findByInstitutionId_First(
+	public static InstResearcher findByG_P_I_First(
+			long groupId, long projectId, long institutionId,
+			OrderByComparator<InstResearcher> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
+
+		return getPersistence().findByG_P_I_First(
+			groupId, projectId, institutionId, orderByComparator);
+	}
+
+	/**
+	 * Returns the first inst researcher in the ordered set where groupId = &#63; and projectId = &#63; and institutionId = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param institutionId the institution ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
+	 */
+	public static InstResearcher fetchByG_P_I_First(
+		long groupId, long projectId, long institutionId,
+		OrderByComparator<InstResearcher> orderByComparator) {
+
+		return getPersistence().fetchByG_P_I_First(
+			groupId, projectId, institutionId, orderByComparator);
+	}
+
+	/**
+	 * Returns the last inst researcher in the ordered set where groupId = &#63; and projectId = &#63; and institutionId = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param institutionId the institution ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching inst researcher
+	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
+	 */
+	public static InstResearcher findByG_P_I_Last(
+			long groupId, long projectId, long institutionId,
+			OrderByComparator<InstResearcher> orderByComparator)
+		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
+
+		return getPersistence().findByG_P_I_Last(
+			groupId, projectId, institutionId, orderByComparator);
+	}
+
+	/**
+	 * Returns the last inst researcher in the ordered set where groupId = &#63; and projectId = &#63; and institutionId = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param institutionId the institution ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
+	 */
+	public static InstResearcher fetchByG_P_I_Last(
+		long groupId, long projectId, long institutionId,
+		OrderByComparator<InstResearcher> orderByComparator) {
+
+		return getPersistence().fetchByG_P_I_Last(
+			groupId, projectId, institutionId, orderByComparator);
+	}
+
+	/**
+	 * Returns the inst researchers before and after the current inst researcher in the ordered set where groupId = &#63; and projectId = &#63; and institutionId = &#63;.
+	 *
+	 * @param institutionResearcherId the primary key of the current inst researcher
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param institutionId the institution ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next inst researcher
+	 * @throws NoSuchInstResearcherException if a inst researcher with the primary key could not be found
+	 */
+	public static InstResearcher[] findByG_P_I_PrevAndNext(
+			long institutionResearcherId, long groupId, long projectId,
 			long institutionId,
 			OrderByComparator<InstResearcher> orderByComparator)
 		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
 
-		return getPersistence().findByInstitutionId_First(
-			institutionId, orderByComparator);
+		return getPersistence().findByG_P_I_PrevAndNext(
+			institutionResearcherId, groupId, projectId, institutionId,
+			orderByComparator);
 	}
 
 	/**
-	 * Returns the first inst researcher in the ordered set where institutionId = &#63;.
+	 * Removes all the inst researchers where groupId = &#63; and projectId = &#63; and institutionId = &#63; from the database.
 	 *
-	 * @param institutionId the institution ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
-	 */
-	public static InstResearcher fetchByInstitutionId_First(
-		long institutionId,
-		OrderByComparator<InstResearcher> orderByComparator) {
-
-		return getPersistence().fetchByInstitutionId_First(
-			institutionId, orderByComparator);
-	}
-
-	/**
-	 * Returns the last inst researcher in the ordered set where institutionId = &#63;.
-	 *
-	 * @param institutionId the institution ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching inst researcher
-	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
-	 */
-	public static InstResearcher findByInstitutionId_Last(
-			long institutionId,
-			OrderByComparator<InstResearcher> orderByComparator)
-		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
-
-		return getPersistence().findByInstitutionId_Last(
-			institutionId, orderByComparator);
-	}
-
-	/**
-	 * Returns the last inst researcher in the ordered set where institutionId = &#63;.
-	 *
-	 * @param institutionId the institution ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
-	 */
-	public static InstResearcher fetchByInstitutionId_Last(
-		long institutionId,
-		OrderByComparator<InstResearcher> orderByComparator) {
-
-		return getPersistence().fetchByInstitutionId_Last(
-			institutionId, orderByComparator);
-	}
-
-	/**
-	 * Returns the inst researchers before and after the current inst researcher in the ordered set where institutionId = &#63;.
-	 *
-	 * @param institutionResearcherId the primary key of the current inst researcher
-	 * @param institutionId the institution ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the previous, current, and next inst researcher
-	 * @throws NoSuchInstResearcherException if a inst researcher with the primary key could not be found
-	 */
-	public static InstResearcher[] findByInstitutionId_PrevAndNext(
-			long institutionResearcherId, long institutionId,
-			OrderByComparator<InstResearcher> orderByComparator)
-		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
-
-		return getPersistence().findByInstitutionId_PrevAndNext(
-			institutionResearcherId, institutionId, orderByComparator);
-	}
-
-	/**
-	 * Removes all the inst researchers where institutionId = &#63; from the database.
-	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param institutionId the institution ID
 	 */
-	public static void removeByInstitutionId(long institutionId) {
-		getPersistence().removeByInstitutionId(institutionId);
+	public static void removeByG_P_I(
+		long groupId, long projectId, long institutionId) {
+
+		getPersistence().removeByG_P_I(groupId, projectId, institutionId);
 	}
 
 	/**
-	 * Returns the number of inst researchers where institutionId = &#63;.
+	 * Returns the number of inst researchers where groupId = &#63; and projectId = &#63; and institutionId = &#63;.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param institutionId the institution ID
 	 * @return the number of matching inst researchers
 	 */
-	public static int countByInstitutionId(long institutionId) {
-		return getPersistence().countByInstitutionId(institutionId);
+	public static int countByG_P_I(
+		long groupId, long projectId, long institutionId) {
+
+		return getPersistence().countByG_P_I(groupId, projectId, institutionId);
 	}
 
 	/**
-	 * Returns all the inst researchers where researcherId = &#63;.
+	 * Returns the inst researcher where groupId = &#63; and projectId = &#63; and researcherId = &#63; or throws a <code>NoSuchInstResearcherException</code> if it could not be found.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param researcherId the researcher ID
-	 * @return the matching inst researchers
+	 * @return the matching inst researcher
+	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
 	 */
-	public static List<InstResearcher> findByResearcherId(long researcherId) {
-		return getPersistence().findByResearcherId(researcherId);
+	public static InstResearcher findByG_P_R(
+			long groupId, long projectId, long researcherId)
+		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
+
+		return getPersistence().findByG_P_R(groupId, projectId, researcherId);
 	}
 
 	/**
-	 * Returns a range of all the inst researchers where researcherId = &#63;.
+	 * Returns the inst researcher where groupId = &#63; and projectId = &#63; and researcherId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
 	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
-	 * </p>
-	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param researcherId the researcher ID
-	 * @param start the lower bound of the range of inst researchers
-	 * @param end the upper bound of the range of inst researchers (not inclusive)
-	 * @return the range of matching inst researchers
+	 * @return the matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
 	 */
-	public static List<InstResearcher> findByResearcherId(
-		long researcherId, int start, int end) {
+	public static InstResearcher fetchByG_P_R(
+		long groupId, long projectId, long researcherId) {
 
-		return getPersistence().findByResearcherId(researcherId, start, end);
+		return getPersistence().fetchByG_P_R(groupId, projectId, researcherId);
 	}
 
 	/**
-	 * Returns an ordered range of all the inst researchers where researcherId = &#63;.
+	 * Returns the inst researcher where groupId = &#63; and projectId = &#63; and researcherId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
 	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
-	 * </p>
-	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param researcherId the researcher ID
-	 * @param start the lower bound of the range of inst researchers
-	 * @param end the upper bound of the range of inst researchers (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the ordered range of matching inst researchers
-	 */
-	public static List<InstResearcher> findByResearcherId(
-		long researcherId, int start, int end,
-		OrderByComparator<InstResearcher> orderByComparator) {
-
-		return getPersistence().findByResearcherId(
-			researcherId, start, end, orderByComparator);
-	}
-
-	/**
-	 * Returns an ordered range of all the inst researchers where researcherId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
-	 * </p>
-	 *
-	 * @param researcherId the researcher ID
-	 * @param start the lower bound of the range of inst researchers
-	 * @param end the upper bound of the range of inst researchers (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @param useFinderCache whether to use the finder cache
-	 * @return the ordered range of matching inst researchers
+	 * @return the matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
 	 */
-	public static List<InstResearcher> findByResearcherId(
-		long researcherId, int start, int end,
-		OrderByComparator<InstResearcher> orderByComparator,
+	public static InstResearcher fetchByG_P_R(
+		long groupId, long projectId, long researcherId,
 		boolean useFinderCache) {
 
-		return getPersistence().findByResearcherId(
-			researcherId, start, end, orderByComparator, useFinderCache);
+		return getPersistence().fetchByG_P_R(
+			groupId, projectId, researcherId, useFinderCache);
 	}
 
 	/**
-	 * Returns the first inst researcher in the ordered set where researcherId = &#63;.
+	 * Removes the inst researcher where groupId = &#63; and projectId = &#63; and researcherId = &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param researcherId the researcher ID
+	 * @return the inst researcher that was removed
+	 */
+	public static InstResearcher removeByG_P_R(
+			long groupId, long projectId, long researcherId)
+		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
+
+		return getPersistence().removeByG_P_R(groupId, projectId, researcherId);
+	}
+
+	/**
+	 * Returns the number of inst researchers where groupId = &#63; and projectId = &#63; and researcherId = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param researcherId the researcher ID
+	 * @return the number of matching inst researchers
+	 */
+	public static int countByG_P_R(
+		long groupId, long projectId, long researcherId) {
+
+		return getPersistence().countByG_P_R(groupId, projectId, researcherId);
+	}
+
+	/**
+	 * Returns the inst researcher where researcherId = &#63; or throws a <code>NoSuchInstResearcherException</code> if it could not be found.
 	 *
 	 * @param researcherId the researcher ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching inst researcher
+	 * @return the matching inst researcher
 	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
 	 */
-	public static InstResearcher findByResearcherId_First(
-			long researcherId,
-			OrderByComparator<InstResearcher> orderByComparator)
+	public static InstResearcher findByG_P_I_R(long researcherId)
 		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
 
-		return getPersistence().findByResearcherId_First(
-			researcherId, orderByComparator);
+		return getPersistence().findByG_P_I_R(researcherId);
 	}
 
 	/**
-	 * Returns the first inst researcher in the ordered set where researcherId = &#63;.
+	 * Returns the inst researcher where researcherId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
 	 *
 	 * @param researcherId the researcher ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
+	 * @return the matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
 	 */
-	public static InstResearcher fetchByResearcherId_First(
-		long researcherId,
-		OrderByComparator<InstResearcher> orderByComparator) {
-
-		return getPersistence().fetchByResearcherId_First(
-			researcherId, orderByComparator);
+	public static InstResearcher fetchByG_P_I_R(long researcherId) {
+		return getPersistence().fetchByG_P_I_R(researcherId);
 	}
 
 	/**
-	 * Returns the last inst researcher in the ordered set where researcherId = &#63;.
+	 * Returns the inst researcher where researcherId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
 	 *
 	 * @param researcherId the researcher ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching inst researcher
-	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
 	 */
-	public static InstResearcher findByResearcherId_Last(
-			long researcherId,
-			OrderByComparator<InstResearcher> orderByComparator)
+	public static InstResearcher fetchByG_P_I_R(
+		long researcherId, boolean useFinderCache) {
+
+		return getPersistence().fetchByG_P_I_R(researcherId, useFinderCache);
+	}
+
+	/**
+	 * Removes the inst researcher where researcherId = &#63; from the database.
+	 *
+	 * @param researcherId the researcher ID
+	 * @return the inst researcher that was removed
+	 */
+	public static InstResearcher removeByG_P_I_R(long researcherId)
 		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
 
-		return getPersistence().findByResearcherId_Last(
-			researcherId, orderByComparator);
-	}
-
-	/**
-	 * Returns the last inst researcher in the ordered set where researcherId = &#63;.
-	 *
-	 * @param researcherId the researcher ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
-	 */
-	public static InstResearcher fetchByResearcherId_Last(
-		long researcherId,
-		OrderByComparator<InstResearcher> orderByComparator) {
-
-		return getPersistence().fetchByResearcherId_Last(
-			researcherId, orderByComparator);
-	}
-
-	/**
-	 * Returns the inst researchers before and after the current inst researcher in the ordered set where researcherId = &#63;.
-	 *
-	 * @param institutionResearcherId the primary key of the current inst researcher
-	 * @param researcherId the researcher ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the previous, current, and next inst researcher
-	 * @throws NoSuchInstResearcherException if a inst researcher with the primary key could not be found
-	 */
-	public static InstResearcher[] findByResearcherId_PrevAndNext(
-			long institutionResearcherId, long researcherId,
-			OrderByComparator<InstResearcher> orderByComparator)
-		throws com.dhsoft.edc.backend.exception.NoSuchInstResearcherException {
-
-		return getPersistence().findByResearcherId_PrevAndNext(
-			institutionResearcherId, researcherId, orderByComparator);
-	}
-
-	/**
-	 * Removes all the inst researchers where researcherId = &#63; from the database.
-	 *
-	 * @param researcherId the researcher ID
-	 */
-	public static void removeByResearcherId(long researcherId) {
-		getPersistence().removeByResearcherId(researcherId);
+		return getPersistence().removeByG_P_I_R(researcherId);
 	}
 
 	/**
@@ -1393,8 +1937,8 @@ public class InstResearcherUtil {
 	 * @param researcherId the researcher ID
 	 * @return the number of matching inst researchers
 	 */
-	public static int countByResearcherId(long researcherId) {
-		return getPersistence().countByResearcherId(researcherId);
+	public static int countByG_P_I_R(long researcherId) {
+		return getPersistence().countByG_P_I_R(researcherId);
 	}
 
 	/**

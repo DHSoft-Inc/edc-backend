@@ -86,7 +86,8 @@ public class InstResearcherModelImpl
 		{"projectId", Types.BIGINT}, {"userId", Types.BIGINT},
 		{"userName", Types.VARCHAR}, {"createDate", Types.TIMESTAMP},
 		{"modifiedDate", Types.TIMESTAMP}, {"institutionId", Types.BIGINT},
-		{"researcherId", Types.BIGINT}
+		{"researcherId", Types.BIGINT}, {"officeContact", Types.VARCHAR},
+		{"position", Types.VARCHAR}
 	};
 
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP =
@@ -104,10 +105,12 @@ public class InstResearcherModelImpl
 		TABLE_COLUMNS_MAP.put("modifiedDate", Types.TIMESTAMP);
 		TABLE_COLUMNS_MAP.put("institutionId", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("researcherId", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("officeContact", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("position", Types.VARCHAR);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table EDC_InstResearcher (uuid_ VARCHAR(75) null,institutionResearcherId LONG not null primary key,groupId LONG,companyId LONG,projectId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,institutionId LONG,researcherId LONG)";
+		"create table EDC_InstResearcher (uuid_ VARCHAR(75) null,institutionResearcherId LONG not null primary key,groupId LONG,companyId LONG,projectId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,institutionId LONG,researcherId LONG,officeContact VARCHAR(75) null,position VARCHAR(75) null)";
 
 	public static final String TABLE_SQL_DROP = "drop table EDC_InstResearcher";
 
@@ -172,6 +175,8 @@ public class InstResearcherModelImpl
 		model.setModifiedDate(soapModel.getModifiedDate());
 		model.setInstitutionId(soapModel.getInstitutionId());
 		model.setResearcherId(soapModel.getResearcherId());
+		model.setOfficeContact(soapModel.getOfficeContact());
+		model.setPosition(soapModel.getPosition());
 
 		return model;
 	}
@@ -349,6 +354,16 @@ public class InstResearcherModelImpl
 		attributeSetterBiConsumers.put(
 			"researcherId",
 			(BiConsumer<InstResearcher, Long>)InstResearcher::setResearcherId);
+		attributeGetterFunctions.put(
+			"officeContact", InstResearcher::getOfficeContact);
+		attributeSetterBiConsumers.put(
+			"officeContact",
+			(BiConsumer<InstResearcher, String>)
+				InstResearcher::setOfficeContact);
+		attributeGetterFunctions.put("position", InstResearcher::getPosition);
+		attributeSetterBiConsumers.put(
+			"position",
+			(BiConsumer<InstResearcher, String>)InstResearcher::setPosition);
 
 		_attributeGetterFunctions = Collections.unmodifiableMap(
 			attributeGetterFunctions);
@@ -591,6 +606,38 @@ public class InstResearcherModelImpl
 		return _originalResearcherId;
 	}
 
+	@JSON
+	@Override
+	public String getOfficeContact() {
+		if (_officeContact == null) {
+			return "";
+		}
+		else {
+			return _officeContact;
+		}
+	}
+
+	@Override
+	public void setOfficeContact(String officeContact) {
+		_officeContact = officeContact;
+	}
+
+	@JSON
+	@Override
+	public String getPosition() {
+		if (_position == null) {
+			return "";
+		}
+		else {
+			return _position;
+		}
+	}
+
+	@Override
+	public void setPosition(String position) {
+		_position = position;
+	}
+
 	@Override
 	public StagedModelType getStagedModelType() {
 		return new StagedModelType(
@@ -795,6 +842,8 @@ public class InstResearcherModelImpl
 		instResearcherImpl.setModifiedDate(getModifiedDate());
 		instResearcherImpl.setInstitutionId(getInstitutionId());
 		instResearcherImpl.setResearcherId(getResearcherId());
+		instResearcherImpl.setOfficeContact(getOfficeContact());
+		instResearcherImpl.setPosition(getPosition());
 
 		instResearcherImpl.resetOriginalValues();
 
@@ -939,6 +988,22 @@ public class InstResearcherModelImpl
 
 		instResearcherCacheModel.researcherId = getResearcherId();
 
+		instResearcherCacheModel.officeContact = getOfficeContact();
+
+		String officeContact = instResearcherCacheModel.officeContact;
+
+		if ((officeContact != null) && (officeContact.length() == 0)) {
+			instResearcherCacheModel.officeContact = null;
+		}
+
+		instResearcherCacheModel.position = getPosition();
+
+		String position = instResearcherCacheModel.position;
+
+		if ((position != null) && (position.length() == 0)) {
+			instResearcherCacheModel.position = null;
+		}
+
 		return instResearcherCacheModel;
 	}
 
@@ -1059,6 +1124,8 @@ public class InstResearcherModelImpl
 	private long _researcherId;
 	private long _originalResearcherId;
 	private boolean _setOriginalResearcherId;
+	private String _officeContact;
+	private String _position;
 	private long _columnBitmask;
 	private InstResearcher _escapedModel;
 

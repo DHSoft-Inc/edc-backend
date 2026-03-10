@@ -60,7 +60,9 @@ create table EDC_EdcLock (
 	userName VARCHAR(75) null,
 	createDate DATE null,
 	modifiedDate DATE null,
-	comment_ VARCHAR(75) null
+	comment_ VARCHAR(75) null,
+	startDate DATE null,
+	endDate DATE null
 );
 
 create table EDC_EdcPermissionRole (
@@ -169,7 +171,9 @@ create table EDC_InstResearcher (
 	createDate DATE null,
 	modifiedDate DATE null,
 	institutionId LONG,
-	researcherId LONG
+	researcherId LONG,
+	officeContact VARCHAR(75) null,
+	position VARCHAR(75) null
 );
 
 create table EDC_InstanceLink (
@@ -381,10 +385,6 @@ create table EDC_Researcher (
 	statusDate DATE null,
 	email VARCHAR(75) null,
 	name VARCHAR(75) null,
-	isInstitutionManual VARCHAR(75) null,
-	institution VARCHAR(75) null,
-	officeContact VARCHAR(75) null,
-	position VARCHAR(75) null,
 	privacyAgree VARCHAR(75) null,
 	termOfUseAgree VARCHAR(75) null,
 	researcherUserId LONG

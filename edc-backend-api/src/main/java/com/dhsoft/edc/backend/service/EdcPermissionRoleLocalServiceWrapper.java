@@ -65,6 +65,18 @@ public class EdcPermissionRoleLocalServiceWrapper
 			permissionRoleId);
 	}
 
+	@Override
+	public com.dhsoft.edc.backend.model.EdcPermissionRole
+		CreateEdcPermissionRole(
+			long companyId, long groupId, long projectId, long actorGroup,
+			long actorId, String roleName, Boolean active,
+			java.util.Date fromDate, java.util.Date toDate) {
+
+		return _edcPermissionRoleLocalService.CreateEdcPermissionRole(
+			companyId, groupId, projectId, actorGroup, actorId, roleName,
+			active, fromDate, toDate);
+	}
+
 	/**
 	 * Deletes the edc permission role from the database. Also notifies the appropriate model listeners.
 	 *
@@ -101,6 +113,14 @@ public class EdcPermissionRoleLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _edcPermissionRoleLocalService.deleteEdcPermissionRole(
+			permissionRoleId);
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.EdcPermissionRole
+		DeleteEdcPermissionRole(long permissionRoleId) {
+
+		return _edcPermissionRoleLocalService.DeleteEdcPermissionRole(
 			permissionRoleId);
 	}
 
@@ -228,6 +248,38 @@ public class EdcPermissionRoleLocalServiceWrapper
 
 		return _edcPermissionRoleLocalService.
 			fetchEdcPermissionRoleByUuidAndGroupId(uuid, groupId);
+	}
+
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.EdcPermissionRole>
+		findByEdcActorRole(long projectId, long actorGroup, long actorId) {
+
+		return _edcPermissionRoleLocalService.findByEdcActorRole(
+			projectId, actorGroup, actorId);
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.EdcPermissionRole
+		findByEdcPermissionRole(
+			long projectId, long actorGroup, long actorId, String roleName) {
+
+		return _edcPermissionRoleLocalService.findByEdcPermissionRole(
+			projectId, actorGroup, actorId, roleName);
+	}
+
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.EdcPermissionRole>
+		findByEdcProjectRole(long projectId) {
+
+		return _edcPermissionRoleLocalService.findByEdcProjectRole(projectId);
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.EdcPermissionRole
+		findByPermissionRoleId(long permissionRoleId) {
+
+		return _edcPermissionRoleLocalService.findByPermissionRoleId(
+			permissionRoleId);
 	}
 
 	@Override
@@ -392,6 +444,16 @@ public class EdcPermissionRoleLocalServiceWrapper
 
 		return _edcPermissionRoleLocalService.updateEdcPermissionRole(
 			edcPermissionRole);
+	}
+
+	@Override
+	public void UpdateEdcPermissionRole(
+		long permissionRoleId, long actorGroup, long actorId, String roleName,
+		Boolean active, java.util.Date fromDate, java.util.Date toDate) {
+
+		_edcPermissionRoleLocalService.UpdateEdcPermissionRole(
+			permissionRoleId, actorGroup, actorId, roleName, active, fromDate,
+			toDate);
 	}
 
 	@Override

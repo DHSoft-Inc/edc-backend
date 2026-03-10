@@ -31,6 +31,7 @@ import com.dhsoft.edc.backend.service.persistence.MetaGroupPersistence;
 import com.dhsoft.edc.backend.service.persistence.ProjectPersistence;
 import com.dhsoft.edc.backend.service.persistence.QueryLinkPersistence;
 import com.dhsoft.edc.backend.service.persistence.RandomizationPersistence;
+import com.dhsoft.edc.backend.service.persistence.ResearcherFinder;
 import com.dhsoft.edc.backend.service.persistence.ResearcherPersistence;
 import com.dhsoft.edc.backend.service.persistence.SubjectPersistence;
 import com.dhsoft.edc.backend.service.persistence.SubjectVisitDefinitionPersistence;
@@ -590,6 +591,9 @@ public abstract class EdcPermissionRoleAuditLocalServiceBaseImpl
 	protected ResearcherPersistence researcherPersistence;
 
 	@Reference
+	protected ResearcherFinder researcherFinder;
+
+	@Reference
 	protected SubjectPersistence subjectPersistence;
 
 	@Reference
@@ -620,5 +624,29 @@ public abstract class EdcPermissionRoleAuditLocalServiceBaseImpl
 	@Reference
 	protected com.liferay.portal.kernel.service.UserLocalService
 		userLocalService;
+
+	@Reference
+	protected com.liferay.portal.kernel.service.WorkflowInstanceLinkLocalService
+		workflowInstanceLinkLocalService;
+
+	@Reference
+	protected com.liferay.asset.kernel.service.AssetEntryLocalService
+		assetEntryLocalService;
+
+	@Reference
+	protected com.liferay.asset.kernel.service.AssetLinkLocalService
+		assetLinkLocalService;
+
+	@Reference
+	protected com.liferay.ratings.kernel.service.RatingsStatsLocalService
+		ratingsStatsLocalService;
+
+	@Reference
+	protected com.liferay.trash.kernel.service.TrashEntryLocalService
+		trashEntryLocalService;
+
+	@Reference
+	protected com.liferay.trash.kernel.service.TrashVersionLocalService
+		trashVersionLocalService;
 
 }

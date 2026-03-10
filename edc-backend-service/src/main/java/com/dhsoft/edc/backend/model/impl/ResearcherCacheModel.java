@@ -63,7 +63,7 @@ public class ResearcherCacheModel
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(41);
+		StringBundler sb = new StringBundler(33);
 
 		sb.append("{uuid=");
 		sb.append(uuid);
@@ -91,14 +91,6 @@ public class ResearcherCacheModel
 		sb.append(email);
 		sb.append(", name=");
 		sb.append(name);
-		sb.append(", isInstitutionManual=");
-		sb.append(isInstitutionManual);
-		sb.append(", institution=");
-		sb.append(institution);
-		sb.append(", officeContact=");
-		sb.append(officeContact);
-		sb.append(", position=");
-		sb.append(position);
 		sb.append(", privacyAgree=");
 		sb.append(privacyAgree);
 		sb.append(", termOfUseAgree=");
@@ -177,34 +169,6 @@ public class ResearcherCacheModel
 			researcherImpl.setName(name);
 		}
 
-		if (isInstitutionManual == null) {
-			researcherImpl.setIsInstitutionManual("");
-		}
-		else {
-			researcherImpl.setIsInstitutionManual(isInstitutionManual);
-		}
-
-		if (institution == null) {
-			researcherImpl.setInstitution("");
-		}
-		else {
-			researcherImpl.setInstitution(institution);
-		}
-
-		if (officeContact == null) {
-			researcherImpl.setOfficeContact("");
-		}
-		else {
-			researcherImpl.setOfficeContact(officeContact);
-		}
-
-		if (position == null) {
-			researcherImpl.setPosition("");
-		}
-		else {
-			researcherImpl.setPosition(position);
-		}
-
 		if (privacyAgree == null) {
 			researcherImpl.setPrivacyAgree("");
 		}
@@ -246,10 +210,6 @@ public class ResearcherCacheModel
 		statusDate = objectInput.readLong();
 		email = objectInput.readUTF();
 		name = objectInput.readUTF();
-		isInstitutionManual = objectInput.readUTF();
-		institution = objectInput.readUTF();
-		officeContact = objectInput.readUTF();
-		position = objectInput.readUTF();
 		privacyAgree = objectInput.readUTF();
 		termOfUseAgree = objectInput.readUTF();
 
@@ -308,34 +268,6 @@ public class ResearcherCacheModel
 			objectOutput.writeUTF(name);
 		}
 
-		if (isInstitutionManual == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(isInstitutionManual);
-		}
-
-		if (institution == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(institution);
-		}
-
-		if (officeContact == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(officeContact);
-		}
-
-		if (position == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(position);
-		}
-
 		if (privacyAgree == null) {
 			objectOutput.writeUTF("");
 		}
@@ -366,10 +298,6 @@ public class ResearcherCacheModel
 	public long statusDate;
 	public String email;
 	public String name;
-	public String isInstitutionManual;
-	public String institution;
-	public String officeContact;
-	public String position;
 	public String privacyAgree;
 	public String termOfUseAgree;
 	public long researcherUserId;

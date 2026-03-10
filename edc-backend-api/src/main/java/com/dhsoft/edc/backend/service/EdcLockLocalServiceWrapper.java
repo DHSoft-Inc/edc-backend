@@ -58,6 +58,17 @@ public class EdcLockLocalServiceWrapper
 			userId, userName, comment);
 	}
 
+	@Override
+	public com.dhsoft.edc.backend.model.EdcLock addLock(
+		long companyId, long groupId, long projectId, long classNameId,
+		long classPK, String lockType, long userId, String userName,
+		String comment, java.util.Date startDate, java.util.Date endDate) {
+
+		return _edcLockLocalService.addLock(
+			companyId, groupId, projectId, classNameId, classPK, lockType,
+			userId, userName, comment, startDate, endDate);
+	}
+
 	/**
 	 * Creates a new edc lock with the primary key. Does not add the edc lock to the database.
 	 *
@@ -397,6 +408,16 @@ public class EdcLockLocalServiceWrapper
 		throws Exception {
 
 		return _edcLockLocalService.updateLock(lockId, lockType, comment);
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.EdcLock updateLock(
+			long lockId, String lockType, String comment,
+			java.util.Date startDate, java.util.Date endDate)
+		throws Exception {
+
+		return _edcLockLocalService.updateLock(
+			lockId, lockType, comment, startDate, endDate);
 	}
 
 	@Override

@@ -51,7 +51,7 @@ public class VisitDefinitionLocalServiceWrapper
 	}
 
 	/**
-	 * ADD: VisitDefinition �깮�꽦
+	 * ADD: VisitDefinition 생성 (ExperimentalGroup)
 	 */
 	@Override
 	public com.dhsoft.edc.backend.model.VisitDefinition
@@ -475,9 +475,10 @@ public class VisitDefinitionLocalServiceWrapper
 
 	@Override
 	public com.dhsoft.edc.backend.model.VisitDefinition
-		updateVisitDefinitionFull(
-			long visitDefinitionId, String name, String anchorType, int offset,
-			int windowMinus, int windowPlus) {
+			updateVisitDefinitionFull(
+				long visitDefinitionId, String name, String anchorType,
+				int offset, int windowMinus, int windowPlus)
+		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _visitDefinitionLocalService.updateVisitDefinitionFull(
 			visitDefinitionId, name, anchorType, offset, windowMinus,

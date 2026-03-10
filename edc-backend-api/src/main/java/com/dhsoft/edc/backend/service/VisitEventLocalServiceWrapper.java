@@ -253,15 +253,6 @@ public class VisitEventLocalServiceWrapper
 	}
 
 	@Override
-	public java.util.List<com.dhsoft.edc.backend.model.VisitEvent>
-		findBySubjectIdAndVisitDefinitionId(
-			long subjectId, long visitDefinitionId) {
-
-		return _visitEventLocalService.findBySubjectIdAndVisitDefinitionId(
-			subjectId, visitDefinitionId);
-	}
-
-	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 

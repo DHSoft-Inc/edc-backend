@@ -49,6 +49,45 @@ public class ResearcherLocalServiceWrapper
 		return _researcherLocalService.addResearcher(researcher);
 	}
 
+	@Override
+	public com.dhsoft.edc.backend.model.Researcher addResearcherWithInstitution(
+		long companyId, long groupId, long facebookId, String openId,
+		String languageId, boolean male, String jobTitle, long prefixId,
+		long suffixId, String emailAddress, String password1, String password2,
+		String screenName, String firstName, String lastName, int birthYear,
+		int birthMonth, int birthDay, long projectId, long instId,
+		com.liferay.portal.kernel.service.ServiceContext userServiceContext,
+		com.liferay.portal.kernel.service.ServiceContext
+			researcherServiceContext,
+		com.liferay.portal.kernel.service.ServiceContext
+			instResearcherServiceContext) {
+
+		return _researcherLocalService.addResearcherWithInstitution(
+			companyId, groupId, facebookId, openId, languageId, male, jobTitle,
+			prefixId, suffixId, emailAddress, password1, password2, screenName,
+			firstName, lastName, birthYear, birthMonth, birthDay, projectId,
+			instId, userServiceContext, researcherServiceContext,
+			instResearcherServiceContext);
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.Researcher addResearcherWithUser(
+		long companyId, long facebookId, String openId, String languageId,
+		boolean male, String jobTitle, long prefixId, long suffixId,
+		String emailAddress, String password1, String password2,
+		String screenName, String firstName, String lastName, int birthYear,
+		int birthMonth, int birthDay,
+		com.liferay.portal.kernel.service.ServiceContext userServiceContext,
+		com.liferay.portal.kernel.service.ServiceContext
+			researcherServiceContext) {
+
+		return _researcherLocalService.addResearcherWithUser(
+			companyId, facebookId, openId, languageId, male, jobTitle, prefixId,
+			suffixId, emailAddress, password1, password2, screenName, firstName,
+			lastName, birthYear, birthMonth, birthDay, userServiceContext,
+			researcherServiceContext);
+	}
+
 	/**
 	 * Creates a new researcher with the primary key. Does not add the researcher to the database.
 	 *
@@ -107,6 +146,13 @@ public class ResearcherLocalServiceWrapper
 		com.dhsoft.edc.backend.model.Researcher researcher) {
 
 		return _researcherLocalService.deleteResearcher(researcher);
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.Researcher deleteResearcherWithUser(
+		long researcherId) {
+
+		return _researcherLocalService.deleteResearcherWithUser(researcherId);
 	}
 
 	@Override
@@ -281,6 +327,35 @@ public class ResearcherLocalServiceWrapper
 		return _researcherLocalService.getResearcher(researcherId);
 	}
 
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.Researcher>
+		getResearcherByInst(long instId) {
+
+		return _researcherLocalService.getResearcherByInst(instId);
+	}
+
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.Researcher>
+		getResearcherByProject(long projectId) {
+
+		return _researcherLocalService.getResearcherByProject(projectId);
+	}
+
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.Researcher>
+		getResearcherBySite(long siteId) {
+
+		return _researcherLocalService.getResearcherBySite(siteId);
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.Researcher getResearcherByUserId(
+			long researcherUserId)
+		throws com.dhsoft.edc.backend.exception.NoSuchResearcherException {
+
+		return _researcherLocalService.getResearcherByUserId(researcherUserId);
+	}
+
 	/**
 	 * Returns the researcher with the matching UUID and company.
 	 *
@@ -341,6 +416,39 @@ public class ResearcherLocalServiceWrapper
 		com.dhsoft.edc.backend.model.Researcher researcher) {
 
 		return _researcherLocalService.updateResearcher(researcher);
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.Researcher
+		updateResearcherWithInstitution(
+			long researcherId, long institutionId, boolean male,
+			String password1, String screenName, String firstName,
+			String lastName, int birthYear, int birthMonth, int birthDay,
+			com.liferay.portal.kernel.service.ServiceContext userServiceContext,
+			com.liferay.portal.kernel.service.ServiceContext
+				researcherServiceContext,
+			com.liferay.portal.kernel.service.ServiceContext
+				instResearcherServiceContext) {
+
+		return _researcherLocalService.updateResearcherWithInstitution(
+			researcherId, institutionId, male, password1, screenName, firstName,
+			lastName, birthYear, birthMonth, birthDay, userServiceContext,
+			researcherServiceContext, instResearcherServiceContext);
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.Researcher updateResearcherWithUser(
+		long researcherId, boolean male, String password1, String screenName,
+		String firstName, String lastName, int birthYear, int birthMonth,
+		int birthDay,
+		com.liferay.portal.kernel.service.ServiceContext userServiceContext,
+		com.liferay.portal.kernel.service.ServiceContext
+			researcherServiceContext) {
+
+		return _researcherLocalService.updateResearcherWithUser(
+			researcherId, male, password1, screenName, firstName, lastName,
+			birthYear, birthMonth, birthDay, userServiceContext,
+			researcherServiceContext);
 	}
 
 	@Override

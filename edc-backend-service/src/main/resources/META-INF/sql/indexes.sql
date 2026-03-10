@@ -11,6 +11,7 @@ create index IX_12BBDBF on EDC_AssignProjectScope (uuid_[$COLUMN_LENGTH:75$], co
 create unique index IX_CDB6A801 on EDC_AssignProjectScope (uuid_[$COLUMN_LENGTH:75$], groupId);
 
 create index IX_F36B4178 on EDC_EdcLock (projectId, classNameId, classPK, lockType[$COLUMN_LENGTH:75$]);
+create index IX_A04D0E3 on EDC_EdcLock (projectId, lockType[$COLUMN_LENGTH:75$]);
 create index IX_9F86E34E on EDC_EdcLock (uuid_[$COLUMN_LENGTH:75$], companyId);
 create unique index IX_446BE550 on EDC_EdcLock (uuid_[$COLUMN_LENGTH:75$], groupId);
 
@@ -40,9 +41,12 @@ create index IX_36D77096 on EDC_ExperimentalGroup (uuid_[$COLUMN_LENGTH:75$], co
 create unique index IX_178F2498 on EDC_ExperimentalGroup (uuid_[$COLUMN_LENGTH:75$], groupId);
 
 create index IX_CFCFF699 on EDC_InstResearcher (companyId);
-create index IX_85A97E89 on EDC_InstResearcher (groupId, projectId);
-create index IX_D7F33AD4 on EDC_InstResearcher (institutionId);
-create index IX_DE7B0BE6 on EDC_InstResearcher (researcherId);
+create index IX_A1389828 on EDC_InstResearcher (groupId, institutionId);
+create index IX_9528673A on EDC_InstResearcher (groupId, projectId, institutionId);
+create index IX_AB2AB412 on EDC_InstResearcher (groupId, researcherId);
+create unique index IX_D7F33AD4 on EDC_InstResearcher (institutionId);
+create index IX_5C2FA10E on EDC_InstResearcher (projectId, institutionId);
+create unique index IX_DE7B0BE6 on EDC_InstResearcher (researcherId);
 create index IX_B84CE369 on EDC_InstResearcher (userId);
 create index IX_6B551E63 on EDC_InstResearcher (uuid_[$COLUMN_LENGTH:75$], companyId);
 create unique index IX_5747E1A5 on EDC_InstResearcher (uuid_[$COLUMN_LENGTH:75$], groupId);
@@ -109,7 +113,7 @@ create index IX_4A52B5E0 on EDC_Randomization (uuid_[$COLUMN_LENGTH:75$], compan
 create unique index IX_FACF3462 on EDC_Randomization (uuid_[$COLUMN_LENGTH:75$], groupId);
 
 create index IX_299ECE3F on EDC_Researcher (companyId);
-create index IX_4D631B6B on EDC_Researcher (researcherUserId);
+create unique index IX_4D631B6B on EDC_Researcher (researcherUserId);
 create index IX_CA9E8025 on EDC_Researcher (userId, researcherUserId);
 create index IX_86797FFD on EDC_Researcher (uuid_[$COLUMN_LENGTH:75$], companyId);
 

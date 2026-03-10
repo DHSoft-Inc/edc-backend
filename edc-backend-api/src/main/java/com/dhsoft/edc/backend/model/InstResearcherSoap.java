@@ -43,6 +43,8 @@ public class InstResearcherSoap implements Serializable {
 		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setInstitutionId(model.getInstitutionId());
 		soapModel.setResearcherId(model.getResearcherId());
+		soapModel.setOfficeContact(model.getOfficeContact());
+		soapModel.setPosition(model.getPosition());
 
 		return soapModel;
 	}
@@ -189,6 +191,22 @@ public class InstResearcherSoap implements Serializable {
 		_researcherId = researcherId;
 	}
 
+	public String getOfficeContact() {
+		return _officeContact;
+	}
+
+	public void setOfficeContact(String officeContact) {
+		_officeContact = officeContact;
+	}
+
+	public String getPosition() {
+		return _position;
+	}
+
+	public void setPosition(String position) {
+		_position = position;
+	}
+
 	private String _uuid;
 	private long _institutionResearcherId;
 	private long _groupId;
@@ -200,5 +218,7 @@ public class InstResearcherSoap implements Serializable {
 	private Date _modifiedDate;
 	private long _institutionId;
 	private long _researcherId;
+	private String _officeContact;
+	private String _position;
 
 }

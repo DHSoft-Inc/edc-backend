@@ -56,10 +56,6 @@ public class ResearcherWrapper
 		attributes.put("statusDate", getStatusDate());
 		attributes.put("email", getEmail());
 		attributes.put("name", getName());
-		attributes.put("isInstitutionManual", getIsInstitutionManual());
-		attributes.put("institution", getInstitution());
-		attributes.put("officeContact", getOfficeContact());
-		attributes.put("position", getPosition());
 		attributes.put("privacyAgree", getPrivacyAgree());
 		attributes.put("termOfUseAgree", getTermOfUseAgree());
 		attributes.put("researcherUserId", getResearcherUserId());
@@ -147,31 +143,6 @@ public class ResearcherWrapper
 			setName(name);
 		}
 
-		String isInstitutionManual = (String)attributes.get(
-			"isInstitutionManual");
-
-		if (isInstitutionManual != null) {
-			setIsInstitutionManual(isInstitutionManual);
-		}
-
-		String institution = (String)attributes.get("institution");
-
-		if (institution != null) {
-			setInstitution(institution);
-		}
-
-		String officeContact = (String)attributes.get("officeContact");
-
-		if (officeContact != null) {
-			setOfficeContact(officeContact);
-		}
-
-		String position = (String)attributes.get("position");
-
-		if (position != null) {
-			setPosition(position);
-		}
-
 		String privacyAgree = (String)attributes.get("privacyAgree");
 
 		if (privacyAgree != null) {
@@ -222,26 +193,6 @@ public class ResearcherWrapper
 	}
 
 	/**
-	 * Returns the institution of this researcher.
-	 *
-	 * @return the institution of this researcher
-	 */
-	@Override
-	public String getInstitution() {
-		return model.getInstitution();
-	}
-
-	/**
-	 * Returns the is institution manual of this researcher.
-	 *
-	 * @return the is institution manual of this researcher
-	 */
-	@Override
-	public String getIsInstitutionManual() {
-		return model.getIsInstitutionManual();
-	}
-
-	/**
 	 * Returns the modified date of this researcher.
 	 *
 	 * @return the modified date of this researcher
@@ -259,26 +210,6 @@ public class ResearcherWrapper
 	@Override
 	public String getName() {
 		return model.getName();
-	}
-
-	/**
-	 * Returns the office contact of this researcher.
-	 *
-	 * @return the office contact of this researcher
-	 */
-	@Override
-	public String getOfficeContact() {
-		return model.getOfficeContact();
-	}
-
-	/**
-	 * Returns the position of this researcher.
-	 *
-	 * @return the position of this researcher
-	 */
-	@Override
-	public String getPosition() {
-		return model.getPosition();
 	}
 
 	/**
@@ -611,26 +542,6 @@ public class ResearcherWrapper
 	}
 
 	/**
-	 * Sets the institution of this researcher.
-	 *
-	 * @param institution the institution of this researcher
-	 */
-	@Override
-	public void setInstitution(String institution) {
-		model.setInstitution(institution);
-	}
-
-	/**
-	 * Sets the is institution manual of this researcher.
-	 *
-	 * @param isInstitutionManual the is institution manual of this researcher
-	 */
-	@Override
-	public void setIsInstitutionManual(String isInstitutionManual) {
-		model.setIsInstitutionManual(isInstitutionManual);
-	}
-
-	/**
 	 * Sets the modified date of this researcher.
 	 *
 	 * @param modifiedDate the modified date of this researcher
@@ -648,26 +559,6 @@ public class ResearcherWrapper
 	@Override
 	public void setName(String name) {
 		model.setName(name);
-	}
-
-	/**
-	 * Sets the office contact of this researcher.
-	 *
-	 * @param officeContact the office contact of this researcher
-	 */
-	@Override
-	public void setOfficeContact(String officeContact) {
-		model.setOfficeContact(officeContact);
-	}
-
-	/**
-	 * Sets the position of this researcher.
-	 *
-	 * @param position the position of this researcher
-	 */
-	@Override
-	public void setPosition(String position) {
-		model.setPosition(position);
 	}
 
 	/**
@@ -818,6 +709,11 @@ public class ResearcherWrapper
 	@Override
 	public void setUuid(String uuid) {
 		model.setUuid(uuid);
+	}
+
+	@Override
+	public com.liferay.portal.kernel.json.JSONObject toJSON() {
+		return model.toJSON();
 	}
 
 	@Override

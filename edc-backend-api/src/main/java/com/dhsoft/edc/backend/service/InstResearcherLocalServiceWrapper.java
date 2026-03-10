@@ -50,6 +50,16 @@ public class InstResearcherLocalServiceWrapper
 		return _instResearcherLocalService.addInstResearcher(instResearcher);
 	}
 
+	@Override
+	public com.dhsoft.edc.backend.model.InstResearcher addInstResearcher(
+		long companyId, long groupId, long projectId, long instId,
+		long researcherId,
+		com.liferay.portal.kernel.service.ServiceContext sc) {
+
+		return _instResearcherLocalService.addInstResearcher(
+			companyId, groupId, projectId, instId, researcherId, sc);
+	}
+
 	/**
 	 * Creates a new inst researcher with the primary key. Does not add the inst researcher to the database.
 	 *
@@ -239,6 +249,27 @@ public class InstResearcherLocalServiceWrapper
 		getActionableDynamicQuery() {
 
 		return _instResearcherLocalService.getActionableDynamicQuery();
+	}
+
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.InstResearcher>
+		getByInstId(long groupId, long instId) {
+
+		return _instResearcherLocalService.getByInstId(groupId, instId);
+	}
+
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.InstResearcher>
+		getByProjectId(long groupId, long projectId) {
+
+		return _instResearcherLocalService.getByProjectId(groupId, projectId);
+	}
+
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.InstResearcher>
+		getByResearcherIdAll(long researcherId) {
+
+		return _instResearcherLocalService.getByResearcherIdAll(researcherId);
 	}
 
 	@Override

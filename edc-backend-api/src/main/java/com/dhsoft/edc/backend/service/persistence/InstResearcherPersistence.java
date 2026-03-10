@@ -391,6 +391,436 @@ public interface InstResearcherPersistence
 	public int countByUuid_C(String uuid, long companyId);
 
 	/**
+	 * Returns all the inst researchers where userId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @return the matching inst researchers
+	 */
+	public java.util.List<InstResearcher> findByUserId(long userId);
+
+	/**
+	 * Returns a range of all the inst researchers where userId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
+	 * </p>
+	 *
+	 * @param userId the user ID
+	 * @param start the lower bound of the range of inst researchers
+	 * @param end the upper bound of the range of inst researchers (not inclusive)
+	 * @return the range of matching inst researchers
+	 */
+	public java.util.List<InstResearcher> findByUserId(
+		long userId, int start, int end);
+
+	/**
+	 * Returns an ordered range of all the inst researchers where userId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
+	 * </p>
+	 *
+	 * @param userId the user ID
+	 * @param start the lower bound of the range of inst researchers
+	 * @param end the upper bound of the range of inst researchers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching inst researchers
+	 */
+	public java.util.List<InstResearcher> findByUserId(
+		long userId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+			orderByComparator);
+
+	/**
+	 * Returns an ordered range of all the inst researchers where userId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
+	 * </p>
+	 *
+	 * @param userId the user ID
+	 * @param start the lower bound of the range of inst researchers
+	 * @param end the upper bound of the range of inst researchers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching inst researchers
+	 */
+	public java.util.List<InstResearcher> findByUserId(
+		long userId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+			orderByComparator,
+		boolean useFinderCache);
+
+	/**
+	 * Returns the first inst researcher in the ordered set where userId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching inst researcher
+	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
+	 */
+	public InstResearcher findByUserId_First(
+			long userId,
+			com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+				orderByComparator)
+		throws NoSuchInstResearcherException;
+
+	/**
+	 * Returns the first inst researcher in the ordered set where userId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
+	 */
+	public InstResearcher fetchByUserId_First(
+		long userId,
+		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+			orderByComparator);
+
+	/**
+	 * Returns the last inst researcher in the ordered set where userId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching inst researcher
+	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
+	 */
+	public InstResearcher findByUserId_Last(
+			long userId,
+			com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+				orderByComparator)
+		throws NoSuchInstResearcherException;
+
+	/**
+	 * Returns the last inst researcher in the ordered set where userId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
+	 */
+	public InstResearcher fetchByUserId_Last(
+		long userId,
+		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+			orderByComparator);
+
+	/**
+	 * Returns the inst researchers before and after the current inst researcher in the ordered set where userId = &#63;.
+	 *
+	 * @param institutionResearcherId the primary key of the current inst researcher
+	 * @param userId the user ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next inst researcher
+	 * @throws NoSuchInstResearcherException if a inst researcher with the primary key could not be found
+	 */
+	public InstResearcher[] findByUserId_PrevAndNext(
+			long institutionResearcherId, long userId,
+			com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+				orderByComparator)
+		throws NoSuchInstResearcherException;
+
+	/**
+	 * Removes all the inst researchers where userId = &#63; from the database.
+	 *
+	 * @param userId the user ID
+	 */
+	public void removeByUserId(long userId);
+
+	/**
+	 * Returns the number of inst researchers where userId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @return the number of matching inst researchers
+	 */
+	public int countByUserId(long userId);
+
+	/**
+	 * Returns all the inst researchers where researcherId = &#63;.
+	 *
+	 * @param researcherId the researcher ID
+	 * @return the matching inst researchers
+	 */
+	public java.util.List<InstResearcher> findByResearcherId(long researcherId);
+
+	/**
+	 * Returns a range of all the inst researchers where researcherId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
+	 * </p>
+	 *
+	 * @param researcherId the researcher ID
+	 * @param start the lower bound of the range of inst researchers
+	 * @param end the upper bound of the range of inst researchers (not inclusive)
+	 * @return the range of matching inst researchers
+	 */
+	public java.util.List<InstResearcher> findByResearcherId(
+		long researcherId, int start, int end);
+
+	/**
+	 * Returns an ordered range of all the inst researchers where researcherId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
+	 * </p>
+	 *
+	 * @param researcherId the researcher ID
+	 * @param start the lower bound of the range of inst researchers
+	 * @param end the upper bound of the range of inst researchers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching inst researchers
+	 */
+	public java.util.List<InstResearcher> findByResearcherId(
+		long researcherId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+			orderByComparator);
+
+	/**
+	 * Returns an ordered range of all the inst researchers where researcherId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
+	 * </p>
+	 *
+	 * @param researcherId the researcher ID
+	 * @param start the lower bound of the range of inst researchers
+	 * @param end the upper bound of the range of inst researchers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching inst researchers
+	 */
+	public java.util.List<InstResearcher> findByResearcherId(
+		long researcherId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+			orderByComparator,
+		boolean useFinderCache);
+
+	/**
+	 * Returns the first inst researcher in the ordered set where researcherId = &#63;.
+	 *
+	 * @param researcherId the researcher ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching inst researcher
+	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
+	 */
+	public InstResearcher findByResearcherId_First(
+			long researcherId,
+			com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+				orderByComparator)
+		throws NoSuchInstResearcherException;
+
+	/**
+	 * Returns the first inst researcher in the ordered set where researcherId = &#63;.
+	 *
+	 * @param researcherId the researcher ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
+	 */
+	public InstResearcher fetchByResearcherId_First(
+		long researcherId,
+		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+			orderByComparator);
+
+	/**
+	 * Returns the last inst researcher in the ordered set where researcherId = &#63;.
+	 *
+	 * @param researcherId the researcher ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching inst researcher
+	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
+	 */
+	public InstResearcher findByResearcherId_Last(
+			long researcherId,
+			com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+				orderByComparator)
+		throws NoSuchInstResearcherException;
+
+	/**
+	 * Returns the last inst researcher in the ordered set where researcherId = &#63;.
+	 *
+	 * @param researcherId the researcher ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
+	 */
+	public InstResearcher fetchByResearcherId_Last(
+		long researcherId,
+		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+			orderByComparator);
+
+	/**
+	 * Returns the inst researchers before and after the current inst researcher in the ordered set where researcherId = &#63;.
+	 *
+	 * @param institutionResearcherId the primary key of the current inst researcher
+	 * @param researcherId the researcher ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next inst researcher
+	 * @throws NoSuchInstResearcherException if a inst researcher with the primary key could not be found
+	 */
+	public InstResearcher[] findByResearcherId_PrevAndNext(
+			long institutionResearcherId, long researcherId,
+			com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+				orderByComparator)
+		throws NoSuchInstResearcherException;
+
+	/**
+	 * Removes all the inst researchers where researcherId = &#63; from the database.
+	 *
+	 * @param researcherId the researcher ID
+	 */
+	public void removeByResearcherId(long researcherId);
+
+	/**
+	 * Returns the number of inst researchers where researcherId = &#63;.
+	 *
+	 * @param researcherId the researcher ID
+	 * @return the number of matching inst researchers
+	 */
+	public int countByResearcherId(long researcherId);
+
+	/**
+	 * Returns all the inst researchers where institutionId = &#63;.
+	 *
+	 * @param institutionId the institution ID
+	 * @return the matching inst researchers
+	 */
+	public java.util.List<InstResearcher> findByInstitutionId(
+		long institutionId);
+
+	/**
+	 * Returns a range of all the inst researchers where institutionId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
+	 * </p>
+	 *
+	 * @param institutionId the institution ID
+	 * @param start the lower bound of the range of inst researchers
+	 * @param end the upper bound of the range of inst researchers (not inclusive)
+	 * @return the range of matching inst researchers
+	 */
+	public java.util.List<InstResearcher> findByInstitutionId(
+		long institutionId, int start, int end);
+
+	/**
+	 * Returns an ordered range of all the inst researchers where institutionId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
+	 * </p>
+	 *
+	 * @param institutionId the institution ID
+	 * @param start the lower bound of the range of inst researchers
+	 * @param end the upper bound of the range of inst researchers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching inst researchers
+	 */
+	public java.util.List<InstResearcher> findByInstitutionId(
+		long institutionId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+			orderByComparator);
+
+	/**
+	 * Returns an ordered range of all the inst researchers where institutionId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
+	 * </p>
+	 *
+	 * @param institutionId the institution ID
+	 * @param start the lower bound of the range of inst researchers
+	 * @param end the upper bound of the range of inst researchers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching inst researchers
+	 */
+	public java.util.List<InstResearcher> findByInstitutionId(
+		long institutionId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+			orderByComparator,
+		boolean useFinderCache);
+
+	/**
+	 * Returns the first inst researcher in the ordered set where institutionId = &#63;.
+	 *
+	 * @param institutionId the institution ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching inst researcher
+	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
+	 */
+	public InstResearcher findByInstitutionId_First(
+			long institutionId,
+			com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+				orderByComparator)
+		throws NoSuchInstResearcherException;
+
+	/**
+	 * Returns the first inst researcher in the ordered set where institutionId = &#63;.
+	 *
+	 * @param institutionId the institution ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
+	 */
+	public InstResearcher fetchByInstitutionId_First(
+		long institutionId,
+		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+			orderByComparator);
+
+	/**
+	 * Returns the last inst researcher in the ordered set where institutionId = &#63;.
+	 *
+	 * @param institutionId the institution ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching inst researcher
+	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
+	 */
+	public InstResearcher findByInstitutionId_Last(
+			long institutionId,
+			com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+				orderByComparator)
+		throws NoSuchInstResearcherException;
+
+	/**
+	 * Returns the last inst researcher in the ordered set where institutionId = &#63;.
+	 *
+	 * @param institutionId the institution ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
+	 */
+	public InstResearcher fetchByInstitutionId_Last(
+		long institutionId,
+		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+			orderByComparator);
+
+	/**
+	 * Returns the inst researchers before and after the current inst researcher in the ordered set where institutionId = &#63;.
+	 *
+	 * @param institutionResearcherId the primary key of the current inst researcher
+	 * @param institutionId the institution ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next inst researcher
+	 * @throws NoSuchInstResearcherException if a inst researcher with the primary key could not be found
+	 */
+	public InstResearcher[] findByInstitutionId_PrevAndNext(
+			long institutionResearcherId, long institutionId,
+			com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+				orderByComparator)
+		throws NoSuchInstResearcherException;
+
+	/**
+	 * Removes all the inst researchers where institutionId = &#63; from the database.
+	 *
+	 * @param institutionId the institution ID
+	 */
+	public void removeByInstitutionId(long institutionId);
+
+	/**
+	 * Returns the number of inst researchers where institutionId = &#63;.
+	 *
+	 * @param institutionId the institution ID
+	 * @return the number of matching inst researchers
+	 */
+	public int countByInstitutionId(long institutionId);
+
+	/**
 	 * Returns all the inst researchers where groupId = &#63; and projectId = &#63;.
 	 *
 	 * @param groupId the group ID
@@ -546,340 +976,372 @@ public interface InstResearcherPersistence
 	public int countByG_P(long groupId, long projectId);
 
 	/**
-	 * Returns all the inst researchers where companyId = &#63;.
+	 * Returns all the inst researchers where groupId = &#63; and institutionId = &#63;.
 	 *
-	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param institutionId the institution ID
 	 * @return the matching inst researchers
 	 */
-	public java.util.List<InstResearcher> findByCompanyId(long companyId);
+	public java.util.List<InstResearcher> findByG_I(
+		long groupId, long institutionId);
 
 	/**
-	 * Returns a range of all the inst researchers where companyId = &#63;.
+	 * Returns a range of all the inst researchers where groupId = &#63; and institutionId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
 	 * </p>
 	 *
-	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param institutionId the institution ID
 	 * @param start the lower bound of the range of inst researchers
 	 * @param end the upper bound of the range of inst researchers (not inclusive)
 	 * @return the range of matching inst researchers
 	 */
-	public java.util.List<InstResearcher> findByCompanyId(
-		long companyId, int start, int end);
+	public java.util.List<InstResearcher> findByG_I(
+		long groupId, long institutionId, int start, int end);
 
 	/**
-	 * Returns an ordered range of all the inst researchers where companyId = &#63;.
+	 * Returns an ordered range of all the inst researchers where groupId = &#63; and institutionId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
 	 * </p>
 	 *
-	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param institutionId the institution ID
 	 * @param start the lower bound of the range of inst researchers
 	 * @param end the upper bound of the range of inst researchers (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching inst researchers
 	 */
-	public java.util.List<InstResearcher> findByCompanyId(
-		long companyId, int start, int end,
+	public java.util.List<InstResearcher> findByG_I(
+		long groupId, long institutionId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
 			orderByComparator);
 
 	/**
-	 * Returns an ordered range of all the inst researchers where companyId = &#63;.
+	 * Returns an ordered range of all the inst researchers where groupId = &#63; and institutionId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
 	 * </p>
 	 *
-	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param institutionId the institution ID
 	 * @param start the lower bound of the range of inst researchers
 	 * @param end the upper bound of the range of inst researchers (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching inst researchers
 	 */
-	public java.util.List<InstResearcher> findByCompanyId(
-		long companyId, int start, int end,
+	public java.util.List<InstResearcher> findByG_I(
+		long groupId, long institutionId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
 			orderByComparator,
 		boolean useFinderCache);
 
 	/**
-	 * Returns the first inst researcher in the ordered set where companyId = &#63;.
+	 * Returns the first inst researcher in the ordered set where groupId = &#63; and institutionId = &#63;.
 	 *
-	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param institutionId the institution ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching inst researcher
 	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
 	 */
-	public InstResearcher findByCompanyId_First(
-			long companyId,
+	public InstResearcher findByG_I_First(
+			long groupId, long institutionId,
 			com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
 				orderByComparator)
 		throws NoSuchInstResearcherException;
 
 	/**
-	 * Returns the first inst researcher in the ordered set where companyId = &#63;.
+	 * Returns the first inst researcher in the ordered set where groupId = &#63; and institutionId = &#63;.
 	 *
-	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param institutionId the institution ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
 	 */
-	public InstResearcher fetchByCompanyId_First(
-		long companyId,
+	public InstResearcher fetchByG_I_First(
+		long groupId, long institutionId,
 		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
 			orderByComparator);
 
 	/**
-	 * Returns the last inst researcher in the ordered set where companyId = &#63;.
+	 * Returns the last inst researcher in the ordered set where groupId = &#63; and institutionId = &#63;.
 	 *
-	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param institutionId the institution ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching inst researcher
 	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
 	 */
-	public InstResearcher findByCompanyId_Last(
-			long companyId,
+	public InstResearcher findByG_I_Last(
+			long groupId, long institutionId,
 			com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
 				orderByComparator)
 		throws NoSuchInstResearcherException;
 
 	/**
-	 * Returns the last inst researcher in the ordered set where companyId = &#63;.
+	 * Returns the last inst researcher in the ordered set where groupId = &#63; and institutionId = &#63;.
 	 *
-	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param institutionId the institution ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
 	 */
-	public InstResearcher fetchByCompanyId_Last(
-		long companyId,
+	public InstResearcher fetchByG_I_Last(
+		long groupId, long institutionId,
 		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
 			orderByComparator);
 
 	/**
-	 * Returns the inst researchers before and after the current inst researcher in the ordered set where companyId = &#63;.
+	 * Returns the inst researchers before and after the current inst researcher in the ordered set where groupId = &#63; and institutionId = &#63;.
 	 *
 	 * @param institutionResearcherId the primary key of the current inst researcher
-	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param institutionId the institution ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next inst researcher
 	 * @throws NoSuchInstResearcherException if a inst researcher with the primary key could not be found
 	 */
-	public InstResearcher[] findByCompanyId_PrevAndNext(
-			long institutionResearcherId, long companyId,
+	public InstResearcher[] findByG_I_PrevAndNext(
+			long institutionResearcherId, long groupId, long institutionId,
 			com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
 				orderByComparator)
 		throws NoSuchInstResearcherException;
 
 	/**
-	 * Removes all the inst researchers where companyId = &#63; from the database.
+	 * Removes all the inst researchers where groupId = &#63; and institutionId = &#63; from the database.
 	 *
-	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param institutionId the institution ID
 	 */
-	public void removeByCompanyId(long companyId);
+	public void removeByG_I(long groupId, long institutionId);
 
 	/**
-	 * Returns the number of inst researchers where companyId = &#63;.
+	 * Returns the number of inst researchers where groupId = &#63; and institutionId = &#63;.
 	 *
-	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param institutionId the institution ID
 	 * @return the number of matching inst researchers
 	 */
-	public int countByCompanyId(long companyId);
+	public int countByG_I(long groupId, long institutionId);
 
 	/**
-	 * Returns all the inst researchers where userId = &#63;.
+	 * Returns all the inst researchers where groupId = &#63; and researcherId = &#63;.
 	 *
-	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param researcherId the researcher ID
 	 * @return the matching inst researchers
 	 */
-	public java.util.List<InstResearcher> findByUserId(long userId);
+	public java.util.List<InstResearcher> findByG_R(
+		long groupId, long researcherId);
 
 	/**
-	 * Returns a range of all the inst researchers where userId = &#63;.
+	 * Returns a range of all the inst researchers where groupId = &#63; and researcherId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
 	 * </p>
 	 *
-	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param researcherId the researcher ID
 	 * @param start the lower bound of the range of inst researchers
 	 * @param end the upper bound of the range of inst researchers (not inclusive)
 	 * @return the range of matching inst researchers
 	 */
-	public java.util.List<InstResearcher> findByUserId(
-		long userId, int start, int end);
+	public java.util.List<InstResearcher> findByG_R(
+		long groupId, long researcherId, int start, int end);
 
 	/**
-	 * Returns an ordered range of all the inst researchers where userId = &#63;.
+	 * Returns an ordered range of all the inst researchers where groupId = &#63; and researcherId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
 	 * </p>
 	 *
-	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param researcherId the researcher ID
 	 * @param start the lower bound of the range of inst researchers
 	 * @param end the upper bound of the range of inst researchers (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching inst researchers
 	 */
-	public java.util.List<InstResearcher> findByUserId(
-		long userId, int start, int end,
+	public java.util.List<InstResearcher> findByG_R(
+		long groupId, long researcherId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
 			orderByComparator);
 
 	/**
-	 * Returns an ordered range of all the inst researchers where userId = &#63;.
+	 * Returns an ordered range of all the inst researchers where groupId = &#63; and researcherId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
 	 * </p>
 	 *
-	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param researcherId the researcher ID
 	 * @param start the lower bound of the range of inst researchers
 	 * @param end the upper bound of the range of inst researchers (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching inst researchers
 	 */
-	public java.util.List<InstResearcher> findByUserId(
-		long userId, int start, int end,
+	public java.util.List<InstResearcher> findByG_R(
+		long groupId, long researcherId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
 			orderByComparator,
 		boolean useFinderCache);
 
 	/**
-	 * Returns the first inst researcher in the ordered set where userId = &#63;.
+	 * Returns the first inst researcher in the ordered set where groupId = &#63; and researcherId = &#63;.
 	 *
-	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param researcherId the researcher ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching inst researcher
 	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
 	 */
-	public InstResearcher findByUserId_First(
-			long userId,
+	public InstResearcher findByG_R_First(
+			long groupId, long researcherId,
 			com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
 				orderByComparator)
 		throws NoSuchInstResearcherException;
 
 	/**
-	 * Returns the first inst researcher in the ordered set where userId = &#63;.
+	 * Returns the first inst researcher in the ordered set where groupId = &#63; and researcherId = &#63;.
 	 *
-	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param researcherId the researcher ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
 	 */
-	public InstResearcher fetchByUserId_First(
-		long userId,
+	public InstResearcher fetchByG_R_First(
+		long groupId, long researcherId,
 		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
 			orderByComparator);
 
 	/**
-	 * Returns the last inst researcher in the ordered set where userId = &#63;.
+	 * Returns the last inst researcher in the ordered set where groupId = &#63; and researcherId = &#63;.
 	 *
-	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param researcherId the researcher ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching inst researcher
 	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
 	 */
-	public InstResearcher findByUserId_Last(
-			long userId,
+	public InstResearcher findByG_R_Last(
+			long groupId, long researcherId,
 			com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
 				orderByComparator)
 		throws NoSuchInstResearcherException;
 
 	/**
-	 * Returns the last inst researcher in the ordered set where userId = &#63;.
+	 * Returns the last inst researcher in the ordered set where groupId = &#63; and researcherId = &#63;.
 	 *
-	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param researcherId the researcher ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
 	 */
-	public InstResearcher fetchByUserId_Last(
-		long userId,
+	public InstResearcher fetchByG_R_Last(
+		long groupId, long researcherId,
 		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
 			orderByComparator);
 
 	/**
-	 * Returns the inst researchers before and after the current inst researcher in the ordered set where userId = &#63;.
+	 * Returns the inst researchers before and after the current inst researcher in the ordered set where groupId = &#63; and researcherId = &#63;.
 	 *
 	 * @param institutionResearcherId the primary key of the current inst researcher
-	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param researcherId the researcher ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next inst researcher
 	 * @throws NoSuchInstResearcherException if a inst researcher with the primary key could not be found
 	 */
-	public InstResearcher[] findByUserId_PrevAndNext(
-			long institutionResearcherId, long userId,
+	public InstResearcher[] findByG_R_PrevAndNext(
+			long institutionResearcherId, long groupId, long researcherId,
 			com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
 				orderByComparator)
 		throws NoSuchInstResearcherException;
 
 	/**
-	 * Removes all the inst researchers where userId = &#63; from the database.
+	 * Removes all the inst researchers where groupId = &#63; and researcherId = &#63; from the database.
 	 *
-	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param researcherId the researcher ID
 	 */
-	public void removeByUserId(long userId);
+	public void removeByG_R(long groupId, long researcherId);
 
 	/**
-	 * Returns the number of inst researchers where userId = &#63;.
+	 * Returns the number of inst researchers where groupId = &#63; and researcherId = &#63;.
 	 *
-	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param researcherId the researcher ID
 	 * @return the number of matching inst researchers
 	 */
-	public int countByUserId(long userId);
+	public int countByG_R(long groupId, long researcherId);
 
 	/**
-	 * Returns all the inst researchers where institutionId = &#63;.
+	 * Returns all the inst researchers where groupId = &#63; and projectId = &#63; and institutionId = &#63;.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param institutionId the institution ID
 	 * @return the matching inst researchers
 	 */
-	public java.util.List<InstResearcher> findByInstitutionId(
-		long institutionId);
+	public java.util.List<InstResearcher> findByG_P_I(
+		long groupId, long projectId, long institutionId);
 
 	/**
-	 * Returns a range of all the inst researchers where institutionId = &#63;.
+	 * Returns a range of all the inst researchers where groupId = &#63; and projectId = &#63; and institutionId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
 	 * </p>
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param institutionId the institution ID
 	 * @param start the lower bound of the range of inst researchers
 	 * @param end the upper bound of the range of inst researchers (not inclusive)
 	 * @return the range of matching inst researchers
 	 */
-	public java.util.List<InstResearcher> findByInstitutionId(
-		long institutionId, int start, int end);
+	public java.util.List<InstResearcher> findByG_P_I(
+		long groupId, long projectId, long institutionId, int start, int end);
 
 	/**
-	 * Returns an ordered range of all the inst researchers where institutionId = &#63;.
+	 * Returns an ordered range of all the inst researchers where groupId = &#63; and projectId = &#63; and institutionId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
 	 * </p>
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param institutionId the institution ID
 	 * @param start the lower bound of the range of inst researchers
 	 * @param end the upper bound of the range of inst researchers (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching inst researchers
 	 */
-	public java.util.List<InstResearcher> findByInstitutionId(
-		long institutionId, int start, int end,
+	public java.util.List<InstResearcher> findByG_P_I(
+		long groupId, long projectId, long institutionId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
 			orderByComparator);
 
 	/**
-	 * Returns an ordered range of all the inst researchers where institutionId = &#63;.
+	 * Returns an ordered range of all the inst researchers where groupId = &#63; and projectId = &#63; and institutionId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
 	 * </p>
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param institutionId the institution ID
 	 * @param start the lower bound of the range of inst researchers
 	 * @param end the upper bound of the range of inst researchers (not inclusive)
@@ -887,228 +1349,204 @@ public interface InstResearcherPersistence
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching inst researchers
 	 */
-	public java.util.List<InstResearcher> findByInstitutionId(
-		long institutionId, int start, int end,
+	public java.util.List<InstResearcher> findByG_P_I(
+		long groupId, long projectId, long institutionId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
 			orderByComparator,
 		boolean useFinderCache);
 
 	/**
-	 * Returns the first inst researcher in the ordered set where institutionId = &#63;.
+	 * Returns the first inst researcher in the ordered set where groupId = &#63; and projectId = &#63; and institutionId = &#63;.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param institutionId the institution ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching inst researcher
 	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
 	 */
-	public InstResearcher findByInstitutionId_First(
+	public InstResearcher findByG_P_I_First(
+			long groupId, long projectId, long institutionId,
+			com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+				orderByComparator)
+		throws NoSuchInstResearcherException;
+
+	/**
+	 * Returns the first inst researcher in the ordered set where groupId = &#63; and projectId = &#63; and institutionId = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param institutionId the institution ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
+	 */
+	public InstResearcher fetchByG_P_I_First(
+		long groupId, long projectId, long institutionId,
+		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+			orderByComparator);
+
+	/**
+	 * Returns the last inst researcher in the ordered set where groupId = &#63; and projectId = &#63; and institutionId = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param institutionId the institution ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching inst researcher
+	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
+	 */
+	public InstResearcher findByG_P_I_Last(
+			long groupId, long projectId, long institutionId,
+			com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+				orderByComparator)
+		throws NoSuchInstResearcherException;
+
+	/**
+	 * Returns the last inst researcher in the ordered set where groupId = &#63; and projectId = &#63; and institutionId = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param institutionId the institution ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
+	 */
+	public InstResearcher fetchByG_P_I_Last(
+		long groupId, long projectId, long institutionId,
+		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
+			orderByComparator);
+
+	/**
+	 * Returns the inst researchers before and after the current inst researcher in the ordered set where groupId = &#63; and projectId = &#63; and institutionId = &#63;.
+	 *
+	 * @param institutionResearcherId the primary key of the current inst researcher
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param institutionId the institution ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next inst researcher
+	 * @throws NoSuchInstResearcherException if a inst researcher with the primary key could not be found
+	 */
+	public InstResearcher[] findByG_P_I_PrevAndNext(
+			long institutionResearcherId, long groupId, long projectId,
 			long institutionId,
 			com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
 				orderByComparator)
 		throws NoSuchInstResearcherException;
 
 	/**
-	 * Returns the first inst researcher in the ordered set where institutionId = &#63;.
+	 * Removes all the inst researchers where groupId = &#63; and projectId = &#63; and institutionId = &#63; from the database.
 	 *
-	 * @param institutionId the institution ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
-	 */
-	public InstResearcher fetchByInstitutionId_First(
-		long institutionId,
-		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
-			orderByComparator);
-
-	/**
-	 * Returns the last inst researcher in the ordered set where institutionId = &#63;.
-	 *
-	 * @param institutionId the institution ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching inst researcher
-	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
-	 */
-	public InstResearcher findByInstitutionId_Last(
-			long institutionId,
-			com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
-				orderByComparator)
-		throws NoSuchInstResearcherException;
-
-	/**
-	 * Returns the last inst researcher in the ordered set where institutionId = &#63;.
-	 *
-	 * @param institutionId the institution ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
-	 */
-	public InstResearcher fetchByInstitutionId_Last(
-		long institutionId,
-		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
-			orderByComparator);
-
-	/**
-	 * Returns the inst researchers before and after the current inst researcher in the ordered set where institutionId = &#63;.
-	 *
-	 * @param institutionResearcherId the primary key of the current inst researcher
-	 * @param institutionId the institution ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the previous, current, and next inst researcher
-	 * @throws NoSuchInstResearcherException if a inst researcher with the primary key could not be found
-	 */
-	public InstResearcher[] findByInstitutionId_PrevAndNext(
-			long institutionResearcherId, long institutionId,
-			com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
-				orderByComparator)
-		throws NoSuchInstResearcherException;
-
-	/**
-	 * Removes all the inst researchers where institutionId = &#63; from the database.
-	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param institutionId the institution ID
 	 */
-	public void removeByInstitutionId(long institutionId);
+	public void removeByG_P_I(long groupId, long projectId, long institutionId);
 
 	/**
-	 * Returns the number of inst researchers where institutionId = &#63;.
+	 * Returns the number of inst researchers where groupId = &#63; and projectId = &#63; and institutionId = &#63;.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param institutionId the institution ID
 	 * @return the number of matching inst researchers
 	 */
-	public int countByInstitutionId(long institutionId);
+	public int countByG_P_I(long groupId, long projectId, long institutionId);
 
 	/**
-	 * Returns all the inst researchers where researcherId = &#63;.
+	 * Returns the inst researcher where groupId = &#63; and projectId = &#63; and researcherId = &#63; or throws a <code>NoSuchInstResearcherException</code> if it could not be found.
 	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param researcherId the researcher ID
-	 * @return the matching inst researchers
+	 * @return the matching inst researcher
+	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
 	 */
-	public java.util.List<InstResearcher> findByResearcherId(long researcherId);
+	public InstResearcher findByG_P_R(
+			long groupId, long projectId, long researcherId)
+		throws NoSuchInstResearcherException;
 
 	/**
-	 * Returns a range of all the inst researchers where researcherId = &#63;.
+	 * Returns the inst researcher where groupId = &#63; and projectId = &#63; and researcherId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
 	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
-	 * </p>
-	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param researcherId the researcher ID
-	 * @param start the lower bound of the range of inst researchers
-	 * @param end the upper bound of the range of inst researchers (not inclusive)
-	 * @return the range of matching inst researchers
+	 * @return the matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
 	 */
-	public java.util.List<InstResearcher> findByResearcherId(
-		long researcherId, int start, int end);
+	public InstResearcher fetchByG_P_R(
+		long groupId, long projectId, long researcherId);
 
 	/**
-	 * Returns an ordered range of all the inst researchers where researcherId = &#63;.
+	 * Returns the inst researcher where groupId = &#63; and projectId = &#63; and researcherId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
 	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
-	 * </p>
-	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
 	 * @param researcherId the researcher ID
-	 * @param start the lower bound of the range of inst researchers
-	 * @param end the upper bound of the range of inst researchers (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the ordered range of matching inst researchers
-	 */
-	public java.util.List<InstResearcher> findByResearcherId(
-		long researcherId, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
-			orderByComparator);
-
-	/**
-	 * Returns an ordered range of all the inst researchers where researcherId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>InstResearcherModelImpl</code>.
-	 * </p>
-	 *
-	 * @param researcherId the researcher ID
-	 * @param start the lower bound of the range of inst researchers
-	 * @param end the upper bound of the range of inst researchers (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @param useFinderCache whether to use the finder cache
-	 * @return the ordered range of matching inst researchers
+	 * @return the matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
 	 */
-	public java.util.List<InstResearcher> findByResearcherId(
-		long researcherId, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
-			orderByComparator,
+	public InstResearcher fetchByG_P_R(
+		long groupId, long projectId, long researcherId,
 		boolean useFinderCache);
 
 	/**
-	 * Returns the first inst researcher in the ordered set where researcherId = &#63;.
+	 * Removes the inst researcher where groupId = &#63; and projectId = &#63; and researcherId = &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param researcherId the researcher ID
+	 * @return the inst researcher that was removed
+	 */
+	public InstResearcher removeByG_P_R(
+			long groupId, long projectId, long researcherId)
+		throws NoSuchInstResearcherException;
+
+	/**
+	 * Returns the number of inst researchers where groupId = &#63; and projectId = &#63; and researcherId = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param projectId the project ID
+	 * @param researcherId the researcher ID
+	 * @return the number of matching inst researchers
+	 */
+	public int countByG_P_R(long groupId, long projectId, long researcherId);
+
+	/**
+	 * Returns the inst researcher where researcherId = &#63; or throws a <code>NoSuchInstResearcherException</code> if it could not be found.
 	 *
 	 * @param researcherId the researcher ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching inst researcher
+	 * @return the matching inst researcher
 	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
 	 */
-	public InstResearcher findByResearcherId_First(
-			long researcherId,
-			com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
-				orderByComparator)
+	public InstResearcher findByG_P_I_R(long researcherId)
 		throws NoSuchInstResearcherException;
 
 	/**
-	 * Returns the first inst researcher in the ordered set where researcherId = &#63;.
+	 * Returns the inst researcher where researcherId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
 	 *
 	 * @param researcherId the researcher ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
+	 * @return the matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
 	 */
-	public InstResearcher fetchByResearcherId_First(
-		long researcherId,
-		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
-			orderByComparator);
+	public InstResearcher fetchByG_P_I_R(long researcherId);
 
 	/**
-	 * Returns the last inst researcher in the ordered set where researcherId = &#63;.
+	 * Returns the inst researcher where researcherId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
 	 *
 	 * @param researcherId the researcher ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching inst researcher
-	 * @throws NoSuchInstResearcherException if a matching inst researcher could not be found
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
 	 */
-	public InstResearcher findByResearcherId_Last(
-			long researcherId,
-			com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
-				orderByComparator)
+	public InstResearcher fetchByG_P_I_R(
+		long researcherId, boolean useFinderCache);
+
+	/**
+	 * Removes the inst researcher where researcherId = &#63; from the database.
+	 *
+	 * @param researcherId the researcher ID
+	 * @return the inst researcher that was removed
+	 */
+	public InstResearcher removeByG_P_I_R(long researcherId)
 		throws NoSuchInstResearcherException;
-
-	/**
-	 * Returns the last inst researcher in the ordered set where researcherId = &#63;.
-	 *
-	 * @param researcherId the researcher ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching inst researcher, or <code>null</code> if a matching inst researcher could not be found
-	 */
-	public InstResearcher fetchByResearcherId_Last(
-		long researcherId,
-		com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
-			orderByComparator);
-
-	/**
-	 * Returns the inst researchers before and after the current inst researcher in the ordered set where researcherId = &#63;.
-	 *
-	 * @param institutionResearcherId the primary key of the current inst researcher
-	 * @param researcherId the researcher ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the previous, current, and next inst researcher
-	 * @throws NoSuchInstResearcherException if a inst researcher with the primary key could not be found
-	 */
-	public InstResearcher[] findByResearcherId_PrevAndNext(
-			long institutionResearcherId, long researcherId,
-			com.liferay.portal.kernel.util.OrderByComparator<InstResearcher>
-				orderByComparator)
-		throws NoSuchInstResearcherException;
-
-	/**
-	 * Removes all the inst researchers where researcherId = &#63; from the database.
-	 *
-	 * @param researcherId the researcher ID
-	 */
-	public void removeByResearcherId(long researcherId);
 
 	/**
 	 * Returns the number of inst researchers where researcherId = &#63;.
@@ -1116,7 +1554,7 @@ public interface InstResearcherPersistence
 	 * @param researcherId the researcher ID
 	 * @return the number of matching inst researchers
 	 */
-	public int countByResearcherId(long researcherId);
+	public int countByG_P_I_R(long researcherId);
 
 	/**
 	 * Caches the inst researcher in the entity cache if it is enabled.

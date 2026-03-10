@@ -36,6 +36,7 @@ import com.liferay.portal.kernel.util.OrderByComparator;
 
 import java.io.Serializable;
 
+import java.util.Date;
 import java.util.List;
 
 import org.osgi.annotation.versioning.ProviderType;
@@ -87,6 +88,11 @@ public interface EdcPermissionRoleLocalService
 	@Transactional(enabled = false)
 	public EdcPermissionRole createEdcPermissionRole(long permissionRoleId);
 
+	public EdcPermissionRole CreateEdcPermissionRole(
+		long companyId, long groupId, long projectId, long actorGroup,
+		long actorId, String roleName, Boolean active, Date fromDate,
+		Date toDate);
+
 	/**
 	 * Deletes the edc permission role from the database. Also notifies the appropriate model listeners.
 	 *
@@ -115,6 +121,8 @@ public interface EdcPermissionRoleLocalService
 	@Indexable(type = IndexableType.DELETE)
 	public EdcPermissionRole deleteEdcPermissionRole(long permissionRoleId)
 		throws PortalException;
+
+	public EdcPermissionRole DeleteEdcPermissionRole(long permissionRoleId);
 
 	/**
 	 * @throws PortalException
@@ -202,6 +210,16 @@ public interface EdcPermissionRoleLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public EdcPermissionRole fetchEdcPermissionRoleByUuidAndGroupId(
 		String uuid, long groupId);
+
+	public List<EdcPermissionRole> findByEdcActorRole(
+		long projectId, long actorGroup, long actorId);
+
+	public EdcPermissionRole findByEdcPermissionRole(
+		long projectId, long actorGroup, long actorId, String roleName);
+
+	public List<EdcPermissionRole> findByEdcProjectRole(long projectId);
+
+	public EdcPermissionRole findByPermissionRoleId(long permissionRoleId);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
@@ -313,5 +331,9 @@ public interface EdcPermissionRoleLocalService
 	@Indexable(type = IndexableType.REINDEX)
 	public EdcPermissionRole updateEdcPermissionRole(
 		EdcPermissionRole edcPermissionRole);
+
+	public void UpdateEdcPermissionRole(
+		long permissionRoleId, long actorGroup, long actorId, String roleName,
+		Boolean active, Date fromDate, Date toDate);
 
 }

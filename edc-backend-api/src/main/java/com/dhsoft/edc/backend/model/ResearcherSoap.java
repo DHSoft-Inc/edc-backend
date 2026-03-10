@@ -44,10 +44,6 @@ public class ResearcherSoap implements Serializable {
 		soapModel.setStatusDate(model.getStatusDate());
 		soapModel.setEmail(model.getEmail());
 		soapModel.setName(model.getName());
-		soapModel.setIsInstitutionManual(model.getIsInstitutionManual());
-		soapModel.setInstitution(model.getInstitution());
-		soapModel.setOfficeContact(model.getOfficeContact());
-		soapModel.setPosition(model.getPosition());
 		soapModel.setPrivacyAgree(model.getPrivacyAgree());
 		soapModel.setTermOfUseAgree(model.getTermOfUseAgree());
 		soapModel.setResearcherUserId(model.getResearcherUserId());
@@ -208,38 +204,6 @@ public class ResearcherSoap implements Serializable {
 		_name = name;
 	}
 
-	public String getIsInstitutionManual() {
-		return _isInstitutionManual;
-	}
-
-	public void setIsInstitutionManual(String isInstitutionManual) {
-		_isInstitutionManual = isInstitutionManual;
-	}
-
-	public String getInstitution() {
-		return _institution;
-	}
-
-	public void setInstitution(String institution) {
-		_institution = institution;
-	}
-
-	public String getOfficeContact() {
-		return _officeContact;
-	}
-
-	public void setOfficeContact(String officeContact) {
-		_officeContact = officeContact;
-	}
-
-	public String getPosition() {
-		return _position;
-	}
-
-	public void setPosition(String position) {
-		_position = position;
-	}
-
 	public String getPrivacyAgree() {
 		return _privacyAgree;
 	}
@@ -277,10 +241,6 @@ public class ResearcherSoap implements Serializable {
 	private Date _statusDate;
 	private String _email;
 	private String _name;
-	private String _isInstitutionManual;
-	private String _institution;
-	private String _officeContact;
-	private String _position;
 	private String _privacyAgree;
 	private String _termOfUseAgree;
 	private long _researcherUserId;

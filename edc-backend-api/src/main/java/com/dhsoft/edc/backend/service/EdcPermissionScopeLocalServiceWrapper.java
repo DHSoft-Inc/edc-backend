@@ -67,6 +67,18 @@ public class EdcPermissionScopeLocalServiceWrapper
 			permissionScopeId);
 	}
 
+	@Override
+	public com.dhsoft.edc.backend.model.EdcPermissionScope
+		CreateEdcPermissionScope(
+			long companyId, long groupId, long projectId, String moduleName,
+			String taskKey, String roleName, String scopeRole, Boolean active,
+			java.util.Date fromDate, java.util.Date toDate) {
+
+		return _edcPermissionScopeLocalService.CreateEdcPermissionScope(
+			companyId, groupId, projectId, moduleName, taskKey, roleName,
+			scopeRole, active, fromDate, toDate);
+	}
+
 	/**
 	 * Deletes the edc permission scope from the database. Also notifies the appropriate model listeners.
 	 *
@@ -104,6 +116,14 @@ public class EdcPermissionScopeLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _edcPermissionScopeLocalService.deleteEdcPermissionScope(
+			permissionScopeId);
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.EdcPermissionScope
+		DeleteEdcPermissionScope(long permissionScopeId) {
+
+		return _edcPermissionScopeLocalService.DeleteEdcPermissionScope(
 			permissionScopeId);
 	}
 
@@ -231,6 +251,49 @@ public class EdcPermissionScopeLocalServiceWrapper
 
 		return _edcPermissionScopeLocalService.
 			fetchEdcPermissionScopeByUuidAndGroupId(uuid, groupId);
+	}
+
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.EdcPermissionScope>
+		findByEdcModuleScope(long projectId, String moduleName) {
+
+		return _edcPermissionScopeLocalService.findByEdcModuleScope(
+			projectId, moduleName);
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.EdcPermissionScope
+		findByEdcPermissionScope(
+			long projectId, String moduleName, String taskKey, String roleName,
+			String scopeRole) {
+
+		return _edcPermissionScopeLocalService.findByEdcPermissionScope(
+			projectId, moduleName, taskKey, roleName, scopeRole);
+	}
+
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.EdcPermissionScope>
+		findByEdcProjectScope(long projectId) {
+
+		return _edcPermissionScopeLocalService.findByEdcProjectScope(projectId);
+	}
+
+	@Override
+	public java.util.List<com.dhsoft.edc.backend.model.EdcPermissionScope>
+		findByEdcTaskScope(
+			long projectId, String moduleName, String taskKey,
+			String roleName) {
+
+		return _edcPermissionScopeLocalService.findByEdcTaskScope(
+			projectId, moduleName, taskKey, roleName);
+	}
+
+	@Override
+	public com.dhsoft.edc.backend.model.EdcPermissionScope
+		findByPermissionScopeId(long permissionScopeId) {
+
+		return _edcPermissionScopeLocalService.findByPermissionScopeId(
+			permissionScopeId);
 	}
 
 	@Override
@@ -397,6 +460,17 @@ public class EdcPermissionScopeLocalServiceWrapper
 
 		return _edcPermissionScopeLocalService.updateEdcPermissionScope(
 			edcPermissionScope);
+	}
+
+	@Override
+	public void UpdateEdcPermissionScope(
+		long permissionScopeId, String moduleName, String taskKey,
+		String roleName, String scopeRole, Boolean active,
+		java.util.Date fromDate, java.util.Date toDate) {
+
+		_edcPermissionScopeLocalService.UpdateEdcPermissionScope(
+			permissionScopeId, moduleName, taskKey, roleName, scopeRole, active,
+			fromDate, toDate);
 	}
 
 	@Override

@@ -227,13 +227,6 @@ public class VisitEventLocalServiceUtil {
 			subjectId, subjectVisitDefinitionId);
 	}
 
-	public static List<VisitEvent> findBySubjectIdAndVisitDefinitionId(
-		long subjectId, long visitDefinitionId) {
-
-		return getService().findBySubjectIdAndVisitDefinitionId(
-			subjectId, visitDefinitionId);
-	}
-
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
