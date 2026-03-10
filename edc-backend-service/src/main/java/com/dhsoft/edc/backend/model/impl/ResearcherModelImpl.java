@@ -34,6 +34,7 @@ import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.model.impl.BaseModelImpl;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.service.UserLocalServiceUtil;
+import com.liferay.portal.kernel.util.DateUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
@@ -87,9 +88,7 @@ public class ResearcherModelImpl
 		{"modifiedDate", Types.TIMESTAMP}, {"status", Types.INTEGER},
 		{"statusByUserId", Types.BIGINT}, {"statusByUserName", Types.VARCHAR},
 		{"statusDate", Types.TIMESTAMP}, {"email", Types.VARCHAR},
-		{"name", Types.VARCHAR}, {"isInstitutionManual", Types.VARCHAR},
-		{"institution", Types.VARCHAR}, {"officeContact", Types.VARCHAR},
-		{"position", Types.VARCHAR}, {"privacyAgree", Types.VARCHAR},
+		{"name", Types.VARCHAR}, {"privacyAgree", Types.VARCHAR},
 		{"termOfUseAgree", Types.VARCHAR}, {"researcherUserId", Types.BIGINT}
 	};
 
@@ -110,25 +109,21 @@ public class ResearcherModelImpl
 		TABLE_COLUMNS_MAP.put("statusDate", Types.TIMESTAMP);
 		TABLE_COLUMNS_MAP.put("email", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("name", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("isInstitutionManual", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("institution", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("officeContact", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("position", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("privacyAgree", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("termOfUseAgree", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("researcherUserId", Types.BIGINT);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table EDC_Researcher (uuid_ VARCHAR(75) null,researcherId LONG not null primary key,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,status INTEGER,statusByUserId LONG,statusByUserName VARCHAR(75) null,statusDate DATE null,email VARCHAR(75) null,name VARCHAR(75) null,isInstitutionManual VARCHAR(75) null,institution VARCHAR(75) null,officeContact VARCHAR(75) null,position VARCHAR(75) null,privacyAgree VARCHAR(75) null,termOfUseAgree VARCHAR(75) null,researcherUserId LONG)";
+		"create table EDC_Researcher (uuid_ VARCHAR(75) null,researcherId LONG not null primary key,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,status INTEGER,statusByUserId LONG,statusByUserName VARCHAR(75) null,statusDate DATE null,email VARCHAR(75) null,name VARCHAR(75) null,privacyAgree VARCHAR(75) null,termOfUseAgree VARCHAR(75) null,researcherUserId LONG)";
 
 	public static final String TABLE_SQL_DROP = "drop table EDC_Researcher";
 
 	public static final String ORDER_BY_JPQL =
-		" ORDER BY researcher.researcherId ASC";
+		" ORDER BY researcher.researcherId ASC, researcher.createDate DESC";
 
 	public static final String ORDER_BY_SQL =
-		" ORDER BY EDC_Researcher.researcherId ASC";
+		" ORDER BY EDC_Researcher.researcherId ASC, EDC_Researcher.createDate DESC";
 
 	public static final String DATA_SOURCE = "liferayDataSource";
 
@@ -140,11 +135,11 @@ public class ResearcherModelImpl
 
 	public static final long RESEARCHERUSERID_COLUMN_BITMASK = 2L;
 
-	public static final long USERID_COLUMN_BITMASK = 4L;
+	public static final long UUID_COLUMN_BITMASK = 4L;
 
-	public static final long UUID_COLUMN_BITMASK = 8L;
+	public static final long RESEARCHERID_COLUMN_BITMASK = 8L;
 
-	public static final long RESEARCHERID_COLUMN_BITMASK = 16L;
+	public static final long CREATEDATE_COLUMN_BITMASK = 16L;
 
 	public static void setEntityCacheEnabled(boolean entityCacheEnabled) {
 		_entityCacheEnabled = entityCacheEnabled;
@@ -180,10 +175,6 @@ public class ResearcherModelImpl
 		model.setStatusDate(soapModel.getStatusDate());
 		model.setEmail(soapModel.getEmail());
 		model.setName(soapModel.getName());
-		model.setIsInstitutionManual(soapModel.getIsInstitutionManual());
-		model.setInstitution(soapModel.getInstitution());
-		model.setOfficeContact(soapModel.getOfficeContact());
-		model.setPosition(soapModel.getPosition());
 		model.setPrivacyAgree(soapModel.getPrivacyAgree());
 		model.setTermOfUseAgree(soapModel.getTermOfUseAgree());
 		model.setResearcherUserId(soapModel.getResearcherUserId());
@@ -361,24 +352,6 @@ public class ResearcherModelImpl
 		attributeSetterBiConsumers.put(
 			"name", (BiConsumer<Researcher, String>)Researcher::setName);
 		attributeGetterFunctions.put(
-			"isInstitutionManual", Researcher::getIsInstitutionManual);
-		attributeSetterBiConsumers.put(
-			"isInstitutionManual",
-			(BiConsumer<Researcher, String>)Researcher::setIsInstitutionManual);
-		attributeGetterFunctions.put("institution", Researcher::getInstitution);
-		attributeSetterBiConsumers.put(
-			"institution",
-			(BiConsumer<Researcher, String>)Researcher::setInstitution);
-		attributeGetterFunctions.put(
-			"officeContact", Researcher::getOfficeContact);
-		attributeSetterBiConsumers.put(
-			"officeContact",
-			(BiConsumer<Researcher, String>)Researcher::setOfficeContact);
-		attributeGetterFunctions.put("position", Researcher::getPosition);
-		attributeSetterBiConsumers.put(
-			"position",
-			(BiConsumer<Researcher, String>)Researcher::setPosition);
-		attributeGetterFunctions.put(
 			"privacyAgree", Researcher::getPrivacyAgree);
 		attributeSetterBiConsumers.put(
 			"privacyAgree",
@@ -434,6 +407,8 @@ public class ResearcherModelImpl
 
 	@Override
 	public void setResearcherId(long researcherId) {
+		_columnBitmask = -1L;
+
 		_researcherId = researcherId;
 	}
 
@@ -468,14 +443,6 @@ public class ResearcherModelImpl
 
 	@Override
 	public void setUserId(long userId) {
-		_columnBitmask |= USERID_COLUMN_BITMASK;
-
-		if (!_setOriginalUserId) {
-			_setOriginalUserId = true;
-
-			_originalUserId = _userId;
-		}
-
 		_userId = userId;
 	}
 
@@ -493,10 +460,6 @@ public class ResearcherModelImpl
 
 	@Override
 	public void setUserUuid(String userUuid) {
-	}
-
-	public long getOriginalUserId() {
-		return _originalUserId;
 	}
 
 	@JSON
@@ -523,6 +486,8 @@ public class ResearcherModelImpl
 
 	@Override
 	public void setCreateDate(Date createDate) {
+		_columnBitmask = -1L;
+
 		_createDate = createDate;
 	}
 
@@ -638,70 +603,6 @@ public class ResearcherModelImpl
 	@Override
 	public void setName(String name) {
 		_name = name;
-	}
-
-	@JSON
-	@Override
-	public String getIsInstitutionManual() {
-		if (_isInstitutionManual == null) {
-			return "";
-		}
-		else {
-			return _isInstitutionManual;
-		}
-	}
-
-	@Override
-	public void setIsInstitutionManual(String isInstitutionManual) {
-		_isInstitutionManual = isInstitutionManual;
-	}
-
-	@JSON
-	@Override
-	public String getInstitution() {
-		if (_institution == null) {
-			return "";
-		}
-		else {
-			return _institution;
-		}
-	}
-
-	@Override
-	public void setInstitution(String institution) {
-		_institution = institution;
-	}
-
-	@JSON
-	@Override
-	public String getOfficeContact() {
-		if (_officeContact == null) {
-			return "";
-		}
-		else {
-			return _officeContact;
-		}
-	}
-
-	@Override
-	public void setOfficeContact(String officeContact) {
-		_officeContact = officeContact;
-	}
-
-	@JSON
-	@Override
-	public String getPosition() {
-		if (_position == null) {
-			return "";
-		}
-		else {
-			return _position;
-		}
-	}
-
-	@Override
-	public void setPosition(String position) {
-		_position = position;
 	}
 
 	@JSON
@@ -1055,10 +956,6 @@ public class ResearcherModelImpl
 		researcherImpl.setStatusDate(getStatusDate());
 		researcherImpl.setEmail(getEmail());
 		researcherImpl.setName(getName());
-		researcherImpl.setIsInstitutionManual(getIsInstitutionManual());
-		researcherImpl.setInstitution(getInstitution());
-		researcherImpl.setOfficeContact(getOfficeContact());
-		researcherImpl.setPosition(getPosition());
 		researcherImpl.setPrivacyAgree(getPrivacyAgree());
 		researcherImpl.setTermOfUseAgree(getTermOfUseAgree());
 		researcherImpl.setResearcherUserId(getResearcherUserId());
@@ -1070,17 +967,31 @@ public class ResearcherModelImpl
 
 	@Override
 	public int compareTo(Researcher researcher) {
-		long primaryKey = researcher.getPrimaryKey();
+		int value = 0;
 
-		if (getPrimaryKey() < primaryKey) {
-			return -1;
+		if (getResearcherId() < researcher.getResearcherId()) {
+			value = -1;
 		}
-		else if (getPrimaryKey() > primaryKey) {
-			return 1;
+		else if (getResearcherId() > researcher.getResearcherId()) {
+			value = 1;
 		}
 		else {
-			return 0;
+			value = 0;
 		}
+
+		if (value != 0) {
+			return value;
+		}
+
+		value = DateUtil.compareTo(getCreateDate(), researcher.getCreateDate());
+
+		value = value * -1;
+
+		if (value != 0) {
+			return value;
+		}
+
+		return 0;
 	}
 
 	@Override
@@ -1127,10 +1038,6 @@ public class ResearcherModelImpl
 		_originalCompanyId = _companyId;
 
 		_setOriginalCompanyId = false;
-
-		_originalUserId = _userId;
-
-		_setOriginalUserId = false;
 
 		_setModifiedDate = false;
 
@@ -1220,40 +1127,6 @@ public class ResearcherModelImpl
 
 		if ((name != null) && (name.length() == 0)) {
 			researcherCacheModel.name = null;
-		}
-
-		researcherCacheModel.isInstitutionManual = getIsInstitutionManual();
-
-		String isInstitutionManual = researcherCacheModel.isInstitutionManual;
-
-		if ((isInstitutionManual != null) &&
-			(isInstitutionManual.length() == 0)) {
-
-			researcherCacheModel.isInstitutionManual = null;
-		}
-
-		researcherCacheModel.institution = getInstitution();
-
-		String institution = researcherCacheModel.institution;
-
-		if ((institution != null) && (institution.length() == 0)) {
-			researcherCacheModel.institution = null;
-		}
-
-		researcherCacheModel.officeContact = getOfficeContact();
-
-		String officeContact = researcherCacheModel.officeContact;
-
-		if ((officeContact != null) && (officeContact.length() == 0)) {
-			researcherCacheModel.officeContact = null;
-		}
-
-		researcherCacheModel.position = getPosition();
-
-		String position = researcherCacheModel.position;
-
-		if ((position != null) && (position.length() == 0)) {
-			researcherCacheModel.position = null;
 		}
 
 		researcherCacheModel.privacyAgree = getPrivacyAgree();
@@ -1376,8 +1249,6 @@ public class ResearcherModelImpl
 	private long _originalCompanyId;
 	private boolean _setOriginalCompanyId;
 	private long _userId;
-	private long _originalUserId;
-	private boolean _setOriginalUserId;
 	private String _userName;
 	private Date _createDate;
 	private Date _modifiedDate;
@@ -1388,10 +1259,6 @@ public class ResearcherModelImpl
 	private Date _statusDate;
 	private String _email;
 	private String _name;
-	private String _isInstitutionManual;
-	private String _institution;
-	private String _officeContact;
-	private String _position;
 	private String _privacyAgree;
 	private String _termOfUseAgree;
 	private long _researcherUserId;

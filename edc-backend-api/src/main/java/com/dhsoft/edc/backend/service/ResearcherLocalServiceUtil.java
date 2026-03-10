@@ -59,6 +59,43 @@ public class ResearcherLocalServiceUtil {
 		return getService().addResearcher(researcher);
 	}
 
+	public static Researcher addResearcherWithInstitution(
+		long companyId, long groupId, long facebookId, String openId,
+		String languageId, boolean male, String jobTitle, long prefixId,
+		long suffixId, String emailAddress, String password1, String password2,
+		String screenName, String firstName, String lastName, int birthYear,
+		int birthMonth, int birthDay, long projectId, long instId,
+		com.liferay.portal.kernel.service.ServiceContext userServiceContext,
+		com.liferay.portal.kernel.service.ServiceContext
+			researcherServiceContext,
+		com.liferay.portal.kernel.service.ServiceContext
+			instResearcherServiceContext) {
+
+		return getService().addResearcherWithInstitution(
+			companyId, groupId, facebookId, openId, languageId, male, jobTitle,
+			prefixId, suffixId, emailAddress, password1, password2, screenName,
+			firstName, lastName, birthYear, birthMonth, birthDay, projectId,
+			instId, userServiceContext, researcherServiceContext,
+			instResearcherServiceContext);
+	}
+
+	public static Researcher addResearcherWithUser(
+		long companyId, long facebookId, String openId, String languageId,
+		boolean male, String jobTitle, long prefixId, long suffixId,
+		String emailAddress, String password1, String password2,
+		String screenName, String firstName, String lastName, int birthYear,
+		int birthMonth, int birthDay,
+		com.liferay.portal.kernel.service.ServiceContext userServiceContext,
+		com.liferay.portal.kernel.service.ServiceContext
+			researcherServiceContext) {
+
+		return getService().addResearcherWithUser(
+			companyId, facebookId, openId, languageId, male, jobTitle, prefixId,
+			suffixId, emailAddress, password1, password2, screenName, firstName,
+			lastName, birthYear, birthMonth, birthDay, userServiceContext,
+			researcherServiceContext);
+	}
+
 	/**
 	 * Creates a new researcher with the primary key. Does not add the researcher to the database.
 	 *
@@ -108,6 +145,10 @@ public class ResearcherLocalServiceUtil {
 	 */
 	public static Researcher deleteResearcher(Researcher researcher) {
 		return getService().deleteResearcher(researcher);
+	}
+
+	public static Researcher deleteResearcherWithUser(long researcherId) {
+		return getService().deleteResearcherWithUser(researcherId);
 	}
 
 	public static DynamicQuery dynamicQuery() {
@@ -256,6 +297,24 @@ public class ResearcherLocalServiceUtil {
 		return getService().getResearcher(researcherId);
 	}
 
+	public static List<Researcher> getResearcherByInst(long instId) {
+		return getService().getResearcherByInst(instId);
+	}
+
+	public static List<Researcher> getResearcherByProject(long projectId) {
+		return getService().getResearcherByProject(projectId);
+	}
+
+	public static List<Researcher> getResearcherBySite(long siteId) {
+		return getService().getResearcherBySite(siteId);
+	}
+
+	public static Researcher getResearcherByUserId(long researcherUserId)
+		throws com.dhsoft.edc.backend.exception.NoSuchResearcherException {
+
+		return getService().getResearcherByUserId(researcherUserId);
+	}
+
 	/**
 	 * Returns the researcher with the matching UUID and company.
 	 *
@@ -307,6 +366,36 @@ public class ResearcherLocalServiceUtil {
 	 */
 	public static Researcher updateResearcher(Researcher researcher) {
 		return getService().updateResearcher(researcher);
+	}
+
+	public static Researcher updateResearcherWithInstitution(
+		long researcherId, long institutionId, boolean male, String password1,
+		String screenName, String firstName, String lastName, int birthYear,
+		int birthMonth, int birthDay,
+		com.liferay.portal.kernel.service.ServiceContext userServiceContext,
+		com.liferay.portal.kernel.service.ServiceContext
+			researcherServiceContext,
+		com.liferay.portal.kernel.service.ServiceContext
+			instResearcherServiceContext) {
+
+		return getService().updateResearcherWithInstitution(
+			researcherId, institutionId, male, password1, screenName, firstName,
+			lastName, birthYear, birthMonth, birthDay, userServiceContext,
+			researcherServiceContext, instResearcherServiceContext);
+	}
+
+	public static Researcher updateResearcherWithUser(
+		long researcherId, boolean male, String password1, String screenName,
+		String firstName, String lastName, int birthYear, int birthMonth,
+		int birthDay,
+		com.liferay.portal.kernel.service.ServiceContext userServiceContext,
+		com.liferay.portal.kernel.service.ServiceContext
+			researcherServiceContext) {
+
+		return getService().updateResearcherWithUser(
+			researcherId, male, password1, screenName, firstName, lastName,
+			birthYear, birthMonth, birthDay, userServiceContext,
+			researcherServiceContext);
 	}
 
 	public static ResearcherLocalService getService() {

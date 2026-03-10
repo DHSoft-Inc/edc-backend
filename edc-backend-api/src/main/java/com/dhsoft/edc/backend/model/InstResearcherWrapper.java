@@ -54,6 +54,8 @@ public class InstResearcherWrapper
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("institutionId", getInstitutionId());
 		attributes.put("researcherId", getResearcherId());
+		attributes.put("officeContact", getOfficeContact());
+		attributes.put("position", getPosition());
 
 		return attributes;
 	}
@@ -126,6 +128,18 @@ public class InstResearcherWrapper
 		if (researcherId != null) {
 			setResearcherId(researcherId);
 		}
+
+		String officeContact = (String)attributes.get("officeContact");
+
+		if (officeContact != null) {
+			setOfficeContact(officeContact);
+		}
+
+		String position = (String)attributes.get("position");
+
+		if (position != null) {
+			setPosition(position);
+		}
 	}
 
 	/**
@@ -186,6 +200,26 @@ public class InstResearcherWrapper
 	@Override
 	public Date getModifiedDate() {
 		return model.getModifiedDate();
+	}
+
+	/**
+	 * Returns the office contact of this inst researcher.
+	 *
+	 * @return the office contact of this inst researcher
+	 */
+	@Override
+	public String getOfficeContact() {
+		return model.getOfficeContact();
+	}
+
+	/**
+	 * Returns the position of this inst researcher.
+	 *
+	 * @return the position of this inst researcher
+	 */
+	@Override
+	public String getPosition() {
+		return model.getPosition();
 	}
 
 	/**
@@ -395,6 +429,26 @@ public class InstResearcherWrapper
 	@Override
 	public void setModifiedDate(Date modifiedDate) {
 		model.setModifiedDate(modifiedDate);
+	}
+
+	/**
+	 * Sets the office contact of this inst researcher.
+	 *
+	 * @param officeContact the office contact of this inst researcher
+	 */
+	@Override
+	public void setOfficeContact(String officeContact) {
+		model.setOfficeContact(officeContact);
+	}
+
+	/**
+	 * Sets the position of this inst researcher.
+	 *
+	 * @param position the position of this inst researcher
+	 */
+	@Override
+	public void setPosition(String position) {
+		model.setPosition(position);
 	}
 
 	/**

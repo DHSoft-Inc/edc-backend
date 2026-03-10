@@ -65,7 +65,7 @@ public class InstResearcherCacheModel
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(23);
+		StringBundler sb = new StringBundler(27);
 
 		sb.append("{uuid=");
 		sb.append(uuid);
@@ -89,6 +89,10 @@ public class InstResearcherCacheModel
 		sb.append(institutionId);
 		sb.append(", researcherId=");
 		sb.append(researcherId);
+		sb.append(", officeContact=");
+		sb.append(officeContact);
+		sb.append(", position=");
+		sb.append(position);
 		sb.append("}");
 
 		return sb.toString();
@@ -135,6 +139,20 @@ public class InstResearcherCacheModel
 		instResearcherImpl.setInstitutionId(institutionId);
 		instResearcherImpl.setResearcherId(researcherId);
 
+		if (officeContact == null) {
+			instResearcherImpl.setOfficeContact("");
+		}
+		else {
+			instResearcherImpl.setOfficeContact(officeContact);
+		}
+
+		if (position == null) {
+			instResearcherImpl.setPosition("");
+		}
+		else {
+			instResearcherImpl.setPosition(position);
+		}
+
 		instResearcherImpl.resetOriginalValues();
 
 		return instResearcherImpl;
@@ -160,6 +178,8 @@ public class InstResearcherCacheModel
 		institutionId = objectInput.readLong();
 
 		researcherId = objectInput.readLong();
+		officeContact = objectInput.readUTF();
+		position = objectInput.readUTF();
 	}
 
 	@Override
@@ -194,6 +214,20 @@ public class InstResearcherCacheModel
 		objectOutput.writeLong(institutionId);
 
 		objectOutput.writeLong(researcherId);
+
+		if (officeContact == null) {
+			objectOutput.writeUTF("");
+		}
+		else {
+			objectOutput.writeUTF(officeContact);
+		}
+
+		if (position == null) {
+			objectOutput.writeUTF("");
+		}
+		else {
+			objectOutput.writeUTF(position);
+		}
 	}
 
 	public String uuid;
@@ -207,5 +241,7 @@ public class InstResearcherCacheModel
 	public long modifiedDate;
 	public long institutionId;
 	public long researcherId;
+	public String officeContact;
+	public String position;
 
 }

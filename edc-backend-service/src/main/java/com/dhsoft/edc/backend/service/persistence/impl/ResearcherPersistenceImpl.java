@@ -1718,1182 +1718,92 @@ public class ResearcherPersistenceImpl
 	private static final String _FINDER_COLUMN_COMPANYID_COMPANYID_2 =
 		"researcher.companyId = ?";
 
-	private FinderPath _finderPathWithPaginationFindByU_R;
-	private FinderPath _finderPathWithoutPaginationFindByU_R;
-	private FinderPath _finderPathCountByU_R;
-
-	/**
-	 * Returns all the researchers where userId = &#63; and researcherUserId = &#63;.
-	 *
-	 * @param userId the user ID
-	 * @param researcherUserId the researcher user ID
-	 * @return the matching researchers
-	 */
-	@Override
-	public List<Researcher> findByU_R(long userId, long researcherUserId) {
-		return findByU_R(
-			userId, researcherUserId, QueryUtil.ALL_POS, QueryUtil.ALL_POS,
-			null);
-	}
-
-	/**
-	 * Returns a range of all the researchers where userId = &#63; and researcherUserId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ResearcherModelImpl</code>.
-	 * </p>
-	 *
-	 * @param userId the user ID
-	 * @param researcherUserId the researcher user ID
-	 * @param start the lower bound of the range of researchers
-	 * @param end the upper bound of the range of researchers (not inclusive)
-	 * @return the range of matching researchers
-	 */
-	@Override
-	public List<Researcher> findByU_R(
-		long userId, long researcherUserId, int start, int end) {
-
-		return findByU_R(userId, researcherUserId, start, end, null);
-	}
-
-	/**
-	 * Returns an ordered range of all the researchers where userId = &#63; and researcherUserId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ResearcherModelImpl</code>.
-	 * </p>
-	 *
-	 * @param userId the user ID
-	 * @param researcherUserId the researcher user ID
-	 * @param start the lower bound of the range of researchers
-	 * @param end the upper bound of the range of researchers (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the ordered range of matching researchers
-	 */
-	@Override
-	public List<Researcher> findByU_R(
-		long userId, long researcherUserId, int start, int end,
-		OrderByComparator<Researcher> orderByComparator) {
-
-		return findByU_R(
-			userId, researcherUserId, start, end, orderByComparator, true);
-	}
-
-	/**
-	 * Returns an ordered range of all the researchers where userId = &#63; and researcherUserId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ResearcherModelImpl</code>.
-	 * </p>
-	 *
-	 * @param userId the user ID
-	 * @param researcherUserId the researcher user ID
-	 * @param start the lower bound of the range of researchers
-	 * @param end the upper bound of the range of researchers (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @param useFinderCache whether to use the finder cache
-	 * @return the ordered range of matching researchers
-	 */
-	@Override
-	public List<Researcher> findByU_R(
-		long userId, long researcherUserId, int start, int end,
-		OrderByComparator<Researcher> orderByComparator,
-		boolean useFinderCache) {
-
-		FinderPath finderPath = null;
-		Object[] finderArgs = null;
-
-		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
-			(orderByComparator == null)) {
-
-			if (useFinderCache) {
-				finderPath = _finderPathWithoutPaginationFindByU_R;
-				finderArgs = new Object[] {userId, researcherUserId};
-			}
-		}
-		else if (useFinderCache) {
-			finderPath = _finderPathWithPaginationFindByU_R;
-			finderArgs = new Object[] {
-				userId, researcherUserId, start, end, orderByComparator
-			};
-		}
-
-		List<Researcher> list = null;
-
-		if (useFinderCache) {
-			list = (List<Researcher>)finderCache.getResult(
-				finderPath, finderArgs, this);
-
-			if ((list != null) && !list.isEmpty()) {
-				for (Researcher researcher : list) {
-					if ((userId != researcher.getUserId()) ||
-						(researcherUserId !=
-							researcher.getResearcherUserId())) {
-
-						list = null;
-
-						break;
-					}
-				}
-			}
-		}
-
-		if (list == null) {
-			StringBundler sb = null;
-
-			if (orderByComparator != null) {
-				sb = new StringBundler(
-					4 + (orderByComparator.getOrderByFields().length * 2));
-			}
-			else {
-				sb = new StringBundler(4);
-			}
-
-			sb.append(_SQL_SELECT_RESEARCHER_WHERE);
-
-			sb.append(_FINDER_COLUMN_U_R_USERID_2);
-
-			sb.append(_FINDER_COLUMN_U_R_RESEARCHERUSERID_2);
-
-			if (orderByComparator != null) {
-				appendOrderByComparator(
-					sb, _ORDER_BY_ENTITY_ALIAS, orderByComparator);
-			}
-			else {
-				sb.append(ResearcherModelImpl.ORDER_BY_JPQL);
-			}
-
-			String sql = sb.toString();
-
-			Session session = null;
-
-			try {
-				session = openSession();
-
-				Query query = session.createQuery(sql);
-
-				QueryPos queryPos = QueryPos.getInstance(query);
-
-				queryPos.add(userId);
-
-				queryPos.add(researcherUserId);
-
-				list = (List<Researcher>)QueryUtil.list(
-					query, getDialect(), start, end);
-
-				cacheResult(list);
-
-				if (useFinderCache) {
-					finderCache.putResult(finderPath, finderArgs, list);
-				}
-			}
-			catch (Exception exception) {
-				if (useFinderCache) {
-					finderCache.removeResult(finderPath, finderArgs);
-				}
-
-				throw processException(exception);
-			}
-			finally {
-				closeSession(session);
-			}
-		}
-
-		return list;
-	}
-
-	/**
-	 * Returns the first researcher in the ordered set where userId = &#63; and researcherUserId = &#63;.
-	 *
-	 * @param userId the user ID
-	 * @param researcherUserId the researcher user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching researcher
-	 * @throws NoSuchResearcherException if a matching researcher could not be found
-	 */
-	@Override
-	public Researcher findByU_R_First(
-			long userId, long researcherUserId,
-			OrderByComparator<Researcher> orderByComparator)
-		throws NoSuchResearcherException {
-
-		Researcher researcher = fetchByU_R_First(
-			userId, researcherUserId, orderByComparator);
-
-		if (researcher != null) {
-			return researcher;
-		}
-
-		StringBundler sb = new StringBundler(6);
-
-		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
-
-		sb.append("userId=");
-		sb.append(userId);
-
-		sb.append(", researcherUserId=");
-		sb.append(researcherUserId);
-
-		sb.append("}");
-
-		throw new NoSuchResearcherException(sb.toString());
-	}
-
-	/**
-	 * Returns the first researcher in the ordered set where userId = &#63; and researcherUserId = &#63;.
-	 *
-	 * @param userId the user ID
-	 * @param researcherUserId the researcher user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching researcher, or <code>null</code> if a matching researcher could not be found
-	 */
-	@Override
-	public Researcher fetchByU_R_First(
-		long userId, long researcherUserId,
-		OrderByComparator<Researcher> orderByComparator) {
-
-		List<Researcher> list = findByU_R(
-			userId, researcherUserId, 0, 1, orderByComparator);
-
-		if (!list.isEmpty()) {
-			return list.get(0);
-		}
-
-		return null;
-	}
-
-	/**
-	 * Returns the last researcher in the ordered set where userId = &#63; and researcherUserId = &#63;.
-	 *
-	 * @param userId the user ID
-	 * @param researcherUserId the researcher user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching researcher
-	 * @throws NoSuchResearcherException if a matching researcher could not be found
-	 */
-	@Override
-	public Researcher findByU_R_Last(
-			long userId, long researcherUserId,
-			OrderByComparator<Researcher> orderByComparator)
-		throws NoSuchResearcherException {
-
-		Researcher researcher = fetchByU_R_Last(
-			userId, researcherUserId, orderByComparator);
-
-		if (researcher != null) {
-			return researcher;
-		}
-
-		StringBundler sb = new StringBundler(6);
-
-		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
-
-		sb.append("userId=");
-		sb.append(userId);
-
-		sb.append(", researcherUserId=");
-		sb.append(researcherUserId);
-
-		sb.append("}");
-
-		throw new NoSuchResearcherException(sb.toString());
-	}
-
-	/**
-	 * Returns the last researcher in the ordered set where userId = &#63; and researcherUserId = &#63;.
-	 *
-	 * @param userId the user ID
-	 * @param researcherUserId the researcher user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching researcher, or <code>null</code> if a matching researcher could not be found
-	 */
-	@Override
-	public Researcher fetchByU_R_Last(
-		long userId, long researcherUserId,
-		OrderByComparator<Researcher> orderByComparator) {
-
-		int count = countByU_R(userId, researcherUserId);
-
-		if (count == 0) {
-			return null;
-		}
-
-		List<Researcher> list = findByU_R(
-			userId, researcherUserId, count - 1, count, orderByComparator);
-
-		if (!list.isEmpty()) {
-			return list.get(0);
-		}
-
-		return null;
-	}
-
-	/**
-	 * Returns the researchers before and after the current researcher in the ordered set where userId = &#63; and researcherUserId = &#63;.
-	 *
-	 * @param researcherId the primary key of the current researcher
-	 * @param userId the user ID
-	 * @param researcherUserId the researcher user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the previous, current, and next researcher
-	 * @throws NoSuchResearcherException if a researcher with the primary key could not be found
-	 */
-	@Override
-	public Researcher[] findByU_R_PrevAndNext(
-			long researcherId, long userId, long researcherUserId,
-			OrderByComparator<Researcher> orderByComparator)
-		throws NoSuchResearcherException {
-
-		Researcher researcher = findByPrimaryKey(researcherId);
-
-		Session session = null;
-
-		try {
-			session = openSession();
-
-			Researcher[] array = new ResearcherImpl[3];
-
-			array[0] = getByU_R_PrevAndNext(
-				session, researcher, userId, researcherUserId,
-				orderByComparator, true);
-
-			array[1] = researcher;
-
-			array[2] = getByU_R_PrevAndNext(
-				session, researcher, userId, researcherUserId,
-				orderByComparator, false);
-
-			return array;
-		}
-		catch (Exception exception) {
-			throw processException(exception);
-		}
-		finally {
-			closeSession(session);
-		}
-	}
-
-	protected Researcher getByU_R_PrevAndNext(
-		Session session, Researcher researcher, long userId,
-		long researcherUserId, OrderByComparator<Researcher> orderByComparator,
-		boolean previous) {
-
-		StringBundler sb = null;
-
-		if (orderByComparator != null) {
-			sb = new StringBundler(
-				5 + (orderByComparator.getOrderByConditionFields().length * 3) +
-					(orderByComparator.getOrderByFields().length * 3));
-		}
-		else {
-			sb = new StringBundler(4);
-		}
-
-		sb.append(_SQL_SELECT_RESEARCHER_WHERE);
-
-		sb.append(_FINDER_COLUMN_U_R_USERID_2);
-
-		sb.append(_FINDER_COLUMN_U_R_RESEARCHERUSERID_2);
-
-		if (orderByComparator != null) {
-			String[] orderByConditionFields =
-				orderByComparator.getOrderByConditionFields();
-
-			if (orderByConditionFields.length > 0) {
-				sb.append(WHERE_AND);
-			}
-
-			for (int i = 0; i < orderByConditionFields.length; i++) {
-				sb.append(_ORDER_BY_ENTITY_ALIAS);
-				sb.append(orderByConditionFields[i]);
-
-				if ((i + 1) < orderByConditionFields.length) {
-					if (orderByComparator.isAscending() ^ previous) {
-						sb.append(WHERE_GREATER_THAN_HAS_NEXT);
-					}
-					else {
-						sb.append(WHERE_LESSER_THAN_HAS_NEXT);
-					}
-				}
-				else {
-					if (orderByComparator.isAscending() ^ previous) {
-						sb.append(WHERE_GREATER_THAN);
-					}
-					else {
-						sb.append(WHERE_LESSER_THAN);
-					}
-				}
-			}
-
-			sb.append(ORDER_BY_CLAUSE);
-
-			String[] orderByFields = orderByComparator.getOrderByFields();
-
-			for (int i = 0; i < orderByFields.length; i++) {
-				sb.append(_ORDER_BY_ENTITY_ALIAS);
-				sb.append(orderByFields[i]);
-
-				if ((i + 1) < orderByFields.length) {
-					if (orderByComparator.isAscending() ^ previous) {
-						sb.append(ORDER_BY_ASC_HAS_NEXT);
-					}
-					else {
-						sb.append(ORDER_BY_DESC_HAS_NEXT);
-					}
-				}
-				else {
-					if (orderByComparator.isAscending() ^ previous) {
-						sb.append(ORDER_BY_ASC);
-					}
-					else {
-						sb.append(ORDER_BY_DESC);
-					}
-				}
-			}
-		}
-		else {
-			sb.append(ResearcherModelImpl.ORDER_BY_JPQL);
-		}
-
-		String sql = sb.toString();
-
-		Query query = session.createQuery(sql);
-
-		query.setFirstResult(0);
-		query.setMaxResults(2);
-
-		QueryPos queryPos = QueryPos.getInstance(query);
-
-		queryPos.add(userId);
-
-		queryPos.add(researcherUserId);
-
-		if (orderByComparator != null) {
-			for (Object orderByConditionValue :
-					orderByComparator.getOrderByConditionValues(researcher)) {
-
-				queryPos.add(orderByConditionValue);
-			}
-		}
-
-		List<Researcher> list = query.list();
-
-		if (list.size() == 2) {
-			return list.get(1);
-		}
-		else {
-			return null;
-		}
-	}
-
-	/**
-	 * Removes all the researchers where userId = &#63; and researcherUserId = &#63; from the database.
-	 *
-	 * @param userId the user ID
-	 * @param researcherUserId the researcher user ID
-	 */
-	@Override
-	public void removeByU_R(long userId, long researcherUserId) {
-		for (Researcher researcher :
-				findByU_R(
-					userId, researcherUserId, QueryUtil.ALL_POS,
-					QueryUtil.ALL_POS, null)) {
-
-			remove(researcher);
-		}
-	}
-
-	/**
-	 * Returns the number of researchers where userId = &#63; and researcherUserId = &#63;.
-	 *
-	 * @param userId the user ID
-	 * @param researcherUserId the researcher user ID
-	 * @return the number of matching researchers
-	 */
-	@Override
-	public int countByU_R(long userId, long researcherUserId) {
-		FinderPath finderPath = _finderPathCountByU_R;
-
-		Object[] finderArgs = new Object[] {userId, researcherUserId};
-
-		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
-
-		if (count == null) {
-			StringBundler sb = new StringBundler(3);
-
-			sb.append(_SQL_COUNT_RESEARCHER_WHERE);
-
-			sb.append(_FINDER_COLUMN_U_R_USERID_2);
-
-			sb.append(_FINDER_COLUMN_U_R_RESEARCHERUSERID_2);
-
-			String sql = sb.toString();
-
-			Session session = null;
-
-			try {
-				session = openSession();
-
-				Query query = session.createQuery(sql);
-
-				QueryPos queryPos = QueryPos.getInstance(query);
-
-				queryPos.add(userId);
-
-				queryPos.add(researcherUserId);
-
-				count = (Long)query.uniqueResult();
-
-				finderCache.putResult(finderPath, finderArgs, count);
-			}
-			catch (Exception exception) {
-				finderCache.removeResult(finderPath, finderArgs);
-
-				throw processException(exception);
-			}
-			finally {
-				closeSession(session);
-			}
-		}
-
-		return count.intValue();
-	}
-
-	private static final String _FINDER_COLUMN_U_R_USERID_2 =
-		"researcher.userId = ? AND ";
-
-	private static final String _FINDER_COLUMN_U_R_RESEARCHERUSERID_2 =
-		"researcher.researcherUserId = ?";
-
-	private FinderPath _finderPathWithPaginationFindByUserId;
-	private FinderPath _finderPathWithoutPaginationFindByUserId;
-	private FinderPath _finderPathCountByUserId;
-
-	/**
-	 * Returns all the researchers where userId = &#63;.
-	 *
-	 * @param userId the user ID
-	 * @return the matching researchers
-	 */
-	@Override
-	public List<Researcher> findByUserId(long userId) {
-		return findByUserId(userId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
-	}
-
-	/**
-	 * Returns a range of all the researchers where userId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ResearcherModelImpl</code>.
-	 * </p>
-	 *
-	 * @param userId the user ID
-	 * @param start the lower bound of the range of researchers
-	 * @param end the upper bound of the range of researchers (not inclusive)
-	 * @return the range of matching researchers
-	 */
-	@Override
-	public List<Researcher> findByUserId(long userId, int start, int end) {
-		return findByUserId(userId, start, end, null);
-	}
-
-	/**
-	 * Returns an ordered range of all the researchers where userId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ResearcherModelImpl</code>.
-	 * </p>
-	 *
-	 * @param userId the user ID
-	 * @param start the lower bound of the range of researchers
-	 * @param end the upper bound of the range of researchers (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the ordered range of matching researchers
-	 */
-	@Override
-	public List<Researcher> findByUserId(
-		long userId, int start, int end,
-		OrderByComparator<Researcher> orderByComparator) {
-
-		return findByUserId(userId, start, end, orderByComparator, true);
-	}
-
-	/**
-	 * Returns an ordered range of all the researchers where userId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ResearcherModelImpl</code>.
-	 * </p>
-	 *
-	 * @param userId the user ID
-	 * @param start the lower bound of the range of researchers
-	 * @param end the upper bound of the range of researchers (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @param useFinderCache whether to use the finder cache
-	 * @return the ordered range of matching researchers
-	 */
-	@Override
-	public List<Researcher> findByUserId(
-		long userId, int start, int end,
-		OrderByComparator<Researcher> orderByComparator,
-		boolean useFinderCache) {
-
-		FinderPath finderPath = null;
-		Object[] finderArgs = null;
-
-		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
-			(orderByComparator == null)) {
-
-			if (useFinderCache) {
-				finderPath = _finderPathWithoutPaginationFindByUserId;
-				finderArgs = new Object[] {userId};
-			}
-		}
-		else if (useFinderCache) {
-			finderPath = _finderPathWithPaginationFindByUserId;
-			finderArgs = new Object[] {userId, start, end, orderByComparator};
-		}
-
-		List<Researcher> list = null;
-
-		if (useFinderCache) {
-			list = (List<Researcher>)finderCache.getResult(
-				finderPath, finderArgs, this);
-
-			if ((list != null) && !list.isEmpty()) {
-				for (Researcher researcher : list) {
-					if (userId != researcher.getUserId()) {
-						list = null;
-
-						break;
-					}
-				}
-			}
-		}
-
-		if (list == null) {
-			StringBundler sb = null;
-
-			if (orderByComparator != null) {
-				sb = new StringBundler(
-					3 + (orderByComparator.getOrderByFields().length * 2));
-			}
-			else {
-				sb = new StringBundler(3);
-			}
-
-			sb.append(_SQL_SELECT_RESEARCHER_WHERE);
-
-			sb.append(_FINDER_COLUMN_USERID_USERID_2);
-
-			if (orderByComparator != null) {
-				appendOrderByComparator(
-					sb, _ORDER_BY_ENTITY_ALIAS, orderByComparator);
-			}
-			else {
-				sb.append(ResearcherModelImpl.ORDER_BY_JPQL);
-			}
-
-			String sql = sb.toString();
-
-			Session session = null;
-
-			try {
-				session = openSession();
-
-				Query query = session.createQuery(sql);
-
-				QueryPos queryPos = QueryPos.getInstance(query);
-
-				queryPos.add(userId);
-
-				list = (List<Researcher>)QueryUtil.list(
-					query, getDialect(), start, end);
-
-				cacheResult(list);
-
-				if (useFinderCache) {
-					finderCache.putResult(finderPath, finderArgs, list);
-				}
-			}
-			catch (Exception exception) {
-				if (useFinderCache) {
-					finderCache.removeResult(finderPath, finderArgs);
-				}
-
-				throw processException(exception);
-			}
-			finally {
-				closeSession(session);
-			}
-		}
-
-		return list;
-	}
-
-	/**
-	 * Returns the first researcher in the ordered set where userId = &#63;.
-	 *
-	 * @param userId the user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching researcher
-	 * @throws NoSuchResearcherException if a matching researcher could not be found
-	 */
-	@Override
-	public Researcher findByUserId_First(
-			long userId, OrderByComparator<Researcher> orderByComparator)
-		throws NoSuchResearcherException {
-
-		Researcher researcher = fetchByUserId_First(userId, orderByComparator);
-
-		if (researcher != null) {
-			return researcher;
-		}
-
-		StringBundler sb = new StringBundler(4);
-
-		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
-
-		sb.append("userId=");
-		sb.append(userId);
-
-		sb.append("}");
-
-		throw new NoSuchResearcherException(sb.toString());
-	}
-
-	/**
-	 * Returns the first researcher in the ordered set where userId = &#63;.
-	 *
-	 * @param userId the user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching researcher, or <code>null</code> if a matching researcher could not be found
-	 */
-	@Override
-	public Researcher fetchByUserId_First(
-		long userId, OrderByComparator<Researcher> orderByComparator) {
-
-		List<Researcher> list = findByUserId(userId, 0, 1, orderByComparator);
-
-		if (!list.isEmpty()) {
-			return list.get(0);
-		}
-
-		return null;
-	}
-
-	/**
-	 * Returns the last researcher in the ordered set where userId = &#63;.
-	 *
-	 * @param userId the user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching researcher
-	 * @throws NoSuchResearcherException if a matching researcher could not be found
-	 */
-	@Override
-	public Researcher findByUserId_Last(
-			long userId, OrderByComparator<Researcher> orderByComparator)
-		throws NoSuchResearcherException {
-
-		Researcher researcher = fetchByUserId_Last(userId, orderByComparator);
-
-		if (researcher != null) {
-			return researcher;
-		}
-
-		StringBundler sb = new StringBundler(4);
-
-		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
-
-		sb.append("userId=");
-		sb.append(userId);
-
-		sb.append("}");
-
-		throw new NoSuchResearcherException(sb.toString());
-	}
-
-	/**
-	 * Returns the last researcher in the ordered set where userId = &#63;.
-	 *
-	 * @param userId the user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching researcher, or <code>null</code> if a matching researcher could not be found
-	 */
-	@Override
-	public Researcher fetchByUserId_Last(
-		long userId, OrderByComparator<Researcher> orderByComparator) {
-
-		int count = countByUserId(userId);
-
-		if (count == 0) {
-			return null;
-		}
-
-		List<Researcher> list = findByUserId(
-			userId, count - 1, count, orderByComparator);
-
-		if (!list.isEmpty()) {
-			return list.get(0);
-		}
-
-		return null;
-	}
-
-	/**
-	 * Returns the researchers before and after the current researcher in the ordered set where userId = &#63;.
-	 *
-	 * @param researcherId the primary key of the current researcher
-	 * @param userId the user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the previous, current, and next researcher
-	 * @throws NoSuchResearcherException if a researcher with the primary key could not be found
-	 */
-	@Override
-	public Researcher[] findByUserId_PrevAndNext(
-			long researcherId, long userId,
-			OrderByComparator<Researcher> orderByComparator)
-		throws NoSuchResearcherException {
-
-		Researcher researcher = findByPrimaryKey(researcherId);
-
-		Session session = null;
-
-		try {
-			session = openSession();
-
-			Researcher[] array = new ResearcherImpl[3];
-
-			array[0] = getByUserId_PrevAndNext(
-				session, researcher, userId, orderByComparator, true);
-
-			array[1] = researcher;
-
-			array[2] = getByUserId_PrevAndNext(
-				session, researcher, userId, orderByComparator, false);
-
-			return array;
-		}
-		catch (Exception exception) {
-			throw processException(exception);
-		}
-		finally {
-			closeSession(session);
-		}
-	}
-
-	protected Researcher getByUserId_PrevAndNext(
-		Session session, Researcher researcher, long userId,
-		OrderByComparator<Researcher> orderByComparator, boolean previous) {
-
-		StringBundler sb = null;
-
-		if (orderByComparator != null) {
-			sb = new StringBundler(
-				4 + (orderByComparator.getOrderByConditionFields().length * 3) +
-					(orderByComparator.getOrderByFields().length * 3));
-		}
-		else {
-			sb = new StringBundler(3);
-		}
-
-		sb.append(_SQL_SELECT_RESEARCHER_WHERE);
-
-		sb.append(_FINDER_COLUMN_USERID_USERID_2);
-
-		if (orderByComparator != null) {
-			String[] orderByConditionFields =
-				orderByComparator.getOrderByConditionFields();
-
-			if (orderByConditionFields.length > 0) {
-				sb.append(WHERE_AND);
-			}
-
-			for (int i = 0; i < orderByConditionFields.length; i++) {
-				sb.append(_ORDER_BY_ENTITY_ALIAS);
-				sb.append(orderByConditionFields[i]);
-
-				if ((i + 1) < orderByConditionFields.length) {
-					if (orderByComparator.isAscending() ^ previous) {
-						sb.append(WHERE_GREATER_THAN_HAS_NEXT);
-					}
-					else {
-						sb.append(WHERE_LESSER_THAN_HAS_NEXT);
-					}
-				}
-				else {
-					if (orderByComparator.isAscending() ^ previous) {
-						sb.append(WHERE_GREATER_THAN);
-					}
-					else {
-						sb.append(WHERE_LESSER_THAN);
-					}
-				}
-			}
-
-			sb.append(ORDER_BY_CLAUSE);
-
-			String[] orderByFields = orderByComparator.getOrderByFields();
-
-			for (int i = 0; i < orderByFields.length; i++) {
-				sb.append(_ORDER_BY_ENTITY_ALIAS);
-				sb.append(orderByFields[i]);
-
-				if ((i + 1) < orderByFields.length) {
-					if (orderByComparator.isAscending() ^ previous) {
-						sb.append(ORDER_BY_ASC_HAS_NEXT);
-					}
-					else {
-						sb.append(ORDER_BY_DESC_HAS_NEXT);
-					}
-				}
-				else {
-					if (orderByComparator.isAscending() ^ previous) {
-						sb.append(ORDER_BY_ASC);
-					}
-					else {
-						sb.append(ORDER_BY_DESC);
-					}
-				}
-			}
-		}
-		else {
-			sb.append(ResearcherModelImpl.ORDER_BY_JPQL);
-		}
-
-		String sql = sb.toString();
-
-		Query query = session.createQuery(sql);
-
-		query.setFirstResult(0);
-		query.setMaxResults(2);
-
-		QueryPos queryPos = QueryPos.getInstance(query);
-
-		queryPos.add(userId);
-
-		if (orderByComparator != null) {
-			for (Object orderByConditionValue :
-					orderByComparator.getOrderByConditionValues(researcher)) {
-
-				queryPos.add(orderByConditionValue);
-			}
-		}
-
-		List<Researcher> list = query.list();
-
-		if (list.size() == 2) {
-			return list.get(1);
-		}
-		else {
-			return null;
-		}
-	}
-
-	/**
-	 * Removes all the researchers where userId = &#63; from the database.
-	 *
-	 * @param userId the user ID
-	 */
-	@Override
-	public void removeByUserId(long userId) {
-		for (Researcher researcher :
-				findByUserId(
-					userId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
-
-			remove(researcher);
-		}
-	}
-
-	/**
-	 * Returns the number of researchers where userId = &#63;.
-	 *
-	 * @param userId the user ID
-	 * @return the number of matching researchers
-	 */
-	@Override
-	public int countByUserId(long userId) {
-		FinderPath finderPath = _finderPathCountByUserId;
-
-		Object[] finderArgs = new Object[] {userId};
-
-		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
-
-		if (count == null) {
-			StringBundler sb = new StringBundler(2);
-
-			sb.append(_SQL_COUNT_RESEARCHER_WHERE);
-
-			sb.append(_FINDER_COLUMN_USERID_USERID_2);
-
-			String sql = sb.toString();
-
-			Session session = null;
-
-			try {
-				session = openSession();
-
-				Query query = session.createQuery(sql);
-
-				QueryPos queryPos = QueryPos.getInstance(query);
-
-				queryPos.add(userId);
-
-				count = (Long)query.uniqueResult();
-
-				finderCache.putResult(finderPath, finderArgs, count);
-			}
-			catch (Exception exception) {
-				finderCache.removeResult(finderPath, finderArgs);
-
-				throw processException(exception);
-			}
-			finally {
-				closeSession(session);
-			}
-		}
-
-		return count.intValue();
-	}
-
-	private static final String _FINDER_COLUMN_USERID_USERID_2 =
-		"researcher.userId = ?";
-
-	private FinderPath _finderPathWithPaginationFindByResearcherUserId;
-	private FinderPath _finderPathWithoutPaginationFindByResearcherUserId;
+	private FinderPath _finderPathFetchByResearcherUserId;
 	private FinderPath _finderPathCountByResearcherUserId;
 
 	/**
-	 * Returns all the researchers where researcherUserId = &#63;.
+	 * Returns the researcher where researcherUserId = &#63; or throws a <code>NoSuchResearcherException</code> if it could not be found.
 	 *
 	 * @param researcherUserId the researcher user ID
-	 * @return the matching researchers
+	 * @return the matching researcher
+	 * @throws NoSuchResearcherException if a matching researcher could not be found
 	 */
 	@Override
-	public List<Researcher> findByResearcherUserId(long researcherUserId) {
-		return findByResearcherUserId(
-			researcherUserId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+	public Researcher findByResearcherUserId(long researcherUserId)
+		throws NoSuchResearcherException {
+
+		Researcher researcher = fetchByResearcherUserId(researcherUserId);
+
+		if (researcher == null) {
+			StringBundler sb = new StringBundler(4);
+
+			sb.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+			sb.append("researcherUserId=");
+			sb.append(researcherUserId);
+
+			sb.append("}");
+
+			if (_log.isDebugEnabled()) {
+				_log.debug(sb.toString());
+			}
+
+			throw new NoSuchResearcherException(sb.toString());
+		}
+
+		return researcher;
 	}
 
 	/**
-	 * Returns a range of all the researchers where researcherUserId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ResearcherModelImpl</code>.
-	 * </p>
+	 * Returns the researcher where researcherUserId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
 	 *
 	 * @param researcherUserId the researcher user ID
-	 * @param start the lower bound of the range of researchers
-	 * @param end the upper bound of the range of researchers (not inclusive)
-	 * @return the range of matching researchers
+	 * @return the matching researcher, or <code>null</code> if a matching researcher could not be found
 	 */
 	@Override
-	public List<Researcher> findByResearcherUserId(
-		long researcherUserId, int start, int end) {
-
-		return findByResearcherUserId(researcherUserId, start, end, null);
+	public Researcher fetchByResearcherUserId(long researcherUserId) {
+		return fetchByResearcherUserId(researcherUserId, true);
 	}
 
 	/**
-	 * Returns an ordered range of all the researchers where researcherUserId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ResearcherModelImpl</code>.
-	 * </p>
+	 * Returns the researcher where researcherUserId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
 	 *
 	 * @param researcherUserId the researcher user ID
-	 * @param start the lower bound of the range of researchers
-	 * @param end the upper bound of the range of researchers (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the ordered range of matching researchers
-	 */
-	@Override
-	public List<Researcher> findByResearcherUserId(
-		long researcherUserId, int start, int end,
-		OrderByComparator<Researcher> orderByComparator) {
-
-		return findByResearcherUserId(
-			researcherUserId, start, end, orderByComparator, true);
-	}
-
-	/**
-	 * Returns an ordered range of all the researchers where researcherUserId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ResearcherModelImpl</code>.
-	 * </p>
-	 *
-	 * @param researcherUserId the researcher user ID
-	 * @param start the lower bound of the range of researchers
-	 * @param end the upper bound of the range of researchers (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @param useFinderCache whether to use the finder cache
-	 * @return the ordered range of matching researchers
+	 * @return the matching researcher, or <code>null</code> if a matching researcher could not be found
 	 */
 	@Override
-	public List<Researcher> findByResearcherUserId(
-		long researcherUserId, int start, int end,
-		OrderByComparator<Researcher> orderByComparator,
-		boolean useFinderCache) {
+	public Researcher fetchByResearcherUserId(
+		long researcherUserId, boolean useFinderCache) {
 
-		FinderPath finderPath = null;
 		Object[] finderArgs = null;
 
-		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
-			(orderByComparator == null)) {
-
-			if (useFinderCache) {
-				finderPath = _finderPathWithoutPaginationFindByResearcherUserId;
-				finderArgs = new Object[] {researcherUserId};
-			}
-		}
-		else if (useFinderCache) {
-			finderPath = _finderPathWithPaginationFindByResearcherUserId;
-			finderArgs = new Object[] {
-				researcherUserId, start, end, orderByComparator
-			};
+		if (useFinderCache) {
+			finderArgs = new Object[] {researcherUserId};
 		}
 
-		List<Researcher> list = null;
+		Object result = null;
 
 		if (useFinderCache) {
-			list = (List<Researcher>)finderCache.getResult(
-				finderPath, finderArgs, this);
+			result = finderCache.getResult(
+				_finderPathFetchByResearcherUserId, finderArgs, this);
+		}
 
-			if ((list != null) && !list.isEmpty()) {
-				for (Researcher researcher : list) {
-					if (researcherUserId != researcher.getResearcherUserId()) {
-						list = null;
+		if (result instanceof Researcher) {
+			Researcher researcher = (Researcher)result;
 
-						break;
-					}
-				}
+			if (researcherUserId != researcher.getResearcherUserId()) {
+				result = null;
 			}
 		}
 
-		if (list == null) {
-			StringBundler sb = null;
-
-			if (orderByComparator != null) {
-				sb = new StringBundler(
-					3 + (orderByComparator.getOrderByFields().length * 2));
-			}
-			else {
-				sb = new StringBundler(3);
-			}
+		if (result == null) {
+			StringBundler sb = new StringBundler(3);
 
 			sb.append(_SQL_SELECT_RESEARCHER_WHERE);
 
 			sb.append(_FINDER_COLUMN_RESEARCHERUSERID_RESEARCHERUSERID_2);
 
-			if (orderByComparator != null) {
-				appendOrderByComparator(
-					sb, _ORDER_BY_ENTITY_ALIAS, orderByComparator);
-			}
-			else {
-				sb.append(ResearcherModelImpl.ORDER_BY_JPQL);
-			}
-
 			String sql = sb.toString();
 
 			Session session = null;
@@ -2907,18 +1817,27 @@ public class ResearcherPersistenceImpl
 
 				queryPos.add(researcherUserId);
 
-				list = (List<Researcher>)QueryUtil.list(
-					query, getDialect(), start, end);
+				List<Researcher> list = query.list();
 
-				cacheResult(list);
+				if (list.isEmpty()) {
+					if (useFinderCache) {
+						finderCache.putResult(
+							_finderPathFetchByResearcherUserId, finderArgs,
+							list);
+					}
+				}
+				else {
+					Researcher researcher = list.get(0);
 
-				if (useFinderCache) {
-					finderCache.putResult(finderPath, finderArgs, list);
+					result = researcher;
+
+					cacheResult(researcher);
 				}
 			}
 			catch (Exception exception) {
 				if (useFinderCache) {
-					finderCache.removeResult(finderPath, finderArgs);
+					finderCache.removeResult(
+						_finderPathFetchByResearcherUserId, finderArgs);
 				}
 
 				throw processException(exception);
@@ -2928,290 +1847,27 @@ public class ResearcherPersistenceImpl
 			}
 		}
 
-		return list;
-	}
-
-	/**
-	 * Returns the first researcher in the ordered set where researcherUserId = &#63;.
-	 *
-	 * @param researcherUserId the researcher user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching researcher
-	 * @throws NoSuchResearcherException if a matching researcher could not be found
-	 */
-	@Override
-	public Researcher findByResearcherUserId_First(
-			long researcherUserId,
-			OrderByComparator<Researcher> orderByComparator)
-		throws NoSuchResearcherException {
-
-		Researcher researcher = fetchByResearcherUserId_First(
-			researcherUserId, orderByComparator);
-
-		if (researcher != null) {
-			return researcher;
-		}
-
-		StringBundler sb = new StringBundler(4);
-
-		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
-
-		sb.append("researcherUserId=");
-		sb.append(researcherUserId);
-
-		sb.append("}");
-
-		throw new NoSuchResearcherException(sb.toString());
-	}
-
-	/**
-	 * Returns the first researcher in the ordered set where researcherUserId = &#63;.
-	 *
-	 * @param researcherUserId the researcher user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching researcher, or <code>null</code> if a matching researcher could not be found
-	 */
-	@Override
-	public Researcher fetchByResearcherUserId_First(
-		long researcherUserId,
-		OrderByComparator<Researcher> orderByComparator) {
-
-		List<Researcher> list = findByResearcherUserId(
-			researcherUserId, 0, 1, orderByComparator);
-
-		if (!list.isEmpty()) {
-			return list.get(0);
-		}
-
-		return null;
-	}
-
-	/**
-	 * Returns the last researcher in the ordered set where researcherUserId = &#63;.
-	 *
-	 * @param researcherUserId the researcher user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching researcher
-	 * @throws NoSuchResearcherException if a matching researcher could not be found
-	 */
-	@Override
-	public Researcher findByResearcherUserId_Last(
-			long researcherUserId,
-			OrderByComparator<Researcher> orderByComparator)
-		throws NoSuchResearcherException {
-
-		Researcher researcher = fetchByResearcherUserId_Last(
-			researcherUserId, orderByComparator);
-
-		if (researcher != null) {
-			return researcher;
-		}
-
-		StringBundler sb = new StringBundler(4);
-
-		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
-
-		sb.append("researcherUserId=");
-		sb.append(researcherUserId);
-
-		sb.append("}");
-
-		throw new NoSuchResearcherException(sb.toString());
-	}
-
-	/**
-	 * Returns the last researcher in the ordered set where researcherUserId = &#63;.
-	 *
-	 * @param researcherUserId the researcher user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching researcher, or <code>null</code> if a matching researcher could not be found
-	 */
-	@Override
-	public Researcher fetchByResearcherUserId_Last(
-		long researcherUserId,
-		OrderByComparator<Researcher> orderByComparator) {
-
-		int count = countByResearcherUserId(researcherUserId);
-
-		if (count == 0) {
+		if (result instanceof List<?>) {
 			return null;
 		}
-
-		List<Researcher> list = findByResearcherUserId(
-			researcherUserId, count - 1, count, orderByComparator);
-
-		if (!list.isEmpty()) {
-			return list.get(0);
+		else {
+			return (Researcher)result;
 		}
-
-		return null;
 	}
 
 	/**
-	 * Returns the researchers before and after the current researcher in the ordered set where researcherUserId = &#63;.
+	 * Removes the researcher where researcherUserId = &#63; from the database.
 	 *
-	 * @param researcherId the primary key of the current researcher
 	 * @param researcherUserId the researcher user ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the previous, current, and next researcher
-	 * @throws NoSuchResearcherException if a researcher with the primary key could not be found
+	 * @return the researcher that was removed
 	 */
 	@Override
-	public Researcher[] findByResearcherUserId_PrevAndNext(
-			long researcherId, long researcherUserId,
-			OrderByComparator<Researcher> orderByComparator)
+	public Researcher removeByResearcherUserId(long researcherUserId)
 		throws NoSuchResearcherException {
 
-		Researcher researcher = findByPrimaryKey(researcherId);
+		Researcher researcher = findByResearcherUserId(researcherUserId);
 
-		Session session = null;
-
-		try {
-			session = openSession();
-
-			Researcher[] array = new ResearcherImpl[3];
-
-			array[0] = getByResearcherUserId_PrevAndNext(
-				session, researcher, researcherUserId, orderByComparator, true);
-
-			array[1] = researcher;
-
-			array[2] = getByResearcherUserId_PrevAndNext(
-				session, researcher, researcherUserId, orderByComparator,
-				false);
-
-			return array;
-		}
-		catch (Exception exception) {
-			throw processException(exception);
-		}
-		finally {
-			closeSession(session);
-		}
-	}
-
-	protected Researcher getByResearcherUserId_PrevAndNext(
-		Session session, Researcher researcher, long researcherUserId,
-		OrderByComparator<Researcher> orderByComparator, boolean previous) {
-
-		StringBundler sb = null;
-
-		if (orderByComparator != null) {
-			sb = new StringBundler(
-				4 + (orderByComparator.getOrderByConditionFields().length * 3) +
-					(orderByComparator.getOrderByFields().length * 3));
-		}
-		else {
-			sb = new StringBundler(3);
-		}
-
-		sb.append(_SQL_SELECT_RESEARCHER_WHERE);
-
-		sb.append(_FINDER_COLUMN_RESEARCHERUSERID_RESEARCHERUSERID_2);
-
-		if (orderByComparator != null) {
-			String[] orderByConditionFields =
-				orderByComparator.getOrderByConditionFields();
-
-			if (orderByConditionFields.length > 0) {
-				sb.append(WHERE_AND);
-			}
-
-			for (int i = 0; i < orderByConditionFields.length; i++) {
-				sb.append(_ORDER_BY_ENTITY_ALIAS);
-				sb.append(orderByConditionFields[i]);
-
-				if ((i + 1) < orderByConditionFields.length) {
-					if (orderByComparator.isAscending() ^ previous) {
-						sb.append(WHERE_GREATER_THAN_HAS_NEXT);
-					}
-					else {
-						sb.append(WHERE_LESSER_THAN_HAS_NEXT);
-					}
-				}
-				else {
-					if (orderByComparator.isAscending() ^ previous) {
-						sb.append(WHERE_GREATER_THAN);
-					}
-					else {
-						sb.append(WHERE_LESSER_THAN);
-					}
-				}
-			}
-
-			sb.append(ORDER_BY_CLAUSE);
-
-			String[] orderByFields = orderByComparator.getOrderByFields();
-
-			for (int i = 0; i < orderByFields.length; i++) {
-				sb.append(_ORDER_BY_ENTITY_ALIAS);
-				sb.append(orderByFields[i]);
-
-				if ((i + 1) < orderByFields.length) {
-					if (orderByComparator.isAscending() ^ previous) {
-						sb.append(ORDER_BY_ASC_HAS_NEXT);
-					}
-					else {
-						sb.append(ORDER_BY_DESC_HAS_NEXT);
-					}
-				}
-				else {
-					if (orderByComparator.isAscending() ^ previous) {
-						sb.append(ORDER_BY_ASC);
-					}
-					else {
-						sb.append(ORDER_BY_DESC);
-					}
-				}
-			}
-		}
-		else {
-			sb.append(ResearcherModelImpl.ORDER_BY_JPQL);
-		}
-
-		String sql = sb.toString();
-
-		Query query = session.createQuery(sql);
-
-		query.setFirstResult(0);
-		query.setMaxResults(2);
-
-		QueryPos queryPos = QueryPos.getInstance(query);
-
-		queryPos.add(researcherUserId);
-
-		if (orderByComparator != null) {
-			for (Object orderByConditionValue :
-					orderByComparator.getOrderByConditionValues(researcher)) {
-
-				queryPos.add(orderByConditionValue);
-			}
-		}
-
-		List<Researcher> list = query.list();
-
-		if (list.size() == 2) {
-			return list.get(1);
-		}
-		else {
-			return null;
-		}
-	}
-
-	/**
-	 * Removes all the researchers where researcherUserId = &#63; from the database.
-	 *
-	 * @param researcherUserId the researcher user ID
-	 */
-	@Override
-	public void removeByResearcherUserId(long researcherUserId) {
-		for (Researcher researcher :
-				findByResearcherUserId(
-					researcherUserId, QueryUtil.ALL_POS, QueryUtil.ALL_POS,
-					null)) {
-
-			remove(researcher);
-		}
+		return remove(researcher);
 	}
 
 	/**
@@ -3293,6 +1949,10 @@ public class ResearcherPersistenceImpl
 			entityCacheEnabled, ResearcherImpl.class,
 			researcher.getPrimaryKey(), researcher);
 
+		finderCache.putResult(
+			_finderPathFetchByResearcherUserId,
+			new Object[] {researcher.getResearcherUserId()}, researcher);
+
 		researcher.resetOriginalValues();
 	}
 
@@ -3356,6 +2016,8 @@ public class ResearcherPersistenceImpl
 
 		finderCache.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
 		finderCache.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
+
+		clearUniqueFindersCache((ResearcherModelImpl)researcher, true);
 	}
 
 	@Override
@@ -3367,6 +2029,8 @@ public class ResearcherPersistenceImpl
 			entityCache.removeResult(
 				entityCacheEnabled, ResearcherImpl.class,
 				researcher.getPrimaryKey());
+
+			clearUniqueFindersCache((ResearcherModelImpl)researcher, true);
 		}
 	}
 
@@ -3378,6 +2042,44 @@ public class ResearcherPersistenceImpl
 		for (Serializable primaryKey : primaryKeys) {
 			entityCache.removeResult(
 				entityCacheEnabled, ResearcherImpl.class, primaryKey);
+		}
+	}
+
+	protected void cacheUniqueFindersCache(
+		ResearcherModelImpl researcherModelImpl) {
+
+		Object[] args = new Object[] {
+			researcherModelImpl.getResearcherUserId()
+		};
+
+		finderCache.putResult(
+			_finderPathCountByResearcherUserId, args, Long.valueOf(1), false);
+		finderCache.putResult(
+			_finderPathFetchByResearcherUserId, args, researcherModelImpl,
+			false);
+	}
+
+	protected void clearUniqueFindersCache(
+		ResearcherModelImpl researcherModelImpl, boolean clearCurrent) {
+
+		if (clearCurrent) {
+			Object[] args = new Object[] {
+				researcherModelImpl.getResearcherUserId()
+			};
+
+			finderCache.removeResult(_finderPathCountByResearcherUserId, args);
+			finderCache.removeResult(_finderPathFetchByResearcherUserId, args);
+		}
+
+		if ((researcherModelImpl.getColumnBitmask() &
+			 _finderPathFetchByResearcherUserId.getColumnBitmask()) != 0) {
+
+			Object[] args = new Object[] {
+				researcherModelImpl.getOriginalResearcherUserId()
+			};
+
+			finderCache.removeResult(_finderPathCountByResearcherUserId, args);
+			finderCache.removeResult(_finderPathFetchByResearcherUserId, args);
 		}
 	}
 
@@ -3589,27 +2291,6 @@ public class ResearcherPersistenceImpl
 			finderCache.removeResult(
 				_finderPathWithoutPaginationFindByCompanyId, args);
 
-			args = new Object[] {
-				researcherModelImpl.getUserId(),
-				researcherModelImpl.getResearcherUserId()
-			};
-
-			finderCache.removeResult(_finderPathCountByU_R, args);
-			finderCache.removeResult(
-				_finderPathWithoutPaginationFindByU_R, args);
-
-			args = new Object[] {researcherModelImpl.getUserId()};
-
-			finderCache.removeResult(_finderPathCountByUserId, args);
-			finderCache.removeResult(
-				_finderPathWithoutPaginationFindByUserId, args);
-
-			args = new Object[] {researcherModelImpl.getResearcherUserId()};
-
-			finderCache.removeResult(_finderPathCountByResearcherUserId, args);
-			finderCache.removeResult(
-				_finderPathWithoutPaginationFindByResearcherUserId, args);
-
 			finderCache.removeResult(_finderPathCountAll, FINDER_ARGS_EMPTY);
 			finderCache.removeResult(
 				_finderPathWithoutPaginationFindAll, FINDER_ARGS_EMPTY);
@@ -3675,74 +2356,14 @@ public class ResearcherPersistenceImpl
 				finderCache.removeResult(
 					_finderPathWithoutPaginationFindByCompanyId, args);
 			}
-
-			if ((researcherModelImpl.getColumnBitmask() &
-				 _finderPathWithoutPaginationFindByU_R.getColumnBitmask()) !=
-					 0) {
-
-				Object[] args = new Object[] {
-					researcherModelImpl.getOriginalUserId(),
-					researcherModelImpl.getOriginalResearcherUserId()
-				};
-
-				finderCache.removeResult(_finderPathCountByU_R, args);
-				finderCache.removeResult(
-					_finderPathWithoutPaginationFindByU_R, args);
-
-				args = new Object[] {
-					researcherModelImpl.getUserId(),
-					researcherModelImpl.getResearcherUserId()
-				};
-
-				finderCache.removeResult(_finderPathCountByU_R, args);
-				finderCache.removeResult(
-					_finderPathWithoutPaginationFindByU_R, args);
-			}
-
-			if ((researcherModelImpl.getColumnBitmask() &
-				 _finderPathWithoutPaginationFindByUserId.getColumnBitmask()) !=
-					 0) {
-
-				Object[] args = new Object[] {
-					researcherModelImpl.getOriginalUserId()
-				};
-
-				finderCache.removeResult(_finderPathCountByUserId, args);
-				finderCache.removeResult(
-					_finderPathWithoutPaginationFindByUserId, args);
-
-				args = new Object[] {researcherModelImpl.getUserId()};
-
-				finderCache.removeResult(_finderPathCountByUserId, args);
-				finderCache.removeResult(
-					_finderPathWithoutPaginationFindByUserId, args);
-			}
-
-			if ((researcherModelImpl.getColumnBitmask() &
-				 _finderPathWithoutPaginationFindByResearcherUserId.
-					 getColumnBitmask()) != 0) {
-
-				Object[] args = new Object[] {
-					researcherModelImpl.getOriginalResearcherUserId()
-				};
-
-				finderCache.removeResult(
-					_finderPathCountByResearcherUserId, args);
-				finderCache.removeResult(
-					_finderPathWithoutPaginationFindByResearcherUserId, args);
-
-				args = new Object[] {researcherModelImpl.getResearcherUserId()};
-
-				finderCache.removeResult(
-					_finderPathCountByResearcherUserId, args);
-				finderCache.removeResult(
-					_finderPathWithoutPaginationFindByResearcherUserId, args);
-			}
 		}
 
 		entityCache.putResult(
 			entityCacheEnabled, ResearcherImpl.class,
 			researcher.getPrimaryKey(), researcher, false);
+
+		clearUniqueFindersCache(researcherModelImpl, false);
+		cacheUniqueFindersCache(researcherModelImpl);
 
 		researcher.resetOriginalValues();
 
@@ -4047,7 +2668,8 @@ public class ResearcherPersistenceImpl
 			entityCacheEnabled, finderCacheEnabled, ResearcherImpl.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByUuid",
 			new String[] {String.class.getName()},
-			ResearcherModelImpl.UUID_COLUMN_BITMASK);
+			ResearcherModelImpl.UUID_COLUMN_BITMASK |
+			ResearcherModelImpl.CREATEDATE_COLUMN_BITMASK);
 
 		_finderPathCountByUuid = new FinderPath(
 			entityCacheEnabled, finderCacheEnabled, Long.class,
@@ -4068,7 +2690,8 @@ public class ResearcherPersistenceImpl
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByUuid_C",
 			new String[] {String.class.getName(), Long.class.getName()},
 			ResearcherModelImpl.UUID_COLUMN_BITMASK |
-			ResearcherModelImpl.COMPANYID_COLUMN_BITMASK);
+			ResearcherModelImpl.COMPANYID_COLUMN_BITMASK |
+			ResearcherModelImpl.CREATEDATE_COLUMN_BITMASK);
 
 		_finderPathCountByUuid_C = new FinderPath(
 			entityCacheEnabled, finderCacheEnabled, Long.class,
@@ -4087,64 +2710,17 @@ public class ResearcherPersistenceImpl
 			entityCacheEnabled, finderCacheEnabled, ResearcherImpl.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByCompanyId",
 			new String[] {Long.class.getName()},
-			ResearcherModelImpl.COMPANYID_COLUMN_BITMASK);
+			ResearcherModelImpl.COMPANYID_COLUMN_BITMASK |
+			ResearcherModelImpl.CREATEDATE_COLUMN_BITMASK);
 
 		_finderPathCountByCompanyId = new FinderPath(
 			entityCacheEnabled, finderCacheEnabled, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByCompanyId",
 			new String[] {Long.class.getName()});
 
-		_finderPathWithPaginationFindByU_R = new FinderPath(
+		_finderPathFetchByResearcherUserId = new FinderPath(
 			entityCacheEnabled, finderCacheEnabled, ResearcherImpl.class,
-			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByU_R",
-			new String[] {
-				Long.class.getName(), Long.class.getName(),
-				Integer.class.getName(), Integer.class.getName(),
-				OrderByComparator.class.getName()
-			});
-
-		_finderPathWithoutPaginationFindByU_R = new FinderPath(
-			entityCacheEnabled, finderCacheEnabled, ResearcherImpl.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByU_R",
-			new String[] {Long.class.getName(), Long.class.getName()},
-			ResearcherModelImpl.USERID_COLUMN_BITMASK |
-			ResearcherModelImpl.RESEARCHERUSERID_COLUMN_BITMASK);
-
-		_finderPathCountByU_R = new FinderPath(
-			entityCacheEnabled, finderCacheEnabled, Long.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByU_R",
-			new String[] {Long.class.getName(), Long.class.getName()});
-
-		_finderPathWithPaginationFindByUserId = new FinderPath(
-			entityCacheEnabled, finderCacheEnabled, ResearcherImpl.class,
-			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByUserId",
-			new String[] {
-				Long.class.getName(), Integer.class.getName(),
-				Integer.class.getName(), OrderByComparator.class.getName()
-			});
-
-		_finderPathWithoutPaginationFindByUserId = new FinderPath(
-			entityCacheEnabled, finderCacheEnabled, ResearcherImpl.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByUserId",
-			new String[] {Long.class.getName()},
-			ResearcherModelImpl.USERID_COLUMN_BITMASK);
-
-		_finderPathCountByUserId = new FinderPath(
-			entityCacheEnabled, finderCacheEnabled, Long.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByUserId",
-			new String[] {Long.class.getName()});
-
-		_finderPathWithPaginationFindByResearcherUserId = new FinderPath(
-			entityCacheEnabled, finderCacheEnabled, ResearcherImpl.class,
-			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByResearcherUserId",
-			new String[] {
-				Long.class.getName(), Integer.class.getName(),
-				Integer.class.getName(), OrderByComparator.class.getName()
-			});
-
-		_finderPathWithoutPaginationFindByResearcherUserId = new FinderPath(
-			entityCacheEnabled, finderCacheEnabled, ResearcherImpl.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByResearcherUserId",
+			FINDER_CLASS_NAME_ENTITY, "fetchByResearcherUserId",
 			new String[] {Long.class.getName()},
 			ResearcherModelImpl.RESEARCHERUSERID_COLUMN_BITMASK);
 

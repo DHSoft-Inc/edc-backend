@@ -249,6 +249,36 @@ public interface InstResearcherModel
 	public void setResearcherId(long researcherId);
 
 	/**
+	 * Returns the office contact of this inst researcher.
+	 *
+	 * @return the office contact of this inst researcher
+	 */
+	@AutoEscape
+	public String getOfficeContact();
+
+	/**
+	 * Sets the office contact of this inst researcher.
+	 *
+	 * @param officeContact the office contact of this inst researcher
+	 */
+	public void setOfficeContact(String officeContact);
+
+	/**
+	 * Returns the position of this inst researcher.
+	 *
+	 * @return the position of this inst researcher
+	 */
+	@AutoEscape
+	public String getPosition();
+
+	/**
+	 * Sets the position of this inst researcher.
+	 *
+	 * @param position the position of this inst researcher
+	 */
+	public void setPosition(String position);
+
+	/**
 	 * Returns the status of this inst researcher.
 	 *
 	 * @return the status of this inst researcher

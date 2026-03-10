@@ -31,6 +31,7 @@ import com.dhsoft.edc.backend.service.persistence.MetaGroupPersistence;
 import com.dhsoft.edc.backend.service.persistence.ProjectPersistence;
 import com.dhsoft.edc.backend.service.persistence.QueryLinkPersistence;
 import com.dhsoft.edc.backend.service.persistence.RandomizationPersistence;
+import com.dhsoft.edc.backend.service.persistence.ResearcherFinder;
 import com.dhsoft.edc.backend.service.persistence.ResearcherPersistence;
 import com.dhsoft.edc.backend.service.persistence.SubjectPersistence;
 import com.dhsoft.edc.backend.service.persistence.SubjectVisitDefinitionPersistence;
@@ -673,6 +674,9 @@ public abstract class VisitEventLocalServiceBaseImpl
 
 	@Reference
 	protected ResearcherPersistence researcherPersistence;
+
+	@Reference
+	protected ResearcherFinder researcherFinder;
 
 	@Reference
 	protected SubjectPersistence subjectPersistence;

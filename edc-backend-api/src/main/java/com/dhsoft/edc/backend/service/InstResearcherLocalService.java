@@ -29,6 +29,7 @@ import com.liferay.portal.kernel.search.Indexable;
 import com.liferay.portal.kernel.search.IndexableType;
 import com.liferay.portal.kernel.service.BaseLocalService;
 import com.liferay.portal.kernel.service.PersistedModelLocalService;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.transaction.Isolation;
 import com.liferay.portal.kernel.transaction.Propagation;
 import com.liferay.portal.kernel.transaction.Transactional;
@@ -77,6 +78,12 @@ public interface InstResearcherLocalService
 	@Indexable(type = IndexableType.REINDEX)
 	public InstResearcher addInstResearcher(InstResearcher instResearcher);
 
+	@Indexable(type = IndexableType.REINDEX)
+	@Transactional(rollbackFor = Exception.class)
+	public InstResearcher addInstResearcher(
+		long companyId, long groupId, long projectId, long instId,
+		long researcherId, ServiceContext sc);
+
 	/**
 	 * Creates a new inst researcher with the primary key. Does not add the inst researcher to the database.
 	 *
@@ -110,7 +117,8 @@ public interface InstResearcherLocalService
 	 * @return the inst researcher that was removed
 	 * @throws PortalException if a inst researcher with the primary key could not be found
 	 */
-	@Indexable(type = IndexableType.DELETE)
+	@Indexable(type = IndexableType.REINDEX)
+	@Transactional(rollbackFor = Exception.class)
 	public InstResearcher deleteInstResearcher(long institutionResearcherId)
 		throws PortalException;
 
@@ -206,6 +214,15 @@ public interface InstResearcherLocalService
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<InstResearcher> getByInstId(long groupId, long instId);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<InstResearcher> getByProjectId(long groupId, long projectId);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<InstResearcher> getByResearcherIdAll(long researcherId);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ExportActionableDynamicQuery getExportActionableDynamicQuery(
